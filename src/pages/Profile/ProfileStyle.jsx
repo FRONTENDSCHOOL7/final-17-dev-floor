@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
+  /* border: 3px dashed gray; */
   height: 100vh;
   width: 390px;
   margin: 0 auto;
@@ -9,6 +10,21 @@ export const Body = styled.div`
   gap: 6px;
   /* transform: translateX(-10%); */
 `;
+
+// top bar
+export const TopBar = styled.div`
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  button {
+    margin: 13px 16px;
+    background: #fff;
+    border-style: none;
+  }
+`;
+// top bar
 
 // section 1
 export const Sect1 = styled.div`
@@ -86,6 +102,9 @@ export const Sale = styled.div`
   display: flex;
   gap: 10px;
   overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   img {
     width: 140px;
     height: 90px;
@@ -110,13 +129,19 @@ export const Sect3 = styled.div`
   .album-btns {
     display: flex;
     justify-content: right;
-    border: 0.5px solid var(--DBDBDB, #dbdbdb);
+    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
   }
   button {
     background: #fff;
     border: none;
   }
+  .content-container::-webkit-scrollbar {
+    display: none;
+  }
   .content-container {
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: visible;
     display: flex;
     flex-direction: column;
     margin: 16px 16px 0;
