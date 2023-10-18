@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+img { width: 100%;}
+button, a {
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: var(--fontColor);
+    font: inherit;
+    line-height: normal;
+}
