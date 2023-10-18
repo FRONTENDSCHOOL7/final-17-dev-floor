@@ -66,10 +66,13 @@ export const Btns = styled.div`
     padding: 7px;
     background-color: #fff;
   }
-  .btn-follow {
-    background: #3c48ae;
-    color: #fff;
-    width: 120px;
+  .modify-btn {
+    color: #767676;
+    padding: 15px 24px;
+  }
+  .register-btn {
+    color: var(--767676, #767676);
+    padding: 10px 20px;
   }
 `;
 

@@ -10,9 +10,11 @@ export const Tab = styled.div`
     border-style: none;
     margin-top: 12px;
   }
-  button:hover {
-  }
+  /* button:hover {
+  } */
   p {
+    font-size: 10px;
+    font-weight: 400;
     margin-top: 4px;
   }
 `;
