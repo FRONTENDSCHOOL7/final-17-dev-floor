@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-    display: flex;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 100vh;
-    background: #CB9367;
+    .inner {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--bgColor);
+    }
 `
 export const Logo = styled.div`
     margin: auto;
@@ -16,4 +18,8 @@ export const Logo = styled.div`
             width: 100%;
         }
     }
+`
+export const LoginBox = styled.div`
+    border-radius: 20px 20px 0 0;
+    background: #fff;
 `
