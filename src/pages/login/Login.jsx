@@ -8,7 +8,7 @@ export default function Login() {
             <Main>
                 <Logo>
                     <h1>
-                        <img src={LogoImg} alt="로고이미지" />
+                        <img src={LogoImg} alt="로고" />
                     </h1>
                 </Logo>
             </Main>
