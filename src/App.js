@@ -1,4 +1,4 @@
-import Profile from "./pages/Profile/Profile";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
