@@ -15,7 +15,6 @@ export const Sect1 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid black;
 `;
 
 export const ProImg = styled.div`
@@ -24,7 +23,9 @@ export const ProImg = styled.div`
   margin-top: 30px;
   gap: 41px;
   text-align: center;
-  div {
+  button {
+    background-color: #fff;
+    border-style: none;
     span {
       font-size: 18px;
       font-weight: 700;
@@ -75,7 +76,6 @@ export const Btns = styled.div`
 
 // section2
 export const Sect2 = styled.div`
-  border: 3px solid red;
   h2 {
     font-size: 16px;
     font-weight: 700;
@@ -85,7 +85,7 @@ export const Sect2 = styled.div`
 export const Sale = styled.div`
   display: flex;
   gap: 10px;
-  overflow: scroll;
+  overflow-x: scroll;
   img {
     width: 140px;
     height: 90px;
@@ -110,9 +110,67 @@ export const Sect3 = styled.div`
   .album-btns {
     display: flex;
     justify-content: right;
+    border: 0.5px solid var(--DBDBDB, #dbdbdb);
   }
   button {
     background: #fff;
     border: none;
+  }
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 16px 0;
+    .content-list {
+      display: flex;
+      gap: 12px;
+    }
+    .profile-img {
+      width: 42px;
+      height: 42px;
+    }
+    .content-title {
+      display: flex;
+    }
+    .content-id {
+      width: 150px;
+      margin-right: 118px;
+      h3 {
+        margin-top: 2px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      p {
+        margin-top: 0;
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--767676, #767676);
+      }
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+    .content-inner {
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .like-comment {
+      display: flex;
+      button {
+        display: flex;
+        align-items: center;
+        span {
+          margin-left: 4px;
+          color: #767676;
+        }
+      }
+    }
+    .date {
+      margin-top: 20px;
+      color: #767676;
+      font-size: 10px;
+      font-weight: 400;
+    }
   }
 `;
