@@ -11,4 +11,10 @@ export const Top = styled.div`
     background: #fff;
     border-style: none;
   }
+  .btn-save {
+    color: #fff;
+    background: #6f76b6;
+    padding: 7px 32px;
+    border-radius: 32px;
+  }
 `;

@@ -17,7 +17,7 @@ import {
   Sale,
   Sect3,
 } from "./MyProfileStyle";
-import TopBar from "../../components/topbar/TopBar";
+import TopBar from "../../components/topbar/TopBarBasic";
 import TabMenu from "../../components/tab/TabMenu";
 
 export default function MyProfile() {
