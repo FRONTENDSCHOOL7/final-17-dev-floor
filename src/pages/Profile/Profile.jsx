@@ -17,21 +17,14 @@ import {
   Sect2,
   Sale,
   Sect3,
-  TopBar,
 } from "./ProfileStyle";
+import TopBar from "../../components/topbar/TopBar";
 import TabMenu from "../../components/tab/TabMenu";
 
 export default function Profile() {
   return (
     <Body>
-      <TopBar>
-        <button>
-          <img src={back} alt="" />
-        </button>
-        <button>
-          <img src={more} alt="" />
-        </button>
-      </TopBar>
+      <TopBar />
       <Sect1>
         <ProImg>
           <button>

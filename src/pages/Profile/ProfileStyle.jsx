@@ -11,21 +11,6 @@ export const Body = styled.div`
   /* transform: translateX(-10%); */
 `;
 
-// top bar
-export const TopBar = styled.div`
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
-  button {
-    margin: 13px 16px;
-    background: #fff;
-    border-style: none;
-  }
-`;
-// top bar
-
 // section 1
 export const Sect1 = styled.div`
   display: flex;
