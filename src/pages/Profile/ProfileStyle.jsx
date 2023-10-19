@@ -36,6 +36,9 @@ export const ProImg = styled.div`
       font-weight: 400;
       color: #767676;
     }
+    .followers {
+      color: black;
+    }
   }
 `;
 export const Intro = styled.div`

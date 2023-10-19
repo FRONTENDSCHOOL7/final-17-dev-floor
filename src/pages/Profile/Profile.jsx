@@ -28,7 +28,7 @@ export default function Profile() {
       <Sect1>
         <ProImg>
           <button>
-            <span>2950</span>
+            <span className="followers">2950</span>
             <p>followers</p>
           </button>
           <img src={profileImg} alt="프로필 이미지" />

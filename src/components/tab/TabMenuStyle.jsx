@@ -9,7 +9,12 @@ export const Tab = styled.div`
     background: #fff;
     border-style: none;
     margin-top: 12px;
+    img {
+      width: 24px;
+      height: 24px;
+    }
   }
+
   /* button:hover {
   } */
   p {
