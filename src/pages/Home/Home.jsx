@@ -1,6 +1,5 @@
 import React from 'react'
-import LogoImg from '../../assets/images/logo.png'
-import LogoTxtImg from '../../assets/images/logo-txt.png'
+import LogoImg from '../../assets/images/Group 23.png'
 import KakaoImg from '../../assets/images/message-circle.png'
 import GoogleImg from '../../assets/images/Google__G__Logo 1.png'
 import facebookImg from '../../assets/images/facebook.png'
@@ -13,7 +12,7 @@ export default function Home() {
             <Logo>
                 <h1>
                     <img src={LogoImg} alt="로고이미지" />
-                    <img src={LogoTxtImg} alt="로고텍스트" />
+                    개발바닥
                 </h1>
             </Logo>
             <HomeWrap>
