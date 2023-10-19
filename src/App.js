@@ -6,6 +6,7 @@ import Home from "./pages/home/Home";
 import Chat from "./pages/chat/Chat";
 import Profile from "./pages/profile/Profile";
 import MyProfile from "./pages/profile/MyProfile";
+import Error from "./pages/404/Error";
 import ProfileModification from "./pages/profile-modification/ProfileModification";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/chat" element={<Chat />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/myprofile" element={<MyProfile />} />
+          <Route path="/404" element={<Error />} />
           <Route
             path="/profile-modification"
             element={<ProfileModification />}
