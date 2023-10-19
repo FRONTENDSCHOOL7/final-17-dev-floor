@@ -8,7 +8,9 @@ export default function ProfileModification() {
     <Body>
       <TopBarSave />
       <Main>
-        <img src={profileImg} alt="" />
+        <button className="upload-img">
+          <img src={profileImg} alt="" />
+        </button>
         <form>
           <div>
             <label>사용자 이름</label>
@@ -30,11 +32,6 @@ export default function ProfileModification() {
           </div>
         </form>
       </Main>
-      <ul>
-        <li>dd</li>
-        <li>dd</li>
-        <li>dd</li>
-      </ul>
     </Body>
   );
 }
