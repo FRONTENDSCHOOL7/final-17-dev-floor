@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginWrap = styled.div`
+export const JoinWrap = styled.div`
     background: var(--whiteColor);
     width: 100%;
     height: 100vh;
@@ -8,7 +8,7 @@ export const LoginWrap = styled.div`
     flex-direction: column;
     align-items: center;
 `
-export const LoginInner = styled.div`
+export const JoinInner = styled.div`
     max-width: 720px;
     width: 100%;
     margin: 30px auto 0;
@@ -19,13 +19,13 @@ export const LoginInner = styled.div`
     flex-direction: column;
     align-items: center;
 `
-export const LoginTit = styled.div`
+export const JoinTit = styled.div`
     margin: auto;
     h2 {
         color: var(--bgColor);
     }
 `
-export const LoginForm = styled.form`
+export const JoinForm = styled.form`
     width: 100%;
 `
 export const Email = styled.div`
@@ -51,14 +51,14 @@ export const Password = styled.div`
 `
 export const Submit = styled.div`
     margin-top: 30px;
-    button {
+    a {
+        display: block;
+        line-height: 44px;
+        text-align: center;
         width: 100%;
         height: 44px;
         color: var(--whiteColor);
         border-radius: 20px;
         background: var(--disableColor);
     }
-`
-export const LoginEmail = styled.div`
-    
 `

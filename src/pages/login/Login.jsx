@@ -20,12 +20,14 @@ export default function Login() {
                     <label htmlFor="password"></label>
                     <input type="password" id="password"/>
                 </Password>
-                <Submit><button type='submit'>로그인</button></Submit>
+                <Submit>
+                    <button type='submit'>로그인</button>
+                </Submit>
             </LoginForm>
             <LoginEmail>
                 <Link to="/join">이메일로 회원가입</Link>
             </LoginEmail>
         </LoginInner>
     </LoginWrap>
-  )
+    )
 }
