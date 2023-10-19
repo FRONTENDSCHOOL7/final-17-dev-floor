@@ -24,7 +24,7 @@ export const Main = styled.div`
     background-size: 36px 36px;
     height: 36px;
     width: 36px;
-    margin: -50px 0px 20px 70px;
+    margin: -50px 0px 30px 70px;
   }
   form {
     display: flex;

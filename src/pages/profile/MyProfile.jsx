@@ -1,5 +1,5 @@
 import React from "react";
-import profileImg from "../../assets/images/basic-profile-img-.png";
+import profileImg from "../../assets/images/Group 26.png";
 import message from "../../assets/images/icon-message-circle.png";
 import share from "../../assets/images/icon-share.png";
 import hamburger from "../../assets/images/icon-post-list-off.png";

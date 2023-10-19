@@ -7,7 +7,7 @@ export const Body = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
   /* transform: translateX(-10%); */
 `;
 
@@ -36,6 +36,9 @@ export const ProImg = styled.div`
       font-weight: 400;
       color: #767676;
     }
+    .followers {
+      color: black;
+    }
   }
 `;
 export const Intro = styled.div`
@@ -46,12 +49,13 @@ export const Intro = styled.div`
   h2 {
     font-size: 16px;
     font-weight: 700;
+    margin-bottom: 6px;
   }
   p {
     font-size: 12px;
     font-weight: 400;
     color: #767676;
-    margin-top: 3px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -68,11 +72,11 @@ export const Btns = styled.div`
   }
   .modify-btn {
     color: #767676;
-    padding: 15px 24px;
+    padding: 8px 24px;
   }
   .register-btn {
     color: var(--767676, #767676);
-    padding: 10px 20px;
+    padding: 8px 20px;
   }
 `;
 
@@ -81,6 +85,9 @@ export const Btns = styled.div`
 // section2
 export const Sect2 = styled.div`
   h2 {
+    margin-top: 20px;
+    margin-left: 18px;
+    margin-bottom: 16px;
     font-size: 16px;
     font-weight: 700;
   }
@@ -88,6 +95,7 @@ export const Sect2 = styled.div`
 
 export const Sale = styled.div`
   display: flex;
+  margin-left: 18px;
   gap: 10px;
   overflow-x: scroll;
   &::-webkit-scrollbar {
@@ -102,8 +110,10 @@ export const Sale = styled.div`
     height: 6px;
     font-size: 14px;
     font-weight: 400;
+    margin-bottom: 12px;
   }
   span {
+    margin-top: 12px;
     font-size: 12px;
     font-weight: 700;
     color: #cb9367;
@@ -136,6 +146,7 @@ export const Sect3 = styled.div`
     .content-list {
       display: flex;
       gap: 12px;
+      margin-top: 12px;
     }
     .profile-img {
       width: 42px;
@@ -153,7 +164,8 @@ export const Sect3 = styled.div`
         font-weight: 600;
       }
       p {
-        margin-top: 0;
+        margin-top: 6px;
+        margin-bottom: 16px;
         font-size: 12px;
         font-weight: 400;
         color: var(--767676, #767676);
@@ -166,6 +178,9 @@ export const Sect3 = styled.div`
     .content-inner {
       font-size: 14px;
       font-weight: 400;
+      p {
+        margin-bottom: 16px;
+      }
     }
     .like-comment {
       display: flex;
@@ -174,6 +189,7 @@ export const Sect3 = styled.div`
         align-items: center;
         span {
           margin-left: 4px;
+          margin-right: 4px;
           color: #767676;
         }
       }

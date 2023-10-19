@@ -1,6 +1,6 @@
 import React from "react";
 import { Body, Main } from "./ProfileModificationStyle";
-import profileImg from "../../assets/images/basic-profile-img-.png";
+import profileImg from "../../assets/images/Group 26.png";
 import TopBarSave from "../../components/topbar/TopBarSave";
 
 export default function ProfileModification() {
