@@ -51,6 +51,7 @@ export const Main = styled.div`
         border: none;
         border-bottom: 1px solid #dbdbdb;
         margin-top: 10px;
+        height: 22px;
       }
     }
   }
