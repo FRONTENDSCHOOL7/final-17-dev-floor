@@ -2,10 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import Login from "./pages/login/Login";
 import Join from "./pages/join/Join";
-import Home from "./pages/Home/Home";
-import Chat from "./pages/Chat/Chat";
-import Profile from "./pages/Profile/Profile";
-import MyProfile from "./pages/Profile/MyProfile";
+import Chat from "./pages/chat/Chat";
+import Home from "./pages/home/Home";
+import Profile from "./pages/profile/Profile";
+import MyProfile from "./pages/profile/MyProfile";
 import Error from "./pages/404/Error";
 import ProfileModification from "./pages/profile-modification/ProfileModification";
 
