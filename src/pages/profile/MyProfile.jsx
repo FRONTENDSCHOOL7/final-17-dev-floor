@@ -6,7 +6,6 @@ import hamburger from "../../assets/images/icon-post-list-off.png";
 import album from "../../assets/images/icon-post-album-off.png";
 import more from "../../assets/images/s-icon-more-vertical.png";
 import like from "../../assets/images/icon-heart.png";
-import back from "../../assets/images/icon-arrow-left.png";
 
 import {
   ProImg,
@@ -17,18 +16,18 @@ import {
   Sect2,
   Sale,
   Sect3,
-} from "./ProfileStyle";
+} from "./MyProfileStyle";
 import TopBar from "../../components/topbar/TopBarBasic";
 import TabMenu from "../../components/tab/TabMenu";
 
-export default function Profile() {
+export default function MyProfile() {
   return (
     <Body>
       <TopBar />
       <Sect1>
         <ProImg>
           <button>
-            <span className="followers">2950</span>
+            <span>2950</span>
             <p>followers</p>
           </button>
           <img src={profileImg} alt="프로필 이미지" />
@@ -43,13 +42,8 @@ export default function Profile() {
           <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</p>
         </Intro>
         <Btns>
-          <button>
-            <img src={message} alt="" />
-          </button>
-          <button className="btn-follow">팔로우</button>
-          <button>
-            <img src={share} alt="" />
-          </button>
+          <button className="modify-btn">프로필 수정</button>
+          <button className="register-btn">상품 등록</button>
         </Btns>
       </Sect1>
       <Sect2>
