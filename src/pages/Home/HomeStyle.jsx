@@ -12,6 +12,8 @@ export const Logo = styled.div`
     margin: auto;
     h1 {
         width: 144px;
+        color: var(--fontColor);
+        text-align: center;
         img {
             width: 100%;
         }
