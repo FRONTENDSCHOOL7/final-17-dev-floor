@@ -18,3 +18,20 @@ export const Top = styled.div`
     border-radius: 32px;
   }
 `;
+
+export const TopFollowers = styled.div`
+  height: 48px;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  button {
+    margin: 13px 16px;
+    background: #fff;
+    border-style: none;
+  }
+  h2 {
+    transform: translateY(-15%);
+    font-size: 20px;
+    margin-left: -5px;
+  }
+`;

@@ -8,6 +8,7 @@ import Profile from "./pages/profile/Profile";
 import MyProfile from "./pages/profile/MyProfile";
 import Error from "./pages/404/Error";
 import ProfileModification from "./pages/profile-modification/ProfileModification";
+import Followers from "./pages/follow/Followers";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/404" element={<Error />} />
+          <Route path="/followers" element={<Followers />} />
           <Route
             path="/profile-modification"
             element={<ProfileModification />}
