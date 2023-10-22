@@ -24,6 +24,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/404" element={<Error />} />
+          <Route path="/followers" element={<Followers />} />
+          <Route path="/addproduct" element={<AddProduct />} />
           <Route
             path="/profile-modification"
             element={<ProfileModification />}
