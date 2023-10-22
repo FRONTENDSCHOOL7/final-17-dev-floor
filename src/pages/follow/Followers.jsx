@@ -9,11 +9,23 @@ export default function Followers() {
       <TopBarFollowers />
       <Follower>
         <img src={profileImg} alt="" />
-        <div>
-          <h3>애월읍 한라봉 최고 맛집</h3>
-          <p>정성을 다해 농사짓는 한라봉</p>
+        <div className="container">
+          <div className="id">
+            <h3>애월읍 한라봉 최고 맛집</h3>
+            <p>정성을 다해 농사짓는 한라봉</p>
+          </div>
+          <button className="btn-follow">팔로우</button>
         </div>
-        <button>팔로우</button>
+      </Follower>
+      <Follower>
+        <img src={profileImg} alt="" />
+        <div className="container">
+          <div className="id">
+            <h3>애월읍 한라봉 최고 맛집</h3>
+            <p>정성을 다해 농사짓는 한라봉</p>
+          </div>
+          <button className="btn-cancle">취소</button>
+        </div>
       </Follower>
     </Body>
   );

@@ -13,7 +13,7 @@ export const Follower = styled.div`
     width: 50px;
     height: 60px;
   }
-  div {
+  .id {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -26,10 +26,32 @@ export const Follower = styled.div`
       font-weight: 400;
       color: var(--767676, #767676);
     }
-    button {
-      width: 56px;
-      padding: 7px 11px;
-      background: #12184e;
-    }
+  }
+  .btn-follow {
+    color: #fff;
+    border-radius: 26px;
+    width: 70px;
+    height: 35px;
+    padding: 7px 9px;
+    background: #12184e;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .btn-cancle {
+    color: #767676;
+    border-radius: 26px;
+    border: 1px solid var(--DBDBDB, #dbdbdb);
+    width: 70px;
+    height: 35px;
+    padding: 7px 9px;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-10%);
+    margin-left: 12px;
   }
 `;
