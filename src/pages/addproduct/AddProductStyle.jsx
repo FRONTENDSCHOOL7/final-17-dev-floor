@@ -13,7 +13,7 @@ export const Main = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-  .upload-img {
+  /* .upload-img {
     width: 110px;
     height: 110px;
   }
@@ -25,13 +25,14 @@ export const Main = styled.div`
     height: 36px;
     width: 36px;
     margin: -50px 0px 30px 70px;
-  }
+  } */
   form {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-top: 30px;
-    div {
+
+    .product-desc {
       display: flex;
       flex-direction: column;
       margin-left: 34px;
@@ -53,6 +54,20 @@ export const Main = styled.div`
         margin-top: 10px;
         height: 22px;
       }
+    }
+    .img-container {
+      display: flex;
+      flex-direction: column;
+      /* align-items: left; */
+      width: 350px;
+      height: 250px;
+    }
+    .img-background {
+      background: var(--Gray-6, #f2f2f2);
+      border-radius: 10px;
+      border: 0.5px solid var(--DBDBDB, #dbdbdb);
+      width: 322px;
+      height: 204px;
     }
   }
 `;
