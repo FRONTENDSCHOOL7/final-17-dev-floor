@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SearchBox, SearchInputBox, SearchPrev, SearchUser, SearchUserList,  } from './\bSearchInputStyle'
+import { SearchBox, SearchInputBox, SearchPrev, SearchUser, SearchUserList,  } from './SearchInputStyle'
 import PrevImg from '../../assets/images/icon-arrow-left.png'
 import { useNavigate } from 'react-router-dom'
 import Home from '../../pages/home/Home'
