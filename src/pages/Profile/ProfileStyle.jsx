@@ -10,6 +10,7 @@ export const Body = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  font-family: "GongGothicMedium";
   /* transform: translateX(-10%); */
 `;
 
