@@ -9,6 +9,7 @@ import MyProfile from "./pages/profile/MyProfile";
 import Error from "./pages/404/Error";
 import ProfileModification from "./pages/profile-modification/ProfileModification";
 import Followers from "./pages/follow/Followers";
+import AddProduct from "./pages/addproduct/AddProduct";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/404" element={<Error />} />
           <Route path="/followers" element={<Followers />} />
+          <Route path="/addproduct" element={<AddProduct />} />
           <Route
             path="/profile-modification"
             element={<ProfileModification />}
