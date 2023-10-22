@@ -3,7 +3,17 @@ import styled from "styled-components";
 
 import more from "../../assets/images/s-icon-more-vertical.png";
 import back from "../../assets/images/icon-arrow-left.png";
-import profileImg from "../../assets/images/Group 26.png";
+
+import profileImg from "../../assets/images/basic-profile.png";
+
+import {
+    Body,
+    TopBar,
+    Chat1,
+    Chat2,
+    Sect1,
+} from "./ChatStyle";
+
 
 import { Body, TopBar, Chat1, Chat2, Sect1 } from "./ChatStyle";
 

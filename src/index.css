@@ -25,3 +25,8 @@ button, a {
     font: inherit;
     line-height: normal;
 }
+input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
