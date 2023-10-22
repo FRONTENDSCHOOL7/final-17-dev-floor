@@ -2,7 +2,9 @@ import styled from "styled-components";
 import upload from "../../assets/images/upload-file.png";
 
 export const Body = styled.div`
-  width: 390px;
+  max-width: 720px;
+  width: 100%;
+  padding: 0 20px;
   height: 100vh;
   margin: 0 auto;
   display: flex;

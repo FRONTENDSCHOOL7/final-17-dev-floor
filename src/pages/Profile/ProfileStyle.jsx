@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const Body = styled.div`
   /* border: 3px dashed gray; */
   height: 100vh;
-  width: 390px;
+  max-width: 720px;
+  width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
