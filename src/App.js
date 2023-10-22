@@ -3,11 +3,12 @@ import GlobalStyle from "./styles/GlobalStyle";
 import Login from "./pages/login/Login";
 import Join from "./pages/join/Join";
 import Chat from "./pages/chat/Chat";
-import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import MyProfile from "./pages/profile/MyProfile";
 import Error from "./pages/404/Error";
 import ProfileModification from "./pages/profile-modification/ProfileModification";
+import LoginHome from "./pages/login/LoginHome";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" exact element={<LoginHome />} />
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/myprofile" element={<MyProfile />} />
