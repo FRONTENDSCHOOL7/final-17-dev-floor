@@ -9,6 +9,8 @@ import Error from "./pages/404/Error";
 import ProfileModification from "./pages/profile-modification/ProfileModification";
 import LoginHome from "./pages/login/LoginHome";
 import Home from "./pages/home/Home";
+import Followers from "./pages/follow/Followers";
+import AddProduct from "./pages/addproduct/AddProduct";
 
 function App() {
   return (
