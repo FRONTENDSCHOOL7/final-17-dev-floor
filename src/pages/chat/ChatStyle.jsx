@@ -37,6 +37,7 @@ export const Chat1 = styled.div`
     justify-content: space-between;
     margin-top: 10px;
 
+
 	img {
         padding: 10px 10px 10px 10px ;
         width: 42px;
@@ -50,6 +51,7 @@ export const Chat1 = styled.div`
         line-height: 7px;
         justify-content: space-between;
     }
+
     
     .text {
         display: flex;
