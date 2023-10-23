@@ -4,7 +4,7 @@ import back from "../../assets/images/icon-arrow-left.png";
 import upload from "../../assets/images/upload-file.png";
 import { Body, Sect1, Sect2 } from "./PostWriteStyle";
 
-export default function postWrite() {
+export default function PostWrite() {
   return (
     <Body>
       <Sect1>

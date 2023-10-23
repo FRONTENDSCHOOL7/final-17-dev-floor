@@ -11,6 +11,8 @@ import Error from "./pages/404/Error";
 import ProfileModification from "./pages/profile-modification/ProfileModification";
 import LoginHome from "./pages/login/LoginHome";
 import Home from "./pages/home/Home";
+import Followers from "./pages/follow/Followers";
+import AddProduct from "./pages/addproduct/AddProduct";
 
 function App() {
   return (
@@ -24,12 +26,12 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/chat' element={<Chat />} />
           <Route path='/post' element={<Post />} />
-          <Route path='/postWrite' element={<PostWrite />} />
+          <Route path='/postwrite' element={<PostWrite />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/myprofile' element={<MyProfile />} />
           <Route path='/404' element={<Error />} />
-          {/* <Route path='/followers' element={<Followers />} />
-          <Route path='/addproduct' element={<AddProduct />} /> */}
+          <Route path='/followers' element={<Followers />} />
+          <Route path='/addproduct' element={<AddProduct />} />
           <Route
             path='/profile-modification'
             element={<ProfileModification />}
