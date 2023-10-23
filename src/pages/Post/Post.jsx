@@ -7,7 +7,7 @@ import like from "../../assets/images/icon-heart.png";
 import { Body, Sect1, Sect2, Sect3 } from "./PostStyle";
 import TopBar from "../../components/topbar/TopBarBasic";
 
-export default function post() {
+export default function Post() {
   return (
     <Body>
       <TopBar />

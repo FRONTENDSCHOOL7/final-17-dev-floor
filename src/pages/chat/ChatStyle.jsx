@@ -55,4 +55,16 @@ export const Chat1 = styled.div`
     display: flex;
     justify-content: space-between;
   }
+  div {
+    font-size: 14px;
+    width: 300px;
+    height: 30px;
+    line-height: 7px;
+    justify-content: space-between;
+  }
+
+  .text {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
