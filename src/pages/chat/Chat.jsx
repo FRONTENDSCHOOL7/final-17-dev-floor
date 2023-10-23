@@ -12,8 +12,6 @@ import {
     Sect1,
 } from "./ChatStyle";
 
-
-
 export default function Chat() {
     return (
         <Body>
