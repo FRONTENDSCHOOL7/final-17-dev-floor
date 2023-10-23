@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import Login from "./pages/login/Login";
+
+
 import Join from "./pages/join/Join";
 import Chat from "./pages/chat/Chat";
 import Profile from "./pages/profile/Profile";
@@ -10,12 +12,14 @@ import ProfileModification from "./pages/profile-modification/ProfileModificatio
 import LoginHome from "./pages/login/LoginHome";
 import Home from "./pages/home/Home";
 
+
 function App() {
   return (
     <div className="App">
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
+
           <Route path="/" exact element={<LoginHome />} />
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
@@ -30,6 +34,7 @@ function App() {
             path="/profile-modification"
             element={<ProfileModification />}
           />
+
         </Routes>
       </BrowserRouter>
     </div>
