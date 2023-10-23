@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import Login from "./pages/login/Login";
-
 import Join from "./pages/join/Join";
 import Chat from "./pages/chat/Chat";
 import Profile from "./pages/profile/Profile";
@@ -12,6 +11,8 @@ import LoginHome from "./pages/login/LoginHome";
 import Home from "./pages/home/Home";
 import Followers from "./pages/follow/Followers";
 import AddProduct from "./pages/addproduct/AddProduct";
+import Post from "./pages/post/Post";
+import PostWrite from "./pages/post/PostWrite";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/chat' element={<Chat />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/post' element={<Post />} />
+          <Route path='/postwrite' element={<PostWrite />} />
           <Route path='/myprofile' element={<MyProfile />} />
           <Route path='/404' element={<Error />} />
           <Route path='/followers' element={<Followers />} />
