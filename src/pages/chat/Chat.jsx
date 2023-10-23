@@ -4,6 +4,7 @@ import more from "../../assets/images/s-icon-more-vertical.png";
 import back from "../../assets/images/icon-arrow-left.png";
 import profileImg from "../../assets/images/basic-profile.png";
 
+
 import {
     Body,
     TopBar,
@@ -50,6 +51,7 @@ export default function Chat() {
                     <div>
                         <h3>누구네 농장 친환경 한라봉</h3>
                         <div className="text">
+
                             <p>내 차는 내가 평가한다. 오픈 이벤트에 참여 하...</p>
                             <date>2020.10.25</date>
                         </div>
