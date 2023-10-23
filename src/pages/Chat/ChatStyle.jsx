@@ -50,7 +50,7 @@ export const Chat1 = styled.div`
         line-height: 7px;
         justify-content: space-between;
     }
-    
+
     .text {
         display: flex;
         justify-content : space-between;
