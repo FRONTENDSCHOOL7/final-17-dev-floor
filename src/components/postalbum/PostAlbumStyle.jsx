@@ -6,6 +6,7 @@ import layer from "../../assets/images/iccon-img-layers.png";
 export const Sect3 = styled.div`
   .album-btns {
     display: flex;
+    align-items: end;
     justify-content: right;
     border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
   }
@@ -24,7 +25,7 @@ export const AlbumImg = styled.div`
     width: 228px;
     height: 228px;
   }
-  .img-layer::before {
+  /* .img-layer::before {
     background: url(${layer}) no-repeat;
     content: "";
     display: inline-block;
@@ -33,5 +34,5 @@ export const AlbumImg = styled.div`
     width: 32px;
     margin: -50px -96px 30px 71px;
     position: relative;
-  }
+  } */
 `;

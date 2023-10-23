@@ -42,7 +42,7 @@ export default function Profile() {
         </Btns>
       </Sect1>
       <Product />
-      <PostAlbum />
+      <PostList />
       <TabMenu />
     </Body>
   );
