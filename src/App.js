@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import Login from "./pages/login/Login";
+
 import Join from "./pages/join/Join";
 import Chat from "./pages/chat/Chat";
 import Profile from "./pages/profile/Profile";

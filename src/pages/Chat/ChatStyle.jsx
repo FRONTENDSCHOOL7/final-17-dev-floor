@@ -36,44 +36,23 @@ export const Chat1 = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    gap: 10px;
+
 	img {
         padding: 10px 10px 10px 10px ;
         width: 42px;
         height: 42px;
     } 
+
     div {
         font-size: 14px;
-        width: 500px;
+        width: 300px;
         height: 30px;
         line-height: 7px;
         justify-content: space-between;
     }
-    // date {
-    //     margin-left: auto;
-    //     font-size: 10px;
-    // }
-
+    
     .text {
         display: flex;
         justify-content : space-between;
     }
 `;
-
-// export const Chat2 = styled.div`
-//     display: flex;
-//     justify-content: space-between;
-//     margin-top: 10px;
-//     gap: 10px;
-// 	img {
-//         width: 42px;
-//         height: 42px;
-// } 
-//     div {
-//         font-size: 14px;
-//         width: 500px;
-//         height: 30px;
-//         line-height: 7px;
-//         justify-content: space-between;
-//     }
-// `;
