@@ -2,7 +2,7 @@ import React from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import back from "../../assets/images/icon-arrow-left.png";
 import upload from "../../assets/images/upload-file.png";
-import { Body, Sect1, Sect2 } from "./postWriteStyle";
+import { Body, Sect1, Sect2 } from "./PostWriteStyle";
 
 export default function postWrite() {
   return (
