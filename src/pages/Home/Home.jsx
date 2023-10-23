@@ -1,57 +1,44 @@
-import React from 'react'
-import LogoImg from '../../assets/images/logo.png'
-import LogoTxtImg from '../../assets/images/logo-txt.png'
-import KakaoImg from '../../assets/images/message-circle.png'
-import GoogleImg from '../../assets/images/Google__G__Logo 1.png'
-import facebookImg from '../../assets/images/facebook.png'
-import { BlueHomeBox, GrayHomeBox, HomeBoxWrap, HomeEmail, HomeWrap, LemonHomeBox, Logo, Main } from './HomeStyle'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import {HomeFeed, Header, HomeWrap, HomeSearch, Inner} from './HomeStyle'
+import searchImg from '../../assets/images/icon-search.png'
+import logoUser from '../../assets/images/Group 24.png'
+import TabMenu from '../../components/tab/TabMenu'
+import { useNavigate } from 'react-router-dom'
+import SearchInput from '../../components/search/SearchInput'
 
 export default function Home() {
+    const navigate = useNavigate()
+    const [searchModal, setSearchModal] = useState(false)
+
+    const handleSearch = () => {
+        setSearchModal(!searchModal)
+    }
     return (
-        <Main>
-            <Logo>
-                <h1>
-                    <img src={LogoImg} alt="로고이미지" />
-                    <img src={LogoTxtImg} alt="로고텍스트" />
-                </h1>
-            </Logo>
-            <HomeWrap>
-                <HomeBoxWrap>
-                    <LemonHomeBox>
-                        <div className='leftBox'>
-                            <img src={KakaoImg} alt="카카오톡" />
+        <HomeWrap>
+            <HomeFeed>
+                {searchModal ? <SearchInput/> : (<><Header>
+                    <Inner>
+                        <h2>개발바닥 피드</h2>
+                        <div className='search'>
+                            <button type='button' onClick={handleSearch}>
+                                <img src={searchImg} alt='' />
+                            </button>
                         </div>
-                        <div className='rightBox'>
-                            <button type='button'>카카오톡 계정으로 로그인</button>
+                    </Inner>
+                </Header>
+                <HomeSearch>
+                    <div className='inner'>
+                        <div className='logoSymbol'>
+                            <img src={logoUser} alt='' />
                         </div>
-                    </LemonHomeBox>
-                    <GrayHomeBox>
-                        <div className='leftBox'>
-                            <img src={GoogleImg} alt="구글" />
+                        <p>유저를 검색해 팔로우 해보세요!</p>
+                        <div className='searchBtn' onClick={handleSearch}>
+                            <button type='button'>검색하기</button>
                         </div>
-                        <div className='rightBox'>
-                            <button type='button'>구글 계정으로 로그인</button>
-                        </div>
-                    </GrayHomeBox>
-                    <BlueHomeBox>
-                        <div className='leftBox'>
-                            <img src={facebookImg} alt="페이스톡" />
-                        </div>
-                        <div className='rightBox'>
-                            <button type='button'>페이스톡 계정으로 로그인</button>
-                        </div>
-                    </BlueHomeBox>
-                    <HomeEmail>
-                        <div className="email">
-                            <Link to="/login">이메일로 로그인</Link>
-                        </div>
-                        <div className="join">
-                            <Link to="/join">회원가입</Link>
-                        </div>
-                    </HomeEmail> 
-                </HomeBoxWrap>
-            </HomeWrap>
-        </Main>
+                    </div>
+                </HomeSearch>
+                <TabMenu/></>)}
+            </HomeFeed>
+        </HomeWrap>
     )
 }
