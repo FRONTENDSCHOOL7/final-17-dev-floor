@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Body = styled.div`
   /* border: 3px dashed gray; */
+  position: relative;
   height: 100vh;
   max-width: 720px;
   width: 100%;
@@ -74,7 +75,7 @@ export const Btns = styled.div`
     background-color: #fff;
   }
   .btn-follow {
-    background: #3c48ae;
+    background: #12184e;
     color: #fff;
     width: 120px;
   }

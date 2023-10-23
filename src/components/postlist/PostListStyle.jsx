@@ -16,8 +16,8 @@ export const Sect3 = styled.div`
     display: none;
   }
   .content-container {
-    height: 500px;
-    overflow-y: scroll;
+    height: 300px;
+    overflow-y: auto;
     overflow-x: visible;
     display: flex;
     flex-direction: column;
