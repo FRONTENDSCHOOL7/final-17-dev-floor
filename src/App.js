@@ -12,12 +12,14 @@ import Home from "./pages/home/Home";
 import Followers from "./pages/follow/Followers";
 import AddProduct from "./pages/addproduct/AddProduct";
 
+
 function App() {
   return (
     <div className="App">
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
+
           <Route path="/" exact element={<LoginHome />} />
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
@@ -32,6 +34,7 @@ function App() {
             path="/profile-modification"
             element={<ProfileModification />}
           />
+
         </Routes>
       </BrowserRouter>
     </div>
