@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-  /* border: 3px dashed gray; */
   height: 844px;
   width: 390px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  /* transform: translateX(-10%); */
 `;
 
 export const Sect1 = styled.div`
