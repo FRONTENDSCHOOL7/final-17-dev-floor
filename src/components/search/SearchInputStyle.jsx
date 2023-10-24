@@ -14,7 +14,7 @@ export const SearchInputInner = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    padding: 10px;
+    padding: 8px 10px;
 `
 export const SearchPrev = styled.div`
     button {
@@ -29,7 +29,7 @@ export const SearchUser = styled.div`
     border-radius: 32px;
     input {
         background: none;
-        padding: 8px 10px;
+        padding: 8px 0 10px 10px;
     }
 `
 export const SearchUserList = styled.div`
