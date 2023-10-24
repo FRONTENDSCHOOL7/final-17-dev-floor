@@ -20,8 +20,9 @@ export const Tab = styled.div`
     }
   }
 
-  /* button:hover {
-  } */
+  button:hover{
+    
+  }
   p {
     font-size: 10px;
     font-weight: 400;
