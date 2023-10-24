@@ -17,24 +17,32 @@ import JoinProfile from "./pages/join/JoinProfile";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path='/' exact element={<LoginHome />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/join' element={<Join />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/chat' element={<Chat />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/post' element={<Post />} />
-          <Route path='/postwrite' element={<PostWrite />} />
-          <Route path='/myprofile' element={<MyProfile />} />
-          <Route path='/404' element={<Error />} />
-          <Route path='/followers' element={<Followers />} />
-          <Route path='/product' element={<AddProduct />} />
-          <Route path='/modify' element={<ProfileModification />} />
-          <Route path='/join-profile' element={<JoinProfile />} />
+
+          <Route path="/" exact element={<LoginHome />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/postwrite" element={<PostWrite/>} />
+          <Route path="/myprofile" element={<MyProfile />} />
+          <Route path="/404" element={<Error />} />
+          <Route path="/followers" element={<Followers />} />
+          <Route path="/product" element={<AddProduct />} />
+          <Route
+            path="/modify"
+            element={<ProfileModification />}
+          />
+          <Route
+          path="/join-profile"
+          element={<JoinProfile />}
+          />
+
         </Routes>
       </BrowserRouter>
     </div>
