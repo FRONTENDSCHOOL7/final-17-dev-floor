@@ -12,6 +12,15 @@ export const Body = styled.div`
   flex-direction: column;
   gap: 12px;
   font-family: "GongGothicMedium";
+  .album-btns {
+    display: flex;
+    justify-content: right;
+    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  }
+  button {
+    background: #fff;
+    border: none;
+  }
   /* transform: translateX(-10%); */
 `;
 
@@ -71,12 +80,17 @@ export const Btns = styled.div`
   button {
     border-radius: 30px;
     border: 1px solid var(--DBDBDB, #dbdbdb);
-    padding: 7px;
+    padding: 6px 6px 3px 5px;
     background-color: #fff;
   }
   .btn-follow {
     background: #12184e;
     color: #fff;
+    width: 120px;
+  }
+  .btn-unfollow {
+    border: 1px solid #dbdbdb;
+    color: #767676;
     width: 120px;
   }
 `;

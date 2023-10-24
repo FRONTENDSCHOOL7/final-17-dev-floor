@@ -3,15 +3,6 @@ import styled from "styled-components";
 // section 3
 
 export const Sect3 = styled.div`
-  .album-btns {
-    display: flex;
-    justify-content: right;
-    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
-  }
-  button {
-    background: #fff;
-    border: none;
-  }
   .content-container::-webkit-scrollbar {
     display: none;
   }

@@ -1,6 +1,4 @@
 import React from "react";
-import hamburger from "../../assets/images/icon-post-list-on.png";
-import album from "../../assets/images/icon-post-album-off.png";
 import more from "../../assets/images/s-icon-more-vertical.png";
 import like from "../../assets/images/icon-heart.png";
 import profileImg from "../../assets/images/Group 26.png";
@@ -11,14 +9,14 @@ import { Sect3 } from "./PostListStyle";
 export default function PostList() {
   return (
     <Sect3>
-      <div className='album-btns'>
+      {/* <div className='album-btns'>
         <button>
           <img src={hamburger} alt='' />
         </button>
         <button>
           <img src={album} alt='' />
         </button>
-      </div>
+      </div> */}
       {/* 게시글 목록 */}
       <div className='content-container'>
         {/* 게시글 한개 */}
