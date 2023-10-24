@@ -3,11 +3,13 @@ import styled from "styled-components";
 export const Body = styled.div`
   /* border: 3px dashed gray; */
   height: 100vh;
-  width: 390px;
+  max-width: 720px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  font-family: "GongGothicMedium";
   /* transform: translateX(-10%); */
 `;
 
@@ -68,14 +70,14 @@ export const Btns = styled.div`
     border-radius: 30px;
     border: 1px solid var(--DBDBDB, #dbdbdb);
     padding: 7px;
-    background-color: #fff;
+    background-color: #12184e;
   }
   .modify-btn {
-    color: #767676;
+    color: #fff;
     padding: 8px 24px;
   }
   .register-btn {
-    color: var(--767676, #767676);
+    color: #fff;
     padding: 8px 20px;
   }
 `;
