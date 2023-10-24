@@ -4,11 +4,16 @@ import more from '../../assets/images/s-icon-more-vertical.png';
 import back from '../../assets/images/icon-arrow-left.png';
 import profileImg from '../../assets/images/basic-profile.png';
 import photosendImg from '../../assets/images/img-button.png';
-
+import { useState } from "react";
+import Modal from "../../components/modal/ChatModal";
 
 import { Body, TopBarChat, Sect1, ChatWrap, MyChatWrap, ChatBar } from './ChatRoomStyle';
 
 export default function ChatRoom() {
+  const [modalOpen, setIsOpenModal] = useState(false);
+  const showModal = () => {
+    setIsOpenModal(true);
+  };
   return (
     <Body>
       <TopBarChat>
@@ -16,7 +21,7 @@ export default function ChatRoom() {
           <img src={back} alt='' />
         </button>
         <h2>애월읍 위니브 감귤농장</h2>
-        <button>
+        <button onClick={showModal}>
           <img src={more} alt='' />
         </button>
       </TopBarChat>
@@ -37,7 +42,7 @@ export default function ChatRoom() {
       </MyChatWrap>
       <MyChatWrap>
           <p className='time'>12:51</p>
-          <img src='https://via.placeholder.com/140x140' alt='' />
+          <img src='https://via.placeholder.com/240x240' alt='' />
       </MyChatWrap>
       </Sect1>
         <ChatBar>
@@ -51,6 +56,7 @@ export default function ChatRoom() {
             </div>
           </div>
         </ChatBar>
+        {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
     </Body>
   );
 }
