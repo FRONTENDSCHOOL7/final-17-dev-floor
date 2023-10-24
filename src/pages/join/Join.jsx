@@ -21,7 +21,7 @@ export default function Join() {
                     <input type="password" id="password"/>
                 </Password>
                 <Submit>
-                    <Link to='/profile'>다음</Link>
+                    <Link to='/join-profile'>다음</Link>
                 </Submit>
             </JoinForm>
         </JoinInner>

@@ -13,6 +13,7 @@ import Followers from "./pages/follow/Followers";
 import AddProduct from "./pages/addproduct/AddProduct";
 import Post from "./pages/post/Post";
 import PostWrite from "./pages/post/PostWrite";
+import JoinProfile from "./pages/join/JoinProfile";
 
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
           <Route
             path="/modify"
             element={<ProfileModification />}
+          />
+          <Route
+          path="/join-profile"
+          element={<JoinProfile />}
           />
 
         </Routes>
