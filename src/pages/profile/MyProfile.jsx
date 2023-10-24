@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import profileImg from "../../assets/images/Group 26.png";
+import hamburgerOn from "../../assets/images/icon-post-list-on.png";
+import hamburgerOff from "../../assets/images/icon-post-list-off.png";
+import albumOn from "../../assets/images/icon-post-album-on.png";
+import albumOff from "../../assets/images/icon-post-album-off.png";
 
 import { ProImg, Intro, Body, Btns, Sect1 } from "./MyProfileStyle";
 import TopBar from "../../components/topbar/TopBarBasic";
@@ -7,8 +11,14 @@ import TabMenu from "../../components/tab/TabMenu";
 import PostList from "../../components/postlist/PostList";
 import Product from "../../components/product/Product";
 import { Link } from "react-router-dom";
+import PostAlbum from "../../components/postalbum/PostAlbum";
 
 export default function MyProfile() {
+  const [hamburgerBtn, setHamburgerBtn] = useState(true);
+
+  const showPost = () => {
+    setHamburgerBtn(!hamburgerBtn);
+  };
   return (
     <Body>
       <TopBar />
@@ -39,7 +49,15 @@ export default function MyProfile() {
         </Btns>
       </Sect1>
       <Product />
-      <PostList />
+      <div className='album-btns'>
+        <button onClick={showPost}>
+          <img src={hamburgerBtn ? hamburgerOn : hamburgerOff} alt='' />
+        </button>
+        <button onClick={showPost}>
+          <img src={hamburgerBtn ? albumOff : albumOn} alt='' />
+        </button>
+      </div>
+      {hamburgerBtn ? <PostList /> : <PostAlbum />}
       <TabMenu />
     </Body>
   );

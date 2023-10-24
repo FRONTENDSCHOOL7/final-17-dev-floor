@@ -20,6 +20,9 @@ export const AlbumImg = styled.div`
     width: 228px;
     height: 228px;
   }
+  div {
+    margin-top: 16px;
+  }
   /* .img-layer::before {
     background: url(${layer}) no-repeat;
     content: "";

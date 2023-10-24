@@ -2,22 +2,31 @@ import styled from "styled-components";
 
 export const Body = styled.div`
   /* border: 3px dashed gray; */
+  background: var(--Gray-6, #f2f2f2);
   height: 100vh;
   max-width: 720px;
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
   font-family: "GongGothicMedium";
+  .album-btns {
+    background: #fff;
+
+    display: flex;
+    justify-content: right;
+    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  }
   /* transform: translateX(-10%); */
 `;
 
 // section 1
 export const Sect1 = styled.div`
+  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 12px;
 `;
 
 export const ProImg = styled.div`
@@ -66,6 +75,7 @@ export const Btns = styled.div`
   margin-top: 24px;
   justify-content: center;
   gap: 10px;
+  margin-bottom: 26px;
   button {
     border-radius: 30px;
     border: 1px solid var(--DBDBDB, #dbdbdb);
