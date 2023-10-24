@@ -71,7 +71,7 @@ export const Btns = styled.div`
   button {
     border-radius: 30px;
     border: 1px solid var(--DBDBDB, #dbdbdb);
-    padding: 7px;
+    padding: 6px 6px 3px 5px;
     background-color: #fff;
   }
   .btn-follow {
