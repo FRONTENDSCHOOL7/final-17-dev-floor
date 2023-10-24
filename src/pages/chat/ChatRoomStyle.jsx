@@ -27,7 +27,7 @@ export const TopBarChat = styled.div`
   
   h2 {
   width: 600px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   align-items: left;
   }
