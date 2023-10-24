@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 export const Body = styled.div`
   /* border: 3px dashed gray; */
+    max-width: 720px;
     height: 100vh;
-    width: 390px;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
     gap: 12px;
   /* transform: translateX(-10%); */
 `;
@@ -32,20 +34,21 @@ export const TopBar = styled.div`
 // section 1
 export const Sect1 = styled.div`
     max-width: 720px;
+    height: 100%;
     width: 100%;
-    padding: 0 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 `;
 
 export const Chat1 = styled.div`
-    display: flex;
     max-width: 720px;
     width: 100%;
     padding: 0 20px;
-    justify-content: space-between;
-    margin-top: 10px;
-    gap: 0px;
+    box-sizing: border-box; 
+    display: flex;
+    gap: 10px;
+    
 
 	img {
         padding: 10px 10px 10px 10px ;
@@ -54,15 +57,37 @@ export const Chat1 = styled.div`
     } 
 
     div {
-        font-size: 13px;
-        width: 300px;
+        margin-top: 15px;
+        width: 600px;
         height: 50px;
-        line-height: 30px;
-        justify-content: space-between;
+        line-height: 10px;
+        /* justify-content: space-between; */
+    }
+
+    h3 {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .contents {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break:break-all;
+    margin-right: 10px;
+    font-size: 12px;
     }
 
     .text {
         display: flex;
         justify-content : space-between;
     }
+
+    .date {
+        display: flex;
+        justify-content : space-between;
+        color: #a6a6a6;
+        font-size: 10px;
+    }
+
 `;
