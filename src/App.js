@@ -14,6 +14,7 @@ import AddProduct from "./pages/addproduct/AddProduct";
 import Post from "./pages/post/Post";
 import PostWrite from "./pages/post/PostWrite";
 import JoinProfile from "./pages/join/JoinProfile";
+import ChatRoom from "./pages/chat/ChatRoom";
 
 function App() {
   return (
@@ -21,12 +22,12 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-
           <Route path="/" exact element={<LoginHome />} />
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
           <Route path="/home" element={<Home />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/chatroom" element={<ChatRoom />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/post" element={<Post />} />
           <Route path="/postwrite" element={<PostWrite/>} />
