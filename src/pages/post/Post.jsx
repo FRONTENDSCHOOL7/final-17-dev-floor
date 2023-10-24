@@ -1,12 +1,12 @@
-// import React from "react";
-// import profileImg from "../../assets/images/Group 26.png";
-// import message from "../../assets/images/icon-message-circle.png";
-// import more from "../../assets/images/s-icon-more-vertical.png";
-// import like from "../../assets/images/icon-heart.png";
-// import { Body, Sect1, Sect2, Sect3 } from "./PostStyle";
-// import TopBar from "../../components/topbar/TopBarBasic";
-// import { useState } from "react";
-// import Modal from "../../components/modal/Modal";
+import React from "react";
+import profileImg from "../../assets/images/Group 26.png";
+import message from "../../assets/images/icon-message-circle.png";
+import more from "../../assets/images/s-icon-more-vertical.png";
+import like from "../../assets/images/icon-heart.png";
+import { Body, Sect1, Sect2, Sect3 } from "./PostStyle";
+import TopBar from "../../components/topbar/TopBarBasic";
+import { useState } from "react";
+import Modal from "../../components/modal/Modal";
 
 export default function Post() {
   const [modalOpen, setIsOpenModal] = useState(false);
