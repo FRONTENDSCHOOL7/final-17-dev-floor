@@ -1,16 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import Login from "./pages/login/Login";
-
-
 import Join from "./pages/join/Join";
 import Chat from "./pages/chat/Chat";
+import ChatRoom from "./pages/chat/ChatRoom";
 import Profile from "./pages/profile/Profile";
 import MyProfile from "./pages/profile/MyProfile";
 import Error from "./pages/404/Error";
 import ProfileModification from "./pages/profile-modification/ProfileModification";
 import LoginHome from "./pages/login/LoginHome";
 import Home from "./pages/home/Home";
+import Followers from "./pages/follow/Followers";
+import AddProduct from "./pages/addproduct/AddProduct";
+import Post from "./pages/post/Post";
+import PostWrite from "./pages/post/PostWrite";
 
 
 function App() {
@@ -25,7 +28,10 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/home" element={<Home />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/chatroom" element={<ChatRoom />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/postwrite" element={<PostWrite/>} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/404" element={<Error />} />
           <Route path="/followers" element={<Followers />} />
