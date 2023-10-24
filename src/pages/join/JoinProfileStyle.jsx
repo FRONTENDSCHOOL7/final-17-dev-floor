@@ -65,12 +65,13 @@ export const Inner = styled.div`
             padding-top: 30px;
             button {
                 background: var(--disableColor);
-                width: 322px;
+                width: 100%;
                 height: 44px;
                 border-radius: 20px;
                 color: var(--whiteColor);
                 margin: auto;
-        }}
+                max-width: 322px;
+            }}
     }
 `;
 export const Profile = styled.div`
