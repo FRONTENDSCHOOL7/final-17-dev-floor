@@ -9,12 +9,9 @@ import { useState } from "react";
 import Modal from "../../components/modal/Modal";
 
 export default function Post() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const openModal = () => {
-    setModalVisible(true);
-  };
-  const closeModal = () => {
-    setModalVisible(false);
+  const [modalOpen, setIsOpenModal] = useState(false);
+  const showModal = () => {
+    setIsOpenModal(true);
   };
   return (
     <Body>
@@ -30,18 +27,8 @@ export default function Post() {
                   <p>@ weniv_Mandarin</p>
                 </div>
                 <div>
-                  <button onClick={openModal}>
+                  <button onClick={showModal}>
                     <img src={more} alt='' />
-                    {modalVisible && (
-                      <Modal
-                        visible={modalVisible}
-                        closable={true}
-                        maskClosable={true}
-                        onClose={closeModal}
-                      >
-                        Hello
-                      </Modal>
-                    )}
                   </button>
                 </div>
               </div>
@@ -122,6 +109,7 @@ export default function Post() {
           </div>
         </div>
       </Sect3>
+      {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
     </Body>
   );
 }

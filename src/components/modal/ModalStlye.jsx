@@ -10,12 +10,10 @@ export const Sect1 = styled.div`
     background-color: white;
     border: 1px solid gray;
     border-radius: 10px 10px 0 0;
-
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   .barr {
     width: 100%;
     height: 30px;
@@ -23,7 +21,6 @@ export const Sect1 = styled.div`
     justify-content: center;
     align-items: flex-start;
   }
-
   .letter {
     width: 100%;
     height: calc(100% - 30px);
