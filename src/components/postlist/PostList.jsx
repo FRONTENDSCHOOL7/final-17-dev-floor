@@ -1,6 +1,4 @@
 import React from "react";
-import hamburger from "../../assets/images/icon-post-list-on.png";
-import album from "../../assets/images/icon-post-album-off.png";
 import more from "../../assets/images/s-icon-more-vertical.png";
 import like from "../../assets/images/icon-heart.png";
 import profileImg from "../../assets/images/Group 26.png";

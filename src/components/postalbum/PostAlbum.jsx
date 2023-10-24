@@ -1,9 +1,5 @@
 import React from "react";
-import hamburger from "../../assets/images/icon-post-list-off.png";
-import album from "../../assets/images/icon-post-album-on.png";
-import layer from "../../assets/images/iccon-img-layers.png";
-
-import { AlbumImg, Sect3 } from "./PostAlbumStyle";
+import { AlbumImg } from "./PostAlbumStyle";
 
 export default function PostAlbum() {
   return (
