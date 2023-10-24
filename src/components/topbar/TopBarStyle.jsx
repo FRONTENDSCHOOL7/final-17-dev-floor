@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Top = styled.div`
+  background: #fff;
   height: 48px;
   display: flex;
   align-items: center;

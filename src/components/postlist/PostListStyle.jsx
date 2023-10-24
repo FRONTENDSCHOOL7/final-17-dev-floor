@@ -3,11 +3,13 @@ import styled from "styled-components";
 // section 3
 
 export const Sect3 = styled.div`
+  background: #fff;
+
   .content-container::-webkit-scrollbar {
     display: none;
   }
   .content-container {
-    max-height: 300px;
+    max-height: 500px;
     height: 100%;
     overflow-y: auto;
     box-sizing: border-box;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Sect2 = styled.div`
+  background: #fff;
+  margin-bottom: 12px;
   h2 {
     margin-top: 20px;
     margin-left: 18px;
