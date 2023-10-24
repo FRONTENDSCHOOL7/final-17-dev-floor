@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Email,
   LoginEmail,
@@ -11,37 +11,46 @@ import {
 } from "./LoginStyle";
 import { Link, useNavigate } from "react-router-dom";
 import { loginApi } from "../../api/authApi";
+import { useRecoilState } from "recoil";
+import {
+  emailState,
+  errorState,
+  pwState,
+  tokenState,
+} from "../../state/LoginAtom";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useRecoilState(emailState);
+  const [pw, setPw] = useRecoilState(pwState);
+  const [error, setError] = useRecoilState(errorState);
+  const [token, setToken] = useRecoilState(tokenState);
+
   const navigate = useNavigate();
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
+  const handlepw = (e) => {
+    setPw(e.target.value);
   };
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginApi(email, password);
+      const response = await loginApi(email, pw);
       console.log(response);
 
       if (!response.user) {
         setError("*이메일  또는 비밀번호가 일치하지 않습니다.");
       }
-      const token = response.user.token;
-      console.log(token);
-      localStorage.setItem("token", token);
+      const userToken = response.user.token;
+      setToken(userToken);
+      localStorage.setItem("token", userToken);
+      navigate("/home");
     } catch (error) {
       console.log("에러입니다.");
     }
-    // navigate('/home')
   };
-  const loginDisabled = !email || !password;
+  const loginDisabled = !email || !pw;
   return (
     <LoginWrap>
       <LoginInner>
@@ -65,8 +74,8 @@ export default function Login() {
             <input
               type='password'
               id='password'
-              value={password}
-              onChange={handlePassword}
+              value={pw}
+              onChange={handlepw}
             />
           </Password>
           {error && (
