@@ -8,6 +8,7 @@ import TopBar from "../../components/topbar/TopBarBasic";
 import TabMenu from "../../components/tab/TabMenu";
 import Product from "../../components/product/Product";
 import PostList from "../../components/postlist/PostList";
+import PostAlbum from "../../components/postalbum/PostAlbum";
 
 export default function Profile() {
   return (
@@ -16,10 +17,10 @@ export default function Profile() {
       <Sect1>
         <ProImg>
           <button>
-            <span className="followers">2950</span>
+            <span className='followers'>2950</span>
             <p>followers</p>
           </button>
-          <img src={profileImg} alt="프로필 이미지" />
+          <img src={profileImg} alt='프로필 이미지' />
           <button>
             <span>128</span>
             <p>followings</p>
@@ -32,16 +33,16 @@ export default function Profile() {
         </Intro>
         <Btns>
           <button>
-            <img src={message} alt="" />
+            <img src={message} alt='' />
           </button>
-          <button className="btn-follow">팔로우</button>
+          <button className='btn-follow'>팔로우</button>
           <button>
-            <img src={share} alt="" />
+            <img src={share} alt='' />
           </button>
         </Btns>
       </Sect1>
       <Product />
-      <PostList />
+      <PostAlbum />
       <TabMenu />
     </Body>
   );
