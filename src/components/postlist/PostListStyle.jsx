@@ -16,9 +16,11 @@ export const Sect3 = styled.div`
     display: none;
   }
   .content-container {
-    height: 300px;
+    max-height: 300px;
+    height: 100%;
     overflow-y: auto;
-    overflow-x: visible;
+    box-sizing: border-box;
+    /* overflow-x: visible; */
     display: flex;
     flex-direction: column;
     margin: 16px 16px 0;
