@@ -25,13 +25,17 @@ export default function MyProfile() {
       <Sect1>
         <ProImg>
           <button>
-            <span className='followers'>2950</span>
-            <p>followers</p>
+            <Link to='/followers'>
+              <span className='followers'>2950</span>
+              <p>followers</p>
+            </Link>
           </button>
           <img src={profileImg} alt='프로필 이미지' />
           <button>
-            <span>128</span>
-            <p>followings</p>
+            <Link to='/following'>
+              <span>128</span>
+              <p>followings</p>
+            </Link>
           </button>
         </ProImg>
         <Intro>
