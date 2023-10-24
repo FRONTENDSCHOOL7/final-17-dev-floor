@@ -51,8 +51,8 @@ export default function Login() {
                     </Email>
                     <Password>
                         <span>비밀번호</span>
-                        <label htmlFor="pw"></label>
-                        <input type="pw" id="pw" value={pw} onChange={handlepw}/>
+                        <label htmlFor="password"></label>
+                        <input type="password" id="password" value={pw} onChange={handlepw}/>
                     </Password>
                     {error && <div><p>{error}</p></div>}
                     <Submit>
