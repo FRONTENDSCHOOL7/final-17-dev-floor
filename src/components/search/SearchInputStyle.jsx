@@ -3,14 +3,17 @@ import styled from "styled-components";
 export const SearchBox = styled.div`
     width: 100%;
     height: 100vh;
-    padding: 0 20px;
     box-sizing: border-box; 
+    overflow: hidden;
 `
 export const SearchInputBox = styled.div`
+    width: 100%;
+    border-bottom: 1px solid var(--borderColor);
+`
+export const SearchInputInner = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    border-bottom: 1px solid var(--borderColor);
     padding: 10px;
 `
 export const SearchPrev = styled.div`
@@ -30,6 +33,7 @@ export const SearchUser = styled.div`
     }
 `
 export const SearchUserList = styled.div`
+    padding: 0 20px;
     height: calc(100% - 111px); 
     overflow: hidden;
     .userBox {

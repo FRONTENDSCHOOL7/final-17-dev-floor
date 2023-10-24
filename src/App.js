@@ -13,6 +13,7 @@ import Followers from "./pages/follow/Followers";
 import AddProduct from "./pages/addproduct/AddProduct";
 import Post from "./pages/post/Post";
 import PostWrite from "./pages/post/PostWrite";
+import JoinProfile from "./pages/join/JoinProfile";
 
 function App() {
   return (
@@ -31,11 +32,9 @@ function App() {
           <Route path='/myprofile' element={<MyProfile />} />
           <Route path='/404' element={<Error />} />
           <Route path='/followers' element={<Followers />} />
-          <Route path='/addproduct' element={<AddProduct />} />
-          <Route
-            path='/profile-modification'
-            element={<ProfileModification />}
-          />
+          <Route path='/product' element={<AddProduct />} />
+          <Route path='/modify' element={<ProfileModification />} />
+          <Route path='/join-profile' element={<JoinProfile />} />
         </Routes>
       </BrowserRouter>
     </div>

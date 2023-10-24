@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   SearchBox,
   SearchInputBox,
+  SearchInputInner,
   SearchPrev,
   SearchUser,
   SearchUserList,
@@ -28,19 +29,21 @@ export default function SearchInput() {
       ) : (
         <SearchBox>
           <SearchInputBox>
-            <SearchPrev>
-              <button type='button' onClick={handleHome}>
-                <img src={PrevImg} alt='' />
-              </button>
-            </SearchPrev>
-            <SearchUser>
-              <input
-                value={searchValue}
-                onChange={handleSearchInput}
-                type='text'
-                placeholder='계정 검색'
-              />
-            </SearchUser>
+            <SearchInputInner>
+              <SearchPrev>
+                <button type='button' onClick={handleHome}>
+                  <img src={PrevImg} alt='' />
+                </button>
+              </SearchPrev>
+              <SearchUser>
+                <input
+                  value={searchValue}
+                  onChange={handleSearchInput}
+                  type='text'
+                  placeholder='계정 검색'
+                />
+              </SearchUser>
+            </SearchInputInner>
           </SearchInputBox>
           <SearchUserList>
             <div className='userBox'>
