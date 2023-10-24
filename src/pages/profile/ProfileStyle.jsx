@@ -79,6 +79,11 @@ export const Btns = styled.div`
     color: #fff;
     width: 120px;
   }
+  .btn-unfollow {
+    border: 1px solid #dbdbdb;
+    color: #767676;
+    width: 120px;
+  }
 `;
 
 // section1

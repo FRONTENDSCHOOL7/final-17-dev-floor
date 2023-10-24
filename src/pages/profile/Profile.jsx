@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import message from "../../assets/images/icon-message-circle.png";
 import share from "../../assets/images/icon-share.png";
@@ -11,6 +11,18 @@ import PostList from "../../components/postlist/PostList";
 import PostAlbum from "../../components/postalbum/PostAlbum";
 
 export default function Profile() {
+  const [follow, setFollow] = useState(localStorage.getItem(false));
+  const checkFollow = (e) => {
+    // e.preventDefault();
+    setFollow(!follow);
+    localStorage.setItem("isFollowed", !follow);
+  };
+  useEffect(() => {
+    const storedIsFollowed = localStorage.getItem("isFollowed");
+    if (storedIsFollowed) {
+      setFollow(storedIsFollowed === "true");
+    }
+  }, []);
   return (
     <Body>
       <TopBar />
@@ -35,7 +47,12 @@ export default function Profile() {
           <button>
             <img src={message} alt='' />
           </button>
-          <button className='btn-follow'>팔로우</button>
+          <button
+            className={follow ? "btn-unfollow" : "btn-follow"}
+            onClick={checkFollow}
+          >
+            {follow ? "언팔로우" : "팔로우"}
+          </button>
           <button>
             <img src={share} alt='' />
           </button>
