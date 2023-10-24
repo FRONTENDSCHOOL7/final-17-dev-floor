@@ -11,14 +11,14 @@ import { Sect3 } from "./PostListStyle";
 export default function PostList() {
   return (
     <Sect3>
-      <div className='album-btns'>
+      {/* <div className='album-btns'>
         <button>
           <img src={hamburger} alt='' />
         </button>
         <button>
           <img src={album} alt='' />
         </button>
-      </div>
+      </div> */}
       {/* 게시글 목록 */}
       <div className='content-container'>
         {/* 게시글 한개 */}

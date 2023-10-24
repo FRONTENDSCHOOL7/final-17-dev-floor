@@ -3,18 +3,6 @@ import layer from "../../assets/images/iccon-img-layers.png";
 
 // section 3
 
-export const Sect3 = styled.div`
-  .album-btns {
-    display: flex;
-    align-items: end;
-    justify-content: right;
-    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
-  }
-  button {
-    background: #fff;
-    border: none;
-  }
-`;
 export const AlbumImg = styled.div`
   margin-top: 30px;
   display: grid;

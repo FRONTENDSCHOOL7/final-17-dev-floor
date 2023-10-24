@@ -12,6 +12,15 @@ export const Body = styled.div`
   flex-direction: column;
   gap: 12px;
   font-family: "GongGothicMedium";
+  .album-btns {
+    display: flex;
+    justify-content: right;
+    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  }
+  button {
+    background: #fff;
+    border: none;
+  }
   /* transform: translateX(-10%); */
 `;
 

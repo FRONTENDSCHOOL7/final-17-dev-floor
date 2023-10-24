@@ -7,15 +7,7 @@ import { AlbumImg, Sect3 } from "./PostAlbumStyle";
 
 export default function PostAlbum() {
   return (
-    <Sect3>
-      <div className='album-btns'>
-        <button>
-          <img src={hamburger} alt='' />
-        </button>
-        <button>
-          <img src={album} alt='' />
-        </button>
-      </div>
+    <>
       <AlbumImg>
         <div className='img-content img-layer'>
           <img src='https://via.placeholder.com/114x114' alt='' />
@@ -42,6 +34,6 @@ export default function PostAlbum() {
           <img src='https://via.placeholder.com/114x114' alt='' />
         </div>
       </AlbumImg>
-    </Sect3>
+    </>
   );
 }
