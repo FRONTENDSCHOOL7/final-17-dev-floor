@@ -11,11 +11,12 @@ export const SearchInputBox = styled.div`
   border-bottom: 1px solid var(--borderColor);
 `;
 export const SearchInputInner = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px;
-`;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 10px;
+`
 export const SearchPrev = styled.div`
   button {
     height: 100%;
@@ -25,15 +26,16 @@ export const SearchPrev = styled.div`
   }
 `;
 export const SearchUser = styled.div`
-  width: 100%;
-  height: 32px;
-  background: var(--borderColor);
-  border-radius: 32px;
-  input {
-    background: none;
-    padding: 8px 0 10px 10px;
-  }
-`;
+
+    width: 100%;
+    height: 32px;
+    background: var(--borderColor);
+    border-radius: 32px;
+    input {
+        background: none;
+        padding: 8px 0 10px 10px;
+    }
+`
 export const SearchUserList = styled.div`
   padding: 0 20px;
   height: calc(100% - 111px);
