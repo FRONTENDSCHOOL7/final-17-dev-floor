@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SearchBox, SearchInputBox, SearchPrev, SearchUser, SearchUserList,  } from './SearchInputStyle'
+import { SearchBox, SearchInputBox, SearchInputInner, SearchPrev, SearchUser, SearchUserList,  } from './SearchInputStyle'
 import PrevImg from '../../assets/images/icon-arrow-left.png'
 import { useNavigate } from 'react-router-dom'
 import Home from '../../pages/home/Home'
@@ -19,18 +19,20 @@ export default function SearchInput() {
         <>
             {showSearch ? <Home/> : (<SearchBox>
                 <SearchInputBox>
-                    <SearchPrev>
-                        <button type='button' onClick={handleHome}>
-                            <img src={PrevImg} alt="" />
-                        </button>
-                    </SearchPrev>
-                    <SearchUser>
-                        <input 
-                        value={searchValue} 
-                        onChange={handleSearchInput} 
-                        type="text"
-                        placeholder='계정 검색'/>
-                    </SearchUser>
+                    <SearchInputInner>
+                        <SearchPrev>
+                            <button type='button' onClick={handleHome}>
+                                <img src={PrevImg} alt="" />
+                            </button>
+                        </SearchPrev>
+                        <SearchUser>
+                            <input 
+                            value={searchValue} 
+                            onChange={handleSearchInput} 
+                            type="text"
+                            placeholder='계정 검색'/>
+                        </SearchUser>
+                    </SearchInputInner>
                 </SearchInputBox>
                 <SearchUserList>
                     <div className="userBox">
