@@ -5,7 +5,6 @@ import logoUser from "../../assets/images/Group 24.png";
 import TabMenu from "../../components/tab/TabMenu";
 import { useNavigate } from "react-router-dom";
 import SearchInput from "../../components/search/SearchInput";
-import TabMenu2 from "../../components/tab/TabMenu2";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -42,7 +41,7 @@ export default function Home() {
                 </div>
               </div>
             </HomeSearch>
-            <TabMenu2 />
+            <TabMenu />
           </>
         )}
       </HomeFeed>
