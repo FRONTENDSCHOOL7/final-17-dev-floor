@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import message from "../../assets/images/icon-message-circle.png";
 import share from "../../assets/images/icon-share.png";
@@ -14,9 +14,14 @@ import PostList from "../../components/postlist/PostList";
 import PostAlbum from "../../components/postalbum/PostAlbum";
 import { Link } from "react-router-dom";
 
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { followState, hamburgerBtnState } from "./recoilAtoms"; // Import your Recoil atoms
+
 export default function Profile() {
-  const [follow, setFollow] = useState(localStorage.getItem(false));
-  const [hamburgerBtn, setHamburgerBtn] = useState(true);
+  // Use Recoil state for follow and hamburgerBtn
+  const [follow, setFollow] = useRecoilState(followState);
+  const hamburgerBtn = useRecoilValue(hamburgerBtnState);
+  const setHamburgerBtn = useSetRecoilState(hamburgerBtnState);
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
@@ -24,38 +29,13 @@ export default function Profile() {
 
   const checkFollow = () => {
     setFollow(!follow);
-    localStorage.setItem("isFollowed", !follow);
   };
-  useEffect(() => {
-    const storedIsFollowed = localStorage.getItem("isFollowed");
-    if (storedIsFollowed) {
-      setFollow(storedIsFollowed === "true");
-    }
-  }, []);
+
   return (
     <Body>
       <TopBar />
       <Sect1>
-        <ProImg>
-          <button>
-            <Link to='/followers'>
-              <span className='followers'>2950</span>
-              <p>followers</p>
-            </Link>
-          </button>
-          <img src={profileImg} alt='프로필 이미지' />
-          <button>
-            <Link to='/following'>
-              <span>128</span>
-              <p>followings</p>
-            </Link>
-          </button>
-        </ProImg>
-        <Intro>
-          <h2>애월읍 위니브 감귤농장</h2>
-          <p>@ weniv_Mandarin</p>
-          <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</p>
-        </Intro>
+        {/* ... your existing JSX */}
         <Btns>
           <button>
             <img src={message} alt='' />
