@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const Top = styled.div`
+  max-width: 720px;
+  width: 100%;
   background: #fff;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  padding: 0 20px;
   button {
     margin: 13px 16px;
     background: #fff;

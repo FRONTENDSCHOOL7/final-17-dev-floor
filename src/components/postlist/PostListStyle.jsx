@@ -4,16 +4,15 @@ import styled from "styled-components";
 
 export const Sect3 = styled.div`
   background: #fff;
-
   .content-container::-webkit-scrollbar {
     display: none;
   }
   .content-container {
+    /* width: 100%; */
     max-height: 500px;
     height: 100%;
     overflow-y: auto;
     box-sizing: border-box;
-    /* overflow-x: visible; */
     display: flex;
     flex-direction: column;
     margin: 16px 16px 0;
@@ -50,6 +49,10 @@ export const Sect3 = styled.div`
       flex-direction: column;
     }
     .content-inner {
+      img {
+        width: 304px;
+        height: 228px;
+      }
       font-size: 14px;
       font-weight: 400;
       p {

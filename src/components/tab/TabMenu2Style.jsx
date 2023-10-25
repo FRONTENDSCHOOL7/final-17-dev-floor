@@ -25,48 +25,8 @@ export const Tab = styled.div`
     border-style: none;
     margin-top: 10px;
     position: relative;
-    img {
-      width: 24px;
-      height: 24px;
-    }
   }
-
-  .onHover {
-    position: absolute;
-    display: none;
-  }
-  .profile {
-    position: absolute;
-    top: 0;
-    left: 3px;
-    display: none;
-  }
-  .post {
-    position: absolute;
-    top: 0;
-    left: 15px;
-    display: none;
-  }
-
-  button:hover {
-    .origin {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: none;
-    }
-    .onHover {
-      display: block;
-      top: 0;
-      left: 0;
-    }
-    p {
-      color: #12184e;
-    }
-  }
-  p {
-    font-size: 10px;
-    font-weight: 400;
-    margin-top: 4px;
+  .btn-home {
+    background-image: url({home});
   }
 `;
