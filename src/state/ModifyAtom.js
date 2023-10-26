@@ -20,3 +20,13 @@ export const idValidState = atom({
   key: "idValidState",
   default: null,
 });
+
+export const userName = atom({
+  key: "userName",
+  default: "",
+});
+
+export const userToken = atom({
+  key: "userToken",
+  default: "",
+});
