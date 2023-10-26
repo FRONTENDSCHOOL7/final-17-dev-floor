@@ -12,3 +12,15 @@ export const introState = atom({
   key: "introState",
   default: "",
 });
+export const nameValidState = atom({
+  key: "nameValidState",
+  default: null,
+});
+export const idValidState = atom({
+  key: "idValidState",
+  default: null,
+});
+export const inputState = atom({
+  key: "inputState",
+  default: false,
+});
