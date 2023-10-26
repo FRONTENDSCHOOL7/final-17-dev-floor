@@ -160,12 +160,20 @@ export const Sect3 = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      button {
+
+      .btnDisabled {
         display: block;
         width: 40px;
         font-size: 14px;
         color: #c4c4c4;
       }
+      .btnActive {
+        display: block;
+        width: 40px;
+        font-size: 14px;
+        color: orange;
+      }
+
       input {
         display: block;
       }

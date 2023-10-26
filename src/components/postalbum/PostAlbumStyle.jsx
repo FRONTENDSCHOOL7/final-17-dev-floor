@@ -4,12 +4,13 @@ import layer from "../../assets/images/iccon-img-layers.png";
 // section 3
 
 export const AlbumImg = styled.div`
-  margin-top: 30px;
+  background: #fff;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
   grid-gap: 10px;
-  max-height: 300px;
+  max-height: 500px;
   height: 100%;
   overflow-y: scroll;
   &::-webkit-scrollbar {
@@ -18,6 +19,9 @@ export const AlbumImg = styled.div`
   img {
     width: 228px;
     height: 228px;
+  }
+  div {
+    margin-top: 16px;
   }
   /* .img-layer::before {
     background: url(${layer}) no-repeat;

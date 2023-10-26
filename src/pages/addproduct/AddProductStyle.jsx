@@ -31,20 +31,24 @@ export const Main = styled.div`
       color: var(--767676, #767676);
       margin-bottom: 18px;
     }
-    .img-background {
-      border-radius: 10px;
-      border: 0.5px solid var(--DBDBDB, #dbdbdb);
-      background: var(--Gray-6, #f2f2f2);
-      width: 322px;
-      height: 204px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: end;
-      button {
-        margin-right: 12px;
-        margin-bottom: 12px;
-      }
+
+  .img-background {
+    border-radius: 10px;
+    border: 0.5px solid var(--DBDBDB, #dbdbdb);
+    background: var(--Gray-6, #f2f2f2);
+    width: 322px;
+    height: 204px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    button {
+      margin-right: 12px;
+      margin-bottom: 12px;
     }
+    input {
+      display: none;
+    }
+  }
   }
   .product-desc {
     display: flex;
