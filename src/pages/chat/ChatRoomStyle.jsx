@@ -13,25 +13,49 @@ export const Body = styled.div`
 export const TopBarChat = styled.div`
   max-width: 720px;
   width: 100%;
-  height: 40px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
-  
+
   button {
-  margin: 13px 16px;
-  background: #fff;
-  border-style: none;
+    width: 22px;
+    height: 22px;
+    margin: 13px 16px;
+    background: #fff;
+    border-style: none;
   }
-  
+
   h2 {
-  width: 600px;
-  font-size: 15px;
-  font-weight: bold;
-  align-items: left;
+    transform: translateY(-15%);
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
   }
 `;
+// export const TopBarChat = styled.div`
+//   max-width: 720px;
+//   width: 100%;
+//   height: 48px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  
+//   button {
+//   margin: 13px 16px;
+//   background: #fff;
+//   border-style: none;
+//   }
+  
+//   h2 {
+//   width: 600px;
+//   font-size: 15px;
+//   font-weight: bold;
+//   align-items: left;
+//   }
+// `;
 export const Sect1 = styled.div`
   max-width: 720px;
   width: 100%;

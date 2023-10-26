@@ -33,7 +33,7 @@ export default function Modal({ isOpenModal, setIsOpenModal, children }) {
             </button>
           </div>
           <div className='letter'>
-            <p>채팅방 나가기</p>
+            <button>채팅방 나가기</button>
           </div>
         </div>
       </Sect1>

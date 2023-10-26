@@ -4,15 +4,16 @@ import { Top } from "./TopBarStyle";
 import { useRecoilState } from "recoil";
 import { inputState } from "../../state/ModifyAtom";
 
-export default function TopBarSave({ nameValid, idValid }) {
+
+export default function TopBarSave({ onSave, disabled }) {
   return (
     <Top>
       <button>
         <img src={back} alt='' />
       </button>
-      <button className={nameValid && idValid ? "active" : "btn-save"}>
-        저장
-      </button>
+      <button className={`btn-save ${disabled ? "disabled" : ""}`}
+        onClick={onSave}
+        disabled={disabled}>저장</button>
     </Top>
   );
 }
