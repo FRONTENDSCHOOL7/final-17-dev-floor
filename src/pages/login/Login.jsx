@@ -1,13 +1,13 @@
 import React from 'react'
 import { Email, LoginEmail, LoginForm, LoginInner, LoginTit, LoginWrap, Password, Submit } from './LoginStyle'
 import { Link, useNavigate } from 'react-router-dom'
-import { loginApi } from '../../api/authApi'
+import { loginApi } from '../../api/AuthApi'
 import { useRecoilState } from 'recoil'
-import { emailState, errorState, pwState, tokenState } from '../../state/LoginAtom'
+import { emailState, errorState, passwordState, tokenState } from '../../state/AuthAtom'
 
 export default function Login() {
     const [email, setEmail] = useRecoilState(emailState)
-    const [pw, setPw] = useRecoilState(pwState)
+    const [password, setPassword] = useRecoilState(passwordState)
     const [error, setError] = useRecoilState(errorState)
     const [token, setToken] = useRecoilState(tokenState)
 
@@ -16,13 +16,13 @@ export default function Login() {
     const handleEmail = (e) => {
         setEmail(e.target.value)
     }
-    const handlepw = (e) => {
-        setPw(e.target.value)
+    const handlePassword = (e) => {
+        setPassword(e.target.value)
     }
     const handleLogin = async (e) => {
         e.preventDefault()
         try{
-            const response = await loginApi(email,pw)
+            const response = await loginApi(email,password)
             console.log(response)
             
             if(!response.user) {
@@ -36,7 +36,7 @@ export default function Login() {
             console.log("에러입니다.")
         }
     }
-    const loginDisabled = !email || !pw
+    const loginDisabled = !email || !password
     return (
         <LoginWrap>
             <LoginInner>
@@ -52,7 +52,7 @@ export default function Login() {
                     <Password>
                         <span>비밀번호</span>
                         <label htmlFor="password"></label>
-                        <input type="password" id="password" value={pw} onChange={handlepw}/>
+                        <input type="password" id="password" value={password} onChange={handlePassword}/>
                     </Password>
                     {error && <div><p>{error}</p></div>}
                     <Submit>
