@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Body = styled.div`
   max-width: 720px;
@@ -42,13 +42,13 @@ export const TopBarChat = styled.div`
 //   align-items: center;
 //   justify-content: space-between;
 //   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
-  
+
 //   button {
 //   margin: 13px 16px;
 //   background: #fff;
 //   border-style: none;
 //   }
-  
+
 //   h2 {
 //   width: 600px;
 //   font-size: 15px;
@@ -60,24 +60,24 @@ export const Sect1 = styled.div`
   max-width: 720px;
   width: 100%;
   height: 100%;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 `;
 
 export const ChatWrap = styled.div`
   max-width: 720px;
   width: 100%;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   display: flex;
 
   img {
-    padding: 10px 10px 10px 10px ;
+    padding: 10px 10px 10px 10px;
     width: 42px;
     height: 42px;
-  } 
+  }
 
   .time {
     display: flex;
-    justify-content : space-between;
+    justify-content: space-between;
     color: #a6a6a6;
     font-size: 10px;
     flex-direction: column-reverse;
@@ -96,8 +96,8 @@ export const ChatWrap = styled.div`
     margin-right: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
-    box-sizing: border-box
-    }
+    box-sizing: border-box;
+  }
 `;
 
 export const MyChatWrap = styled.div`
@@ -107,14 +107,14 @@ export const MyChatWrap = styled.div`
   max-width: 720px;
   width: 100%;
   padding: 0 20px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   justify-content: end;
   gap: 0px;
   margin-top: 10px;
 
   .chatboxMe {
     position: relative;
-    background-color: #7A8CCB;;
+    background-color: #7a8ccb;
     border-radius: 15px 0px 15px 15px;
     border: 1px solid;
     color: #ffffff;
@@ -124,14 +124,14 @@ export const MyChatWrap = styled.div`
     font-size: 14px;
     line-height: 18px;
     margin-left: 10px;
-}
+  }
 
   img {
     width: 142px;
     height: 142px;
     float: right;
     margin-left: 10px;
-  } 
+  }
 
   .time {
     /* display: flex; */
@@ -144,47 +144,52 @@ export const MyChatWrap = styled.div`
 
 export const ChatBar = styled.div`
   .chat-container {
-  display: flex;
-  align-items: center;
-  max-width: 710px;
-  width: 100%;
-  border-top: 0.5px solid var(--DBDBDB, #dbdbdb);
-  padding: 5px 5px 5px 5px;
-
-  .chat-list {
+    display: flex;
+    align-items: center;
+    max-width: 710px;
     width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .photo-img {
-    width: 36px;
-    height: 36px;
-  }
-  .chat-title {
-    width: 100%;
-    max-width: 720px;
-    padding-bottom: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    border-top: 0.5px solid var(--DBDBDB, #dbdbdb);
+    padding: 5px 5px 5px 5px;
 
-  button {
-    display: flex;
-    align-items: center;
-    width: 40px;
-    font-size: 14px;
-    color: #c4c4c4;
-  }
+    .chat-list {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .photo-img {
+      width: 36px;
+      height: 36px;
+    }
+    .chat-title {
+      width: 100%;
+      max-width: 720px;
+      padding-bottom: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-  input {
-    display: block;
-  }
+      .btnDisabled {
+        display: block;
+        width: 40px;
+        font-size: 14px;
+        color: #c4c4c4;
+      }
+      .btnActive {
+        display: block;
+        width: 40px;
+        font-size: 14px;
+        color: orange;
+      }
 
-  input::placeholder {
-    /* color: disableColor; */
-    font-size: 14px;
+      input {
+        display: block;
+      }
+
+      input::placeholder {
+        /* color: disableColor; */
+        font-size: 14px;
+      }
     }
   }
-}
 `;
