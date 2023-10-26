@@ -10,6 +10,7 @@ import {
   idValidState,
   nameValidState,
 } from "../../state/ModifyAtom";
+import TopBarModify from "../../components/topbar/TopBarModify";
 
 export default function ProfileModification() {
   const [userName, setUserName] = useRecoilState(userNameState);
@@ -55,7 +56,7 @@ export default function ProfileModification() {
   // 사용자 소개 함수
   return (
     <Body>
-      <TopBarSave nameValid={nameValid} idValid={idValid} />
+      <TopBarModify nameValid={nameValid} idValid={idValid} />
       <Main>
         <button className='upload-img'>
           <img src={profileImg} alt='' />

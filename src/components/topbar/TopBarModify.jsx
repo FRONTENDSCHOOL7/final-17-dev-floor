@@ -1,10 +1,8 @@
 import React from "react";
 import back from "../../assets/images/icon-arrow-left.png";
 import { Top } from "./TopBarStyle";
-import { useRecoilState } from "recoil";
-import { inputState } from "../../state/ModifyAtom";
 
-export default function TopBarSave({ nameValid, idValid }) {
+export default function TopBarModify({ nameValid, idValid }) {
   return (
     <Top>
       <button>
