@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import Login from "./pages/login/Login";
-import Join from "./pages/join/Join";
 import Chat from "./pages/chat/Chat";
 import Profile from "./pages/profile/Profile";
 import MyProfile from "./pages/profile/MyProfile";
@@ -13,9 +12,9 @@ import Followers from "./pages/follow/Followers";
 import AddProduct from "./pages/addproduct/AddProduct";
 import Post from "./pages/post/Post";
 import PostWrite from "./pages/post/PostWrite";
-import JoinProfile from "./pages/join/JoinProfile";
 import ChatRoom from "./pages/chat/ChatRoom";
 import Following from "./pages/follow/Following";
+import Join, { ProfilePage } from "./pages/join/Join";
 
 function App() {
   return (
@@ -25,7 +24,7 @@ function App() {
         <Routes>
           <Route path='/' exact element={<LoginHome />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/join' element={<Join />} />
+          <Route path='/join' element={<Join/>} />
           <Route path='/home' element={<Home />} />
           <Route path='/chat' element={<Chat />} />
           <Route path='/chatroom' element={<ChatRoom />} />
@@ -38,7 +37,7 @@ function App() {
           <Route path='/following' element={<Following />} />
           <Route path='/product' element={<AddProduct />} />
           <Route path='/modify' element={<ProfileModification />} />
-          <Route path='/join-profile' element={<JoinProfile />} />
+          <Route path='/join-profile' element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
     </div>

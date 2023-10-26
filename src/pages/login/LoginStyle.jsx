@@ -44,7 +44,7 @@ export const Email = styled.div`
         
     }
     input:focus {
-        border-bottom: 1px solid #F26E22;
+        border-bottom: 1px solid var(--focusColor);
     }
 `
 export const Password = styled.div`
@@ -58,7 +58,7 @@ export const Password = styled.div`
         border-bottom: 1px solid var(--borderColor);
     }
     input:focus {
-        border-bottom: 1px solid #F26E22;
+        border-bottom: 1px solid var(--focusColor);
     }
 `
 export const Submit = styled.div`
