@@ -23,6 +23,7 @@ export const TopBar = styled.div`
   align-items: center;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+
   button {
   margin: 13px 16px;
   background: #fff;
