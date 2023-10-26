@@ -20,6 +20,13 @@ export const Top = styled.div`
     background: #12184E;
     padding: 7px 32px;
     border-radius: 32px;
+    cursor: not-allowed;
+  }
+  .active {
+    color: #fff;
+    background: #12184e;
+    padding: 7px 32px;
+    border-radius: 32px;
 
     &.disabled {
       color: #fff; /* 비활성화 시 텍스트 색상 */

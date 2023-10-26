@@ -18,7 +18,7 @@ export default function TabMenu() {
       setImgColor(`/${e}`);
     } else if (`/${e}` === "/chat") {
       setImgColor(`/${e}`);
-    } else if (`/${e}` === "/post") {
+    } else if (`/${e}` === "/postwrite") {
       setImgColor(`/${e}`);
     } else if (`/${e}` === "/myprofile") {
       setImgColor(`/${e}`);
@@ -44,7 +44,7 @@ export default function TabMenu() {
           채팅
         </p>
       </button>
-      <button onClick={() => changeColor("post")}>
+      <button onClick={() => changeColor("postwrite")}>
         <Post
           fill={imgColor === "/post" ? "#12184E" : "#fff"}
           stroke={imgColor === "/post" ? "#12184E" : "#767676"}
