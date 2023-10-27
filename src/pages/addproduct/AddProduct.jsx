@@ -9,7 +9,6 @@ import {
   productPriceState,
   productLinkState,
 } from "../../state/ProductAtom";
-import axios from "axios"; // axios 추가
 import { productApi } from '../../api/ProductApi';
 
 export default function AddProduct() {
@@ -34,8 +33,6 @@ export default function AddProduct() {
 
   // 버튼 클릭 시 호출하는 함수 (클릭 이벤트)
   const onCickImageUploadHandler = (e) => {
-    imageInputRef.current?.click();
-  };
     imageInputRef.current?.click();
   };
 
@@ -117,8 +114,6 @@ export default function AddProduct() {
                 type='file'
                 accept='image/*'
                 // value={productImage}
-                type="file"
-                accept="image/*"
                 onChange={handleFileChange}
               />
               {/* {productImage && <p>선택된 파일: {productImage.name}</p>} */}
@@ -160,4 +155,3 @@ export default function AddProduct() {
     </Body>
   );
 }
-
