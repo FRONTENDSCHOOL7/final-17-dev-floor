@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import hamburgerOn from "../../assets/images/icon-post-list-on.png";
 import hamburgerOff from "../../assets/images/icon-post-list-off.png";
@@ -12,6 +12,7 @@ import PostList from "../../components/postlist/PostList";
 import Product from "../../components/product/Product";
 import { Link } from "react-router-dom";
 import PostAlbum from "../../components/postalbum/PostAlbum";
+import { profileApi, myProfileApi } from "../../api/ProfileApi";
 
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
@@ -19,6 +20,31 @@ export default function MyProfile() {
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
   };
+
+  const handleProfile = async (e) => {
+    // e.preventDefault();
+    try {
+      const res = await profileApi("devUser31231232131");
+      console.log(res);
+    } catch (error) {
+      console.log("해당 계정이 존재하지 않습니다.");
+    }
+  };
+
+  const handleMyProfile = async (e) => {
+    try {
+      const res = await myProfileApi();
+      console.log(res);
+    } catch (error) {
+      console.log("에러입니다.");
+    }
+  };
+
+  useEffect(() => {
+    // Call handleMyProfile when the component mounts
+    handleMyProfile();
+  }, []); // The empty dependency array ensures this runs only once on mount
+
   return (
     <Body>
       <TopBar />

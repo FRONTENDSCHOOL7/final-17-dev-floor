@@ -5,6 +5,7 @@ import { ReactComponent as Home } from "../../assets/images/icon-home.svg";
 import { ReactComponent as Chat } from "../../assets/images/icon-message-circle.svg";
 import { ReactComponent as Post } from "../../assets/images/icon-edit.svg";
 import { ReactComponent as Profile } from "../../assets/images/icon-user.svg";
+import { myProfileApi } from "../../api/ProfileApi";
 
 export default function TabMenu() {
   const nav = useNavigate();
