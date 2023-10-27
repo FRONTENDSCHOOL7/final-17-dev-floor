@@ -2,9 +2,11 @@ import axios from "axios";
 
 const url = "https://api.mandarin.weniv.co.kr/user";
 
-export const editApi = async (username, accountname, intro, image) => {
-  const token =
+const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
+
+export const editApi = async (username, accountname, intro, image) => {
+  
   const userInfo = {
     user: {
       username: username,
@@ -22,6 +24,19 @@ export const editApi = async (username, accountname, intro, image) => {
     });
     return res.data;
   } catch (error) {
+    alert('계정 유효성 검사에 오류가 발생했습니다.');
     throw error;
+  }
+};
+
+export const validateAccount = async (accountName) => {
+  try {
+      const response = await axios.post(url+'/accountnamevalid', accountName );
+      if(response.data.error && response.data.includes(accountName)) {
+          return false; //이미 사용중인 계정아이디
+      }
+      return true;
+  } catch (error) {
+      return false;
   }
 };

@@ -11,7 +11,7 @@ import {
   nameValidState,
 } from "../../state/ModifyAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
-import { editApi } from "../../api/EditApi";
+import { editApi, validateAccount } from "../../api/EditApi";
 import { Navigate, useNavigate } from "react-router-dom";
 
 export default function ProfileModification() {
@@ -63,10 +63,15 @@ export default function ProfileModification() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
+    const isAccountValid = await validateAccount(id);
+    if (!isAccountValid) {
+      alert('계정 유효성 검사에 오류가 발생했습니다.');
+      return;
+  }
     try {
       const res = await editApi(userName, id, intro, "");
       console.log(res);
-      navigate("/home");
+      navigate("/myprofile");
     } catch (error) {
       console.log("에러입니다.");
     }
