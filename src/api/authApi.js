@@ -64,7 +64,7 @@ export const joinApi = async(joinData) => {
 export const validateEmail = async (email) => {
     try {
         const response = await axios.post(baseUrl+emailReq, { 
-        email });
+        user: {email} });
         if (response.data && response.data.exists) {
             // 이미 사용 중인 이메일인 경우
             return false;
@@ -81,7 +81,7 @@ export const validateEmail = async (email) => {
 // 계정 유효성 검사
 export const validateAccount = async (accountName) => {
     try {
-        const response = await axios.post(baseUrl+accountReq, { accountName });
+        const response = await axios.post(baseUrl+accountReq, { user: {accountName}  });
         if(response.data && response.data.exists) {
             return false; //이미 사용중인 계정아이디
         }
