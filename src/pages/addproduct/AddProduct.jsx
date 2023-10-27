@@ -9,6 +9,7 @@ import {
   productPriceState,
   productLinkState,
 } from "../../state/ProductAtom";
+import { productApi } from '../../api/ProductApi';
 
 export default function AddProduct() {
   const [productImage, setProductImage] = useRecoilState(productImageState);
@@ -49,23 +50,52 @@ export default function AddProduct() {
   // };
 
   const handlePrice = (e) => {
-    const priceInput = e.target.value;
-
-    // 숫자인 경우에만 "원" 단위를 뒤에 붙여 설정
-    if (!isNaN(priceInput)) {
-      setProductPrice(`${priceInput}원`);
-    } else {
-      // 숫자가 아닌 입력은 무시
-      setProductPrice(priceInput);
-    }
+    setProductPrice(e.target.value);
   };
 
   const handleLink = (e) => {
     setProductLink(e.target.value);
   };
 
+  const validateInputs = () => {
+    // 필수 입력 사항 체크
+    if (!productImage || !productName || !productPrice || !productLink) {
+      return false;
+    }
+    return true;
+  };
+
   const handleSave = async () => {
-    // 저장 버튼 클릭 이벤트
+    if (!validateInputs()) {
+      // 필수 입력사항을 입력하지 않았을 때
+      alert("필수 입력사항을 입력해주세요.");
+      return;
+    }
+
+    if (isNaN(productPrice)) {
+      // 가격을 숫자로 입력하지 않았을 때
+      alert("가격은 숫자로 입력하셔야 합니다.");
+      return;
+    }
+
+    try {
+      const res = productApi(productName,parseFloat(productPrice),productLink,productImage);
+      // const response = await axios.post( {
+      //   product: {
+      //     itemName: productName,
+      //     price: parseFloat(productPrice),
+      //     link: productLink,
+      //     itemImage: productImage,
+      //   },
+      // });
+
+      // API 요청 성공 시
+      // const productData = response.data.product;
+      console.log("상품 등록 성공:", res);
+    } catch (error) {
+      // API 요청 실패 시
+      console.log("상품 등록 실패:", error);
+    }
   };
 
   return (
@@ -75,39 +105,21 @@ export default function AddProduct() {
         <div className='img-container'>
           <p>이미지로 등록</p>
           <div className='img-background'>
-            <button
-              className='upload-img'
-              onClick={() => {
-                onCickImageUploadHandler();
-              }}
-            >
+            <button className='upload-img' onClick={onCickImageUploadHandler}>
               <img src={upload} alt='' />
             </button>
-            <div className='product-desc'>
-              {/* <label></label> */}
+            <div className="product-desc">
               <input
-                // input의 ref 속성을 이용해 버튼 클릭 이벤트를 input과 연결
                 ref={imageInputRef}
                 type='file'
                 accept='image/*'
                 // value={productImage}
                 onChange={handleFileChange}
               />
-              {productImage && <p>선택된 파일: {productImage.name}</p>}
-              {/* <button className='upload-img'>
-                <img src={upload} alt='' />
-              </button> */}
+              {/* {productImage && <p>선택된 파일: {productImage.name}</p>} */}
             </div>
           </div>
-          {/* <div className='img-background'>
-              <div class="filebox">
-                <input class="upload-img" />
-                <label for="file"></label>
-                <input type="file" id="file" />
-              </div>
-            </div> */}
         </div>
-
         <form>
           <div className='product-desc'>
             <label>상품명</label>
@@ -115,15 +127,15 @@ export default function AddProduct() {
               type='text'
               value={productName}
               onChange={handleName}
-              placeholder='2~15자 이내여야 합니다.'
-              minLength='2' // 최소 길이 제한 추가
-              maxLength='15' // 최대 길이 제한 추가
+              placeholder="2~15자 이내여야 합니다."
+              minLength="2"
+              maxLength="15"
             />
           </div>
           <div className='product-desc'>
             <label>가격</label>
             <input
-              type='text'
+              type="text"
               value={productPrice}
               onBlur={handlePrice}
               placeholder='숫자만 입력 가능합니다.'
