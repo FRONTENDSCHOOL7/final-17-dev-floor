@@ -160,7 +160,7 @@ return (
             </div>
             <div className="profileSubmit">
             <button onClick={submitJoin} type="button">
-                감귤마켓 시작하기
+                개발바닥 시작하기
             </button>
             </div>
         </form>

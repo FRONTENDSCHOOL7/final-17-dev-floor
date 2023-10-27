@@ -28,7 +28,7 @@ export default function PostList() {
                 <h3>애월읍 위니브 감귤농장</h3>
                 <p>@ weniv_Mandarin</p>
               </div>
-              <div>
+              <div className="imgBox">
                 <button>
                   <img src={more} alt='' />
                 </button>

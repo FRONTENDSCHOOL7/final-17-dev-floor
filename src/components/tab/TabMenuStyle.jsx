@@ -15,10 +15,12 @@ export const Tab = styled.div`
     border-style: none;
     margin-top: 12px;
     position: relative;
-    img {
+    div {
       width: 24px;
       height: 24px;
-    }
+      img {
+      width: 100%;
+    }}
   }
   .onHover {
     position: absolute;
