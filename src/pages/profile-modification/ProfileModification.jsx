@@ -11,7 +11,7 @@ import {
   nameValidState,
 } from "../../state/ModifyAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
-import { editApi, validateAccount } from "../../api/EditApi";
+import { editApi, validateAccount } from "../../api/ProfileApi";
 import { Navigate, useNavigate } from "react-router-dom";
 
 export default function ProfileModification() {

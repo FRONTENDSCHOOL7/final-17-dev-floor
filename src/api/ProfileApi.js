@@ -1,6 +1,7 @@
 import axios from "axios";
+import reset from "styled-reset";
 
-const url = "https://api.mandarin.weniv.co.kr/user";
+const url = "https://api.mandarin.weniv.co.kr";
 
 const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
@@ -16,7 +17,7 @@ export const editApi = async (username, accountname, intro, image) => {
     },
   };
   try {
-    const res = await axios.put(url, userInfo, {
+    const res = await axios.put(url+"/user", userInfo, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
@@ -31,7 +32,7 @@ export const editApi = async (username, accountname, intro, image) => {
 
 export const validateAccount = async (accountName) => {
   try {
-      const response = await axios.post(url+'/accountnamevalid', accountName );
+      const response = await axios.post(url+'/user/accountnamevalid', accountName );
       if(response.data.error && response.data.includes(accountName)) {
           return false; //이미 사용중인 계정아이디
       }
@@ -40,3 +41,17 @@ export const validateAccount = async (accountName) => {
       return false;
   }
 };
+
+export const myProfileApi = async(accountName) =>{
+  try{
+    const res = await axios.get(url+`/profile/:${accountName}`,{
+      headers:{
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      }
+    });
+    return res.data
+  }catch(error){
+    throw error
+  }
+}
