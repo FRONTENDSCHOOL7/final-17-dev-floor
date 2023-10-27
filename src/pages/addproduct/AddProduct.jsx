@@ -32,8 +32,10 @@ export default function AddProduct() {
   // input에 연결해주기 위한 useRef 훅 사용
   const imageInputRef = useRef();
 
-  // 버튼 클릭 시 호출하는 함수 (클릭 이벤트) 
+  // 버튼 클릭 시 호출하는 함수 (클릭 이벤트)
   const onCickImageUploadHandler = (e) => {
+    imageInputRef.current?.click();
+  };
     imageInputRef.current?.click();
   };
 
@@ -45,6 +47,10 @@ export default function AddProduct() {
   const handleName = (e) => {
     setProductName(e.target.value);
   };
+
+  // const handlePrice = (e) => {
+  //   setProductPrice(e.target.value);
+  // };
 
   const handlePrice = (e) => {
     setProductPrice(e.target.value);
@@ -108,6 +114,9 @@ export default function AddProduct() {
             <div className="product-desc">
               <input
                 ref={imageInputRef}
+                type='file'
+                accept='image/*'
+                // value={productImage}
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
@@ -117,10 +126,10 @@ export default function AddProduct() {
           </div>
         </div>
         <form>
-          <div className="product-desc">
+          <div className='product-desc'>
             <label>상품명</label>
             <input
-              type="text"
+              type='text'
               value={productName}
               onChange={handleName}
               placeholder="2~15자 이내여야 합니다."
@@ -128,22 +137,22 @@ export default function AddProduct() {
               maxLength="15"
             />
           </div>
-          <div className="product-desc">
+          <div className='product-desc'>
             <label>가격</label>
             <input
               type="text"
               value={productPrice}
-              onChange={handlePrice}
-              placeholder="숫자만 입력 가능합니다."
+              onBlur={handlePrice}
+              placeholder='숫자만 입력 가능합니다.'
             />
           </div>
-          <div className="product-desc">
+          <div className='product-desc'>
             <label>판매 링크</label>
             <input
-              type="text"
+              type='text'
               value={productLink}
               onChange={handleLink}
-              placeholder="URL을 입력해주세요."
+              placeholder='URL을 입력해주세요.'
             />
           </div>
         </form>
@@ -151,3 +160,4 @@ export default function AddProduct() {
     </Body>
   );
 }
+

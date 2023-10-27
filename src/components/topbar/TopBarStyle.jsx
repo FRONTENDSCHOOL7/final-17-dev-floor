@@ -30,6 +30,7 @@ export const Top = styled.div`
     }
   }
 
+
   .active {
     color: #fff;
     background: #12184e;

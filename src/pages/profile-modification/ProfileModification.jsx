@@ -11,6 +11,8 @@ import {
   nameValidState,
 } from "../../state/ModifyAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
+import { editApi } from "../../api/EditApi";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function ProfileModification() {
   const [userName, setUserName] = useRecoilState(userNameState);
@@ -18,6 +20,8 @@ export default function ProfileModification() {
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
+
+  const navigate = useNavigate();
 
   // 사용자 이름 함수
   const handleNameChange = (e) => {
@@ -54,9 +58,27 @@ export default function ProfileModification() {
   };
 
   // 사용자 소개 함수
+
+  // 프로필 수정
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await editApi(userName, id, intro, "");
+      console.log(res);
+      navigate("/home");
+    } catch (error) {
+      console.log("에러입니다.");
+    }
+  };
+
   return (
     <Body>
-      <TopBarModify nameValid={nameValid} idValid={idValid} />
+      <TopBarModify
+        nameValid={nameValid}
+        idValid={idValid}
+        onEdit={handleEdit}
+      />
       <Main>
         <button className='upload-img'>
           <img src={profileImg} alt='' />
@@ -111,6 +133,9 @@ export default function ProfileModification() {
               type='text'
               placeholder='자신과 판매할 상품에 대해 소개해 주세요 !'
               onChange={handleIntroChange}
+              pattern='.{2,10}'
+              required
+              title='2글자 이상 열글자미만'
             />
           </div>
         </form>
