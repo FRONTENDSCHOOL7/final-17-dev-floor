@@ -60,16 +60,59 @@ export const joinApi = async(joinData) => {
     }
 }
 
-// 이메일 유효성 검사
+// // 이메일 유효성 검사
+// export const validateEmail = async (email) => {
+//     try {
+//         const response = await axios.post('https://api.mandarin.weniv.co.kr/user/emailvalid',  
+//         email );
+//         console.log(response.data)
+//         if (response.data && response.data.includes(email)) {
+//             // 이미 사용 중인 이메일인 경우
+//         console.log('사용중')
+        
+//             return false;
+//         } else{
+// // 사용 가능한 이메일인 경우
+// console.log('사용안함')
+//         }
+// return true;
+        
+
+//     } catch (error) {
+//         console.error('이메일 유효성 검사 에러:', error);
+//         return false;
+//     }
+// };
+// export const validateEmail = async (email) => {
+//     try {
+//         const response = await axios.post('https://api.mandarin.weniv.co.kr/user/emailvalid', email);
+
+//         if (response.data) {
+//                         // 이미 사용 중인 이메일인 경우
+//                     console.log('사용중')
+                    
+//                         return false;
+//                     } else{
+//             // 사용 가능한 이메일인 경우
+//             console.log('사용안함')
+//             return true;
+
+//                     }
+
+//         } catch (error) {
+//         console.error(error);
+        
+//         }
+//     };
 export const validateEmail = async (email) => {
     try {
         const response = await axios.post(baseUrl+emailReq, { 
         user: {email} });
+        console.log(response.data)
         if (response.data && response.data.exists) {
             // 이미 사용 중인 이메일인 경우
             return false;
         }
-    
         // 사용 가능한 이메일인 경우
         return true;
     } catch (error) {
@@ -81,9 +124,10 @@ export const validateEmail = async (email) => {
 // 계정 유효성 검사
 export const validateAccount = async (accountName) => {
     try {
-        const response = await axios.post(baseUrl+accountReq, { user: {accountName}  });
-        if(response.data && response.data.exists) {
-            return false; //이미 사용중인 계정아이디
+        const response = await axios.post(baseUrl+accountReq, {user: {accountName}} );
+        if (response.data && response.data.exists) {
+            // 이미 사용 중인 이메일인 경우
+            return false;
         }
         return true;
     } catch (error) {
