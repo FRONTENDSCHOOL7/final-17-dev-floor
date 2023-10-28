@@ -13,37 +13,36 @@ import Product from "../../components/product/Product";
 import { Link } from "react-router-dom";
 import PostAlbum from "../../components/postalbum/PostAlbum";
 import { profileApi, myProfileApi } from "../../api/ProfileApi";
+import { idState, introState, userNameState } from "../../state/ModifyAtom";
+import { useRecoilState } from "recoil";
 
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
+  const [userName, setUserName] = useRecoilState(userNameState);
+  const [id, setId] = useRecoilState(idState);
+  const [intro, setIntro] = useRecoilState(introState);
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
   };
 
-  const handleProfile = async (e) => {
-    // e.preventDefault();
-    try {
-      const res = await profileApi("devUser31231232131");
-      console.log(res);
-    } catch (error) {
-      console.log("해당 계정이 존재하지 않습니다.");
-    }
-  };
+  // 내 프로필 조회
 
   const handleMyProfile = async (e) => {
     try {
       const res = await myProfileApi();
-      console.log(res);
+      // console.log(res);
+      setUserName(res.user.username);
+      setId(res.user.accountname);
+      setIntro(res.user.intro);
     } catch (error) {
       console.log("에러입니다.");
     }
   };
 
   useEffect(() => {
-    // Call handleMyProfile when the component mounts
     handleMyProfile();
-  }, []); // The empty dependency array ensures this runs only once on mount
+  }, []);
 
   return (
     <Body>
@@ -65,9 +64,9 @@ export default function MyProfile() {
           </button>
         </ProImg>
         <Intro>
-          <h2>애월읍 위니브 감귤농장</h2>
-          <p>@ weniv_Mandarin</p>
-          <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</p>
+          <h2>{userName}</h2>
+          <p>@ {id}</p>
+          <p>{intro}</p>
         </Intro>
         <Btns>
           <Link to='/modify'>

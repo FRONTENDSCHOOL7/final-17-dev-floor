@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
 import { followState, hamburgerBtnState } from "../../state/FollowAtom";
+import { profileApi } from "../../api/ProfileApi";
 
 export default function Profile() {
   const [follow, setFollow] = useRecoilState(followState);
@@ -34,6 +35,15 @@ export default function Profile() {
     setFollow(storedIsFollowed === "true");
   }, []);
 
+  // 상대 프로필
+  const handleProfile = async (e) => {
+    try {
+      const res = await profileApi("devUser31231232131");
+      console.log(res);
+    } catch (error) {
+      console.log("해당 계정이 존재하지 않습니다.");
+    }
+  };
   return (
     <Body>
       <TopBar />
