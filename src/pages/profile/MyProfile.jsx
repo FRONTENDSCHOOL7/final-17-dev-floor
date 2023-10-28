@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import hamburgerOn from "../../assets/images/icon-post-list-on.png";
 import hamburgerOff from "../../assets/images/icon-post-list-off.png";
@@ -12,9 +12,21 @@ import PostList from "../../components/postlist/PostList";
 import Product from "../../components/product/Product";
 import { Link } from "react-router-dom";
 import PostAlbum from "../../components/postalbum/PostAlbum";
+import { myInfoProfileApi } from "../../api/ProfileApi";
 
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
+  const [myProfile, setMyProfile] = useState(null);
+
+  useEffect(() => {
+      const MyProfile = async () => {
+          const data = await myInfoProfileApi()
+          console.log(data.user);  
+          setMyProfile(data.user);
+          // setMyProfile(data)
+      }
+      MyProfile()
+  }, []);
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
@@ -26,7 +38,7 @@ export default function MyProfile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              <span className='followers'>2950</span>
+              <span className='followers'>{myProfile && myProfile.followerCount}</span>
               <p>followers</p>
             </Link>
           </button>
@@ -39,8 +51,8 @@ export default function MyProfile() {
           </button>
         </ProImg>
         <Intro>
-          <h2>애월읍 위니브 감귤농장</h2>
-          <p>@ weniv_Mandarin</p>
+          <h2>{myProfile && myProfile.username}</h2>
+          <p>@ {myProfile && myProfile.accountname}</p>
           <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</p>
         </Intro>
         <Btns>

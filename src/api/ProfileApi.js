@@ -4,7 +4,7 @@ import reset from "styled-reset";
 const url = "https://api.mandarin.weniv.co.kr";
 
 const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzcwODYzMSwiaWF0IjoxNjk4NTI0NjMxfQ.GtDsxvguEQt5zEqOv8KEy6E5Nbd_Ss0u3yXkWBXBuk8";
 
 export const editApi = async (username, accountname, intro, image) => {
   
@@ -48,6 +48,19 @@ export const myProfileApi = async(accountName) =>{
       headers:{
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
+      }
+    });
+    return res.data
+  }catch(error){
+    throw error
+  }
+}
+export const myInfoProfileApi = async() =>{
+  try{
+    const token = localStorage.getItem('token');
+    const res = await axios.get(url+'/user/myinfo',{
+      headers:{
+        Authorization: `Bearer ${token}`,
       }
     });
     return res.data
