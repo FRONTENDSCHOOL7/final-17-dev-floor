@@ -6,6 +6,9 @@ const url = "https://api.mandarin.weniv.co.kr";
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
 
+const token2 =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2I0YzJiYjJjYjIwNTY2Mzg5NzgwYyIsImV4cCI6MTcwMzU2OTAyOSwiaWF0IjoxNjk4Mzg1MDI5fQ.ECwbzvxAySetIODrAGlVKrvkJ_80Z3wi2I5uSl5B7Vg";
+
 // 프로필 수정
 export const editApi = async (username, accountname, intro, image) => {
   const userInfo = {
@@ -50,7 +53,7 @@ export const profileApi = async (accountName) => {
   try {
     const res = await axios.get(url + `/profile/${accountName}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token2}`,
         "Content-type": "application/json",
       },
     });

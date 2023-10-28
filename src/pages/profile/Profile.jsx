@@ -17,10 +17,14 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { followState, hamburgerBtnState } from "../../state/FollowAtom";
 import { profileApi } from "../../api/ProfileApi";
+import { idState, introState, userNameState } from "../../state/ModifyAtom";
 
 export default function Profile() {
   const [follow, setFollow] = useRecoilState(followState);
   const [hamburgerBtn, setHamburgerBtn] = useRecoilState(hamburgerBtnState);
+  const [userName, setUserName] = useRecoilState(userNameState);
+  const [id, setId] = useRecoilState(idState);
+  const [intro, setIntro] = useRecoilState(introState);
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
@@ -36,14 +40,22 @@ export default function Profile() {
   }, []);
 
   // 상대 프로필
+  // 상대 프로필 클릭시 넘어오는 화면 => profile,
   const handleProfile = async (e) => {
     try {
-      const res = await profileApi("devUser31231232131");
+      const res = await profileApi("devUser123");
       console.log(res);
+      setUserName(res.profile.username);
+      setId(res.profile.accountname);
+      setIntro(res.profile.intro);
     } catch (error) {
       console.log("해당 계정이 존재하지 않습니다.");
     }
   };
+
+  useEffect(() => {
+    handleProfile();
+  }, []);
   return (
     <Body>
       <TopBar />
@@ -64,9 +76,9 @@ export default function Profile() {
           </button>
         </ProImg>
         <Intro>
-          <h2>애월읍 위니브 감귤농장</h2>
-          <p>@ weniv_Mandarin</p>
-          <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</p>
+          <h2>{userName}</h2>
+          <p>@ {id}</p>
+          <p>{intro}</p>
         </Intro>
         <Btns>
           <button>
