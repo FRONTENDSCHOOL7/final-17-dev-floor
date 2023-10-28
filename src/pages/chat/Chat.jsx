@@ -26,7 +26,7 @@ export default function Chat() {
       </TopBar>
       <Sect1>
         <Chat1>
-          <img src={profileImg} alt='프로필 이미지' />
+            <img src={profileImg} alt='프로필 이미지' />
           <div>
             <h3>애월읍 위니브 감귤농장</h3>
             <div className='text'>

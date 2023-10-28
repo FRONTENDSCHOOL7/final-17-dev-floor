@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import message from "../../assets/images/icon-message-circle.png";
 import share from "../../assets/images/icon-share.png";
@@ -14,9 +14,12 @@ import PostList from "../../components/postlist/PostList";
 import PostAlbum from "../../components/postalbum/PostAlbum";
 import { Link } from "react-router-dom";
 
+import { useRecoilState } from "recoil";
+import { followState, hamburgerBtnState } from "../../state/FollowAtom";
+
 export default function Profile() {
-  const [follow, setFollow] = useState(localStorage.getItem(false));
-  const [hamburgerBtn, setHamburgerBtn] = useState(true);
+  const [follow, setFollow] = useRecoilState(followState);
+  const [hamburgerBtn, setHamburgerBtn] = useRecoilState(hamburgerBtnState);
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
@@ -28,10 +31,9 @@ export default function Profile() {
   };
   useEffect(() => {
     const storedIsFollowed = localStorage.getItem("isFollowed");
-    if (storedIsFollowed) {
-      setFollow(storedIsFollowed === "true");
-    }
+    setFollow(storedIsFollowed === "true");
   }, []);
+
   return (
     <Body>
       <TopBar />

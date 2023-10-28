@@ -1,18 +1,16 @@
 import React from "react";
 import back from "../../assets/images/icon-arrow-left.png";
 import { Top } from "./TopBarStyle";
-// import { useRecoilState } from "recoil";
 
-export default function TopBarSave({ onSave, disabled }) {
+export default function TopBarModify({ nameValid, idValid, onEdit }) {
   return (
     <Top>
       <button>
         <img src={back} alt='' />
       </button>
       <button
-        className={`btn-save ${disabled ? "disabled" : ""}`}
-        onClick={onSave}
-        disabled={disabled}
+        className={nameValid && idValid ? "active" : "btn-save"}
+        onClick={onEdit}
       >
         저장
       </button>

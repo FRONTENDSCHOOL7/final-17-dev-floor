@@ -10,9 +10,16 @@ import Modal from "../../components/modal/Modal";
 
 export default function Post() {
   const [modalOpen, setIsOpenModal] = useState(false);
+  const [comment, setcomment] = useState(0);
+
   const showModal = () => {
     setIsOpenModal(true);
   };
+
+  const handleComment = (e) => {
+    setcomment(e.target.value);
+  };
+
   return (
     <Body>
       <TopBar />
@@ -103,8 +110,10 @@ export default function Post() {
           <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment-title'>
-              <input placeholder='댓글 입력하기...' />
-              <button>게시</button>
+              <input placeholder='댓글 입력하기...' onChange={handleComment} />
+              <button className={"btn" + (comment ? "Active" : "Disabled")}>
+                게시
+              </button>
             </div>
           </div>
         </div>
