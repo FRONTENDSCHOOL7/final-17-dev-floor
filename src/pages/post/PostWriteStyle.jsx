@@ -41,18 +41,19 @@ export const Sect2 = styled.div`
       width: 42px;
       height: 42px;
     }
-    textarea {
+    .writeBox {
+    }
+    input {
       display: block;
       margin-top: 7px;
-      width: 100%;
-      height: 700px;
+      max-width: 720px;
       border-color: white;
+      white-space: normal;
     }
-    textarea:focus {
-      outline: none;
-    }
-    textarea::placeholder {
-      color: #c4c4c4;
+    img {
+      display: block;
+      width: 304px;
+      height: 228px;
     }
   }
   .write-bottom {

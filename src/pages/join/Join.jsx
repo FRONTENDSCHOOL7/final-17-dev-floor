@@ -1,29 +1,40 @@
 import { useRecoilState } from "recoil";
-import { joinApi, validateAccount } from "../../api/AuthApi";
+import { joinApi, validateAccount, validateEmail } from "../../api/AuthApi";
 import { preDataState } from "../../state/AuthAtom";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Email, JoinForm, JoinInner, JoinTit, JoinWrap, Password, Submit,Body, Inner, Main, Profile } from './JoinStyle'
+import { idValidState, nameValidState } from "../../state/ModifyAtom";
 
 export default function Join() {
 const [preData, setPreData] = useRecoilState(preDataState);
 const navigate = useNavigate();
 const [isJoinPage, setIsJoinPage] = useState(true);  // 현재 페이지가 조인페이지인지 프로필페이지인지 결정하는 상태
 
-const handleJoin = (e) => {
+const handleJoin = async (e) => {
     e.preventDefault();
-    setPreData({
-    ...preData,
-    email: preData.email,
-    password: preData.password,
-    });
-    setIsJoinPage(false);  
+    const isEmailValid = await validateEmail(preData.email); 
+    console.log(isEmailValid)
+    if (!isEmailValid) {
+        alert('이미 사용중이거나 올바르지 않은 이메일입니다.');
+        return;  
+    } else {
+        setPreData({
+            ...preData,
+            email: preData.email,
+            password: preData.password,
+            
+        });
+        setIsJoinPage(false);
+    }
+    
 };
+
 
 const submitJoin = async () => {
     const isAccountValid = await validateAccount(preData.accountname)
     if (!isAccountValid) {
-        alert('이미 사용중인 계정입니다.');
+        console.log('이미 사용중인 계정입니다.');
         return;
     }
     try {
@@ -55,7 +66,7 @@ return (
         : <ProfilePage preData={preData} setPreData={setPreData} submitJoin={submitJoin} />
         }
     </>
-)
+    )
 }
 
 export function JoinPage({ preData, setPreData, handleJoin }) {
@@ -65,7 +76,6 @@ const newEmail = (e) => {
 const newPassword = (e) => {
     setPreData({...preData, password: e.target.value});
 };
-
 return (
     <JoinWrap>
     <JoinInner>
@@ -84,7 +94,7 @@ return (
             <input value={preData.password} onChange={newPassword}  type="password" id="password"/>
         </Password>
         <Submit onClick={handleJoin}>
-            <Link to=''>다음</Link>
+            다음
         </Submit>
         </JoinForm>
     </JoinInner>
@@ -93,12 +103,31 @@ return (
 }
 
 export function ProfilePage({ preData, setPreData, submitJoin }) {
-const newUsername = (e) => {
-    setPreData({ ...preData, username: e.target.value });
+    const [nameValid, setNameValid] = useRecoilState(nameValidState)
+    const [idValid, setIdValid] = useRecoilState(idValidState)
+    const newUsername = (e) => {
+        setPreData({ ...preData, username: e.target.value });
+    }
+    const newUsernameBlur = (e) => {
+        const name = e.target.value
+        if(name.length < 2 || name.length > 10) {
+            setNameValid(false)
+        } else {
+            setNameValid(true)
+        }
     }
     const newAccountname = (e) => {
     setPreData({...preData, accountname: e.target.value})
     } 
+    const newAccountBlur = (e) => {
+        const nameAccount = e.target.value;
+        const regex = /^[a-zA-Z0-9._]+$/;
+        if(regex.test(nameAccount)) {
+            setIdValid(true)
+        } else {
+            setIdValid(false)
+        }
+    }
     const newIntro = (e) => {
     setPreData({...preData, intro: e.target.value})
     } 
@@ -139,28 +168,59 @@ return (
         <form>
             <div>
             <label>사용자 이름</label>
-            <input value={preData.username} onChange={newUsername}type="text" placeholder="2~10자 이내여야 합니다." />
+            <input value={preData.username} 
+                onChange={newUsername}
+                onBlur={newUsernameBlur}
+                className={
+                    nameValid === null
+                    ? "inp-name"
+                    : nameValid
+                    ? "inp-name"
+                    : "error"
+                }
+                type="text" placeholder="2~10자 이내여야 합니다."/>
+                {nameValid === null ? (
+                    ""
+                ) : nameValid ? (
+                    ""
+                ) : (
+                    <p>이름이 올바르지 않습니다.</p>
+                )
+                }
             </div>
             <div>
             <label>계정 ID</label>
             <input
                 value={preData.accountname}
                 onChange={newAccountname}
+                onBlur={newAccountBlur}
                 type="text"
                 placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
+                className={
+                    idValid === null ? "inp-id" : idValid ? 
+                    "inp-id" : "error"
+                }
             />
+            {idValid === null ? (
+                ""
+                ) : idValid ? (
+                ""
+                ) : (
+                <p>id형식이 올바르지 않습니다.</p>
+            )}
             </div>
             <div>
             <label>소개</label>
             <input
-                value={preData.intro} onChange={newIntro} 
+                value={preData.intro} 
+                onChange={newIntro} 
                 type="text"
                 placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
             />
             </div>
             <div className="profileSubmit">
             <button onClick={submitJoin} type="button">
-                감귤마켓 시작하기
+                개발바닥 시작하기
             </button>
             </div>
         </form>
