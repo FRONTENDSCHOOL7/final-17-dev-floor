@@ -28,6 +28,11 @@ export const JoinTit = styled.div`
 `
 export const JoinForm = styled.form`
     width: 100%;
+    p {
+        padding-top: 6px;
+        color: var(--errorFontColor);
+        font-size: 0.8rem;
+    }
 `
 export const Email = styled.div`
     span {
@@ -62,12 +67,7 @@ export const Submit = styled.button`
         height: 44px;
         background: var(--disableColor);
         border-radius: 20px;
-    a {
-        display: block;
-        line-height: 44px;
-        text-align: center;
         color: var(--whiteColor);
-    }
 `
 
 export const Body = styled.div`
@@ -87,15 +87,18 @@ export const Inner = styled.div`
     flex-direction: column;
 `
     export const Main = styled.div`
-    .upload-img {
+    div p.error {
+        padding-top: 6px;
+        color: var(--errorFontColor);
+        font-size: 0.8rem;
+    }
+    .upload-img,.profileImg img{
         width: 110px;
         height: 110px;
         display: block;
         margin: auto;
     }
-    .upload-img::after {
-        background: url(${upload}) no-repeat;
-        content: "";
+    .profile-img  {
         display: inline-block;
         background-size: 36px 36px;
         height: 36px;

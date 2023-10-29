@@ -13,10 +13,15 @@ export const errorState = atom({
     key: 'errorState',
     default: ''
 })  
+export const errorPwState = atom({
+    key: 'errorPwState',
+    default: ''
+})
 export const tokenState = atom({
     key: 'tokenState',
     default: localStorage.getItem('token') || ''
 }) 
+
 // join
 export const preDataState = atom({
     key: 'preDataState',
@@ -29,6 +34,22 @@ export const preDataState = atom({
         image: 'https://api.mandarin.weniv.co.kr/Ellipse.png',
     },
 });
+export const btnDisableState = atom({
+    key: 'btnDisableState',
+    default: false
+})
+export const joinBtnDisableState = atom({
+    key: 'joinBtnDisableState',
+    default: false
+})
+export const idValidErrorState = atom({
+    key:'idValidErrorState',
+    default: null
+})
+export const idRegexErrorState = atom({
+    key:'idRegexErrorState',
+    default: null
+})
 // export const userNameState = atom({
 //     key: 'userNameState',
 //     default: ''
@@ -52,4 +73,8 @@ export const preDataState = atom({
 export const routeState = atom({
     key: 'routeState',
     default: 'signup'
+})
+export const profileImgState = atom({
+    key: 'profileImgState',
+    default: ''
 })
