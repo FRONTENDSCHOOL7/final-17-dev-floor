@@ -16,7 +16,7 @@ export const Top = styled.div`
     background: #fff;
     border-style: none;
   }
-  
+
   .btn-save {
     color: #fff;
     background: #12184e;
@@ -25,11 +25,17 @@ export const Top = styled.div`
     /* cursor: not-allowed; */
 
     &.disabled {
-      color: #fff;  
+      color: #fff;
       background: #6f76b6;
     }
   }
-
+  .btn-save2 {
+    color: #fff;
+    background: #6f76b6;
+    padding: 7px 32px;
+    border-radius: 32px;
+    cursor: not-allowed;
+  }
 
   .active {
     color: #fff;

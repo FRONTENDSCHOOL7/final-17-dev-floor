@@ -9,7 +9,7 @@ export default function TopBarModify({ nameValid, idValid, onEdit }) {
         <img src={back} alt='' />
       </button>
       <button
-        className={nameValid && idValid ? "active" : "btn-save"}
+        className={nameValid && idValid ? "active" : "btn-save2"}
         onClick={onEdit}
       >
         저장

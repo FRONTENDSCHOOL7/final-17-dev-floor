@@ -26,7 +26,7 @@ function App() {
           <Route path='/' exact element={<Splash />} />
           <Route path='/home' exact element={<LoginHome />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/join' element={<Join/>} />
+          <Route path='/join' element={<Join />} />
           <Route path='/homefeed' element={<Home />} />
           <Route path='/chat' element={<Chat />} />
           <Route path='/chatroom' element={<ChatRoom />} />

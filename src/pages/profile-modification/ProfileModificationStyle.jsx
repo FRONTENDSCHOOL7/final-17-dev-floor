@@ -18,6 +18,9 @@ export const Main = styled.div`
   .upload-img {
     width: 110px;
     height: 110px;
+    img {
+      border-radius: 100px;
+    }
   }
   .upload-img::after {
     background: url(${upload}) no-repeat;

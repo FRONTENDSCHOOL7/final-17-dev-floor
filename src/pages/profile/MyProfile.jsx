@@ -12,15 +12,23 @@ import PostList from "../../components/postlist/PostList";
 import Product from "../../components/product/Product";
 import { Link } from "react-router-dom";
 import PostAlbum from "../../components/postalbum/PostAlbum";
-import { profileApi, myProfileApi } from "../../api/ProfileApi";
-import { idState, introState, userNameState } from "../../state/ModifyAtom";
+import { profileApi, myProfileApi, getImg } from "../../api/ProfileApi";
+import {
+  apiImageState,
+  idState,
+  introState,
+  userNameState,
+} from "../../state/ModifyAtom";
 import { useRecoilState } from "recoil";
+import { imageState } from "../../state/PostAtom";
 
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
   const [userName, setUserName] = useRecoilState(userNameState);
   const [id, setId] = useRecoilState(idState);
   const [intro, setIntro] = useRecoilState(introState);
+  const [image, setImage] = useRecoilState(imageState);
+  const [apiImage, setApiImage] = useRecoilState(apiImageState);
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
@@ -31,7 +39,7 @@ export default function MyProfile() {
   const handleMyProfile = async (e) => {
     try {
       const res = await myProfileApi();
-      // console.log(res);
+      setImage(res.user.image);
       setUserName(res.user.username);
       setId(res.user.accountname);
       setIntro(res.user.intro);
@@ -51,11 +59,11 @@ export default function MyProfile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              <span className='followers'>{myProfile && myProfile.followerCount}</span>
+              {/* <span className='followers'>{myProfile && myProfile.followerCount}</span> */}
               <p>followers</p>
             </Link>
           </button>
-          <img src={profileImg} alt='프로필 이미지' />
+          <img src={image} alt='프로필 이미지' className='profileImg' />
           <button>
             <Link to='/following'>
               <span>128</span>

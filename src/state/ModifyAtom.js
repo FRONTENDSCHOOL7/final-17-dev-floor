@@ -30,3 +30,7 @@ export const userToken = atom({
   key: "userToken",
   default: "",
 });
+export const apiImageState = atom({
+  key: "apiImageState",
+  default: "",
+});

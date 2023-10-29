@@ -3,12 +3,12 @@ import reset from "styled-reset";
 
 const url = "https://api.mandarin.weniv.co.kr";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
+// const token =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
 
-const token2 =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2I0YzJiYjJjYjIwNTY2Mzg5NzgwYyIsImV4cCI6MTcwMzU2OTAyOSwiaWF0IjoxNjk4Mzg1MDI5fQ.ECwbzvxAySetIODrAGlVKrvkJ_80Z3wi2I5uSl5B7Vg";
-
+// const token2 =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2I0YzJiYjJjYjIwNTY2Mzg5NzgwYyIsImV4cCI6MTcwMzU2OTAyOSwiaWF0IjoxNjk4Mzg1MDI5fQ.ECwbzvxAySetIODrAGlVKrvkJ_80Z3wi2I5uSl5B7Vg";
+const token = localStorage.getItem("token");
 // 프로필 수정
 export const editApi = async (username, accountname, intro, image) => {
   const userInfo = {
@@ -33,13 +33,13 @@ export const editApi = async (username, accountname, intro, image) => {
   }
 };
 
-export const validateAccount = async (accountName) => {
+export const validateAccount = async (accountname) => {
   try {
     const response = await axios.post(
       url + "/user/accountnamevalid",
-      accountName
+      accountname
     );
-    if (response.data.error && response.data.includes(accountName)) {
+    if (response.data.error && response.data.includes(accountname)) {
       return false; //이미 사용중인 계정아이디
     }
     return true;
@@ -49,11 +49,11 @@ export const validateAccount = async (accountName) => {
 };
 
 // 3.2 상대 프로필
-export const profileApi = async (accountName) => {
+export const profileApi = async (accountname) => {
   try {
-    const res = await axios.get(url + `/profile/${accountName}`, {
+    const res = await axios.get(url + `/profile/${accountname}`, {
       headers: {
-        Authorization: `Bearer ${token2}`,
+        Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
       },
     });
@@ -66,6 +66,7 @@ export const profileApi = async (accountName) => {
 // 2.3 마이프로필
 export const myProfileApi = async () => {
   try {
+    // const token = localStorage.getItem("token");
     const res = await axios.get(url + "/user/myinfo", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -75,4 +76,4 @@ export const myProfileApi = async () => {
   } catch (error) {
     throw error;
   }
-}
+};
