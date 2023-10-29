@@ -15,14 +15,14 @@ export const Main = styled.div`
 `
 export default function Splash() {
     const navigate = useNavigate()
-    function checkLoginStatus() {
+    function loginStatus() {
         const token = localStorage.getItem('token');
         return token !== null;
     }
     
     useEffect(() => {
         setTimeout(() => {
-        const isLogged = checkLoginStatus();
+        const isLogged = loginStatus();
         if (isLogged) {
             navigate('/homefeed');
         } else {

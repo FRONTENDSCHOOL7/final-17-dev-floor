@@ -15,6 +15,7 @@ import PostWrite from "./pages/post/PostWrite";
 import ChatRoom from "./pages/chat/ChatRoom";
 import Following from "./pages/follow/Following";
 import Join, { ProfilePage } from "./pages/join/Join";
+import Splash from "./pages/splash/Splash";
 
 function App() {
   return (
@@ -22,10 +23,11 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path='/' exact element={<LoginHome />} />
+          <Route path='/' exact element={<Splash />} />
+          <Route path='/home' exact element={<LoginHome />} />
           <Route path='/login' element={<Login />} />
           <Route path='/join' element={<Join/>} />
-          <Route path='/home' element={<Home />} />
+          <Route path='/homefeed' element={<Home />} />
           <Route path='/chat' element={<Chat />} />
           <Route path='/chatroom' element={<ChatRoom />} />
           <Route path='/profile' element={<Profile />} />
