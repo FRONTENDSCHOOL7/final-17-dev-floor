@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Body, Main } from "./ProfileModificationStyle";
 import profileImg from "../../assets/images/Group 26.png";
 import TopBarSave from "../../components/topbar/TopBarSave";
@@ -13,6 +13,8 @@ import {
 import TopBarModify from "../../components/topbar/TopBarModify";
 import { editApi, validateAccount } from "../../api/ProfileApi";
 import { Navigate, useNavigate } from "react-router-dom";
+import { imageState } from "../../state/PostAtom";
+import { imageApi } from "../../api/PostApi";
 
 export default function ProfileModification() {
   const [userName, setUserName] = useRecoilState(userNameState);
@@ -20,6 +22,9 @@ export default function ProfileModification() {
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
+  const [image, setImage] = useRecoilState(imageState);
+  const [apiImage, setApiImage] = useState("");
+  const fileRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -65,16 +70,40 @@ export default function ProfileModification() {
     e.preventDefault();
     const isAccountValid = await validateAccount(id);
     if (!isAccountValid) {
-      alert('계정 유효성 검사에 오류가 발생했습니다.');
+      alert("계정 유효성 검사에 오류가 발생했습니다.");
       return;
-  }
+    }
     try {
-      const res = await editApi(userName, id, intro, "");
+      const res = await editApi(userName, id, intro, image);
       console.log(res);
       navigate("/myprofile");
     } catch (error) {
       console.log("에러입니다.");
     }
+  };
+
+  // 이미지 업로드
+
+  const onChangeFile = async (e) => {
+    const file = fileRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+    // 이미지 api 필요 값 입력
+    try {
+      const result = await imageApi(file);
+      console.log(result);
+      setApiImage(result.filename);
+      console.log("성공했습니다");
+      console.log(result.filename);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const onClickImage = (e) => {
+    fileRef.current?.click(e.target.files?.[0]);
   };
 
   return (
@@ -85,8 +114,16 @@ export default function ProfileModification() {
         onEdit={handleEdit}
       />
       <Main>
-        <button className='upload-img'>
-          <img src={profileImg} alt='' />
+        <input
+          style={{ display: "none" }}
+          type='file'
+          onChange={onChangeFile}
+          ref={fileRef}
+        />
+
+        <button className='upload-img' onClick={onClickImage}>
+          {/* <img src={profileImg} alt='' /> */}
+          {image ? <img src={image}></img> : <img src={profileImg}></img>}
         </button>
         <form>
           <div>

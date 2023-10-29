@@ -66,6 +66,7 @@ export const profileApi = async (accountName) => {
 // 2.3 마이프로필
 export const myProfileApi = async () => {
   try {
+    const token = localStorage.getItem("token");
     const res = await axios.get(url + "/user/myinfo", {
       headers: {
         Authorization: `Bearer ${token}`,

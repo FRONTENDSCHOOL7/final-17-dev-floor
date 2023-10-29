@@ -15,12 +15,14 @@ import PostAlbum from "../../components/postalbum/PostAlbum";
 import { profileApi, myProfileApi } from "../../api/ProfileApi";
 import { idState, introState, userNameState } from "../../state/ModifyAtom";
 import { useRecoilState } from "recoil";
+import { imageState } from "../../state/PostAtom";
 
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
   const [userName, setUserName] = useRecoilState(userNameState);
   const [id, setId] = useRecoilState(idState);
   const [intro, setIntro] = useRecoilState(introState);
+  const [image, setImage] = useRecoilState(imageState);
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
@@ -35,6 +37,7 @@ export default function MyProfile() {
       setUserName(res.user.username);
       setId(res.user.accountname);
       setIntro(res.user.intro);
+      setImage(res.user.image);
     } catch (error) {
       console.log("에러입니다.");
     }
