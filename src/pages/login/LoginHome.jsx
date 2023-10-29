@@ -13,7 +13,7 @@ export default function LoginHome() {
             <Logo>
                 <h1>
                     <div className='logo'><img src={LogoImg} alt="로고이미지" /></div>
-                    <div className='logoTxt'><img src={LogoTxtImg} alt="프로젝트이름" /></div>
+                    <div className='logoTxt'><img src={LogoTxtImg} alt="개발바닥" /></div>
                 </h1>
             </Logo>
             <LoginHomeWrap>

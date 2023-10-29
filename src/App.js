@@ -16,6 +16,8 @@ import ChatRoom from "./pages/chat/ChatRoom";
 import Following from "./pages/follow/Following";
 import Join, { ProfilePage } from "./pages/join/Join";
 import Splash from "./pages/splash/Splash";
+import { EmailJoin } from "./pages/join/EmailJoin";
+import { ProfileJoin } from "./pages/join/ProfileJoin";
 
 function App() {
   return (
@@ -39,7 +41,7 @@ function App() {
           <Route path='/following' element={<Following />} />
           <Route path='/product' element={<AddProduct />} />
           <Route path='/modify' element={<ProfileModification />} />
-          <Route path='/join-profile' element={<ProfilePage />} />
+          <Route path='/join-profile' element={<ProfileJoin/>} />
         </Routes>
       </BrowserRouter>
     </div>
