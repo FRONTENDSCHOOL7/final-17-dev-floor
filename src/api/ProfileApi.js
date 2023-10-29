@@ -75,4 +75,4 @@ export const myProfileApi = async () => {
   } catch (error) {
     throw error;
   }
-};
+}

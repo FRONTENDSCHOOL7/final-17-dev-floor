@@ -51,7 +51,7 @@ export default function MyProfile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              <span className='followers'>2950</span>
+              <span className='followers'>{myProfile && myProfile.followerCount}</span>
               <p>followers</p>
             </Link>
           </button>
