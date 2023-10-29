@@ -21,6 +21,10 @@ export const tokenState = atom({
     key: 'tokenState',
     default: localStorage.getItem('token') || ''
 }) 
+export const idState = atom({
+    key: "idState",
+    default: "",
+});
 
 // join
 export const preDataState = atom({
@@ -44,7 +48,7 @@ export const joinBtnDisableState = atom({
 })
 export const idValidErrorState = atom({
     key:'idValidErrorState',
-    default: null
+    default: ''
 })
 export const idRegexErrorState = atom({
     key:'idRegexErrorState',

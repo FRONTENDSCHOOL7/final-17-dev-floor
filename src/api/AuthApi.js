@@ -123,18 +123,18 @@ export const validateEmail = async (email) => {
 };
 
 // 계정 유효성 검사
-export const validateAccount = async (accountname) => {
-    try {
-        const response = await axios.post(baseUrl+accountReq, {user: {accountname}} );
-        if (response.data.error && response.data.includes(accountname)) {
-            return false;
-        }
-        return true;
-    } catch (error) {
-        console.error('계정 유효성 검사 에러:', error);
-        return false;
-    }
-};
+// export const validateAccount = async (accountname) => {
+//     try {
+//         const response = await axios.post(baseUrl+accountReq, {user: {accountname}} );
+//         if (response.data.error && response.data.includes(accountname)) {
+//             return false;
+//         }
+//         return true;
+//     } catch (error) {
+//         console.error('계정 유효성 검사 에러:', error);
+//         return false;
+//     }
+// };
 // 이미지 api
 export const profileImgApi = async (file) => {
     const formData = new FormData();

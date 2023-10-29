@@ -31,7 +31,7 @@ export default function Login() {
             const userToken = response.user.token
             setToken(userToken)
             localStorage.setItem('token',userToken)
-            navigate('/home')
+            navigate('/homefeed')
         } catch (error) {
             console.log("에러입니다.")
         }
