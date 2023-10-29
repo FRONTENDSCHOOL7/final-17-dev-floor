@@ -79,7 +79,7 @@ export default function AddProduct() {
     }
 
     try {
-      const res = productApi(productName,parseFloat(productPrice),productLink,productImage);
+      const res = await productApi(productName,productPrice,productLink,"");
       // const response = await axios.post( {
       //   product: {
       //     itemName: productName,
@@ -125,7 +125,7 @@ export default function AddProduct() {
             <label>상품명</label>
             <input
               type='text'
-              value={productName}
+              // value={productName}
               onChange={handleName}
               placeholder="2~15자 이내여야 합니다."
               minLength="2"
@@ -136,7 +136,7 @@ export default function AddProduct() {
             <label>가격</label>
             <input
               type="text"
-              value={productPrice}
+              // value={productPrice}
               onBlur={handlePrice}
               placeholder='숫자만 입력 가능합니다.'
             />
@@ -145,7 +145,7 @@ export default function AddProduct() {
             <label>판매 링크</label>
             <input
               type='text'
-              value={productLink}
+              // value={productLink}
               onChange={handleLink}
               placeholder='URL을 입력해주세요.'
             />
