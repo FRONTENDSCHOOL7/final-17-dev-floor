@@ -9,6 +9,7 @@ import {
   userNameState,
   idValidState,
   nameValidState,
+  apiImageState,
 } from "../../state/ModifyAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
 import { editApi, validateAccount } from "../../api/ProfileApi";
@@ -23,7 +24,7 @@ export default function ProfileModification() {
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
   const [image, setImage] = useRecoilState(imageState);
-  const [apiImage, setApiImage] = useState("");
+  const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const fileRef = useRef(null);
 
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ export default function ProfileModification() {
       return;
     }
     try {
-      const res = await editApi(userName, id, intro, image);
+      const res = await editApi(userName, id, intro, apiImage);
       console.log(res);
       navigate("/myprofile");
     } catch (error) {
@@ -95,9 +96,9 @@ export default function ProfileModification() {
     try {
       const result = await imageApi(file);
       console.log(result);
-      setApiImage(result.filename);
+      setApiImage("https://api.mandarin.weniv.co.kr/" + result.filename);
       console.log("성공했습니다");
-      console.log(result.filename);
+      console.log(apiImage);
     } catch (error) {
       console.log(error);
     }

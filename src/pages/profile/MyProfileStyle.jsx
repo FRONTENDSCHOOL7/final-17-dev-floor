@@ -51,6 +51,13 @@ export const ProImg = styled.div`
       color: black;
     }
   }
+  .profileImg {
+    border-radius: 100px;
+    max-width: 110px;
+    max-height: 110px;
+    width: 100%;
+    height: 100%;
+  }
 `;
 export const Intro = styled.div`
   display: flex;
