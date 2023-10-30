@@ -105,36 +105,50 @@ export const joinApi = async(joinData) => {
         
 //         }
 //     };
+// export const validateEmail = async (email) => {
+//     try {
+//         const response = await axios.post(baseUrl+emailReq, { 
+//         user: {email} });
+//         console.log(response.data)
+//         if (response.data.error && response.data.includes(email)) {
+//             // 이미 사용 중인 이메일인 경우
+//             return false;
+//         }
+//         // 사용 가능한 이메일인 경우
+//         return true;
+//     } catch (error) {
+//         console.error('이메일 유효성 검사 에러:', error);
+//         return false;
+//     }
+// };
 export const validateEmail = async (email) => {
     try {
         const response = await axios.post(baseUrl+emailReq, { 
         user: {email} });
-        console.log(response.data)
-        if (response.data && response.data.exists) {
-            // 이미 사용 중인 이메일인 경우
-            return false;
-        }
+        const json = response.data
+        
+        
         // 사용 가능한 이메일인 경우
-        return true;
+        return json.message;
     } catch (error) {
         console.error('이메일 유효성 검사 에러:', error);
+        
+         // 이미 사용 중인 이메일인 경우
         return false;
     }
 };
 
 // 계정 유효성 검사
-// export const validateAccount = async (accountname) => {
-//     try {
-//         const response = await axios.post(baseUrl+accountReq, {user: {accountname}} );
-//         if (response.data.error && response.data.includes(accountname)) {
-//             return false;
-//         }
-//         return true;
-//     } catch (error) {
-//         console.error('계정 유효성 검사 에러:', error);
-//         return false;
-//     }
-// };
+export const validateAccount = async (accountname) => {
+    try {
+        const response = await axios.post(baseUrl+accountReq, {user: {accountname}} );
+        console.log(response.data.message)
+        return true;
+    } catch (error) {
+        console.error('계정 유효성 검사 에러:', error);
+        return false;
+    }
+};
 // 이미지 api
 export const profileImgApi = async (file) => {
     const formData = new FormData();

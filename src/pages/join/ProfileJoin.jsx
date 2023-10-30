@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { joinApi, profileImgApi, validateEmail } from "../../api/AuthApi";
+import { joinApi, profileImgApi, validateEmail, validateAccount } from "../../api/AuthApi";
 import { btnDisableState, contentState, errorPwState, errorRegexState, errorState, idRegexErrorState, idRegexState, idState, idValidErrorState, imageState, joinBtnDisableState, preDataState, profileImgState } from "../../state/AuthAtom";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
@@ -7,7 +7,7 @@ import { Email, JoinForm, JoinInner, JoinTit, JoinWrap, Password, Submit,Body, I
 import { nameValidState } from "../../state/ModifyAtom";
 import { imageApi, postApi } from "../../api/PostApi";
 import upload from "../../assets/images/upload-file.png";
-import { validateAccount } from "../../api/ProfileApi";
+// import { validateAccount } from "../../api/ProfileApi";
 
 export function ProfileJoin({ preData, setPreData, submitJoin,joinProfileData }) {
     const [nameValid, setNameValid] = useRecoilState(nameValidState)
@@ -39,7 +39,7 @@ export function ProfileJoin({ preData, setPreData, submitJoin,joinProfileData })
     } 
     const newAccountBlur = async () => {
         const isAccountValid = await validateAccount(id);
-        if(!isAccountValid) {
+        if(isAccountValid === '이미 사용중인 계정 ID입니다.') {
             setIdValidError('*이미 사용 중인 ID입니다.');
             setjoinBtnDisable(false);
             return
