@@ -28,9 +28,6 @@ export default function Login() {
             if(!response.user) {
                 setError("*이메일  또는 비밀번호가 일치하지 않습니다.")
             }
-            const userToken = response.user.token
-            setToken(userToken)
-            localStorage.setItem('token',userToken)
             navigate('/homefeed')
         } catch (error) {
             console.log("에러입니다.")
