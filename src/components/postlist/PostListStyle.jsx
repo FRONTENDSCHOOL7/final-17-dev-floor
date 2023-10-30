@@ -3,15 +3,14 @@ import styled from "styled-components";
 // section 3
 
 export const Sect3 = styled.div`
+  height: 500px;
+  overflow: auto;
   background: #fff;
   .content-container::-webkit-scrollbar {
     display: none;
   }
   .content-container {
     /* width: 100%; */
-    max-height: 500px;
-    height: 100%;
-    overflow-y: auto;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
