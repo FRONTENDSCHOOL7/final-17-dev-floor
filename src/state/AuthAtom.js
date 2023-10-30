@@ -19,7 +19,7 @@ export const errorPwState = atom({
 })
 export const tokenState = atom({
     key: 'tokenState',
-    default: localStorage.getItem('token') || ''
+    default: null,
 }) 
 export const idState = atom({
     key: "idState",

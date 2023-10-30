@@ -172,7 +172,7 @@ export default function AddProduct() {
             <label>상품명</label>
             <input
               type='text'
-              value={productName}
+              // value={productName}
               onChange={handleName}
               placeholder="2~15자 이내여야 합니다."
               minLength="2"
@@ -192,7 +192,7 @@ export default function AddProduct() {
             <label>판매 링크</label>
             <input
               type='text'
-              value={productLink}
+              // value={productLink}
               onChange={handleLink}
               placeholder='URL을 입력해주세요.'
             />
