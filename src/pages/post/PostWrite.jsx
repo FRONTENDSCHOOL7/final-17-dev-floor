@@ -26,6 +26,7 @@ export default function PostWrite() {
   };
 
   const onChangeFile = async (e) => {
+    // 이미지 미리보기
     const file = fileRef.current.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -45,6 +46,7 @@ export default function PostWrite() {
 
   const onClickUpLoad = async (e) => {
     e.preventDefault();
+    // 게시글 api 요청
     try {
       const result = await postApi(content, apiImage);
       console.log(result);
