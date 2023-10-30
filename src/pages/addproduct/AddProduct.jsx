@@ -90,7 +90,6 @@ const handleFileChange = (e) => {
 
     try {
       const res = await productApi(productName,parseFloat(productPrice),productLink,productImage);
-      const res = await productApi(productName,productPrice,productLink,"");
       // const response = await axios.post( {
       //   product: {
       //     itemName: productName,
