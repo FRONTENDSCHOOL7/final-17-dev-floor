@@ -9,3 +9,8 @@ export const imageState = atom({
   key: "imageState",
   default: "",
 });
+
+export const postIdState = atom({
+  key: "postIdState",
+  default: "",
+});

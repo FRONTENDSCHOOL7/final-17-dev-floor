@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Sect1 } from "./ModalStlye";
 import bar from "../../assets/images/bar.png";
 
-export default function Modal({ isOpenModal, setIsOpenModal, children }) {
+export default function Modal({ isOpenModal, setIsOpenModal }) {
   const wrapperRef = useRef();
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -24,7 +24,6 @@ export default function Modal({ isOpenModal, setIsOpenModal, children }) {
   };
   return (
     <div ref={wrapperRef} value={isOpenModal}>
-      {children}
       <Sect1>
         <div className='container'>
           <div className='barr'>
