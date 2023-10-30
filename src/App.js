@@ -14,7 +14,7 @@ import Post from "./pages/post/Post";
 import PostWrite from "./pages/post/PostWrite";
 import ChatRoom from "./pages/chat/ChatRoom";
 import Following from "./pages/follow/Following";
-import Join, { ProfilePage } from "./pages/join/Join";
+import Join from "./pages/join/Join";
 import Splash from "./pages/splash/Splash";
 import { EmailJoin } from "./pages/join/EmailJoin";
 import { ProfileJoin } from "./pages/join/ProfileJoin";

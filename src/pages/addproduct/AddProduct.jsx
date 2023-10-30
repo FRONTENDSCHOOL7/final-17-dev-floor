@@ -7,11 +7,11 @@ import {
   productImageState,
   productNameState,
   productPriceState,
-  productLinkState,
+  productLinkState
 } from "../../state/ProductAtom";
-import { tokenState } from "../../state/AuthAtom";
-import { productApi } from "../../api/ProductApi";
-import axios from "axios";
+import { imageApi, productApi } from "../../api/ProductApi";
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function AddProduct() {
@@ -19,8 +19,10 @@ export default function AddProduct() {
   const [productName, setProductName] = useRecoilState(productNameState);
   const [productPrice, setProductPrice] = useRecoilState(productPriceState);
   const [productLink, setProductLink] = useRecoilState(productLinkState);
-  const [token, setToken] = useRecoilState(tokenState);
+  const [previewImage, setPreviewImage] = useState(null);
   const [isSaveEnabled, setIsSaveEnabled] = useState(false);
+  const fileRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 입력 값이 모두 채워져 있는지 확인
@@ -31,26 +33,51 @@ export default function AddProduct() {
     }
   }, [productImage, productName, productPrice, productLink]);
 
-  // input에 연결해주기 위한 useRef 훅 사용
-  const imageInputRef = useRef();
+  // // input에 연결해주기 위한 useRef 훅 사용
+  // const imageInputRef = useRef();
 
-  // 버튼 클릭 시 호출하는 함수 (클릭 이벤트)
-  const onCickImageUploadHandler = (e) => {
-    imageInputRef.current?.click();
+  // // 버튼 클릭 시 호출하는 함수 (클릭 이벤트)
+  // const onCickImageUploadHandler = (e) => {
+  //   imageInputRef.current?.click();
+  // };
+
+  const onClickImage = (e) => {
+    fileRef.current?.click(e.target.files?.[0]);
   };
 
-const handleFileChange = (e) => {
-    const file = e.target.files[0]; // 업로드한 파일
-    const form = new FormData();
-    form.append("image", file);
-    axios.post("https://api.mandarin.weniv.co.kr/image/uploadfile", form,{
-    headers: {
-      "Content-Type": "multipart/form-data",
-      "Authorization": `Bearer ${token}`
-    },
-  }).then(res=>setProductImage("https://api.mandarin.weniv.co.kr/"+res.data.filename))
-    // setProductImage(file); // 이미지 상태 업데이트
+  const onChangeFile = async (e) => {
+    // 이미지 미리보기
+    const file = e.target.files[0];
+    setProductImage(file); // 실제 업로드할 파일 저장
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewImage(reader.result); // 미리보기용 URL 저장
+    };
+    // 이미지 api 필요 값 입력
+    try {
+      const result = await imageApi(file);
+      console.log(result);
+      setProductImage(result.filename);
+      console.log("성공했습니다");
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+// const handleFileChange = (e) => {
+//     const file = e.target.files[0]; // 업로드한 파일
+//     const form = new FormData();
+//     form.append("image", file);
+//     axios.post("https://api.mandarin.weniv.co.kr/image/uploadfile", form,{
+//     headers: {
+//       "Content-Type": "multipart/form-data",
+//       "Authorization": `Bearer ${token}`
+//     },
+//   }).then(res=>setProductImage("https://api.mandarin.weniv.co.kr/"+res.data.filename))
+//     // setProductImage(file); // 이미지 상태 업데이트
+//   };
 
   // 명세 제대로 읽기!!
 
@@ -103,7 +130,7 @@ const handleFileChange = (e) => {
       // const productData = response.data.product;
       console.log("상품 등록 성공:", res);
     } catch (error) {
-      // API 요청 실패 시
+  //     // API 요청 실패 시
       console.log("상품 등록 실패:", error);
     }
   };
@@ -115,19 +142,29 @@ const handleFileChange = (e) => {
         <div className='img-container'>
           <p>이미지로 등록</p>
           <div className='img-background'>
-            <button className='upload-img' onClick={onCickImageUploadHandler}>
-              <img src={upload} alt='' />
+            <input 
+            style={{ display: "none" }}
+            type='file'
+            onChange={onChangeFile}
+            ref={fileRef}
+            />
+            <div>{previewImage && <img className='previewimage' src={previewImage} alt='preview'></img>}</div>
+            <div className='buttonbox'>            
+            <button className='send' onClick={onClickImage}>
+            <img src={upload} alt='' className='profile-img' />
             </button>
-            <div className="product-desc">
+            </div>
+            {/* <button className='upload-img' onClick={onCickImageUploadHandler}>
+              <img src={upload} alt='' />
+            </button> */}
+            {/* <div className="product-desc">
               <input
                 ref={imageInputRef}
                 type='file'
                 accept='image/*'
                 // value={productImage}
                 onChange={handleFileChange}
-              />
-              {/* {productImage && <p>선택된 파일: {productImage.name}</p>} */}
-            </div>
+              /> */}
           </div>
         </div>
         <form>

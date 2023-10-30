@@ -54,6 +54,10 @@ export const idRegexErrorState = atom({
     key:'idRegexErrorState',
     default: null
 })
+export const joinTokenState = atom({
+    key: 'tokenState',
+    default: localStorage.getItem('token')
+}) 
 // export const userNameState = atom({
 //     key: 'userNameState',
 //     default: ''
