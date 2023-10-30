@@ -7,10 +7,12 @@ import {
   productImageState,
   productNameState,
   productPriceState,
-  productLinkState
+  productLinkState,
+  accountnameState
 } from "../../state/ProductAtom";
+import { apiImageState } from '../../state/ModifyAtom';
 import { imageApi, productApi } from "../../api/ProductApi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -19,10 +21,14 @@ export default function AddProduct() {
   const [productName, setProductName] = useRecoilState(productNameState);
   const [productPrice, setProductPrice] = useRecoilState(productPriceState);
   const [productLink, setProductLink] = useRecoilState(productLinkState);
+  const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const [previewImage, setPreviewImage] = useState(null);
   const [isSaveEnabled, setIsSaveEnabled] = useState(false);
   const fileRef = useRef(null);
-  const navigate = useNavigate();
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
+  const navigate = useNavigate()
+  const [accountName, setAccountName] =  useRecoilState(accountnameState);
+
 
   useEffect(() => {
     // 입력 값이 모두 채워져 있는지 확인
@@ -33,21 +39,13 @@ export default function AddProduct() {
     }
   }, [productImage, productName, productPrice, productLink]);
 
-  // // input에 연결해주기 위한 useRef 훅 사용
-  // const imageInputRef = useRef();
-
-  // // 버튼 클릭 시 호출하는 함수 (클릭 이벤트)
-  // const onCickImageUploadHandler = (e) => {
-  //   imageInputRef.current?.click();
-  // };
-
   const onClickImage = (e) => {
     fileRef.current?.click(e.target.files?.[0]);
   };
 
   const onChangeFile = async (e) => {
     // 이미지 미리보기
-    const file = e.target.files[0];
+    const file = fileRef.current.files[0];
     setProductImage(file); // 실제 업로드할 파일 저장
 
     const reader = new FileReader();
@@ -59,27 +57,12 @@ export default function AddProduct() {
     try {
       const result = await imageApi(file);
       console.log(result);
-      setProductImage(result.filename);
-      console.log("성공했습니다");
+      setApiImage("https://api.mandarin.weniv.co.kr/" + result.filename);
+      console.log("이미지 등록 성공");
     } catch (error) {
       console.log(error);
     }
   };
-
-// const handleFileChange = (e) => {
-//     const file = e.target.files[0]; // 업로드한 파일
-//     const form = new FormData();
-//     form.append("image", file);
-//     axios.post("https://api.mandarin.weniv.co.kr/image/uploadfile", form,{
-//     headers: {
-//       "Content-Type": "multipart/form-data",
-//       "Authorization": `Bearer ${token}`
-//     },
-//   }).then(res=>setProductImage("https://api.mandarin.weniv.co.kr/"+res.data.filename))
-//     // setProductImage(file); // 이미지 상태 업데이트
-//   };
-
-  // 명세 제대로 읽기!!
 
   const handleName = (e) => {
     setProductName(e.target.value);
@@ -116,21 +99,19 @@ export default function AddProduct() {
     }
 
     try {
-      const res = await productApi(productName,parseFloat(productPrice),productLink,productImage);
-      // const response = await axios.post( {
-      //   product: {
-      //     itemName: productName,
-      //     price: parseFloat(productPrice),
-      //     link: productLink,
-      //     itemImage: productImage,
-      //   },
-      // });
+      const res = await productApi(productName,parseFloat(productPrice),productLink,apiImage);
 
       // API 요청 성공 시
       // const productData = response.data.product;
       console.log("상품 등록 성공:", res);
+      setProductImage(res.product.itemImage);
+      setProductName(res.product.itemName);
+      setProductPrice(res.product.price);
+      setProductLink(res.product.link);
+      setAccountName(res.product.author.accountname);
+      navigate("/myprofile")
     } catch (error) {
-  //     // API 요청 실패 시
+      // API 요청 실패 시
       console.log("상품 등록 실패:", error);
     }
   };
@@ -154,17 +135,6 @@ export default function AddProduct() {
             <img src={upload} alt='' className='profile-img' />
             </button>
             </div>
-            {/* <button className='upload-img' onClick={onCickImageUploadHandler}>
-              <img src={upload} alt='' />
-            </button> */}
-            {/* <div className="product-desc">
-              <input
-                ref={imageInputRef}
-                type='file'
-                accept='image/*'
-                // value={productImage}
-                onChange={handleFileChange}
-              /> */}
           </div>
         </div>
         <form>

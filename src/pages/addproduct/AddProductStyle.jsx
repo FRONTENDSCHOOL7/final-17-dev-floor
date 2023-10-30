@@ -52,6 +52,7 @@ export const Main = styled.div`
     }
     .previewimage {
       /* position: relative; */
+      border-radius: 10px;
       width: 322px;
       height: 204px;
       display: flex;

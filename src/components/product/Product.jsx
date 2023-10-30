@@ -1,26 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Sect2, Sale } from "./ProductStyle";
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { accountnameState, productState } from '../../state/ProductAtom';
+import { productListApi } from '../../api/ProductApi';
+
 
 export default function Product() {
+  const accountName = useRecoilValue(accountnameState)
+  const [products, setProducts] = useRecoilState(productState);
+
+
+
+  useEffect(() => {
+    const productList = async () => {
+      // 상품 등록 api 요청
+      try {
+        const result = await productListApi(accountName);
+        setProducts(result.product);
+        console.log(result.product.itemName);
+        console.log(result.price);
+        console.log(result.itemImage);
+        console.log(products);
+      } catch (error) {
+        console.log("실패했습니다");
+      }
+    };
+    productList();
+  }, []);
+
   return (
     <Sect2>
       <h2>판매중인 상품</h2>
       <Sale>
-        <div>
-          <img src="https://via.placeholder.com/140x90" alt="" />
-          <p>애월읍 노지 감귤</p>
-          <span>35,000원</span>
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/140x90" alt="" />
-          <p>애월읍 노지 감귤</p>
-          <span>35,000원</span>
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/140x90" alt="" />
-          <p>애월읍 노지 감귤</p>
-          <span>35,000원</span>
-        </div>
+        {products.map((product) => (
+          <div key={product.id}>
+            <img src={product.itemImage} alt="" />
+            <p>{product.itemName}</p>
+            <span>{product.price}</span>
+          </div>
+        ))}
       </Sale>
     </Sect2>
   );
