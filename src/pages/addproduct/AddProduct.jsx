@@ -9,14 +9,17 @@ import {
   productPriceState,
   productLinkState,
 } from "../../state/ProductAtom";
-import { productApi } from '../../api/ProductApi';
+import { tokenState } from "../../state/AuthAtom";
+import { productApi } from "../../api/ProductApi";
+import axios from "axios";
+
 
 export default function AddProduct() {
   const [productImage, setProductImage] = useRecoilState(productImageState);
   const [productName, setProductName] = useRecoilState(productNameState);
   const [productPrice, setProductPrice] = useRecoilState(productPriceState);
   const [productLink, setProductLink] = useRecoilState(productLinkState);
-
+  const [token, setToken] = useRecoilState(tokenState);
   const [isSaveEnabled, setIsSaveEnabled] = useState(false);
 
   useEffect(() => {
@@ -36,18 +39,24 @@ export default function AddProduct() {
     imageInputRef.current?.click();
   };
 
-  const handleFileChange = (e) => {
+const handleFileChange = (e) => {
     const file = e.target.files[0]; // 업로드한 파일
-    setProductImage(file); // 이미지 상태 업데이트
+    const form = new FormData();
+    form.append("image", file);
+    axios.post("https://api.mandarin.weniv.co.kr/image/uploadfile", form,{
+    headers: {
+      "Content-Type": "multipart/form-data",
+      "Authorization": `Bearer ${token}`
+    },
+  }).then(res=>setProductImage("https://api.mandarin.weniv.co.kr/"+res.data.filename))
+    // setProductImage(file); // 이미지 상태 업데이트
   };
+
+  // 명세 제대로 읽기!!
 
   const handleName = (e) => {
     setProductName(e.target.value);
   };
-
-  // const handlePrice = (e) => {
-  //   setProductPrice(e.target.value);
-  // };
 
   const handlePrice = (e) => {
     setProductPrice(e.target.value);
@@ -65,7 +74,8 @@ export default function AddProduct() {
     return true;
   };
 
-  const handleSave = async () => {
+  const handleSave = async (e) => {
+    e.preventDefault();
     if (!validateInputs()) {
       // 필수 입력사항을 입력하지 않았을 때
       alert("필수 입력사항을 입력해주세요.");
@@ -79,6 +89,7 @@ export default function AddProduct() {
     }
 
     try {
+      const res = await productApi(productName,parseFloat(productPrice),productLink,productImage);
       const res = await productApi(productName,productPrice,productLink,"");
       // const response = await axios.post( {
       //   product: {
@@ -135,9 +146,9 @@ export default function AddProduct() {
           <div className='product-desc'>
             <label>가격</label>
             <input
-              type="text"
-              // value={productPrice}
-              onBlur={handlePrice}
+              type='text'
+              value={productPrice}
+              onChange={handlePrice}
               placeholder='숫자만 입력 가능합니다.'
             />
           </div>

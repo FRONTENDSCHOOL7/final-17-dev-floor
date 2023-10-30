@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import hamburgerOn from "../../assets/images/icon-post-list-on.png";
 import hamburgerOff from "../../assets/images/icon-post-list-off.png";
@@ -12,13 +12,46 @@ import PostList from "../../components/postlist/PostList";
 import Product from "../../components/product/Product";
 import { Link } from "react-router-dom";
 import PostAlbum from "../../components/postalbum/PostAlbum";
+import { profileApi, myProfileApi, getImg } from "../../api/ProfileApi";
+import {
+  apiImageState,
+  idState,
+  introState,
+  userNameState,
+} from "../../state/ModifyAtom";
+import { useRecoilState } from "recoil";
+import { imageState } from "../../state/PostAtom";
 
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
+  const [userName, setUserName] = useRecoilState(userNameState);
+  const [id, setId] = useRecoilState(idState);
+  const [intro, setIntro] = useRecoilState(introState);
+  const [image, setImage] = useRecoilState(imageState);
+  const [apiImage, setApiImage] = useRecoilState(apiImageState);
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
   };
+
+  // 내 프로필 조회
+
+  const handleMyProfile = async (e) => {
+    try {
+      const res = await myProfileApi();
+      setImage(res.user.image);
+      setUserName(res.user.username);
+      setId(res.user.accountname);
+      setIntro(res.user.intro);
+    } catch (error) {
+      console.log("에러입니다.");
+    }
+  };
+
+  useEffect(() => {
+    handleMyProfile();
+  }, []);
+
   return (
     <Body>
       <TopBar />
@@ -26,11 +59,11 @@ export default function MyProfile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              <span className='followers'>2950</span>
+              {/* <span className='followers'>{myProfile && myProfile.followerCount}</span> */}
               <p>followers</p>
             </Link>
           </button>
-          <img src={profileImg} alt='프로필 이미지' />
+          <img src={image} alt='프로필 이미지' className='profileImg' />
           <button>
             <Link to='/following'>
               <span>128</span>
@@ -39,9 +72,9 @@ export default function MyProfile() {
           </button>
         </ProImg>
         <Intro>
-          <h2>애월읍 위니브 감귤농장</h2>
-          <p>@ weniv_Mandarin</p>
-          <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</p>
+          <h2>{userName}</h2>
+          <p>@ {id}</p>
+          <p>{intro}</p>
         </Intro>
         <Btns>
           <Link to='/modify'>

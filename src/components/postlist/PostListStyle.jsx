@@ -28,6 +28,9 @@ export const Sect3 = styled.div`
     .content-title {
       display: flex;
       justify-content: space-between;
+      .imgBox {
+        img {
+      }}
     }
     .content-id {
       h3 {
