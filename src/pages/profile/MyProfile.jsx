@@ -19,8 +19,9 @@ import {
   introState,
   userNameState,
 } from "../../state/ModifyAtom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { imageState } from "../../state/PostAtom";
+import { tokenState } from "../../state/AuthAtom";
 
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
@@ -29,6 +30,7 @@ export default function MyProfile() {
   const [intro, setIntro] = useRecoilState(introState);
   const [image, setImage] = useRecoilState(imageState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
+  const token = useRecoilValue(tokenState);
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
@@ -38,11 +40,12 @@ export default function MyProfile() {
 
   const handleMyProfile = async (e) => {
     try {
-      const res = await myProfileApi();
+      const res = await myProfileApi(token);
       setImage(res.user.image);
       setUserName(res.user.username);
       setId(res.user.accountname);
       setIntro(res.user.intro);
+      console.log(res);
     } catch (error) {
       console.log("에러입니다.");
     }
@@ -59,7 +62,7 @@ export default function MyProfile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              {/* <span className='followers'>{myProfile && myProfile.followerCount}</span> */}
+              <span className="followers">128</span>
               <p>followers</p>
             </Link>
           </button>
