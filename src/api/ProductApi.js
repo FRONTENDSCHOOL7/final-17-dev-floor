@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const url = "https://api.mandarin.weniv.co.kr/product";
+const url2 = "https://api.mandarin.weniv.co.kr/image/uploadfile";
+
 
 export const productApi = async (itemName, price, link, itemImage) => {
   const token =
@@ -21,6 +23,22 @@ export const productApi = async (itemName, price, link, itemImage) => {
         "Content-type": "application/json",
     },
     });
+    return res.data;
+  } catch (error) {
+    alert("업로드 실패");
+  }
+};
+
+export const imageApi = async (file) => {
+  const formData = new FormData();
+  formData.append("image", file);
+  try {
+    const res = await axios.post(url2, formData, {
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
+    });
+    console.log(res);
     return res.data;
   } catch (error) {
     alert("업로드 실패");

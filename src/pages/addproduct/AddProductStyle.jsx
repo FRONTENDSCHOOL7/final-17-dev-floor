@@ -35,18 +35,31 @@ export const Main = styled.div`
   .img-background {
     border-radius: 10px;
     border: 0.5px solid var(--DBDBDB, #dbdbdb);
-    background: var(--Gray-6, #f2f2f2);
+    background: var(--Gray-6, #DBDBDB);
     width: 322px;
     height: 204px;
     display: flex;
     align-items: flex-end;
     justify-content: end;
     button {
+      width: 36px;
+      height: 36px;
       margin-right: 12px;
       margin-bottom: 12px;
     }
     input {
       display: none;
+    }
+    .previewimage {
+      /* position: relative; */
+      width: 322px;
+      height: 204px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: end;
+    }
+    .buttonbox {
+      position: absolute;
     }
   }
   }
