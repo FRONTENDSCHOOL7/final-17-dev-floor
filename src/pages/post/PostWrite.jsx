@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import back from "../../assets/images/icon-arrow-left.png";
 import upload from "../../assets/images/upload-file.png";
@@ -6,10 +6,9 @@ import { Body, Sect1, Sect2 } from "./PostWriteStyle";
 import { useRecoilState } from "recoil";
 import { useRef } from "react";
 import { useState } from "react";
-import { contentState, imageState } from "../../state/PostAtom";
+import { contentState, imageState, postIdState } from "../../state/PostAtom";
 import { useNavigate } from "react-router-dom";
 import { postPostApi, imageApi } from "../../api/PostApi";
-import { postIdState } from "../../state/PostAtom";
 
 export default function PostWrite() {
   const [content, setContent] = useRecoilState(contentState);
@@ -18,6 +17,9 @@ export default function PostWrite() {
   const [apiImage, setApiImage] = useState("");
   const fileRef = useRef(null);
   const navigate = useNavigate();
+
+  const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
@@ -55,7 +57,12 @@ export default function PostWrite() {
       console.log(error);
     }
   };
+  useEffect(() => {
+    console.log("post.id: " + postId);
+  }, [postId]);
+  
 
+  
   return (
     <Body>
       <Sect1>

@@ -34,3 +34,7 @@ export const apiImageState = atom({
   key: "apiImageState",
   default: "",
 });
+export const logoutModalState = atom({
+  key: "logoutModalState",
+  default: false
+})

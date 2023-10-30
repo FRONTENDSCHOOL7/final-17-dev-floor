@@ -34,7 +34,7 @@ export default function Post() {
                   <p>@ weniv_Mandarin</p>
                 </div>
                 <div>
-                  <button onClick={showModal}>
+                  <button className='modalDel' onClick={showModal}>
                     <img src={more} alt='' />
                   </button>
                 </div>
