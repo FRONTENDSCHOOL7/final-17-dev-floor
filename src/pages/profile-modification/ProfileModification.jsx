@@ -27,7 +27,6 @@ export default function ProfileModification() {
   const [image, setImage] = useRecoilState(imageState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const fileRef = useRef(null);
-  const token = useRecoilValue(tokenState);
 
   const navigate = useNavigate();
 

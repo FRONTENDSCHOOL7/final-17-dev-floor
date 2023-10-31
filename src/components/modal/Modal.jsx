@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { tokenState } from "../../state/AuthAtom";
 import { postIdState } from "../../state/PostAtom";
 
-export default function Modal({ isOpenModal, setIsOpenModal, children}) {
+export default function Modal({ isOpenModal, setIsOpenModal }) {
   const wrapperRef = useRef();
   // const token = useRecoilValue(tokenState);
   const token =

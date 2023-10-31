@@ -20,7 +20,9 @@ import {
   userNameState,
 } from "../../state/ModifyAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { imageState } from "../../state/PostAtom";
+import { tokenState } from "../../state/AuthAtom";
 import { tokenState } from "../../state/AuthAtom";
 
 export default function MyProfile() {
