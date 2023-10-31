@@ -44,9 +44,12 @@ export const imageApi = async (file) => {
   }
 };
 
-export const productListApi = async (accountName, token, skip) => {
+export const productListApi = async (accountname, token) => {
+  // const token =
+  // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
+
   try {
-    const res = await axios.get(url + `/${accountName}/?limit=5&skip=${skip}`, {
+    const res = await axios.get(url + `/${accountname}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
@@ -62,6 +65,21 @@ export const productListApi = async (accountName, token, skip) => {
 export const productDelApi = async (product_id, token) => {
   try {
     const res = await axios.delete(url + `${product_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    });
+    console.log(res);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const productEditApi = async (product_id, token) => {
+  try {
+    const res = await axios.edit(url + `${product_id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",

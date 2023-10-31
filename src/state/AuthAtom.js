@@ -26,7 +26,7 @@ export const errorPwState = atom({
 });
 export const tokenState = atom({
   key: "tokenState",
-  default: null,
+  default: localStorage.getItem("token"),
   effects_UNSTABLE: [persistAtom],
 });
 export const idState = atom({
