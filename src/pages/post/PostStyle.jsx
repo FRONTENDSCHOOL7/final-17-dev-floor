@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-  /* border: 3px dashed gray; */
   height: 100vh;
-  width: 390px;
+  max-width: 720px;
+  width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  /* transform: translateX(-10%); */
 `;
 
 export const Sect1 = styled.div`
@@ -160,12 +160,20 @@ export const Sect3 = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      button {
+
+      .btnDisabled {
         display: block;
         width: 40px;
         font-size: 14px;
         color: #c4c4c4;
       }
+      .btnActive {
+        display: block;
+        width: 40px;
+        font-size: 14px;
+        color: orange;
+      }
+
       input {
         display: block;
       }
