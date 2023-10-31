@@ -8,6 +8,7 @@ import { nameValidState } from "../../state/ModifyAtom";
 import { imageApi, postApi } from "../../api/PostApi";
 import upload from "../../assets/images/upload-file.png";
 // import { validateAccount } from "../../api/ProfileApi";
+import profileDefault from "../../assets/images/Group 26.png";
 
 export function ProfileJoin({ preData, setPreData, submitJoin,joinProfileData }) {
     const [nameValid, setNameValid] = useRecoilState(nameValidState)
@@ -134,7 +135,7 @@ return (
                 />
                 <div className="profileImg">
                     {/* {image && <img src={image} alt=""/>} */}
-                    {image ? <img src={image}/> : <img src={setImage}/>}
+                    {image ? <img src={profileDefault}/> : <img src={setImage}/>}
                 </div>
             </form>
             </div>

@@ -93,6 +93,8 @@ export const Inner = styled.div`
         font-size: 0.8rem;
     }
     .upload-img,.profileImg img{
+        border-radius: 50%;
+        position: relative;
         width: 110px;
         height: 110px;
         display: block;
@@ -101,10 +103,14 @@ export const Inner = styled.div`
     .profile-img  {
         display: inline-block;
         background-size: 36px 36px;
-        height: 36px;
-        width: 36px;
-        margin: -50px 0px 30px 70px;
     }
+    .write-bottom {
+        display: inline-block;
+        position: absolute;
+        top: 30%;
+        right: 361px;
+    }
+    .send {width: 36px;}
     form {
         display: flex;
         flex-direction: column;
