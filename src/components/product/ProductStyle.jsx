@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const Sect2 = styled.div`
-  width: 720px;
-  height: 208px;
-  margin-bottom: 12px;
   h2 {
     margin-top: 20px;
     margin-left: 18px;
@@ -17,18 +14,17 @@ export const Sale = styled.div`
   display: flex;
   margin-left: 18px;
   gap: 10px;
-  overflow: auto;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   img {
     width: 140px;
     height: 90px;
   }
   p {
-    width: 136px;
-    height: 18px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     margin-top: 6px;
+    height: 6px;
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 12px;
@@ -40,3 +36,4 @@ export const Sale = styled.div`
     color: #cb9367;
   }
 `;
+// section 2
