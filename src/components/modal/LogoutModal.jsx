@@ -25,14 +25,15 @@ export default function LogoutModal({ isModal, setIsModal, children }) {
         }
     };
 
-    const xClose = () => {
-        setIsModal(false);
-    };
-    const handleLogout = () => {
-        localStorage.clear();
-        setToken(null);
-        navigate("/");
-    };
+  const xClose = () => {
+    setIsModal(false);
+  };
+  const handleLogout = () => {
+    localStorage.clear();
+    setToken(null);
+    navigate("/");
+  };
+
 
     return (
         <div ref={wrapperRef} value={isModal}>

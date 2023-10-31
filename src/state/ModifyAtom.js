@@ -11,7 +11,7 @@ export const userNameState = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
-export const accountNameState = atom({
+export const accountState = atom({
   key: "accountNameState",
   default: "",
   effects_UNSTABLE: [persistAtom],
@@ -51,5 +51,11 @@ export const apiImageState = atom({
 export const logoutModalState = atom({
   key: "logoutModalState",
   default: false,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const profileImgState = atom({
+  key: "profileImgState",
+  default: "",
   effects_UNSTABLE: [persistAtom],
 });

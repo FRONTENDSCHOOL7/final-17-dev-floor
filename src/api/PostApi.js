@@ -42,7 +42,7 @@ export const imageApi = async (file) => {
 };
 export const postUserApi = async (accountName, token) => {
   try {
-    const res = await axios.get(url + accountName, {
+    const res = await axios.get(url + `${accountName}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",

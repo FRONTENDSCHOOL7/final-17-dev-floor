@@ -15,10 +15,10 @@ import PostAlbum from "../../components/postalbum/PostAlbum";
 import { myProfileApi } from "../../api/ProfileApi";
 import {
   apiImageState,
-  accountNameState,
   introState,
   userNameState,
   profileImgState,
+  accountState,
 } from "../../state/ModifyAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { tokenState } from "../../state/AuthAtom";
@@ -26,7 +26,7 @@ import { tokenState } from "../../state/AuthAtom";
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(accountNameState);
+  const [id, setId] = useRecoilState(accountState);
   const [intro, setIntro] = useRecoilState(introState);
   const [image, setImage] = useRecoilState(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
