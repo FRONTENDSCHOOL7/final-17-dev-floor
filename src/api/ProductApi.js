@@ -44,12 +44,9 @@ export const imageApi = async (file) => {
   }
 };
 
-export const productListApi = async (accountname, token) => {
-  // const token =
-  // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
-
+export const productListApi = async (accountName, token, skip) => {
   try {
-    const res = await axios.get(url + `/${accountname}`, {
+    const res = await axios.get(url + `/${accountName}/?limit=5&skip=${skip}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
@@ -76,4 +73,3 @@ export const productDelApi = async (product_id, token) => {
     throw error;
   }
 };
-

@@ -23,14 +23,4 @@ export const AlbumImg = styled.div`
   div {
     margin-top: 16px;
   }
-  /* .img-layer::before {
-    background: url(${layer}) no-repeat;
-    content: "";
-    display: inline-block;
-    background-size: 34px;
-    height: 32px;
-    width: 32px;
-    margin: -50px -96px 30px 71px;
-    position: relative;
-  } */
 `;

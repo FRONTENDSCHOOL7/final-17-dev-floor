@@ -29,11 +29,6 @@ export const productLinkState = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
-export const accountnameState = atom({
-  key: "accountnameState",
-  default: "",
-  effects_UNSTABLE: [persistAtom],
-});
 export const productState = atom({
   key: "productState",
   default: [],
