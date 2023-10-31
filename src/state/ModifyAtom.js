@@ -12,7 +12,7 @@ export const userNameState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 export const accountState = atom({
-  key: "accountNameState",
+  key: "accountState",
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
