@@ -3,15 +3,22 @@ import styled from "styled-components";
 // section 3
 
 export const Sect3 = styled.div`
-  height: 500px;
-  overflow: auto;
-  background: #fff;
+  .album-btns {
+    display: flex;
+    justify-content: right;
+    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  }
+  button {
+    background: #fff;
+    border: none;
+  }
   .content-container::-webkit-scrollbar {
     display: none;
   }
   .content-container {
-    /* width: 100%; */
-    box-sizing: border-box;
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: visible;
     display: flex;
     flex-direction: column;
     margin: 16px 16px 0;
@@ -27,9 +34,6 @@ export const Sect3 = styled.div`
     .content-title {
       display: flex;
       justify-content: space-between;
-      .imgBox {
-        img {
-      }}
     }
     .content-id {
       h3 {
@@ -51,10 +55,6 @@ export const Sect3 = styled.div`
       flex-direction: column;
     }
     .content-inner {
-      img {
-        width: 304px;
-        height: 228px;
-      }
       font-size: 14px;
       font-weight: 400;
       p {

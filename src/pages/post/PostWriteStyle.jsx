@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-  height: 100vh;
-  max-width: 720px;
-  width: 100%;
-  padding: 0 20px;
+  /* border: 3px dashed gray; */
+  height: 844px;
+  width: 390px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 5px;
+  /* transform: translateX(-10%); */
 `;
 
 export const Sect1 = styled.div`
@@ -41,19 +41,15 @@ export const Sect2 = styled.div`
       width: 42px;
       height: 42px;
     }
-    .writeBox {
-    }
-    input {
+    textarea {
       display: block;
       margin-top: 7px;
-      max-width: 720px;
+      width: 100%;
+      height: 700px;
       border-color: white;
-      white-space: normal;
     }
-    img {
-      display: block;
-      width: 304px;
-      height: 228px;
+    textarea::placeholder {
+      color: #c4c4c4;
     }
   }
   .write-bottom {

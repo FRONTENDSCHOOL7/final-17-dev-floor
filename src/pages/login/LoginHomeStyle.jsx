@@ -14,11 +14,8 @@ export const Logo = styled.div`
         width: 144px;
         color: var(--fontColor);
         text-align: center;
-        .logoTxt {
-            padding-top: 20px;
-            img {
+        img {
             width: 100%;
-            }
         }
     }
 `

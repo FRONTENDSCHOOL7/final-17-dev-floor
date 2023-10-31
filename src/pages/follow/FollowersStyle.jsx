@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-  max-width: 720px;
-  width: 100%;
+  width: 390px;
   height: 100vh;
   margin: 0 auto;
-  position: relative;
 `;
 
 export const Follower = styled.div`
