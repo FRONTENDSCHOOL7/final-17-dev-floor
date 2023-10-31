@@ -4,9 +4,6 @@ const url = "https://api.mandarin.weniv.co.kr/product";
 const url2 = "https://api.mandarin.weniv.co.kr/image/uploadfile";
 
 export const productApi = async (itemName, price, link, itemImage, token) => {
-  // const token =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
-
   const productData = {
     product: {
       itemName: itemName,
@@ -45,9 +42,6 @@ export const imageApi = async (file) => {
 };
 
 export const productListApi = async (accountname, token) => {
-  // const token =
-  // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
-
   try {
     const res = await axios.get(url + `/${accountname}`, {
       headers: {
@@ -62,15 +56,32 @@ export const productListApi = async (accountname, token) => {
   }
 };
 
-// const onChangeFile = (e) => {
-//   const file = e.target.files[0]; // 업로드한 파일
-//   const form = new FormData();
-//   form.append("image", file);
-//   axios.post("https://api.mandarin.weniv.co.kr/image/uploadfile", form,{
-//   headers: {
-//     "Content-Type": "multipart/form-data",
-//     "Authorization": `Bearer ${token}`
-//   },
-// }).then(res=>setProductImage("https://api.mandarin.weniv.co.kr/"+res.data.filename))
-//   // setProductImage(file); // 이미지 상태 업데이트
-// };
+export const productDelApi = async (product_id, token) => {
+  try {
+    const res = await axios.delete(url + `/${product_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    });
+    console.log(res);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const productEditApi = async (product_id, token) => {
+  try {
+    const res = await axios.edit(url + `${product_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    });
+    console.log(res);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};

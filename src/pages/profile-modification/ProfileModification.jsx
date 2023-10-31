@@ -4,27 +4,27 @@ import profileImg from "../../assets/images/Group 26.png";
 import TopBarSave from "../../components/topbar/TopBarSave";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
-  accountNameState,
   introState,
   userNameState,
   idValidState,
   nameValidState,
   apiImageState,
+  profileImgState,
+  accountState,
 } from "../../state/ModifyAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
 import { editApi, validateAccount } from "../../api/ProfileApi";
 import { Navigate, useNavigate } from "react-router-dom";
-import { imageState } from "../../state/PostAtom";
 import { imageApi } from "../../api/PostApi";
 import { tokenState } from "../../state/AuthAtom";
 
 export default function ProfileModification() {
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(accountNameState);
+  const [id, setId] = useRecoilState(accountState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
-  const [image, setImage] = useRecoilState(imageState);
+  const [image, setImage] = useRecoilState(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const fileRef = useRef(null);
   const token = useRecoilValue(tokenState);
