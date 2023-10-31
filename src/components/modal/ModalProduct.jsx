@@ -6,7 +6,7 @@ export default function ModalProduct({
   isOpenModal,
   setIsOpenModal,
   children,
-  handleDelete,
+  handleDelete
 }) {
   const wrapperRef = useRef();
   useEffect(() => {

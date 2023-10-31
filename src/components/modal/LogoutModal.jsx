@@ -6,24 +6,24 @@ import { tokenState } from "../../state/AuthAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 export default function LogoutModal({ isModal, setIsModal, children }) {
-  const wrapperRef = useRef();
-  const [token, setToken] = useRecoilState(tokenState);
+    const wrapperRef = useRef();
+    const [token, setToken] = useRecoilState(tokenState);
 
-  const navigate = useNavigate();
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    const navigate = useNavigate();
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+        return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+        };
+    });
+    const handleClickOutside = (event) => {
+        if (wrapperRef && !wrapperRef.current.contains(event.target)) {
+        setIsModal(false);
+        } else {
+        setIsModal(true);
+        }
     };
-  });
-  const handleClickOutside = (event) => {
-    if (wrapperRef && !wrapperRef.current.contains(event.target)) {
-      setIsModal(false);
-    } else {
-      setIsModal(true);
-    }
-  };
 
   const xClose = () => {
     setIsModal(false);
@@ -34,23 +34,24 @@ export default function LogoutModal({ isModal, setIsModal, children }) {
     navigate("/");
   };
 
-  return (
-    <div ref={wrapperRef} value={isModal}>
-      {children}
-      <Sect1>
-        <div className='container'>
-          <div className='barr'>
-            <button className='btn' onClick={xClose}>
-              <img src={bar} alt='' />
-            </button>
-          </div>
-          <div className='letter'>
-            <p>로그아웃하시겠어요?</p>
-            <button onClick={xClose}>취소</button>
-            <button onClick={handleLogout}>삭제</button>
-          </div>
+
+    return (
+        <div ref={wrapperRef} value={isModal}>
+        {children}
+        <Sect1>
+            <div className='container'>
+            <div className='barr'>
+                <button className='btn' onClick={xClose}>
+                <img src={bar} alt='' />
+                </button>
+            </div>
+            <div className='letter'>
+                <p>로그아웃하시겠어요?</p>
+                <button onClick={xClose}>취소</button>
+                <button onClick={handleLogout}>삭제</button>
+            </div>
+            </div>
+        </Sect1>
         </div>
-      </Sect1>
-    </div>
-  );
+    );
 }

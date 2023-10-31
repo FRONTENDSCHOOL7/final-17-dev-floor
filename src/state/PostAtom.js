@@ -22,3 +22,8 @@ export const postIdState = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
+
+export const postIdState = atom({
+  key: "postIdState",
+  default: "",
+});
