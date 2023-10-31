@@ -1,21 +1,20 @@
 import React, { useEffect } from "react";
 import { Sect2, Sale } from "./ProductStyle";
-import { useRecoilValue, useRecoilState } from 'recoil';
-import { accountnameState, productState } from '../../state/ProductAtom';
-import { productListApi } from '../../api/ProductApi';
-
+import { useRecoilValue, useRecoilState } from "recoil";
+import { accountnameState, productState } from "../../state/ProductAtom";
+import { productListApi } from "../../api/ProductApi";
+import { tokenState } from "../../state/AuthAtom";
 
 export default function Product() {
-  const accountName = useRecoilValue(accountnameState)
+  const accountName = useRecoilValue(accountnameState);
   const [products, setProducts] = useRecoilState(productState);
-
-
+  const token = useRecoilValue(tokenState);
 
   useEffect(() => {
     const productList = async () => {
       // 상품 등록 api 요청
       try {
-        const result = await productListApi(accountName);
+        const result = await productListApi(accountName, token);
         setProducts(result.product);
         console.log(result.product.itemName);
         console.log(result.price);
@@ -34,7 +33,7 @@ export default function Product() {
       <Sale>
         {products.map((product) => (
           <div key={product.id}>
-            <img src={product.itemImage} alt="" />
+            <img src={product.itemImage} alt='' />
             <p>{product.itemName}</p>
             <span>{product.price}</span>
           </div>

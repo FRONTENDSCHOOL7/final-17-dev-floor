@@ -15,7 +15,7 @@ import PostAlbum from "../../components/postalbum/PostAlbum";
 import { profileApi, myProfileApi, getImg } from "../../api/ProfileApi";
 import {
   apiImageState,
-  idState,
+  accountNameState,
   introState,
   userNameState,
 } from "../../state/ModifyAtom";
@@ -26,7 +26,7 @@ import { tokenState } from "../../state/AuthAtom";
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(idState);
+  const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [image, setImage] = useRecoilState(imageState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
@@ -62,7 +62,7 @@ export default function MyProfile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              <span className="followers">128</span>
+              <span className='followers'>128</span>
               <p>followers</p>
             </Link>
           </button>

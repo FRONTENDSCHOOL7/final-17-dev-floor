@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import message from "../../assets/images/icon-message-circle.png";
 import share from "../../assets/images/icon-share.png";
@@ -14,25 +14,38 @@ import PostList from "../../components/postlist/PostList";
 import PostAlbum from "../../components/postalbum/PostAlbum";
 import { Link } from "react-router-dom";
 
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { followState, hamburgerBtnState } from "../../state/FollowAtom";
-import { profileApi } from "../../api/ProfileApi";
-import { idState, introState, userNameState } from "../../state/ModifyAtom";
+import { followApi, profileApi } from "../../api/ProfileApi";
+import {
+  accountNameState,
+  introState,
+  userNameState,
+} from "../../state/ModifyAtom";
+import { tokenState } from "../../state/AuthAtom";
 
 export default function Profile() {
   const [follow, setFollow] = useRecoilState(followState);
   const [hamburgerBtn, setHamburgerBtn] = useRecoilState(hamburgerBtnState);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(idState);
+  const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
-
+  const [yourImg, setYourImg] = useState("");
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
   };
+  const token = useRecoilValue(tokenState);
 
-  const checkFollow = () => {
-    setFollow(!follow);
-    localStorage.setItem("isFollowed", !follow);
+  const checkFollow = async (e) => {
+    e.preventDefault();
+    try {
+      setFollow(!follow);
+      localStorage.setItem("isFollowed", !follow);
+      const res = await followApi(id, token);
+      console.log(res);
+    } catch (error) {
+      console.log("에러가 발생했습니다.");
+    }
   };
   useEffect(() => {
     const storedIsFollowed = localStorage.getItem("isFollowed");
@@ -43,8 +56,9 @@ export default function Profile() {
   // 상대 프로필 클릭시 넘어오는 화면 => profile,
   const handleProfile = async (e) => {
     try {
-      const res = await profileApi("devUser123");
+      const res = await profileApi("rmsvyrmsvy", token);
       console.log(res);
+      setYourImg(res.profile.image);
       setUserName(res.profile.username);
       setId(res.profile.accountname);
       setIntro(res.profile.intro);
@@ -67,7 +81,7 @@ export default function Profile() {
               <p>followers</p>
             </Link>
           </button>
-          <img src={profileImg} alt='프로필 이미지' />
+          <img src={yourImg} alt='프로필 이미지' className='profileImg' />
           <button>
             <Link to='/following'>
               <span>128</span>

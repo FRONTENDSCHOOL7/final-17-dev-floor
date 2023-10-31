@@ -4,7 +4,7 @@ import profileImg from "../../assets/images/Group 26.png";
 import TopBarSave from "../../components/topbar/TopBarSave";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
-  idState,
+  accountNameState,
   introState,
   userNameState,
   idValidState,
@@ -20,7 +20,7 @@ import { tokenState } from "../../state/AuthAtom";
 
 export default function ProfileModification() {
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(idState);
+  const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
@@ -77,7 +77,7 @@ export default function ProfileModification() {
       return;
     }
     try {
-      const res = await editApi(userName, id, intro, apiImage,token);
+      const res = await editApi(userName, id, intro, apiImage, token);
       console.log(res);
       navigate("/myprofile");
     } catch (error) {
