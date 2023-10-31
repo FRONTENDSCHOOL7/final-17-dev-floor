@@ -64,7 +64,7 @@ export const productListApi = async (accountname, token) => {
 
 export const productDelApi = async (product_id, token) => {
   try {
-    const res = await axios.delete(url + `${product_id}`, {
+    const res = await axios.delete(url + `/${product_id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
@@ -76,4 +76,3 @@ export const productDelApi = async (product_id, token) => {
     throw error;
   }
 };
-
