@@ -21,7 +21,7 @@ export default function TopBar() {
       <button>
         <img src={back} alt="" />
       </button>
-      <button onClick={handleLogoutClick}>
+      <button className='modalBtn' onClick={handleLogoutClick}>
         <img src={more} alt="" />
       </button>
       {isModal && <LogoutModal setIsModal={setIsModal}/>}

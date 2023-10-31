@@ -6,7 +6,6 @@ export const Top = styled.div`
   background: #fff;
   height: 48px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
   padding: 0 20px;
@@ -16,7 +15,7 @@ export const Top = styled.div`
     background: #fff;
     border-style: none;
   }
-
+  .modalBtn {margin-left: auto;}
   .btn-save {
     color: #fff;
     background: #12184e;
@@ -51,7 +50,7 @@ export const TopFollowers = styled.div`
   align-items: center;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
   button {
-    margin: 13px 16px;
+    padding: 13px 16px;
     background: #fff;
     border-style: none;
   }

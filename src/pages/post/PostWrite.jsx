@@ -56,9 +56,9 @@ export default function PostWrite() {
       console.log(error);
     }
   };
-  useEffect(() => {
-    console.log("post.id: " + postId);
-  }, [postId]);
+  // useEffect(() => {
+  //   console.log("post.id: " + postId);
+  // }, [postId]);
 
   return (
     <Body>

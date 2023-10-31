@@ -46,8 +46,10 @@ export default function LogoutModal({ isModal, setIsModal, children }) {
             </div>
             <div className='letter'>
                 <p>로그아웃하시겠어요?</p>
-                <button onClick={xClose}>취소</button>
-                <button onClick={handleLogout}>삭제</button>
+                <div className="btn">
+                    <button onClick={xClose}>취소</button>
+                    <button className='logout' onClick={handleLogout}>로그아웃</button>
+                </div>
             </div>
             </div>
         </Sect1>

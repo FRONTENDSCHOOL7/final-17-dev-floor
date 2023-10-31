@@ -53,7 +53,7 @@ export const postUserApi = async (accountName, token) => {
     alert("불러오기 실패");
   }
 };
-export const postDel = async (postId) => {
+export const postDel = async (postId,token) => {
   try {
     const res = await axios.delete(url + `/${postId}`, {
       headers: {
@@ -67,21 +67,20 @@ export const postDel = async (postId) => {
   }
 };
 // 댓글
-export const postCommentApi = async (post_id,commentContent,token) => {
+// const post_id = '653763b5b2cb20566385b859'
+export const postCommentApi = async (comment,token) => {
   try {
-    const res = await axios.post(url+`/${post_id}/comments`, {
-      comment: {
-        content: commentContent
-      }
+    const res = await axios.post(`https://api.mandarin.weniv.co.kr/post/653fcb1fb2cb205663934f1e/comments`, {
+      comment: {content: comment}
     }, {
         headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
         "Content-type": "application/json"
       }
     });
-    return res.data;
-  } catch (error) {
+      console.log(res)
+      return res.data;
+    } catch (error) {
     alert("댓글 업로드 에러");
-    return []
   }
 }

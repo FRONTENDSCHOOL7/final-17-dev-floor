@@ -1,12 +1,8 @@
 import { useRecoilState } from "recoil";
-import { joinApi, profileImgApi, validateEmail } from "../../api/AuthApi";
-import { btnDisableState, contentState, errorPwState, errorRegexState, errorState, idRegexErrorState, idRegexState, idValidErrorState, imageState, joinBtnDisableState, joinTokenState, preDataState, profileImgState, tokenState } from "../../state/AuthAtom";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
-import { Email, JoinForm, JoinInner, JoinTit, JoinWrap, Password, Submit,Body, Inner, Main, Profile } from './JoinStyle'
-import { nameValidState } from "../../state/ModifyAtom";
-import { imageApi, postApi } from "../../api/PostApi";
-import upload from "../../assets/images/upload-file.png";
+import { joinApi, validateEmail } from "../../api/AuthApi";
+import { errorState, idValidErrorState, preDataState } from "../../state/AuthAtom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { EmailJoin } from "./EmailJoin";
 import { ProfileJoin } from "./ProfileJoin";
 import { validateAccount } from "../../api/ProfileApi";
@@ -18,7 +14,6 @@ const navigate = useNavigate();
 const [isJoinPage, setIsJoinPage] = useState(true);  // 현재 페이지가 조인페이지인지 프로필페이지인지 결정하는 상태
 const [apiImage, setApiImage] = useState("");
 const [error, setError] = useRecoilState(errorState)
-const [token, setToken] = useRecoilState(joinTokenState)
 const [idValidError, setIdValidError] = useRecoilState(idValidErrorState)
 
 

@@ -68,10 +68,10 @@ export const idRegexErrorState = atom({
   default: null,
   effects_UNSTABLE: [persistAtom],
 });
-export const joinTokenState = atom({
-  key: "tokenState",
-  default: localStorage.getItem("token"),
-});
+// export const joinTokenState = atom({
+//   key: "tokenState",
+//   default: localStorage.getItem("token"),
+// });
 // export const userNameState = atom({
 //     key: 'userNameState',
 //     default: ''
