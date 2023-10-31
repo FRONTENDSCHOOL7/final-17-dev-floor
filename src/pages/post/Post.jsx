@@ -8,32 +8,39 @@ import TopBar from "../../components/topbar/TopBarBasic";
 import { useState } from "react";
 import Modal from "../../components/modal/Modal";
 import { postCommentApi } from "../../api/PostApi";
+import { useRecoilValue } from "recoil";
+import { tokenState } from "../../state/AuthAtom";
 
-export default function Post({post_id, token}) {
+export default function Post({post_id}) {
   const [modalOpen, setIsOpenModal] = useState(false);
-  const [commentCount, setCommentCount] = useState(0);
   const [comment, setComment] = useState(0);
-  const [commentContent, setCommentContent] = useState('')
-  const [message, setMessage] = useState('')
-  const [postcomment, setPostcomment] = useState([]); 
+
+  const [commentContent, setCommentContent] = useState('') //댓글내용상태
+  const [postcomment, setPostcomment] = useState([]); //댓글목록
+  const token = useRecoilValue(tokenState) 
 
   const showModal = () => {
     setIsOpenModal(true);
   };
-  // const addComment = (new) => {
-  //   setPostcomment([...postcomment, new])
-  //   setCommentCount(commentCount+1)
-  // }
-  const handleComment = async (e) => {
-    e.preventDefault()
+
+  const handleComment = async () => {
+    if(commentContent.trim()==='') {
+      return //댓글 내용없으면 게시안함
+    }
     // setcomment(e.target.value);
+    
     try {
-      const response = await postCommentApi(post_id, commentContent, token);
-      console.log(response)
+      const res = await postCommentApi( commentContent,token);
+      console.log(res)
+
+      const newComment = res.comment;
+      
+      setPostcomment([...postcomment,newComment])
+      console.log('댓글작성완료');
       setCommentContent('')
-      setMessage('댓글이 작성되었습니다.');
+
     } catch (error) {
-      setMessage('댓글 작성에 실패했습니다.');
+        console.error('댓글실패',error);
     }
   };
   
@@ -88,14 +95,13 @@ export default function Post({post_id, token}) {
       {/* Sect2 댓글 */}
       <Sect2>
         <div className='comment-container'>
-          <p>댓글 수: {commentCount}</p>
-          {/* {postcomment.map((comment,index)=>( */}
-            <div className='comment-list'>
+          {postcomment.map((comment,index)=>(
+            <div className='comment-list' key={index}>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment'>
               <div className='comment-title'>
                 <div className='comment-id'>
-                  <h3></h3>
+                  <h3>{comment.author.username}</h3>
                   <p></p>
                 </div>
                 <div>
@@ -105,12 +111,12 @@ export default function Post({post_id, token}) {
                 </div>
               </div>
               <div className='comment-inner'>
-                <p>게시글 답글 ~~ !! 최고최고</p>
+                <p>{comment.content}</p>
               </div>
             </div>
           </div>
-          {/* ))} */}
-          <div className='comment-list'>
+          ))} 
+          {/* <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment'>
               <div className='comment-title'>
@@ -131,7 +137,7 @@ export default function Post({post_id, token}) {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </Sect2> 
       {/* Sect2 댓글 목록 */}
@@ -143,7 +149,7 @@ export default function Post({post_id, token}) {
             <div className='comment-title'>
               <input value={commentContent} placeholder='댓글 입력하기...' onChange={(e)=>setCommentContent(e.target.value)} />
               
-              <button onClick={handleComment} className={"btn" + (comment ? "Active" : "Disabled")}>
+              <button onClick={handleComment} className={"btn" + (commentContent ? "Active" : "Disabled")}>
                 게시
               </button>
             </div>

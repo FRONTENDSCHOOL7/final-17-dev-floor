@@ -68,14 +68,18 @@ export const idRegexErrorState = atom({
   default: null,
   effects_UNSTABLE: [persistAtom],
 });
+// export const joinTokenState = atom({
+//   key: "tokenState",
+//   default: localStorage.getItem("token"),
+// });
 // export const userNameState = atom({
 //     key: 'userNameState',
 //     default: ''
 // })
-export const accountNameState = atom({
-  key: "accountNameState",
-  default: "",
-});
+// export const accountNameState = atom({
+//     key: 'accountNameState',
+//     default: ''
+// })
 // export const introState = atom({
 //     key: 'introState',
 //     default: ''

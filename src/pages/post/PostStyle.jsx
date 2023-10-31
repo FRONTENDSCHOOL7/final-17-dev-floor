@@ -171,7 +171,7 @@ export const Sect3 = styled.div`
         display: block;
         width: 40px;
         font-size: 14px;
-        color: orange;
+        color: var(--focusColor);
       }
 
       input {
