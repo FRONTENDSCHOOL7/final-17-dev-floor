@@ -22,7 +22,7 @@ export function EmailJoin({ preData, setPreData, handleJoin}) {
     };
     const emailBlur = async () => {
         const isEmailValid = await validateEmail(preData.email);
-        if (!isEmailValid) {
+        if (isEmailValid === '이미 가입된 이메일 주소 입니다.') {
             setError('*이미 가입된 이메일 주소 또는 이메일형식이 올바르지 않습니다.');
             setBtnDisable(true)
         } else {

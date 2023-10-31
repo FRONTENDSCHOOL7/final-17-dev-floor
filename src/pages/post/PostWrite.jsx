@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import back from "../../assets/images/icon-arrow-left.png";
 import upload from "../../assets/images/upload-file.png";
 import { Body, Sect1, Sect2 } from "./PostWriteStyle";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useRef } from "react";
 import { useState } from "react";
-import { contentState, imageState } from "../../state/PostAtom";
+import { contentState, imageState, postIdState } from "../../state/PostAtom";
 import { useNavigate } from "react-router-dom";
-import { postApi, imageApi } from "../../api/PostApi";
+import { postPostApi, imageApi } from "../../api/PostApi";
+import { tokenState } from "../../state/AuthAtom";
 
 export default function PostWrite() {
   const [content, setContent] = useRecoilState(contentState);
   const [image, setImage] = useRecoilState(imageState);
+  const [postId, setPostId] = useRecoilState(postIdState);
   const [apiImage, setApiImage] = useState("");
   const fileRef = useRef(null);
   const navigate = useNavigate();
+  const token = useRecoilValue(tokenState);
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
@@ -33,12 +36,10 @@ export default function PostWrite() {
     reader.onloadend = () => {
       setImage(reader.result);
     };
-    // 이미지 api 필요 값 입력
+    // 이미지 api 요청
     try {
       const result = await imageApi(file);
-      console.log(result);
-      setApiImage(result.filename);
-      console.log("성공했습니다");
+      setApiImage("https://api.mandarin.weniv.co.kr/" + result.filename);
     } catch (error) {
       console.log(error);
     }
@@ -46,14 +47,18 @@ export default function PostWrite() {
 
   const onClickUpLoad = async (e) => {
     e.preventDefault();
-    // 게시글 api 요청
+    // 게시글 등록 api 요청
     try {
-      const result = await postApi(content, apiImage);
-      console.log(result);
+      const result = await postPostApi(content, apiImage, token);
+      setPostId(result.post.author.accountname);
+      navigate("/profile");
     } catch (error) {
       console.log(error);
     }
   };
+  useEffect(() => {
+    console.log("post.id: " + postId);
+  }, [postId]);
 
   return (
     <Body>

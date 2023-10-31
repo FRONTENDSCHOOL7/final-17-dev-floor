@@ -2,19 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import { Body, Main } from "./AddProductStyle";
 import TopBarSave from "../../components/topbar/TopBarSave";
 import upload from "../../assets/images/upload-file.png";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import {
   productImageState,
   productNameState,
   productPriceState,
   productLinkState,
-  accountnameState
+  accountnameState,
 } from "../../state/ProductAtom";
-import { apiImageState } from '../../state/ModifyAtom';
+import { apiImageState } from "../../state/ModifyAtom";
 import { imageApi, productApi } from "../../api/ProductApi";
-import { useNavigate } from 'react-router-dom';
-
-
+import { useNavigate } from "react-router-dom";
+import { tokenState } from "../../state/AuthAtom";
 
 export default function AddProduct() {
   const [productImage, setProductImage] = useRecoilState(productImageState);
@@ -25,10 +24,9 @@ export default function AddProduct() {
   const [previewImage, setPreviewImage] = useState(null);
   const [isSaveEnabled, setIsSaveEnabled] = useState(false);
   const fileRef = useRef(null);
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
-  const navigate = useNavigate()
-  const [accountName, setAccountName] =  useRecoilState(accountnameState);
-
+  const token = useRecoilValue(tokenState);
+  const navigate = useNavigate();
+  const [accountName, setAccountName] = useRecoilState(accountnameState);
 
   useEffect(() => {
     // 입력 값이 모두 채워져 있는지 확인
@@ -99,7 +97,13 @@ export default function AddProduct() {
     }
 
     try {
-      const res = await productApi(productName,parseFloat(productPrice),productLink,apiImage);
+      const res = await productApi(
+        productName,
+        parseFloat(productPrice),
+        productLink,
+        apiImage,
+        token
+      );
 
       // API 요청 성공 시
       // const productData = response.data.product;
@@ -109,7 +113,7 @@ export default function AddProduct() {
       setProductPrice(res.product.price);
       setProductLink(res.product.link);
       setAccountName(res.product.author.accountname);
-      navigate("/myprofile")
+      navigate("/myprofile");
     } catch (error) {
       // API 요청 실패 시
       console.log("상품 등록 실패:", error);
@@ -123,17 +127,25 @@ export default function AddProduct() {
         <div className='img-container'>
           <p>이미지로 등록</p>
           <div className='img-background'>
-            <input 
-            style={{ display: "none" }}
-            type='file'
-            onChange={onChangeFile}
-            ref={fileRef}
+            <input
+              style={{ display: "none" }}
+              type='file'
+              onChange={onChangeFile}
+              ref={fileRef}
             />
-            <div>{previewImage && <img className='previewimage' src={previewImage} alt='preview'></img>}</div>
-            <div className='buttonbox'>            
-            <button className='send' onClick={onClickImage}>
-            <img src={upload} alt='' className='profile-img' />
-            </button>
+            <div>
+              {previewImage && (
+                <img
+                  className='previewimage'
+                  src={previewImage}
+                  alt='preview'
+                ></img>
+              )}
+            </div>
+            <div className='buttonbox'>
+              <button className='send' onClick={onClickImage}>
+                <img src={upload} alt='' className='profile-img' />
+              </button>
             </div>
           </div>
         </div>
@@ -142,11 +154,11 @@ export default function AddProduct() {
             <label>상품명</label>
             <input
               type='text'
-              value={productName}
+              // value={productName}
               onChange={handleName}
-              placeholder="2~15자 이내여야 합니다."
-              minLength="2"
-              maxLength="15"
+              placeholder='2~15자 이내여야 합니다.'
+              minLength='2'
+              maxLength='15'
             />
           </div>
           <div className='product-desc'>
@@ -162,7 +174,7 @@ export default function AddProduct() {
             <label>판매 링크</label>
             <input
               type='text'
-              value={productLink}
+              // value={productLink}
               onChange={handleLink}
               placeholder='URL을 입력해주세요.'
             />

@@ -2,9 +2,9 @@ import React, { useRef, useState } from "react";
 import { Body, Main } from "./ProfileModificationStyle";
 import profileImg from "../../assets/images/Group 26.png";
 import TopBarSave from "../../components/topbar/TopBarSave";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import {
-  idState,
+  accountNameState,
   introState,
   userNameState,
   idValidState,
@@ -16,16 +16,18 @@ import { editApi, validateAccount } from "../../api/ProfileApi";
 import { Navigate, useNavigate } from "react-router-dom";
 import { imageState } from "../../state/PostAtom";
 import { imageApi } from "../../api/PostApi";
+import { tokenState } from "../../state/AuthAtom";
 
 export default function ProfileModification() {
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(idState);
+  const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
   const [image, setImage] = useRecoilState(imageState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const fileRef = useRef(null);
+  const token = useRecoilValue(tokenState);
 
   const navigate = useNavigate();
 
@@ -75,7 +77,7 @@ export default function ProfileModification() {
       return;
     }
     try {
-      const res = await editApi(userName, id, intro, apiImage);
+      const res = await editApi(userName, id, intro, apiImage, token);
       console.log(res);
       navigate("/myprofile");
     } catch (error) {
