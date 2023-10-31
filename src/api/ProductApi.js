@@ -62,6 +62,23 @@ export const productListApi = async (accountname, token) => {
   }
 };
 
+export const productDelApi = async(product_id) => {
+  const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
+  try{
+    const res = await axios.delete(url+`${product_id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+    },
+    })
+    console.log(res);
+    return res.data;
+  } catch(error){
+    throw error;
+  }
+}
+
 // const onChangeFile = (e) => {
 //   const file = e.target.files[0]; // 업로드한 파일
 //   const form = new FormData();

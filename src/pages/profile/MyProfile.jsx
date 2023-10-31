@@ -12,15 +12,15 @@ import PostList from "../../components/postlist/PostList";
 import Product from "../../components/product/Product";
 import { Link } from "react-router-dom";
 import PostAlbum from "../../components/postalbum/PostAlbum";
-import { profileApi, myProfileApi, getImg } from "../../api/ProfileApi";
+import { myProfileApi } from "../../api/ProfileApi";
 import {
   apiImageState,
   accountNameState,
   introState,
   userNameState,
+  profileImgState,
 } from "../../state/ModifyAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { imageState } from "../../state/PostAtom";
 import { tokenState } from "../../state/AuthAtom";
 
 export default function MyProfile() {
@@ -28,7 +28,7 @@ export default function MyProfile() {
   const [userName, setUserName] = useRecoilState(userNameState);
   const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
-  const [image, setImage] = useRecoilState(imageState);
+  const [image, setImage] = useRecoilState(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const token = useRecoilValue(tokenState);
 

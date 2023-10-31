@@ -6,6 +6,7 @@ export default function ModalProduct({
   isOpenModal,
   setIsOpenModal,
   children,
+  handleDelete
 }) {
   const wrapperRef = useRef();
   useEffect(() => {
@@ -36,8 +37,14 @@ export default function ModalProduct({
               <img src={bar} alt='' />
             </button>
           </div>
-          <div className='letter'>
+          <div className='letter' onClick={handleDelete}>
             <button>삭제</button>
+          </div>
+          <div className='letter'>
+            <button>수정</button>
+          </div>
+          <div className='letter'>
+            <button>웹사이트에서 상품 보기</button>
           </div>
         </div>
       </Sect1>
