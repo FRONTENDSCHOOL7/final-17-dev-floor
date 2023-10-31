@@ -7,6 +7,7 @@ import { tokenState } from "../../state/AuthAtom";
 import ModalProduct from "../modal/ModalProduct";
 import { accountState } from "../../state/ModifyAtom";
 
+// 11월 1일 1:39에 머지합니다.
 export default function Product() {
   const accountName = useRecoilValue(accountState);
   const [products, setProducts] = useRecoilState(productState);
