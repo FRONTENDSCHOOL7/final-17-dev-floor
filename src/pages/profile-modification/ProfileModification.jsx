@@ -10,6 +10,7 @@ import {
   idValidState,
   nameValidState,
   apiImageState,
+  profileImgState,
 } from "../../state/ModifyAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
 import { editApi, validateAccount } from "../../api/ProfileApi";
@@ -24,9 +25,10 @@ export default function ProfileModification() {
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
-  const [image, setImage] = useRecoilState(imageState);
+  const [image, setImage] = useRecoilState(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const fileRef = useRef(null);
+  const token = useRecoilValue(tokenState);
 
   const navigate = useNavigate();
 
