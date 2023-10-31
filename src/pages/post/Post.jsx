@@ -1,50 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import message from "../../assets/images/icon-message-circle.png";
 import more from "../../assets/images/s-icon-more-vertical.png";
 import like from "../../assets/images/icon-heart.png";
+
 import { Body, Sect1, Sect2, Sect3 } from "./PostStyle";
 import TopBar from "../../components/topbar/TopBarBasic";
-import { useState } from "react";
-import Modal from "../../components/modal/Modal";
-import { postCommentApi } from "../../api/PostApi";
 
-export default function Post({post_id, token}) {
-  const [modalOpen, setIsOpenModal] = useState(false);
-  const [commentCount, setCommentCount] = useState(0);
-  const [comment, setComment] = useState(0);
-  const [commentContent, setCommentContent] = useState('')
-  const [message, setMessage] = useState('')
-  const [postcomment, setPostcomment] = useState([]); 
-
-  const showModal = () => {
-    setIsOpenModal(true);
-  };
-  // const addComment = (new) => {
-  //   setPostcomment([...postcomment, new])
-  //   setCommentCount(commentCount+1)
-  // }
-  const handleComment = async (e) => {
-    e.preventDefault()
-    // setcomment(e.target.value);
-    try {
-      const response = await postCommentApi(post_id, commentContent, token);
-      console.log(response)
-      setCommentContent('')
-      setMessage('댓글이 작성되었습니다.');
-    } catch (error) {
-      setMessage('댓글 작성에 실패했습니다.');
-    }
-  };
-  
-  // useEffect(()=> {
-  //     const commenWrite = async (postId) => {
-  //       const result = await postCommentApi(postId, comments)
-  //       setPostcomment(result)
-  //       console.log(postCommentApi)
-  //     }
-  //     commenWrite()
-  // },[])
+export default function Post() {
   return (
     <Body>
       <TopBar />
@@ -59,7 +22,7 @@ export default function Post({post_id, token}) {
                   <p>@ weniv_Mandarin</p>
                 </div>
                 <div>
-                  <button className='modalDel' onClick={showModal}>
+                  <button>
                     <img src={more} alt='' />
                   </button>
                 </div>
@@ -85,18 +48,15 @@ export default function Post({post_id, token}) {
           </div>
         </div>
       </Sect1>
-      {/* Sect2 댓글 */}
       <Sect2>
         <div className='comment-container'>
-          <p>댓글 수: {commentCount}</p>
-          {/* {postcomment.map((comment,index)=>( */}
-            <div className='comment-list'>
+          <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment'>
               <div className='comment-title'>
                 <div className='comment-id'>
-                  <h3></h3>
-                  <p></p>
+                  <h3>서귀포시 무슨 농장</h3>
+                  <p>· 5분 전</p>
                 </div>
                 <div>
                   <button>
@@ -109,7 +69,6 @@ export default function Post({post_id, token}) {
               </div>
             </div>
           </div>
-          {/* ))} */}
           <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment'>
@@ -133,24 +92,18 @@ export default function Post({post_id, token}) {
             </div>
           </div>
         </div>
-      </Sect2> 
-      {/* Sect2 댓글 목록 */}
-      {/* Sect3 댓글창 */}
+      </Sect2>
       <Sect3>
         <div className='comment-container'>
           <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment-title'>
-              <input value={commentContent} placeholder='댓글 입력하기...' onChange={(e)=>setCommentContent(e.target.value)} />
-              
-              <button onClick={handleComment} className={"btn" + (comment ? "Active" : "Disabled")}>
-                게시
-              </button>
+              <input placeholder='댓글 입력하기...' />
+              <button>게시</button>
             </div>
           </div>
         </div>
       </Sect3>
-      {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
     </Body>
   );
 }

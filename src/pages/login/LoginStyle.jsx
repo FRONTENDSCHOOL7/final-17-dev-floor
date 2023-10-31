@@ -27,11 +27,6 @@ export const LoginTit = styled.div`
 `
 export const LoginForm = styled.form`
     width: 100%;
-    p {
-        padding-top: 6px;
-        color: var(--errorFontColor);
-        font-size: 0.8rem;
-    }
 `
 export const Email = styled.div`
     span {
@@ -41,10 +36,6 @@ export const Email = styled.div`
     }
     input {
         border-bottom: 1px solid var(--borderColor);
-        
-    }
-    input:focus {
-        border-bottom: 1px solid var(--focusColor);
     }
 `
 export const Password = styled.div`
@@ -57,9 +48,6 @@ export const Password = styled.div`
     input {
         border-bottom: 1px solid var(--borderColor);
     }
-    input:focus {
-        border-bottom: 1px solid var(--focusColor);
-    }
 `
 export const Submit = styled.div`
     margin-top: 30px;
@@ -68,6 +56,7 @@ export const Submit = styled.div`
         height: 44px;
         color: var(--whiteColor);
         border-radius: 20px;
+        background: var(--disableColor);
     }
 `
 export const LoginEmail = styled.div`

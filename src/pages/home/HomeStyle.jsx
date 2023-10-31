@@ -26,12 +26,11 @@ export const Header = styled.div`
 export const Inner = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 12px 10px;
+    padding: 10px;
     h2 {
         margin: auto 0;
         color: var(--bgColor);
         font-weight: 500;
-        font-size: 1.2rem;
     }
     .search button img {vertical-align: top;}
 `

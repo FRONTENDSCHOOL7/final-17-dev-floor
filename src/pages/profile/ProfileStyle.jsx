@@ -2,37 +2,22 @@ import styled from "styled-components";
 
 export const Body = styled.div`
   /* border: 3px dashed gray; */
-  background: var(--Gray-6, #f2f2f2);
-  position: relative;
   height: 100vh;
   max-width: 720px;
   width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  /* gap: 12px; */
-  font-family: "GongGothicMedium";
-  .album-btns {
-    background: #fff;
-
-    display: flex;
-    justify-content: right;
-    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
-  }
-  button {
-    background: #fff;
-    border: none;
-  }
+  gap: 12px;
   /* transform: translateX(-10%); */
 `;
 
 // section 1
 export const Sect1 = styled.div`
-  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 12px;
 `;
 
 export const ProImg = styled.div`
@@ -56,13 +41,6 @@ export const ProImg = styled.div`
     .followers {
       color: black;
     }
-  }
-  .profileImg {
-    border-radius: 100px;
-    max-width: 110px;
-    max-height: 110px;
-    width: 100%;
-    height: 100%;
   }
 `;
 export const Intro = styled.div`
@@ -88,22 +66,15 @@ export const Btns = styled.div`
   margin-top: 24px;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 26px;
-
   button {
     border-radius: 30px;
     border: 1px solid var(--DBDBDB, #dbdbdb);
-    padding: 6px 6px 3px 5px;
+    padding: 7px;
     background-color: #fff;
   }
   .btn-follow {
-    background: #12184e;
+    background: #3c48ae;
     color: #fff;
-    width: 120px;
-  }
-  .btn-unfollow {
-    border: 1px solid #dbdbdb;
-    color: #767676;
     width: 120px;
   }
 `;
