@@ -11,8 +11,7 @@ const url = "https://api.mandarin.weniv.co.kr";
 // const token =
 //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2I0YzJiYjJjYjIwNTY2Mzg5NzgwYyIsImV4cCI6MTcwMzU2OTAyOSwiaWF0IjoxNjk4Mzg1MDI5fQ.ECwbzvxAySetIODrAGlVKrvkJ_80Z3wi2I5uSl5B7Vg";
 // 프로필 수정
-export const editApi = async (username, accountname, intro, image,token) => {
-
+export const editApi = async (username, accountname, intro, image, token) => {
   const userInfo = {
     user: {
       username: username,
@@ -51,7 +50,7 @@ export const validateAccount = async (accountname) => {
 };
 
 // 3.2 상대 프로필
-export const profileApi = async (accountname,token) => {
+export const profileApi = async (accountname, token) => {
   try {
     const res = await axios.get(url + `/profile/${accountname}`, {
       headers: {
@@ -72,6 +71,22 @@ export const myProfileApi = async (token) => {
     const res = await axios.get(url + "/user/myinfo", {
       headers: {
         Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// 3.3 팔로우
+
+export const followApi = async (accountname, token) => {
+  try {
+    const res = await axios.post(url + `/profile/${accountname}/follow`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
       },
     });
     return res.data;

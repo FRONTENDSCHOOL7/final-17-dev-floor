@@ -19,3 +19,11 @@ export const productLinkState = atom({
   key: "productLinkState",
   default: "",
 });
+export const accountnameState = atom({
+  key: "accountnameState",
+  default: "",
+});
+export const productState = atom({
+  key: "productState",
+  default: [],
+});

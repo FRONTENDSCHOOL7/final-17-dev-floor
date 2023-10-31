@@ -4,8 +4,8 @@ export const userNameState = atom({
   key: "userNameState",
   default: "",
 });
-export const idState = atom({
-  key: "idState",
+export const accountNameState = atom({
+  key: "accountNameState",
   default: "",
 });
 export const introState = atom({
@@ -36,5 +36,5 @@ export const apiImageState = atom({
 });
 export const logoutModalState = atom({
   key: "logoutModalState",
-  default: false
-})
+  default: false,
+});

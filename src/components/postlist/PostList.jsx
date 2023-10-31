@@ -9,14 +9,15 @@ import { postUserApi } from "../../api/PostApi";
 import { useRecoilValue } from "recoil";
 import { postIdState } from "../../state/PostAtom";
 import { useInView } from "react-intersection-observer";
-
 import { Sect3 } from "./PostListStyle";
+import { tokenState } from "../../state/AuthAtom";
 
 export default function PostList() {
   const postId = useRecoilValue(postIdState);
   const [postData, setPostData] = useState([]);
   const [page, setPage] = useState(0);
   const [ref, inView] = useInView();
+  const token = useRecoilValue(tokenState);
 
   // 날짜 데이터 변환 함수
   const getDate = (date) => {
@@ -34,7 +35,7 @@ export default function PostList() {
   const postFetch = async () => {
     // 게시글 유저 게시물 api 요청
     try {
-      const result = await postUserApi(postId);
+      const result = await postUserApi(postId, token);
       setPostData((prevState) => {
         return [...prevState, ...result.posts];
       });

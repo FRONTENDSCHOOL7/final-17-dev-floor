@@ -3,12 +3,13 @@ import profileImg from "../../assets/images/Group 26.png";
 import back from "../../assets/images/icon-arrow-left.png";
 import upload from "../../assets/images/upload-file.png";
 import { Body, Sect1, Sect2 } from "./PostWriteStyle";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useRef } from "react";
 import { useState } from "react";
 import { contentState, imageState, postIdState } from "../../state/PostAtom";
 import { useNavigate } from "react-router-dom";
 import { postPostApi, imageApi } from "../../api/PostApi";
+import { tokenState } from "../../state/AuthAtom";
 
 export default function PostWrite() {
   const [content, setContent] = useRecoilState(contentState);
@@ -17,9 +18,7 @@ export default function PostWrite() {
   const [apiImage, setApiImage] = useState("");
   const fileRef = useRef(null);
   const navigate = useNavigate();
-
-  const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwMzUxOTIwNCwiaWF0IjoxNjk4MzM1MjA0fQ.IS2RZrkHzjCI5JcgHdRCOx0ZpCy6uyT9G0nHQHYKhxQ";
+  const token = useRecoilValue(tokenState);
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
@@ -50,7 +49,7 @@ export default function PostWrite() {
     e.preventDefault();
     // 게시글 등록 api 요청
     try {
-      const result = await postPostApi(content, apiImage);
+      const result = await postPostApi(content, apiImage, token);
       setPostId(result.post.author.accountname);
       navigate("/profile");
     } catch (error) {
@@ -60,9 +59,7 @@ export default function PostWrite() {
   useEffect(() => {
     console.log("post.id: " + postId);
   }, [postId]);
-  
 
-  
   return (
     <Body>
       <Sect1>
