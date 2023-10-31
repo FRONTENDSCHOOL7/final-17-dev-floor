@@ -1,63 +1,77 @@
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
 
 // login
 export const emailState = atom({
-    key: 'emailState',
-    default: ''
-})  
+  key: "emailState",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
 export const passwordState = atom({
-    key: 'pwState',
-    default: ''
-})  
+  key: "pwState",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
 export const errorState = atom({
-    key: 'errorState',
-    default: ''
-})  
+  key: "errorState",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
 export const errorPwState = atom({
-    key: 'errorPwState',
-    default: ''
-})
+  key: "errorPwState",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
 export const tokenState = atom({
-    key: 'tokenState',
-    default: null,
-}) 
+  key: "tokenState",
+  default: null,
+  effects_UNSTABLE: [persistAtom],
+});
 export const idState = atom({
-    key: "idState",
-    default: "",
+  key: "idState",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 // join
 export const preDataState = atom({
-    key: 'preDataState',
-    default: {
-        email: '',
-        password: '',
-        username: '',
-        accountname: '',
-        intro: '',
-        image: 'https://api.mandarin.weniv.co.kr/Ellipse.png',
-    },
+  key: "preDataState",
+  default: {
+    email: "",
+    password: "",
+    username: "",
+    accountname: "",
+    intro: "",
+    image: "https://api.mandarin.weniv.co.kr/Ellipse.png",
+  },
+  effects_UNSTABLE: [persistAtom],
 });
 export const btnDisableState = atom({
-    key: 'btnDisableState',
-    default: false
-})
+  key: "btnDisableState",
+  default: false,
+  effects_UNSTABLE: [persistAtom],
+});
 export const joinBtnDisableState = atom({
-    key: 'joinBtnDisableState',
-    default: false
-})
+  key: "joinBtnDisableState",
+  default: false,
+  effects_UNSTABLE: [persistAtom],
+});
 export const idValidErrorState = atom({
-    key:'idValidErrorState',
-    default: ''
-})
+  key: "idValidErrorState",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
 export const idRegexErrorState = atom({
-    key:'idRegexErrorState',
-    default: null
-})
+  key: "idRegexErrorState",
+  default: null,
+  effects_UNSTABLE: [persistAtom],
+});
 export const joinTokenState = atom({
-    key: 'tokenState',
-    default: localStorage.getItem('token')
-}) 
+  key: "tokenState",
+  default: localStorage.getItem("token"),
+});
 // export const userNameState = atom({
 //     key: 'userNameState',
 //     default: ''
@@ -79,10 +93,12 @@ export const joinTokenState = atom({
 //     default: true
 // })
 export const routeState = atom({
-    key: 'routeState',
-    default: 'signup'
-})
+  key: "routeState",
+  default: "signup",
+  effects_UNSTABLE: [persistAtom],
+});
 export const profileImgState = atom({
-    key: 'profileImgState',
-    default: ''
-})
+  key: "profileImgState",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
