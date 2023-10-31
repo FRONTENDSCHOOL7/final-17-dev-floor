@@ -38,14 +38,17 @@ export const imageApi = async (file) => {
     alert("업로드 실패");
   }
 };
-export const postUserApi = async (accountName, token) => {
+export const postUserApi = async (accountName, token, skip) => {
   try {
-    const res = await axios.get(url + `${accountName}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-type": "application/json",
-      },
-    });
+    const res = await axios.get(
+      url + `/${accountName}/userpost/?limit=6&skip=${skip}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      }
+    );
     return res.data;
   } catch (error) {
     alert("불러오기 실패");
@@ -53,7 +56,7 @@ export const postUserApi = async (accountName, token) => {
 };
 export const postDel = async (postId, token) => {
   try {
-    const res = await axios.delete(url + `/${postId}`, {
+    const res = await axios.delete(url, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",

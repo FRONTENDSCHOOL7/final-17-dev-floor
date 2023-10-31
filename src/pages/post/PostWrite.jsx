@@ -20,6 +20,8 @@ export default function PostWrite() {
   const navigate = useNavigate();
   const token = useRecoilValue(tokenState);
 
+  console.log(image);
+
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
@@ -56,9 +58,6 @@ export default function PostWrite() {
       console.log(error);
     }
   };
-  useEffect(() => {
-    console.log("post.id: " + postId);
-  }, [postId]);
 
   return (
     <Body>

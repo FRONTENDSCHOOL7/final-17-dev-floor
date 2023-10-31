@@ -17,6 +17,7 @@ import Join from "./pages/join/Join";
 import Splash from "./pages/splash/Splash";
 import { ProfileJoin } from "./pages/join/ProfileJoin";
 import MyProfile from "./pages/profile/MyProfile";
+import EditProduct from './pages/editproduct/EditProduct';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path='/product' element={<AddProduct />} />
           <Route path='/modify' element={<ProfileModification />} />
           <Route path='/join-profile' element={<ProfileJoin/>} />
+          <Route path='/editproduct' element={<EditProduct/>} />
         </Routes>
       </BrowserRouter>
     </div>

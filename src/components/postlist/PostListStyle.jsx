@@ -5,6 +5,9 @@ import styled from "styled-components";
 export const Sect3 = styled.div`
   height: 500px;
   overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   background: #fff;
   .content-container::-webkit-scrollbar {
     display: none;
@@ -29,7 +32,8 @@ export const Sect3 = styled.div`
       justify-content: space-between;
       .imgBox {
         img {
-      }}
+        }
+      }
     }
     .content-id {
       h3 {

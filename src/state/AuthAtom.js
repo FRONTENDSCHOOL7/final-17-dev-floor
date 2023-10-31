@@ -27,7 +27,6 @@ export const errorPwState = atom({
 export const tokenState = atom({
   key: "tokenState",
   default: localStorage.getItem("token"),
-  default: localStorage.getItem("token"),
   effects_UNSTABLE: [persistAtom],
 });
 export const idState = atom({
@@ -69,15 +68,14 @@ export const idRegexErrorState = atom({
   default: null,
   effects_UNSTABLE: [persistAtom],
 });
-
 // export const userNameState = atom({
 //     key: 'userNameState',
 //     default: ''
 // })
-// export const accountNameState = atom({
-//     key: 'accountNameState',
-//     default: ''
-// })
+export const accountNameState = atom({
+  key: "accountNameState",
+  default: "",
+});
 // export const introState = atom({
 //     key: 'introState',
 //     default: ''

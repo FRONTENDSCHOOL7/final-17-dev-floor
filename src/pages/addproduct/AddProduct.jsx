@@ -8,7 +8,6 @@ import {
   productNameState,
   productPriceState,
   productLinkState,
-  accountnameState,
 } from "../../state/ProductAtom";
 import { apiImageState } from "../../state/ModifyAtom";
 import { imageApi, productApi } from "../../api/ProductApi";
@@ -26,7 +25,6 @@ export default function AddProduct() {
   const fileRef = useRef(null);
   const token = useRecoilValue(tokenState);
   const navigate = useNavigate();
-  const [accountName, setAccountName] = useRecoilState(accountnameState);
 
   useEffect(() => {
     // 입력 값이 모두 채워져 있는지 확인
@@ -112,7 +110,6 @@ export default function AddProduct() {
       setProductName(res.product.itemName);
       setProductPrice(res.product.price);
       setProductLink(res.product.link);
-      setAccountName(res.product.author.accountname);
       navigate("/myprofile");
     } catch (error) {
       // API 요청 실패 시

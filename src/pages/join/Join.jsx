@@ -11,7 +11,6 @@ import {
   idValidErrorState,
   imageState,
   joinBtnDisableState,
-  // joinTokenState,
   preDataState,
   profileImgState,
   tokenState,
@@ -44,7 +43,6 @@ export default function Join() {
   const [isJoinPage, setIsJoinPage] = useState(true); // 현재 페이지가 조인페이지인지 프로필페이지인지 결정하는 상태
   const [apiImage, setApiImage] = useState("");
   const [error, setError] = useRecoilState(errorState);
-  // const [token, setToken] = useRecoilState(joinTokenState);
   const [idValidError, setIdValidError] = useRecoilState(idValidErrorState);
 
   const handleJoin = async (e) => {
