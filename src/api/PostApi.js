@@ -1,6 +1,4 @@
 import axios from "axios";
-import { tokenState } from "../state/AuthAtom";
-import { useRecoilValue } from "recoil";
 
 const url = "https://api.mandarin.weniv.co.kr/post";
 const url2 = "https://api.mandarin.weniv.co.kr/image/uploadfile";
