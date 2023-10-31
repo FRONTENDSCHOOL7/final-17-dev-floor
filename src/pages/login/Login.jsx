@@ -18,12 +18,14 @@ import {
   passwordState,
   tokenState,
 } from "../../state/AuthAtom";
+import { accountState } from "../../state/ModifyAtom";
 
 export default function Login() {
   const [email, setEmail] = useRecoilState(emailState);
   const [password, setPassword] = useRecoilState(passwordState);
   const [error, setError] = useRecoilState(errorState);
   const [token, setToken] = useRecoilState(tokenState);
+  const [id, setId] = useRecoilState(accountState);
 
   const navigate = useNavigate();
 
@@ -45,7 +47,8 @@ export default function Login() {
       const userToken = response.user.token;
       localStorage.setItem("token", userToken);
       setToken(localStorage.getItem("token"));
-      console.log(userToken);
+      console.log(token);
+      setId(response.user.accountname);
       // localStorage.setItem('token',userToken)
       navigate("/homefeed");
     } catch (error) {

@@ -29,7 +29,7 @@ export default function LogoutModal({ isModal, setIsModal, children }) {
     setIsModal(false);
   };
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.clear();
     setToken(null);
     navigate("/");
   };
