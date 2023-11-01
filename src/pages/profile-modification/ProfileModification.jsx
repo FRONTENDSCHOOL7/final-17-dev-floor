@@ -10,7 +10,6 @@ import {
   nameValidState,
   apiImageState,
 } from "../../state/ModifyAtom";
-import { accountNameState } from "../../state/AuthAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
 import { editApi, validateAccount } from "../../api/ProfileApi";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -51,7 +50,7 @@ export default function ProfileModification() {
 
   // 사용자 id 함수
   const handleIdChange = (e) => {
-    setAcoount(e.target.value);
+    setId(e.target.value);
   };
   const handleIdBlur = (e) => {
     const userId = e.target.value;
@@ -75,7 +74,7 @@ export default function ProfileModification() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    const isAccountValid = await validateAccount(account);
+    const isAccountValid = await validateAccount(id);
     if (!isAccountValid) {
       alert("계정 유효성 검사에 오류가 발생했습니다.");
       return;
