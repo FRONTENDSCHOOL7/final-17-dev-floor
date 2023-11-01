@@ -70,7 +70,8 @@ export const postDel = async (postId, token) => {
   }
 };
 // 댓글
-export const postCommentApi = async (comment, token) => {
+export const postCommentApi = async (comment,token) => {
+
   try {
     const res = await axios.post(
       `https://api.mandarin.weniv.co.kr/post/653fcb1fb2cb205663934f1e/comments`,

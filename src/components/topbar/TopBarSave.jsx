@@ -5,12 +5,17 @@ import { Link } from "react-router-dom";
 // import { useRecoilState } from "recoil";
 
 export default function TopBarSave({ onSave, disabled }) {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate("/myprofile");
+  };
   return (
     <Top>
       <Link to='/myprofile'>
-      <button>
-        <img src={back} alt='' />
-      </button>
+        <button>
+          <img src={back} alt='' onClick={handleBack} />
+        </button>
       </Link>
       <button
         className={`btn-save ${disabled ? "disabled" : ""}`}

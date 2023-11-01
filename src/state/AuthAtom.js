@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-
+import profileImg from "../assets/images/Group 26.png";
 const { persistAtom } = recoilPersist();
 
 // login
@@ -34,6 +34,11 @@ export const idState = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
+export const accountNameState = atom({
+  key: "accountNameState",
+  default: localStorage.getItem("account"),
+  effects_UNSTABLE: [persistAtom],
+});
 
 // join
 export const preDataState = atom({
@@ -44,7 +49,7 @@ export const preDataState = atom({
     username: "",
     accountname: "",
     intro: "",
-    image: "https://api.mandarin.weniv.co.kr/Ellipse.png",
+    image: profileImg,
   },
   effects_UNSTABLE: [persistAtom],
 });
@@ -100,6 +105,6 @@ export const routeState = atom({
 });
 export const profileImgState = atom({
   key: "profileImgState",
-  default: "",
+  default: profileImg,
   effects_UNSTABLE: [persistAtom],
 });

@@ -105,12 +105,15 @@ export const Inner = styled.div`
         background-size: 36px 36px;
     }
     .write-bottom {
-        display: inline-block;
-        position: absolute;
-        top: 30%;
-        right: 361px;
+        position: relative;
     }
-    .send {width: 36px;}
+    .send {
+        position: absolute;
+        bottom: 0;
+        right: 41%;
+        width: 36px;
+        img {width: 100%;}
+    }
     form {
         display: flex;
         flex-direction: column;
@@ -137,6 +140,11 @@ export const Inner = styled.div`
             border-bottom: 1px solid #dbdbdb;
             margin-top: 10px;
             height: 22px;
+        }
+        p {
+            padding-top: 6px;
+            color: var(--errorFontColor);
+            font-size: 0.8rem;
         }
         }
         .profileSubmit {

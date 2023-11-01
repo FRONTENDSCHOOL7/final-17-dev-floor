@@ -10,7 +10,7 @@ import TopBar from "../../components/topbar/TopBarBasic";
 import TabMenu from "../../components/tab/TabMenu";
 import PostList from "../../components/postlist/PostList";
 import Product from "../../components/product/Product";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PostAlbum from "../../components/postalbum/PostAlbum";
 import { myProfileApi } from "../../api/ProfileApi";
 import {
@@ -29,6 +29,8 @@ export default function MyProfile() {
   const [image, setImage] = useRecoilState(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const token = useRecoilValue(tokenState);
+
+  const navigate = useNavigate();
 
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
@@ -50,6 +52,9 @@ export default function MyProfile() {
   };
 
   useEffect(() => {
+    if (token === null) {
+      navigate("/404");
+    }
     handleMyProfile();
   }, []);
 

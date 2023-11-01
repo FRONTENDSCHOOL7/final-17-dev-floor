@@ -14,7 +14,12 @@ import TopBarModify from "../../components/topbar/TopBarModify";
 import { editApi, validateAccount } from "../../api/ProfileApi";
 import { Navigate, useNavigate } from "react-router-dom";
 import { imageApi } from "../../api/PostApi";
-import { accountNameState, profileImgState, tokenState } from "../../state/AuthAtom";
+import {
+  accountNameState,
+  profileImgState,
+  tokenState,
+} from "../../state/AuthAtom";
+import p_img from "../../assets/images/Group 26.png";
 
 export default function ProfileModification() {
   const [userName, setUserName] = useRecoilState(userNameState);
@@ -75,6 +80,7 @@ export default function ProfileModification() {
       return;
     }
     try {
+      console.log("apiImg", apiImage);
       const res = await editApi(userName, id, intro, apiImage, token);
       console.log(res);
       navigate("/myprofile");

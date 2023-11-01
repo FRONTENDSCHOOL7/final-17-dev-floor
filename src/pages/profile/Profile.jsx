@@ -12,7 +12,7 @@ import TabMenu from "../../components/tab/TabMenu";
 import Product from "../../components/product/Product";
 import PostList from "../../components/postlist/PostList";
 import PostAlbum from "../../components/postalbum/PostAlbum";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import { followState, hamburgerBtnState } from "../../state/FollowAtom";
@@ -34,6 +34,8 @@ export default function Profile() {
     setHamburgerBtn(!hamburgerBtn);
   };
   const token = useRecoilValue(tokenState);
+
+  const navigate = useNavigate();
 
   const checkFollow = async (e) => {
     e.preventDefault();
@@ -67,6 +69,9 @@ export default function Profile() {
   };
 
   useEffect(() => {
+    if (token === null) {
+      navigate("/404");
+    }
     handleProfile();
   }, []);
   return (
