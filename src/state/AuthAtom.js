@@ -68,27 +68,13 @@ export const idRegexErrorState = atom({
   default: null,
   effects_UNSTABLE: [persistAtom],
 });
-// export const joinTokenState = atom({
-//   key: "tokenState",
-//   default: localStorage.getItem("token"),
-// });
-// export const userNameState = atom({
-//     key: 'userNameState',
-//     default: ''
-// })
 
-// export const introState = atom({
-//     key: 'introState',
-//     default: ''
-// })
-// export const imageState = atom({
-//     key: 'imageState',
-//     default: 'https://api.mandarin.weniv.co.kr/Ellipse.png'
-// })
-// export const emailValidState = atom({
-//     key: 'emailValidState',
-//     default: true
-// })
+export const accountNameState = atom({
+  key: "accountNameState",
+  default: localStorage.getItem("account"),
+  effects_UNSTABLE: [persistAtom],
+});
+
 export const routeState = atom({
   key: "routeState",
   default: "signup",
