@@ -63,23 +63,23 @@ export function ProfileJoin({ preData, setPreData, submitJoin,joinProfileData })
     const newIntro = (e) => {
         setPreData({...preData, intro: e.target.value})
     } 
-    const onChangeFile = async (e) => {
-        const file = imgRef.current.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            setImage(reader.result);
-        };
-        // 이미지 api 필요 값 입력
-        try {
-            const result = await profileImgApi(file);
-            console.log(result);
-            // setApiImage("https://api.mandarin.weniv.co.kr/"+result.filename);
-            setPreData({...preData, image: "https://api.mandarin.weniv.co.kr/"+result.filename})
-            console.log("이미지다!!!!");
-            } catch (error) {
-            console.log(error);
-            }
+const onChangeFile = async (e) => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+        setImage(reader.result);
+    };
+    // 이미지 api 필요 값 입력
+    try {
+        const result = await profileImgApi(file);
+        console.log(result);
+        // setApiImage("https://api.mandarin.weniv.co.kr/"+result.filename);
+        setPreData({...preData, image: "https://api.mandarin.weniv.co.kr/"+result.filename})
+        console.log("이미지다!!!!");
+        } catch (error) {
+        console.log(error);
+        }
     };
     const onClickImage = (e) => {
         imgRef.current?.click(e.target.files?.[0]);

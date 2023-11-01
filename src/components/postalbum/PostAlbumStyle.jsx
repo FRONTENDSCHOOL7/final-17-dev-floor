@@ -4,15 +4,16 @@ import layer from "../../assets/images/iccon-img-layers.png";
 // section 3
 
 export const AlbumImg = styled.div`
-  background: #fff;
-
+  background-color: white;
+  height: auto;
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 60px;
+  grid-template-columns: 228px 228px 228px;
+  grid-template-rows: 228px 228px 228px;
   text-align: center;
   grid-gap: 10px;
-  max-height: 500px;
-  height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   &::-webkit-scrollbar {
     display: none;
   }

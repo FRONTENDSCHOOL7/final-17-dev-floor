@@ -11,39 +11,38 @@ import { postCommentApi } from "../../api/PostApi";
 import { useRecoilValue } from "recoil";
 import { tokenState } from "../../state/AuthAtom";
 
-export default function Post({post_id}) {
+export default function Post({ post_id }) {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [comment, setComment] = useState(0);
 
-  const [commentContent, setCommentContent] = useState('') //댓글내용상태
+  const [commentContent, setCommentContent] = useState(""); //댓글내용상태
   const [postcomment, setPostcomment] = useState([]); //댓글목록
-  const token = useRecoilValue(tokenState) 
+  const token = useRecoilValue(tokenState);
 
   const showModal = () => {
     setIsOpenModal(true);
   };
 
   const handleComment = async () => {
-    if(commentContent.trim()==='') {
-      return //댓글 내용없으면 게시안함
+    if (commentContent.trim() === "") {
+      return; //댓글 내용없으면 게시안함
     }
     // setcomment(e.target.value);
-    
+
     try {
-      const res = await postCommentApi( commentContent,token);
-      console.log(res)
+      const res = await postCommentApi(commentContent, token);
+      console.log(res);
 
       const newComment = res.comment;
-      
-      setPostcomment([...postcomment,newComment])
-      console.log('댓글작성완료');
-      setCommentContent('')
 
+      setPostcomment([...postcomment, newComment]);
+      console.log("댓글작성완료");
+      setCommentContent("");
     } catch (error) {
-        console.error('댓글실패',error);
+      console.error("댓글실패", error);
     }
   };
-  
+
   // useEffect(()=> {
   //     const commenWrite = async (postId) => {
   //       const result = await postCommentApi(postId, comments)
@@ -95,27 +94,27 @@ export default function Post({post_id}) {
       {/* Sect2 댓글 */}
       <Sect2>
         <div className='comment-container'>
-          {postcomment.map((comment,index)=>(
+          {postcomment.map((comment, index) => (
             <div className='comment-list' key={index}>
-            <img src={profileImg} alt='' className='profile-img' />
-            <div className='comment'>
-              <div className='comment-title'>
-                <div className='comment-id'>
-                  <h3>{comment.author.username}</h3>
-                  <p></p>
+              <img src={profileImg} alt='' className='profile-img' />
+              <div className='comment'>
+                <div className='comment-title'>
+                  <div className='comment-id'>
+                    <h3>{comment.author.username}</h3>
+                    <p></p>
+                  </div>
+                  <div>
+                    <button>
+                      <img src={more} alt='' />
+                    </button>
+                  </div>
                 </div>
-                <div>
-                  <button>
-                    <img src={more} alt='' />
-                  </button>
+                <div className='comment-inner'>
+                  <p>{comment.content}</p>
                 </div>
-              </div>
-              <div className='comment-inner'>
-                <p>{comment.content}</p>
               </div>
             </div>
-          </div>
-          ))} 
+          ))}
           {/* <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment'>
@@ -139,7 +138,7 @@ export default function Post({post_id}) {
             </div>
           </div> */}
         </div>
-      </Sect2> 
+      </Sect2>
       {/* Sect2 댓글 목록 */}
       {/* Sect3 댓글창 */}
       <Sect3>
@@ -147,9 +146,16 @@ export default function Post({post_id}) {
           <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment-title'>
-              <input value={commentContent} placeholder='댓글 입력하기...' onChange={(e)=>setCommentContent(e.target.value)} />
-              
-              <button onClick={handleComment} className={"btn" + (commentContent ? "Active" : "Disabled")}>
+              <input
+                value={commentContent}
+                placeholder='댓글 입력하기...'
+                onChange={(e) => setCommentContent(e.target.value)}
+              />
+
+              <button
+                onClick={handleComment}
+                className={"btn" + (commentContent ? "Active" : "Disabled")}
+              >
                 게시
               </button>
             </div>

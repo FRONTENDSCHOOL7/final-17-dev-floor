@@ -26,10 +26,17 @@ export default function PostAlbum() {
       console.log(result.post);
       console.log(postData);
 
+      const filterReultData = result.post.filter(
+        (el) => el.image && el.image.includes("https")
+      );
+
+      console.log("필터성공확인", filterReultData);
+
       setPostData((postData) => {
-        return [...postData, ...result.post];
+        return [...postData, ...filterReultData];
       });
-      setSkip((skip) => skip + 12);
+      
+      setSkip((skip) => skip + 20);
     } catch (error) {
       console.log("실패했습니다");
     }
@@ -44,7 +51,6 @@ export default function PostAlbum() {
     }
   }, [inView]);
 
-  console.log(postData);
   return (
     <AlbumImg>
       {postData?.map((item, idx) => {

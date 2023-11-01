@@ -42,7 +42,6 @@ export default function Login() {
       const response = await loginApi(email, password);
       console.log(response);
 
-
       if (!response.user) {
         setPwError("*이메일 또는 비밀번호가 일치하지 않습니다.");
       } else {

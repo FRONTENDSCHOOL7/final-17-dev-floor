@@ -43,7 +43,7 @@ export const imageApi = async (file) => {
 export const postUserApi = async (accountName, token, skip) => {
   try {
     const res = await axios.get(
-      url + `/${accountName}/userpost/?limit=6&skip=${skip}`,
+      url + `/${accountName}/userpost/?limit=20&skip=${skip}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -70,12 +70,14 @@ export const postDel = async (postId, token) => {
   }
 };
 // 댓글
-export const postCommentApi = async (comment, token) => {
+export const postCommentApi = async (post_id, commentContent, token) => {
   try {
     const res = await axios.post(
-      `https://api.mandarin.weniv.co.kr/post/653fcb1fb2cb205663934f1e/comments`,
+      url + `/${post_id}/comments`,
       {
-        comment: { content: comment },
+        comment: {
+          content: commentContent,
+        },
       },
       {
         headers: {
@@ -84,9 +86,9 @@ export const postCommentApi = async (comment, token) => {
         },
       }
     );
-    console.log(res);
     return res.data;
   } catch (error) {
     alert("댓글 업로드 에러");
+    return [];
   }
 };
