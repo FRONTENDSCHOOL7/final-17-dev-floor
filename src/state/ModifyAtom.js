@@ -1,5 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
+import profileImg from "../assets/images/Group 26.png";
 
 const { persistAtom } = recoilPersist({
   key: "localStorage", // 고유한 key 값
@@ -8,11 +9,6 @@ const { persistAtom } = recoilPersist({
 
 export const userNameState = atom({
   key: "userNameState",
-  default: "",
-  effects_UNSTABLE: [persistAtom],
-});
-export const accountState = atom({
-  key: "accountState",
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
@@ -45,17 +41,11 @@ export const userToken = atom({
 });
 export const apiImageState = atom({
   key: "apiImageState",
-  default: "",
+  default: profileImg,
   effects_UNSTABLE: [persistAtom],
 });
 export const logoutModalState = atom({
   key: "logoutModalState",
   default: false,
-  effects_UNSTABLE: [persistAtom],
-});
-
-export const profileImgState = atom({
-  key: "profileImgState",
-  default: "",
   effects_UNSTABLE: [persistAtom],
 });

@@ -9,18 +9,16 @@ import {
   idValidState,
   nameValidState,
   apiImageState,
-  profileImgState,
-  accountState,
 } from "../../state/ModifyAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
 import { editApi, validateAccount } from "../../api/ProfileApi";
 import { Navigate, useNavigate } from "react-router-dom";
 import { imageApi } from "../../api/PostApi";
-import { tokenState } from "../../state/AuthAtom";
+import { accountNameState, profileImgState, tokenState } from "../../state/AuthAtom";
 
 export default function ProfileModification() {
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(accountState);
+  const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);

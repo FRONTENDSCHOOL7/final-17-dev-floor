@@ -17,16 +17,14 @@ import {
   apiImageState,
   introState,
   userNameState,
-  profileImgState,
-  accountState,
 } from "../../state/ModifyAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { tokenState } from "../../state/AuthAtom";
+import { accountNameState, profileImgState, tokenState } from "../../state/AuthAtom";
 
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(accountState);
+  const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [image, setImage] = useRecoilState(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
