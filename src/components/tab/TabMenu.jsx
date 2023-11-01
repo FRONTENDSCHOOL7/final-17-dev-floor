@@ -32,7 +32,7 @@ export default function TabMenu() {
           fill={imgColor === "/homefeed" ? "#12184E" : "#fff"}
           stroke={imgColor === "/homefeed" ? "#12184E" : "#767676"}
         />
-        <p style={{ color: imgColor === "/home" ? "#12184E" : "#767676" }}>
+        <p style={{ color: imgColor === "/homefeed" ? "#12184E" : "#767676" }}>
           홈
         </p>
       </button>

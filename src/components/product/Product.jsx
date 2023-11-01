@@ -5,7 +5,6 @@ import { productState } from "../../state/ProductAtom";
 import { productDelApi, productListApi } from "../../api/ProductApi";
 import { accountNameState, tokenState } from "../../state/AuthAtom";
 import ModalProduct from "../modal/ModalProduct";
-import { accountState } from "../../state/ModifyAtom";
 
 // 11월 1일 1:39에 머지합니다.
 export default function Product() {
@@ -65,7 +64,7 @@ export default function Product() {
           <div key={product.id} onClick={() => showModal(product.id)}>
             <img src={product.itemImage} alt='' />
             <p>{product.itemName}</p>
-            <span>{product.price}</span>
+            <span>{product.price && product.price + '원'}</span>
           </div>
         ))}
       </Sale>

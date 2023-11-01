@@ -9,7 +9,6 @@ import {
   idValidState,
   nameValidState,
   apiImageState,
-  accountState,
 } from "../../state/ModifyAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
 import { editApi, validateAccount } from "../../api/ProfileApi";
