@@ -1,7 +1,6 @@
 import React from "react";
 import more from "../../assets/images/s-icon-more-vertical.png";
 import like from "../../assets/images/icon-heart.png";
-import profileImg from "../../assets/images/Group 26.png";
 import message from "../../assets/images/icon-message-circle.png";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -9,7 +8,7 @@ import { postUserApi } from "../../api/PostApi";
 import { useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
 import { Sect3 } from "./PostListStyle";
-import { tokenState } from "../../state/AuthAtom";
+import { profileImgState, tokenState } from "../../state/AuthAtom";
 import { accountNameState } from "../../state/AuthAtom";
 
 export default function PostList() {
@@ -17,6 +16,7 @@ export default function PostList() {
   const [postData, setPostData] = useState([]);
   const [skip, setSkip] = useState(0);
   const [ref, inView] = useInView();
+  const image = useRecoilValue(profileImgState);
   const token = useRecoilValue(tokenState);
 
   // 날짜 데이터 변환 함수
@@ -68,7 +68,7 @@ export default function PostList() {
           return (
             <div className='content-container' key={idx}>
               <div className='content-list'>
-                <img src={profileImg} alt='' className='profile-img' />
+                <img src={image} alt='' className='profile-img' />
                 <div className='content'>
                   <div className='content-title'>
                     <div className='content-id'>

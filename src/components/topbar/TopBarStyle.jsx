@@ -11,11 +11,13 @@ export const Top = styled.div`
   padding: 0 20px;
 
   button {
-    margin: 13px 16px;
+    margin: 9px 16px;
     background: #fff;
     border-style: none;
   }
-  .modalBtn {margin-left: auto;}
+  .modalBtn {
+    margin-left: auto;
+  }
   .btn-save {
     color: #fff;
     background: #12184e;
