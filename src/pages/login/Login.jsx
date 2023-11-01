@@ -48,6 +48,11 @@ export default function Login() {
         setAccount(localStorage.getItem("account"));
         // localStorage.setItem('token',userToken)
         navigate("/homefeed");
+
+        const userToken = response.user.token;
+        localStorage.setItem("token", userToken);
+        setToken(localStorage.getItem("token"));
+        console.log(userToken);  
         
         } catch (error) {
         console.log("에러입니다.");
