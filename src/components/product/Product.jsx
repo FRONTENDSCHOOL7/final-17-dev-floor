@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Sect2, Sale } from "./ProductStyle";
 import { useRecoilValue, useRecoilState } from "recoil";
-import { productState } from "../../state/ProductAtom";
+import { accountNameState } from "../../state/AuthAtom";
 import { productDelApi, productListApi } from "../../api/ProductApi";
 import { accountNameState, tokenState } from "../../state/AuthAtom";
 import ModalProduct from "../modal/ModalProduct";
+import { useInView } from "react-intersection-observer";
 
-// 11월 1일 1:39에 머지합니다.
 export default function Product() {
   const accountName = useRecoilValue(accountNameState);
-  const [products, setProducts] = useRecoilState(productState);
+  const [skip, setSkip] = useState(0);
+  const [ref, inView] = useInView();
+  const [products, setProducts] = useState([]);
   const [modalOpen, setIsOpenModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null); // 상품 ID를 저장
   const token = useRecoilValue(tokenState);
@@ -44,29 +46,47 @@ export default function Product() {
     setIsOpenModal(false); // 모달 닫기
   };
 
+  // 유저 상품 목록 api 요청
+  const productList = async () => {
+    try {
+      console.log("어카운트네임", accountName);
+      const result = await productListApi(accountName, token, skip);
+
+      console.log("@@@");
+      console.log(result.product);
+      console.log(products);
+      console.log("배열추가성공");
+
+      setProducts((products) => {
+        return [...products, ...result.product];
+      });
+      setSkip((skip) => skip + 5);
+    } catch (error) {
+      console.log("실패했습니다");
+    }
+  };
+
+  // iinView && !isend가 true 일 때만 데이터를 불러옴!
+  // 페이지 시작 시 렌더링
   useEffect(() => {
-    const productList = async () => {
-      try {
-        const result = await productListApi(accountName, token);
-        setProducts(result.product);
-      } catch (error) {
-        console.log("실패했습니다");
-      }
-    };
-    productList();
-  }, [accountName, setProducts]);
+    if (inView) {
+      console.log(inView, "무한 스크롤 요청 🎃");
+      productList();
+    }
+  }, [inView]);
 
   return (
     <Sect2>
       <h2>판매중인 상품</h2>
       <Sale>
-        {products.map((product) => (
-          <div key={product.id} onClick={() => showModal(product.id)}>
+        {products.map((product, idx) => (
+          <div key={idx} onClick={() => showModal(product.id)}>
             <img src={product.itemImage} alt='' />
             <p>{product.itemName}</p>
             <span>{product.price && product.price + "원"}</span>
           </div>
         ))}
+        <div ref={ref}>.</div>
       </Sale>
       {modalOpen && (
         <ModalProduct
