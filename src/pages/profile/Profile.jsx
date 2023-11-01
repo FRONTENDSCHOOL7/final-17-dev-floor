@@ -18,7 +18,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { followState, hamburgerBtnState } from "../../state/FollowAtom";
 import { followApi, profileApi } from "../../api/ProfileApi";
 import {
-  accountState,
   introState,
   userNameState,
 } from "../../state/ModifyAtom";
