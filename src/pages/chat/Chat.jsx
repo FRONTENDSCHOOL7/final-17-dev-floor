@@ -11,6 +11,7 @@ import {
   Chat1,
   Sect1,
 } from './ChatStyle';
+import { Link } from "react-router-dom";
 
 
 export default function Chat() {
@@ -26,7 +27,8 @@ export default function Chat() {
       </TopBar>
       <Sect1>
         <Chat1>
-            <img src={profileImg} alt='프로필 이미지' />
+          <img src={profileImg} alt='프로필 이미지' />
+          <Link to='/chatroom'>
           <div>
             <h3>애월읍 위니브 감귤농장</h3>
             <div className='text'>
@@ -34,6 +36,7 @@ export default function Chat() {
               <p className='date'>2020.10.25</p>
             </div>
           </div>
+          </Link>
         </Chat1>
         <Chat1>
           <img src={profileImg} alt='프로필 이미지' />

@@ -61,6 +61,7 @@ export const Chat1 = styled.div`
     width: 600px;
     height: 50px;
     line-height: 10px;
+    color: #000000;
     /* justify-content: space-between; */
   }
 
