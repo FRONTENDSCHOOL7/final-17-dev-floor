@@ -12,6 +12,7 @@ export const userNameState = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
+
 export const introState = atom({
   key: "introState",
   default: "",

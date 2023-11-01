@@ -3,7 +3,9 @@ import styled from "styled-components";
 // section 3
 
 export const Sect3 = styled.div`
-  height: 500px;
+  height: 100%;
+  margin-bottom: 60px;
+
   overflow: auto;
   &::-webkit-scrollbar {
     display: none;

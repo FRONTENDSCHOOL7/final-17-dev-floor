@@ -41,9 +41,9 @@ export const imageApi = async (file) => {
   }
 };
 
-export const productListApi = async (accountname, token) => {
+export const productListApi = async (accountName, token, skip) => {
   try {
-    const res = await axios.get(url + `/${accountname}`, {
+    const res = await axios.get(url + `/${accountName}/?limit=5&skip=${skip}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
