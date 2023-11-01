@@ -12,7 +12,7 @@ import TabMenu from "../../components/tab/TabMenu";
 import Product from "../../components/product/Product";
 import PostList from "../../components/postlist/PostList";
 import PostAlbum from "../../components/postalbum/PostAlbum";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import { followState, hamburgerBtnState } from "../../state/FollowAtom";
@@ -22,19 +22,21 @@ import {
   introState,
   userNameState,
 } from "../../state/ModifyAtom";
-import { tokenState } from "../../state/AuthAtom";
+import { accountNameState, tokenState } from "../../state/AuthAtom";
 
 export default function Profile() {
   const [follow, setFollow] = useRecoilState(followState);
   const [hamburgerBtn, setHamburgerBtn] = useRecoilState(hamburgerBtnState);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(accountState);
+  const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [yourImg, setYourImg] = useState("");
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
   };
   const token = useRecoilValue(tokenState);
+
+  const navigate = useNavigate();
 
   const checkFollow = async (e) => {
     e.preventDefault();
@@ -68,6 +70,9 @@ export default function Profile() {
   };
 
   useEffect(() => {
+    if (token === null) {
+      navigate("/404");
+    }
     handleProfile();
   }, []);
   return (

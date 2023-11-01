@@ -3,13 +3,13 @@ import { Sect2, Sale } from "./ProductStyle";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { productState } from "../../state/ProductAtom";
 import { productDelApi, productListApi } from "../../api/ProductApi";
-import { tokenState } from "../../state/AuthAtom";
+import { accountNameState, tokenState } from "../../state/AuthAtom";
 import ModalProduct from "../modal/ModalProduct";
 import { accountState } from "../../state/ModifyAtom";
 
 // 11월 1일 1:39에 머지합니다.
 export default function Product() {
-  const accountName = useRecoilValue(accountState);
+  const accountName = useRecoilValue(accountNameState);
   const [products, setProducts] = useRecoilState(productState);
   const [modalOpen, setIsOpenModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null); // 상품 ID를 저장
