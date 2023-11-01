@@ -13,7 +13,7 @@ import { tokenState } from "../../state/AuthAtom";
 import { accountNameState } from "../../state/AuthAtom";
 
 export default function PostList() {
-  const accounName = useRecoilValue(accountNameState);
+  const accountName = useRecoilValue(accountNameState);
   const [postData, setPostData] = useState([]);
   const [skip, setSkip] = useState(0);
   const [ref, inView] = useInView();
@@ -35,7 +35,9 @@ export default function PostList() {
   // 유저 게시글 목록 api 요청
   const postFetch = async () => {
     try {
-      const result = await postUserApi(accounName, token, skip);
+      console.log("토큰", token);
+      console.log("어카운트네임", accountName);
+      const result = await postUserApi(accountName, token, skip);
       console.log("@@@");
       console.log(result.post);
       console.log(postData);
@@ -67,9 +69,9 @@ export default function PostList() {
   return (
     <Sect3>
       <div>
-        {postData?.map((item) => {
+        {postData?.map((item, idx) => {
           return (
-            <div className='content-container'>
+            <div className='content-container' key={idx}>
               <div className='content-list'>
                 <img src={profileImg} alt='' className='profile-img' />
                 <div className='content'>

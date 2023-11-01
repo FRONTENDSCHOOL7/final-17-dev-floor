@@ -17,6 +17,7 @@ import {
     errorState,
     passwordState,
     tokenState,
+    accountNameState,
 } from "../../state/AuthAtom";
 
 export default function Login() {
@@ -24,7 +25,7 @@ export default function Login() {
     const [password, setPassword] = useRecoilState(passwordState);
     const [error, setError] = useRecoilState(errorState);
     const [token, setToken] = useRecoilState(tokenState);
-
+    const [account, setAccount] = useRecoilState(accountNameState);
     const navigate = useNavigate();
 
     const handleEmail = (e) => {
@@ -42,12 +43,12 @@ export default function Login() {
         if (!response.user) {
             setError("*이메일  또는 비밀번호가 일치하지 않습니다.");
         }
-        const userToken = response.user.token;
-        localStorage.setItem("token", userToken);
-        setToken(localStorage.getItem("token"));
-        console.log(userToken);
+        const userAcount = response.user.accountname;
+        localStorage.setItem("account", userAcount);
+        setAccount(localStorage.getItem("account"));
         // localStorage.setItem('token',userToken)
         navigate("/homefeed");
+        
         } catch (error) {
         console.log("에러입니다.");
         }

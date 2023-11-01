@@ -34,6 +34,11 @@ export const idState = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
+export const accountNameState = atom({
+  key: "accountNameState",
+  default: localStorage.getItem("account"),
+  effects_UNSTABLE: [persistAtom],
+});
 
 // join
 export const preDataState = atom({
@@ -76,10 +81,7 @@ export const idRegexErrorState = atom({
 //     key: 'userNameState',
 //     default: ''
 // })
-// export const accountNameState = atom({
-//     key: 'accountNameState',
-//     default: ''
-// })
+
 // export const introState = atom({
 //     key: 'introState',
 //     default: ''
@@ -98,7 +100,7 @@ export const routeState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 export const profileImgState = atom({
-  key: "profileImgState",
-  default: "",
+  key: "profileImageState",
+  default: "https://api.mandarin.weniv.co.kr/Ellipse.png",
   effects_UNSTABLE: [persistAtom],
 });
