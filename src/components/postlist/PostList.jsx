@@ -46,7 +46,7 @@ export default function PostList() {
       setPostData((postData) => {
         return [...postData, ...result.post];
       });
-      setSkip((skip) => skip + 13);
+      setSkip((skip) => skip + 12);
     } catch (error) {
       console.log("실패했습니다");
     }
