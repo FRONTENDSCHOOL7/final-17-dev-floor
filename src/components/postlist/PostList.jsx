@@ -21,9 +21,23 @@ export default function PostList() {
   const [heart, setHeart] = useState("false");
 
   // 좋아요 버튼
-  const handleLike = (e) => {
-    e.preventDefault();
-    setHeart(heart ? false : true);
+  const handleLike = (postId) => {
+    // 게시물 ID를 이용하여 해당 게시물의 인덱스를 찾음
+    const postIndex = postData.findIndex((item) => item.id === postId);
+
+    if (postIndex !== -1) {
+      // 복사본을 만들어 해당 게시물의 `hearted` 값을 토글
+      const updatedPostData = [...postData];
+      updatedPostData[postIndex].hearted = !updatedPostData[postIndex].hearted;
+
+      // 업데이트된 데이터를 상태에 설정
+      setPostData(updatedPostData);
+
+      localStorage.setItem(
+        `likeStatus_${postId}`,
+        updatedPostData[postIndex].hearted
+      );
+    }
   };
 
   // 날짜 데이터 변환 함수
@@ -58,7 +72,15 @@ export default function PostList() {
       console.log("실패했습니다");
     }
   };
-
+  useEffect(() => {
+    postData.forEach((item) => {
+      const likeStatus = localStorage.getItem(`likeStatus_${item.id}`);
+      if (likeStatus !== null) {
+        item.hearted = likeStatus === "true";
+      }
+    });
+    setPostData(postData);
+  }, []);
   // iinView && !isend가 true 일 때만 데이터를 불러옴!
   // 페이지 시작 시 렌더링
   useEffect(() => {
@@ -93,8 +115,8 @@ export default function PostList() {
                     <img src={item.image} alt='' />
                   </div>
                   <div className='like-comment'>
-                    <button onClick={handleLike}>
-                      <Like fill={heart ? "#fff" : "#12184E"}></Like>
+                    <button onClick={() => handleLike(item.id)}>
+                      <Like fill={item.hearted ? "#12184E" : "#fff"}></Like>
                       <span>12</span>
                     </button>
                     <button>
