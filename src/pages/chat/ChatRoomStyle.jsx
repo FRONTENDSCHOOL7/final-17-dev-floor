@@ -179,7 +179,7 @@ export const ChatBar = styled.div`
         display: block;
         width: 40px;
         font-size: 14px;
-        color: orange;
+        color: #F26E22;
       }
 
       input {
