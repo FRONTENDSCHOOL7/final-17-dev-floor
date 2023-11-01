@@ -1,7 +1,7 @@
 import React from "react";
 import back from "../../assets/images/icon-arrow-left.png";
 import { Top } from "./TopBarSaveStyle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { useRecoilState } from "recoil";
 
 export default function TopBarSave({ onSave, disabled }) {
