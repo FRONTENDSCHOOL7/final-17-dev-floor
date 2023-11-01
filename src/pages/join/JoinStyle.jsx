@@ -105,12 +105,15 @@ export const Inner = styled.div`
         background-size: 36px 36px;
     }
     .write-bottom {
-        display: inline-block;
-        position: absolute;
-        top: 30%;
-        right: 361px;
+        position: relative;
     }
-    .send {width: 36px;}
+    .send {
+        position: absolute;
+        bottom: 0;
+        right: 41%;
+        width: 36px;
+        img {width: 100%;}
+    }
     form {
         display: flex;
         flex-direction: column;

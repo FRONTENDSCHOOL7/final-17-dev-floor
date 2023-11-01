@@ -62,23 +62,6 @@ export function ProfileJoin({ preData, setPreData, submitJoin,joinProfileData })
     const newIntro = (e) => {
         setPreData({...preData, intro: e.target.value})
     } 
-//     const uploadImg = async (imageFile) => {
-//     const baseUrl = 'https://api.mandarin.weniv.co.kr/'
-//     const reqUrl = baseUrl+'/image/uploadfile'
-//     // 폼데이터 만들기
-//     const form = new FormData()
-//     // 폼데이터 값 추가
-//     // formData.append('키','값')
-//     form.append('image', imageFile)
-//     // 폼바디에 넣어서 요청
-//     const res = await fetch(reqUrl,{
-//         method: 'POST',
-//         body: form
-//     })
-//     const json = await res.json()
-//     const imgUrl = baseUrl+json.filename
-//     setPreData({...preData, image: imgUrl})
-// }
 const onChangeFile = async (e) => {
     const file = imgRef.current.files[0];
     const reader = new FileReader();
@@ -113,15 +96,6 @@ return (
             <h2>프로필 설정</h2>
             <p>나중에 언제든지 변경할 수 있습니다.</p>
         </Profile>
-        {/* <button >
-            <img  onChange={onChangeFile}
-                ref={fileRef}alt="" />
-            <input style={{ display: "none" }}
-                type='file'
-                accept="image/*"/>
-            <div>{image && <img src={image}></img>}</div>
-        </button>
-        <button className="upload-img"onClick={onClickImage} src={preData.image}></button> */}
         <div className='write-main'>
             <form className='writeBox'>
                 <label htmlFor="userImg"></label>
@@ -134,15 +108,14 @@ return (
                 accept="image/*"
                 />
                 <div className="profileImg">
-                    {/* {image && <img src={image} alt=""/>} */}
-                    {image ? <img src={profileDefault}/> : <img src={setImage}/>}
+                    {image ? <img src={image}/> : <img src={setImage}/>}
                 </div>
             </form>
-            </div>
             <div className='write-bottom'>
-            <button className='send' onClick={onClickImage}>
-                <img src={upload} alt='' className='profile-img' />
-            </button>
+                <button className='send' onClick={onClickImage}>
+                    <img src={upload} alt='' className='profile-img' />
+                </button>
+            </div>
         </div>
         <form>
             <div>
