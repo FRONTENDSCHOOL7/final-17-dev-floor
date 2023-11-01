@@ -1,6 +1,5 @@
 import React from "react";
 import more from "../../assets/images/s-icon-more-vertical.png";
-import like from "../../assets/images/icon-heart.png";
 import message from "../../assets/images/icon-message-circle.png";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -10,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 import { Sect3 } from "./PostListStyle";
 import { profileImgState, tokenState } from "../../state/AuthAtom";
 import { accountNameState } from "../../state/AuthAtom";
+import { ReactComponent as Like } from "../../assets/images/icon-heart.svg";
 
 export default function PostList() {
   const accountName = useRecoilValue(accountNameState);
@@ -18,6 +18,13 @@ export default function PostList() {
   const [ref, inView] = useInView();
   const image = useRecoilValue(profileImgState);
   const token = useRecoilValue(tokenState);
+  const [heart, setHeart] = useState("false");
+
+  // 좋아요 버튼
+  const handleLike = (e) => {
+    e.preventDefault();
+    setHeart(heart ? false : true);
+  };
 
   // 날짜 데이터 변환 함수
   const getDate = (date) => {
@@ -86,8 +93,9 @@ export default function PostList() {
                     <img src={item.image} alt='' />
                   </div>
                   <div className='like-comment'>
-                    <button>
-                      <img src={like} alt='' /> <span>58</span>
+                    <button onClick={handleLike}>
+                      <Like fill={heart ? "#fff" : "#12184E"}></Like>
+                      <span>12</span>
                     </button>
                     <button>
                       <img src={message} alt='' /> <span>12</span>

@@ -26,6 +26,7 @@ export const Sect3 = styled.div`
     .profile-img {
       width: 42px;
       height: 42px;
+      border-radius: 30px;
     }
     .content-title {
       display: flex;
