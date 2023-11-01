@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Sect2, Sale } from "./ProductStyle";
 import { useRecoilValue, useRecoilState } from "recoil";
-import { accountNameState } from "../../state/AuthAtom";
 import { productDelApi, productListApi } from "../../api/ProductApi";
 import { accountNameState, tokenState } from "../../state/AuthAtom";
 import ModalProduct from "../modal/ModalProduct";

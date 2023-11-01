@@ -35,28 +35,29 @@ export function ProfileJoin({ preData, setPreData, submitJoin,joinProfileData })
             setjoinBtnDisable(true)
         }
     }
+    const regex = /^[a-zA-Z0-9._]+$/;
+
     const newAccountname = (e) => {
         setPreData({...preData, accountname: e.target.value})
+        if(e.target.value === ''){
+            setIdValidError('*ID를 입력해주세요.')
+        } else if(!regex.test(e.target.value)) {
+            setIdValidError('*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.')
+        } else {
+            setIdValidError('');
+        }
     } 
-    const newAccountBlur = async () => {
-        const isAccountValid = await validateAccount(id);
-        if(isAccountValid === '이미 사용중인 계정 ID입니다.') {
+    const newAccountBlur = async (e) => {
+        const isAccountValid = await validateAccount(preData.accountname);
+        if(isAccountValid === '이미 가입된 계정ID 입니다.') {
             setIdValidError('*이미 사용 중인 ID입니다.');
             setjoinBtnDisable(false);
-            return
+        } else if(!regex.test(e.target.value)) {
+            setIdValidError('*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.')
         } else {
-            setIdValidError(null);
+            setIdValidError('');
             setjoinBtnDisable(true);
         }
-        // const regex = /^[a-zA-Z0-9._]+$/;
-        
-        // if(regex.test(newAccountname)) {
-        //     setIdRegexError(true)
-        //     setjoinBtnDisable(false)
-        // } else {
-        //     setIdRegexError(false)
-        //     setjoinBtnDisable(true)
-        // }
     }
 
     const newIntro = (e) => {
@@ -83,11 +84,6 @@ const onChangeFile = async (e) => {
     const onClickImage = (e) => {
         imgRef.current?.click(e.target.files?.[0]);
     };
-//     const onChangeImg = (e) => {
-
-//     const imageFile = e.target.files[0]
-//     uploadImg(imageFile)
-// }
 return (
     <Body>
     <Inner>

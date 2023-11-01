@@ -12,7 +12,6 @@ export const userNameState = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
-
 export const introState = atom({
   key: "introState",
   default: "",
@@ -50,4 +49,3 @@ export const logoutModalState = atom({
   default: false,
   effects_UNSTABLE: [persistAtom],
 });
-
