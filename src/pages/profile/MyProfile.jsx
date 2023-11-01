@@ -18,7 +18,6 @@ import {
   introState,
   userNameState,
   profileImgState,
-  accountState,
 } from "../../state/ModifyAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { tokenState } from "../../state/AuthAtom";
@@ -26,9 +25,9 @@ import { tokenState } from "../../state/AuthAtom";
 export default function MyProfile() {
   const [hamburgerBtn, setHamburgerBtn] = useState(true);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(accountState);
   const [intro, setIntro] = useRecoilState(introState);
   const [image, setImage] = useRecoilState(profileImgState);
+  const [id, setId] = useState("");
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const token = useRecoilValue(tokenState);
 
@@ -43,8 +42,8 @@ export default function MyProfile() {
       const res = await myProfileApi(token);
       setImage(res.user.image);
       setUserName(res.user.username);
-      setId(res.user.accountname);
       setIntro(res.user.intro);
+      setId(res.user.accountname);
       console.log(res);
     } catch (error) {
       console.log("에러입니다.");

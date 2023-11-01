@@ -46,7 +46,7 @@ export default function PostList() {
       setPostData((postData) => {
         return [...postData, ...result.post];
       });
-      setSkip((skip) => skip + 12);
+      setSkip((skip) => skip + 20);
     } catch (error) {
       console.log("실패했습니다");
     }
@@ -100,7 +100,7 @@ export default function PostList() {
           );
         })}
       </div>
-      <div ref={ref}></div>
+      <div ref={ref}>.</div>
     </Sect3>
   );
 }

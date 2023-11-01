@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Sect2 = styled.div`
+  background-color: white;
   width: 720px;
   height: 208px;
   margin-bottom: 12px;
@@ -26,7 +27,8 @@ export const Sale = styled.div`
     width: 136px;
     height: 18px;
     white-space: nowrap;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
     text-overflow: ellipsis;
     margin-top: 6px;
     font-size: 14px;

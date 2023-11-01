@@ -10,8 +10,8 @@ import {
   nameValidState,
   apiImageState,
   profileImgState,
-  accountState,
 } from "../../state/ModifyAtom";
+import { accountNameState } from "../../state/AuthAtom";
 import TopBarModify from "../../components/topbar/TopBarModify";
 import { editApi, validateAccount } from "../../api/ProfileApi";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ import { tokenState } from "../../state/AuthAtom";
 
 export default function ProfileModification() {
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(accountState);
+  const [account, setAcoount] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
@@ -47,7 +47,7 @@ export default function ProfileModification() {
 
   // 사용자 id 함수
   const handleIdChange = (e) => {
-    setId(e.target.value);
+    setAcoount(e.target.value);
   };
   const handleIdBlur = (e) => {
     const userId = e.target.value;
@@ -71,13 +71,13 @@ export default function ProfileModification() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    const isAccountValid = await validateAccount(id);
+    const isAccountValid = await validateAccount(account);
     if (!isAccountValid) {
       alert("계정 유효성 검사에 오류가 발생했습니다.");
       return;
     }
     try {
-      const res = await editApi(userName, id, intro, apiImage, token);
+      const res = await editApi(userName, account, intro, apiImage, token);
       console.log(res);
       navigate("/myprofile");
     } catch (error) {

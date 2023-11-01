@@ -17,18 +17,15 @@ import { Link } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { followState, hamburgerBtnState } from "../../state/FollowAtom";
 import { followApi, profileApi } from "../../api/ProfileApi";
-import {
-  accountState,
-  introState,
-  userNameState,
-} from "../../state/ModifyAtom";
+import { introState, userNameState } from "../../state/ModifyAtom";
 import { tokenState } from "../../state/AuthAtom";
+import { accountNameState } from "../../state/AuthAtom";
 
 export default function Profile() {
   const [follow, setFollow] = useRecoilState(followState);
   const [hamburgerBtn, setHamburgerBtn] = useRecoilState(hamburgerBtnState);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [id, setId] = useRecoilState(accountState);
+  const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [yourImg, setYourImg] = useState("");
   const showPost = () => {
