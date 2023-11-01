@@ -11,7 +11,7 @@ import { postCommentApi } from "../../api/PostApi";
 import { useRecoilValue } from "recoil";
 import { tokenState } from "../../state/AuthAtom";
 
-export default function Post() {
+export default function Post({post_id}) {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [comment, setComment] = useState(0);
 
@@ -30,7 +30,7 @@ export default function Post() {
     // setcomment(e.target.value);
     
     try {
-      const res = await postCommentApi(commentContent,token);
+      const res = await postCommentApi( commentContent,token);
       console.log(res)
 
       const newComment = res.comment;
