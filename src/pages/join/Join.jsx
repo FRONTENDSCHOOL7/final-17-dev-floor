@@ -7,25 +7,22 @@ import { EmailJoin } from "./EmailJoin";
 import { ProfileJoin } from "./ProfileJoin";
 import { validateAccount } from "../../api/ProfileApi";
 
-
 export default function Join() {
 const [preData, setPreData] = useRecoilState(preDataState);
 const navigate = useNavigate();
-const [isJoinPage, setIsJoinPage] = useState(true);  // 현재 페이지가 조인페이지인지 프로필페이지인지 결정하는 상태
-const [apiImage, setApiImage] = useState("");
+const [isJoinPage, setIsJoinPage] = useState(true);
 const [error, setError] = useRecoilState(errorState)
 const [idValidError, setIdValidError] = useRecoilState(idValidErrorState)
 
-
+// 이메일 다음 버튼
 const handleJoin = async (e) => {
     e.preventDefault();
     const isEmailValid = await validateEmail(preData.email);
-    console.log(isEmailValid) 
-    if (isEmailValid === '이미 가입된 이메일 주소 입니다.') {
-        setError('*이미 가입된 이메일 주소 또는 이메일형식이 올바르지 않습니다.');
-        return 
-    } else {
-        setError(null)
+        if (isEmailValid === '이미 가입된 이메일 주소 입니다.') {
+        setError('*이미 가입된 이메일 주소 입니다.');
+        return
+    } else if(isEmailValid === '사용 가능한 이메일 입니다.') {
+        setError('')
         setPreData({
             ...preData,
             email: preData.email,
@@ -34,15 +31,13 @@ const handleJoin = async (e) => {
         setIsJoinPage(false);
     }
 };
-
-
-
+// 프로필 설정 시작하기
 const submitJoin = async (e,image,accountname) => {
     e.preventDefault()
     const isAccountValid = await validateAccount(accountname)
     console.log(preData)
-    if (!isAccountValid) {
-        console.log(isAccountValid)
+    if (isAccountValid === '이미 가입된 계정ID 입니다.') {
+        setIdValidError('*이미 사용 중인 ID입니다.');
         return;
     }
     try {
@@ -60,9 +55,10 @@ const submitJoin = async (e,image,accountname) => {
     console.log(response)
 
     navigate('/login')
+    setPreData('')
+
     } catch (error) {
         console.log(error)
-        setIdValidError('*이미 사용 중인 ID입니다.');
     }
 };
 

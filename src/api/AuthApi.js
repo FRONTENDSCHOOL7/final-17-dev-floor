@@ -125,11 +125,12 @@ export const validateEmail = async (email) => {
     try {
         const response = await axios.post(baseUrl+emailReq, { 
         user: {email} });
-        const json = response.data
-        
-        
+        const json = response.data.message
         // 사용 가능한 이메일인 경우
-        return json.message;
+        console.log(json)
+
+        return json
+
     } catch (error) {
         console.error('이메일 유효성 검사 에러:', error);
         
@@ -143,7 +144,7 @@ export const validateAccount = async (accountname) => {
     try {
         const response = await axios.post(baseUrl+accountReq, {user: {accountname}} );
         console.log(response.data.message)
-        return true;
+        return response.data.message;
     } catch (error) {
         console.error('계정 유효성 검사 에러:', error);
         return false;

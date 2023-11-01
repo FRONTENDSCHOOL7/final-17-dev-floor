@@ -23,7 +23,8 @@ import {
 export default function Login() {
   const [email, setEmail] = useRecoilState(emailState);
   const [password, setPassword] = useRecoilState(passwordState);
-  const [error, setError] = useRecoilState(errorState);
+  const [pwError, setPwError] = useRecoilState(errorState);
+  const [emError, setEmError] = useRecoilState(errorState);
   const [token, setToken] = useRecoilState(tokenState);
   const [account, setAccount] = useRecoilState(accountNameState);
 
@@ -41,18 +42,25 @@ export default function Login() {
       const response = await loginApi(email, password);
       console.log(response);
 
+
       if (!response.user) {
-        setError("*이메일  또는 비밀번호가 일치하지 않습니다.");
+        setPwError("*이메일 또는 비밀번호가 일치하지 않습니다.");
+      } else {
+        setEmError('')
+        setPwError('')
       }
       const userAcount = response.user.accountname;
       localStorage.setItem("account", userAcount);
       setAccount(localStorage.getItem("account"));
+
       const userToken = response.user.token;
       localStorage.setItem("token", userToken);
       setToken(localStorage.getItem("token"));
       console.log(userToken);
+
       // localStorage.setItem('token',userToken)
       navigate("/homefeed");
+
     } catch (error) {
       console.log("에러입니다.");
     }
@@ -75,6 +83,11 @@ export default function Login() {
               onChange={handleEmail}
             />
           </Email>
+          {/* {emError && (
+            <div>
+              <p>{emError}</p>
+            </div>
+          )} */}
           <Password>
             <span>비밀번호</span>
             <label htmlFor='password'></label>
@@ -85,9 +98,9 @@ export default function Login() {
               onChange={handlePassword}
             />
           </Password>
-          {error && (
+          {pwError && (
             <div>
-              <p>{error}</p>
+              <p>{pwError}</p>
             </div>
           )}
           <Submit>

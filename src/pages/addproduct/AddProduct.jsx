@@ -115,6 +115,10 @@ export default function AddProduct() {
       // API 요청 실패 시
       console.log("상품 등록 실패:", error);
     }
+    setProductImage("");
+    setProductName("");
+    setProductPrice("");
+    setProductLink("");
   };
 
   return (

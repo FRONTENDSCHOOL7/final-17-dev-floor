@@ -3,39 +3,43 @@ import { joinApi, profileImgApi, validateAccount, validateEmail } from "../../ap
 import { btnDisableState, contentState, errorPwState, errorRegexState, errorState, idRegexErrorState, idRegexState, idValidErrorState, imageState, joinBtnDisableState, preDataState, profileImgState } from "../../state/AuthAtom";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { Email, JoinForm, JoinInner, JoinTit, JoinWrap, Password, Submit,Body, Inner, Main, Profile } from './JoinStyle'
-import { nameValidState } from "../../state/ModifyAtom";
-import { imageApi, postApi } from "../../api/PostApi";
-import upload from "../../assets/images/upload-file.png";
+import { Email, JoinForm, JoinInner, JoinTit, JoinWrap, Password, Submit } from './JoinStyle'
 
 export function EmailJoin({ preData, setPreData, handleJoin}) {
     const [btnDisable, setBtnDisable] = useRecoilState(btnDisableState)
     const [error, setError] = useRecoilState(errorState)
     const [passLengthError, setPassLengthError] = useRecoilState(errorPwState)
     
-
     const newEmail = async (e) => {
         setPreData({...preData, email: e.target.value});
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+        if(e.target.value === ''){
+            setError('*이메일을 입력해주세요.')
+        } else if(!regex.test(e.target.value)) {
+            setError('*이메일 형식이 올바르지 않습니다.');
+        } else if(e.target.value !== ''){
+            setError('');
+        }
     };
     const newPassword = (e) => {
         setPreData({...preData, password: e.target.value});
     };
-    const emailBlur = async () => {
+    const emailBlur = async (e) => {
         const isEmailValid = await validateEmail(preData.email);
         if (isEmailValid === '이미 가입된 이메일 주소 입니다.') {
-            setError('*이미 가입된 이메일 주소 또는 이메일형식이 올바르지 않습니다.');
+            setError('*이미 가입된 이메일 주소 입니다.');
             setBtnDisable(true)
-        } else {
-            setError(null);
+        } else if(isEmailValid === '사용 가능한 이메일 입니다.'){
+            setError('');
             setBtnDisable(false)
         }
     }
     // const emailFormatCheck = (e) => {
     //     const regex = /^[a-zA-Z0-9._]+$/;
     //     if(!regex.test(e.target.value)) {
-    //         setEmailRegexError('*이메일 형식이 올바르지 않습니다.');
+    //         setError('*이메일 형식이 올바르지 않습니다.');
     //     } else {
-    //         setEmailRegexError(null);
+    //         setError(null);
     //     }
     // };
     const passwordBlur = (e) => {
@@ -70,7 +74,7 @@ return (
         {passLengthError && <div><p>{passLengthError}</p></div>}
         <Submit onClick={handleJoin}
                 disabled={btnDisable}
-                style={{ backgroundColor: btnDisable ? 'var(--bgColor)' : 'var(--disableColor)' }}
+                style={{ backgroundColor: btnDisable ? 'var(--disableColor)' : 'var(--bgColor)' }}
                 >
             다음
         </Submit>

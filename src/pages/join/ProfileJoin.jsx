@@ -35,76 +35,55 @@ export function ProfileJoin({ preData, setPreData, submitJoin,joinProfileData })
             setjoinBtnDisable(true)
         }
     }
+    const regex = /^[a-zA-Z0-9._]+$/;
+
     const newAccountname = (e) => {
         setPreData({...preData, accountname: e.target.value})
+        if(e.target.value === ''){
+            setIdValidError('*ID를 입력해주세요.')
+        } else if(!regex.test(e.target.value)) {
+            setIdValidError('*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.')
+        } else {
+            setIdValidError('');
+        }
     } 
-    const newAccountBlur = async () => {
-        const isAccountValid = await validateAccount(id);
-        if(isAccountValid === '이미 사용중인 계정 ID입니다.') {
+    const newAccountBlur = async (e) => {
+        const isAccountValid = await validateAccount(preData.accountname);
+        if(isAccountValid === '이미 가입된 계정ID 입니다.') {
             setIdValidError('*이미 사용 중인 ID입니다.');
             setjoinBtnDisable(false);
-            return
+        } else if(!regex.test(e.target.value)) {
+            setIdValidError('*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.')
         } else {
-            setIdValidError(null);
+            setIdValidError('');
             setjoinBtnDisable(true);
         }
-        // const regex = /^[a-zA-Z0-9._]+$/;
-        
-        // if(regex.test(newAccountname)) {
-        //     setIdRegexError(true)
-        //     setjoinBtnDisable(false)
-        // } else {
-        //     setIdRegexError(false)
-        //     setjoinBtnDisable(true)
-        // }
     }
 
     const newIntro = (e) => {
         setPreData({...preData, intro: e.target.value})
     } 
-//     const uploadImg = async (imageFile) => {
-//     const baseUrl = 'https://api.mandarin.weniv.co.kr/'
-//     const reqUrl = baseUrl+'/image/uploadfile'
-//     // 폼데이터 만들기
-//     const form = new FormData()
-//     // 폼데이터 값 추가
-//     // formData.append('키','값')
-//     form.append('image', imageFile)
-//     // 폼바디에 넣어서 요청
-//     const res = await fetch(reqUrl,{
-//         method: 'POST',
-//         body: form
-//     })
-//     const json = await res.json()
-//     const imgUrl = baseUrl+json.filename
-//     setPreData({...preData, image: imgUrl})
-// }
-const onChangeFile = async (e) => {
-    const file = imgRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-        setImage(reader.result);
-    };
-    // 이미지 api 필요 값 입력
-    try {
-        const result = await profileImgApi(file);
-        console.log(result);
-        // setApiImage("https://api.mandarin.weniv.co.kr/"+result.filename);
-        setPreData({...preData, image: "https://api.mandarin.weniv.co.kr/"+result.filename})
-        console.log("이미지다!!!!");
-        } catch (error) {
-        console.log(error);
-        }
+    const onChangeFile = async (e) => {
+        const file = imgRef.current.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setImage(reader.result);
+        };
+        // 이미지 api 필요 값 입력
+        try {
+            const result = await profileImgApi(file);
+            console.log(result);
+            // setApiImage("https://api.mandarin.weniv.co.kr/"+result.filename);
+            setPreData({...preData, image: "https://api.mandarin.weniv.co.kr/"+result.filename})
+            console.log("이미지다!!!!");
+            } catch (error) {
+            console.log(error);
+            }
     };
     const onClickImage = (e) => {
         imgRef.current?.click(e.target.files?.[0]);
     };
-//     const onChangeImg = (e) => {
-
-//     const imageFile = e.target.files[0]
-//     uploadImg(imageFile)
-// }
 return (
     <Body>
     <Inner>
@@ -113,15 +92,6 @@ return (
             <h2>프로필 설정</h2>
             <p>나중에 언제든지 변경할 수 있습니다.</p>
         </Profile>
-        {/* <button >
-            <img  onChange={onChangeFile}
-                ref={fileRef}alt="" />
-            <input style={{ display: "none" }}
-                type='file'
-                accept="image/*"/>
-            <div>{image && <img src={image}></img>}</div>
-        </button>
-        <button className="upload-img"onClick={onClickImage} src={preData.image}></button> */}
         <div className='write-main'>
             <form className='writeBox'>
                 <label htmlFor="userImg"></label>
@@ -134,15 +104,14 @@ return (
                 accept="image/*"
                 />
                 <div className="profileImg">
-                    {/* {image && <img src={image} alt=""/>} */}
-                    {image ? <img src={profileDefault}/> : <img src={setImage}/>}
+                    {image ? <img src={image}/> : <img src={setImage}/>}
                 </div>
             </form>
-            </div>
             <div className='write-bottom'>
-            <button className='send' onClick={onClickImage}>
-                <img src={upload} alt='' className='profile-img' />
-            </button>
+                <button className='send' onClick={onClickImage}>
+                    <img src={upload} alt='' className='profile-img' />
+                </button>
+            </div>
         </div>
         <form>
             <div>

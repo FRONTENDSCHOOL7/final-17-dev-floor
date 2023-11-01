@@ -3,13 +3,23 @@ import bar from "../../assets/images/bar.png";
 import { Sect1 } from "./LogoutModalStyle";
 import { useNavigate } from "react-router-dom";
 import { tokenState } from "../../state/AuthAtom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
+import { logoutModalState } from "../../state/ModifyAtom";
 
-export default function LogoutModal({ isModal, setIsModal, children }) {
-    const wrapperRef = useRef();
-    const [token, setToken] = useRecoilState(tokenState);
+export default function SettingLogout({isSetModal, setIsSetModal}) {
+    const [isModal, setIsModal] = useRecoilState(  (logoutModalState));
 
-    const navigate = useNavigate();
+        const wrapperRef = useRef();
+        const handleClickOutside = (event) => {
+        if (wrapperRef && !wrapperRef.current.contains(event.target)) {
+            setIsSetModal(false);
+        } else {
+            setIsSetModal(true);
+        }
+    };
+    const xClose = () => {
+        setIsSetModal(false);
+    };
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
 
@@ -17,17 +27,35 @@ export default function LogoutModal({ isModal, setIsModal, children }) {
         document.removeEventListener("mousedown", handleClickOutside);
         };
     });
-    const handleClickOutside = (event) => {
-        if (wrapperRef && !wrapperRef.current.contains(event.target)) {
-        setIsModal(false);
-        } else {
-        setIsModal(true);
-        }
-    };
+  return (
+    <div ref={wrapperRef} value={isSetModal}>
+        <Sect1>
+            <div className="container">
+            <div className="barr">
+                <button className="btn" onClick={xClose}>
+                <img src={bar} alt="" />
+                </button>
+            </div>
+            <div className="letter">
+                <p>설정 및 개인정보</p>
+                <button onClick={() => setIsModal(true)}>로그아웃</button>
+            </div>
+            {isModal && <LogoutModal setIsModal={setIsModal} handleClickOutside={handleClickOutside} wrapperRef={wrapperRef} />}
+            </div>
+        </Sect1>
+    </div>
+    );
+}
+
+export function LogoutModal({ isModal, setIsModal }) {
+    const [token, setToken] = useRecoilState(tokenState);
+    const navigate = useNavigate();
 
     const xClose = () => {
         setIsModal(false);
     };
+
+
     const handleLogout = () => {
         localStorage.clear();
         setToken(null);
@@ -35,20 +63,21 @@ export default function LogoutModal({ isModal, setIsModal, children }) {
     };
 
     return (
-        <div ref={wrapperRef} value={isModal}>
-        {children}
+        <div value={isModal}>
         <Sect1>
-            <div className='container'>
-            <div className='barr'>
-                <button className='btn' onClick={xClose}>
-                <img src={bar} alt='' />
+            <div className="container">
+            <div className="barr">
+                <button className="btn" onClick={xClose}>
+                <img src={bar} alt="" />
                 </button>
             </div>
-            <div className='letter'>
+            <div className="letter">
                 <p>로그아웃하시겠어요?</p>
                 <div className="btn">
-                    <button onClick={xClose}>취소</button>
-                    <button className='logout' onClick={handleLogout}>로그아웃</button>
+                <button onClick={xClose}>취소</button>
+                <button className="logout" onClick={handleLogout}>
+                    로그아웃
+                </button>
                 </div>
             </div>
             </div>
