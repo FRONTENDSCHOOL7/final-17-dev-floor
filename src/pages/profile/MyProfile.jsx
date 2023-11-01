@@ -1,154 +1,103 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import profileImg from "../../assets/images/Group 26.png";
-import message from "../../assets/images/icon-message-circle.png";
-import share from "../../assets/images/icon-share.png";
-import hamburger from "../../assets/images/icon-post-list-off.png";
-import album from "../../assets/images/icon-post-album-off.png";
-import more from "../../assets/images/s-icon-more-vertical.png";
-import like from "../../assets/images/icon-heart.png";
+import hamburgerOn from "../../assets/images/icon-post-list-on.png";
+import hamburgerOff from "../../assets/images/icon-post-list-off.png";
+import albumOn from "../../assets/images/icon-post-album-on.png";
+import albumOff from "../../assets/images/icon-post-album-off.png";
 
-import {
-  ProImg,
-  Intro,
-  Body,
-  Btns,
-  Sect1,
-  Sect2,
-  Sale,
-  Sect3,
-} from "./MyProfileStyle";
+import { ProImg, Intro, Body, Btns, Sect1 } from "./MyProfileStyle";
 import TopBar from "../../components/topbar/TopBarBasic";
 import TabMenu from "../../components/tab/TabMenu";
+import PostList from "../../components/postlist/PostList";
+import Product from "../../components/product/Product";
+import { Link } from "react-router-dom";
+import PostAlbum from "../../components/postalbum/PostAlbum";
+import { myProfileApi } from "../../api/ProfileApi";
+import {
+  apiImageState,
+  introState,
+  userNameState,
+  profileImgState,
+  accountState,
+} from "../../state/ModifyAtom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { tokenState } from "../../state/AuthAtom";
 
 export default function MyProfile() {
+  const [hamburgerBtn, setHamburgerBtn] = useState(true);
+  const [userName, setUserName] = useRecoilState(userNameState);
+  const [id, setId] = useRecoilState(accountState);
+  const [intro, setIntro] = useRecoilState(introState);
+  const [image, setImage] = useRecoilState(profileImgState);
+  const [apiImage, setApiImage] = useRecoilState(apiImageState);
+  const token = useRecoilValue(tokenState);
+
+  const showPost = () => {
+    setHamburgerBtn(!hamburgerBtn);
+  };
+
+  // 내 프로필 조회
+
+  const handleMyProfile = async (e) => {
+    try {
+      const res = await myProfileApi(token);
+      setImage(res.user.image);
+      setUserName(res.user.username);
+      setId(res.user.accountname);
+      setIntro(res.user.intro);
+      console.log(res);
+    } catch (error) {
+      console.log("에러입니다.");
+    }
+  };
+
+  useEffect(() => {
+    handleMyProfile();
+  }, []);
+
   return (
     <Body>
       <TopBar />
       <Sect1>
         <ProImg>
           <button>
-            <span>2950</span>
-            <p>followers</p>
+            <Link to='/followers'>
+              <span className='followers'>128</span>
+              <p>followers</p>
+            </Link>
           </button>
-          <img src={profileImg} alt="프로필 이미지" />
+          <img src={image} alt='프로필 이미지' className='profileImg' />
           <button>
-            <span>128</span>
-            <p>followings</p>
+            <Link to='/following'>
+              <span>128</span>
+              <p>followings</p>
+            </Link>
           </button>
         </ProImg>
         <Intro>
-          <h2>애월읍 위니브 감귤농장</h2>
-          <p>@ weniv_Mandarin</p>
-          <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</p>
+          <h2>{userName}</h2>
+          <p>@ {id}</p>
+          <p>{intro}</p>
         </Intro>
         <Btns>
-          <button className="modify-btn">프로필 수정</button>
-          <button className="register-btn">상품 등록</button>
+          <Link to='/modify'>
+            <button className='modify-btn'>프로필 수정</button>
+          </Link>
+          <Link to='/product'>
+            <button className='register-btn'>상품 등록</button>
+          </Link>
         </Btns>
       </Sect1>
-      <Sect2>
-        <h2>판매중인 상품</h2>
-        <Sale>
-          <div>
-            <img src="https://via.placeholder.com/140x90" alt="" />
-            <p>애월읍 노지 감귤</p>
-            <span>35,000원</span>
-          </div>
-          <div>
-            <img src="https://via.placeholder.com/140x90" alt="" />
-            <p>애월읍 노지 감귤</p>
-            <span>35,000원</span>
-          </div>
-          <div>
-            <img src="https://via.placeholder.com/140x90" alt="" />
-            <p>애월읍 노지 감귤</p>
-            <span>35,000원</span>
-          </div>
-        </Sale>
-      </Sect2>
-      <Sect3>
-        <div className="album-btns">
-          <button>
-            <img src={hamburger} alt="" />
-          </button>
-          <button>
-            <img src={album} alt="" />
-          </button>
-        </div>
-        {/* 게시글 목록 */}
-        <div className="content-container">
-          {/* 게시글 한개 */}
-          <div className="content-list">
-            <img src={profileImg} alt="" className="profile-img" />
-            <div className="content">
-              <div className="content-title">
-                <div className="content-id">
-                  <h3>애월읍 위니브 감귤농장</h3>
-                  <p>@ weniv_Mandarin</p>
-                </div>
-                <div>
-                  <button>
-                    <img src={more} alt="" />
-                  </button>
-                </div>
-              </div>
-              <div className="content-inner">
-                <p>
-                  옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여,
-                  뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고,
-                  못할 넣는 풍부하게 뛰노는 인생의 힘있다.
-                </p>
-                <img src="https://via.placeholder.com/304x228" alt="" />
-              </div>
-              <div className="like-comment">
-                <button>
-                  <img src={like} alt="" /> <span>58</span>
-                </button>
-                <button>
-                  <img src={message} alt="" /> <span>12</span>
-                </button>
-              </div>
-              <span className="date">2020년 10월 21일</span>
-            </div>
-          </div>
-          {/* //게시글 한개 */}
-          {/* 게시글 한개 */}
-          <div className="content-list">
-            <img src={profileImg} alt="" className="profile-img" />
-            <div className="content">
-              <div className="content-title">
-                <div className="content-id">
-                  <h3>애월읍 위니브 감귤농장</h3>
-                  <p>@ weniv_Mandarin</p>
-                </div>
-                <div>
-                  <button>
-                    <img src={more} alt="" />
-                  </button>
-                </div>
-              </div>
-              <div className="content-inner">
-                <p>
-                  옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여,
-                  뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고,
-                  못할 넣는 풍부하게 뛰노는 인생의 힘있다.
-                </p>
-                <img src="https://via.placeholder.com/304x228" alt="" />
-              </div>
-              <div className="like-comment">
-                <button>
-                  <img src={like} alt="" /> <span>58</span>
-                </button>
-                <button>
-                  <img src={message} alt="" /> <span>12</span>
-                </button>
-              </div>
-              <span className="date">2020년 10월 21일</span>
-            </div>
-          </div>
-          {/* //게시글 한개 */}
-        </div>
-      </Sect3>
+      <Product />
+      <div className='album-btns'>
+        <button onClick={showPost}>
+          <img src={hamburgerBtn ? hamburgerOn : hamburgerOff} alt='' />
+        </button>
+        <button onClick={showPost}>
+          <img src={hamburgerBtn ? albumOff : albumOn} alt='' />
+        </button>
+      </div>
+      {hamburgerBtn ? <PostList /> : <PostAlbum />}
       <TabMenu />
     </Body>
   );

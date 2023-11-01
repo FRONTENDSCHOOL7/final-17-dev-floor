@@ -1,5 +1,6 @@
 import React from 'react'
 import LogoImg from '../../assets/images/Group 23.png'
+import LogoTxtImg from '../../assets/images/dev-floor.png'
 import KakaoImg from '../../assets/images/message-circle.png'
 import GoogleImg from '../../assets/images/Google__G__Logo 1.png'
 import facebookImg from '../../assets/images/facebook.png'
@@ -11,8 +12,8 @@ export default function LoginHome() {
         <Main>
             <Logo>
                 <h1>
-                    <img src={LogoImg} alt="로고이미지" />
-                    개발바닥
+                    <div className='logo'><img src={LogoImg} alt="로고이미지" /></div>
+                    <div className='logoTxt'><img src={LogoTxtImg} alt="개발바닥" /></div>
                 </h1>
             </Logo>
             <LoginHomeWrap>

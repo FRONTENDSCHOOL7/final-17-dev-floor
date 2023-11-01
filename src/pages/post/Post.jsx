@@ -1,13 +1,57 @@
-import React from "react";
+import React, { useEffect } from "react";
 import profileImg from "../../assets/images/Group 26.png";
 import message from "../../assets/images/icon-message-circle.png";
 import more from "../../assets/images/s-icon-more-vertical.png";
 import like from "../../assets/images/icon-heart.png";
-
 import { Body, Sect1, Sect2, Sect3 } from "./PostStyle";
 import TopBar from "../../components/topbar/TopBarBasic";
+import { useState } from "react";
+import Modal from "../../components/modal/Modal";
+import { postCommentApi } from "../../api/PostApi";
+import { useRecoilValue } from "recoil";
+import { tokenState } from "../../state/AuthAtom";
 
-export default function Post() {
+export default function Post({post_id}) {
+  const [modalOpen, setIsOpenModal] = useState(false);
+  const [comment, setComment] = useState(0);
+
+  const [commentContent, setCommentContent] = useState('') //댓글내용상태
+  const [postcomment, setPostcomment] = useState([]); //댓글목록
+  const token = useRecoilValue(tokenState) 
+
+  const showModal = () => {
+    setIsOpenModal(true);
+  };
+
+  const handleComment = async () => {
+    if(commentContent.trim()==='') {
+      return //댓글 내용없으면 게시안함
+    }
+    // setcomment(e.target.value);
+    
+    try {
+      const res = await postCommentApi( commentContent,token);
+      console.log(res)
+
+      const newComment = res.comment;
+      
+      setPostcomment([...postcomment,newComment])
+      console.log('댓글작성완료');
+      setCommentContent('')
+
+    } catch (error) {
+        console.error('댓글실패',error);
+    }
+  };
+  
+  // useEffect(()=> {
+  //     const commenWrite = async (postId) => {
+  //       const result = await postCommentApi(postId, comments)
+  //       setPostcomment(result)
+  //       console.log(postCommentApi)
+  //     }
+  //     commenWrite()
+  // },[])
   return (
     <Body>
       <TopBar />
@@ -22,7 +66,7 @@ export default function Post() {
                   <p>@ weniv_Mandarin</p>
                 </div>
                 <div>
-                  <button>
+                  <button className='modalDel' onClick={showModal}>
                     <img src={more} alt='' />
                   </button>
                 </div>
@@ -48,15 +92,17 @@ export default function Post() {
           </div>
         </div>
       </Sect1>
+      {/* Sect2 댓글 */}
       <Sect2>
         <div className='comment-container'>
-          <div className='comment-list'>
+          {postcomment.map((comment,index)=>(
+            <div className='comment-list' key={index}>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment'>
               <div className='comment-title'>
                 <div className='comment-id'>
-                  <h3>서귀포시 무슨 농장</h3>
-                  <p>· 5분 전</p>
+                  <h3>{comment.author.username}</h3>
+                  <p></p>
                 </div>
                 <div>
                   <button>
@@ -65,11 +111,12 @@ export default function Post() {
                 </div>
               </div>
               <div className='comment-inner'>
-                <p>게시글 답글 ~~ !! 최고최고</p>
+                <p>{comment.content}</p>
               </div>
             </div>
           </div>
-          <div className='comment-list'>
+          ))} 
+          {/* <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment'>
               <div className='comment-title'>
@@ -90,20 +137,26 @@ export default function Post() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
-      </Sect2>
+      </Sect2> 
+      {/* Sect2 댓글 목록 */}
+      {/* Sect3 댓글창 */}
       <Sect3>
         <div className='comment-container'>
           <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
             <div className='comment-title'>
-              <input placeholder='댓글 입력하기...' />
-              <button>게시</button>
+              <input value={commentContent} placeholder='댓글 입력하기...' onChange={(e)=>setCommentContent(e.target.value)} />
+              
+              <button onClick={handleComment} className={"btn" + (commentContent ? "Active" : "Disabled")}>
+                게시
+              </button>
             </div>
           </div>
         </div>
       </Sect3>
+      {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
     </Body>
   );
 }

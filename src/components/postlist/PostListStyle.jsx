@@ -3,22 +3,18 @@ import styled from "styled-components";
 // section 3
 
 export const Sect3 = styled.div`
-  .album-btns {
-    display: flex;
-    justify-content: right;
-    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  height: 500px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
   }
-  button {
-    background: #fff;
-    border: none;
-  }
+  background: #fff;
   .content-container::-webkit-scrollbar {
     display: none;
   }
   .content-container {
-    height: 500px;
-    overflow-y: scroll;
-    overflow-x: visible;
+    /* width: 100%; */
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     margin: 16px 16px 0;
@@ -34,6 +30,10 @@ export const Sect3 = styled.div`
     .content-title {
       display: flex;
       justify-content: space-between;
+      .imgBox {
+        img {
+        }
+      }
     }
     .content-id {
       h3 {
@@ -55,6 +55,10 @@ export const Sect3 = styled.div`
       flex-direction: column;
     }
     .content-inner {
+      img {
+        width: 304px;
+        height: 228px;
+      }
       font-size: 14px;
       font-weight: 400;
       p {

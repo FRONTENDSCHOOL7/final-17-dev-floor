@@ -9,6 +9,8 @@ const GlobalStyle = createGlobalStyle`
         --borderColor: #DBDBDB;
         --whiteColor: #ffffff;
         --disableColor: #7A8CCB;
+        --errorFontColor: #EB5757;
+        --focusColor: #F26E22;
     }
     ${reset}
 `;

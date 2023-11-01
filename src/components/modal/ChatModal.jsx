@@ -5,12 +5,12 @@ import bar from "../../assets/images/bar.png";
 export default function Modal({ isOpenModal, setIsOpenModal, children }) {
   const wrapperRef = useRef();
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+  document.addEventListener("mousedown", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  });
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+});
   const handleClickOutside = (event) => {
     if (wrapperRef && !wrapperRef.current.contains(event.target)) {
       setIsOpenModal(false);
@@ -33,7 +33,7 @@ export default function Modal({ isOpenModal, setIsOpenModal, children }) {
             </button>
           </div>
           <div className='letter'>
-            <button>채팅방 나가기.</button>
+            <button>채팅방 나가기</button>
           </div>
         </div>
       </Sect1>
