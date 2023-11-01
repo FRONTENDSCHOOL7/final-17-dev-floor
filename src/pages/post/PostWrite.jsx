@@ -53,7 +53,7 @@ export default function PostWrite() {
     try {
       const result = await postPostApi(content, apiImage, token);
       setPostId(result.post.author.accountname);
-      navigate("/profile");
+      navigate("/myprofile");
     } catch (error) {
       console.log(error);
     }

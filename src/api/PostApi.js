@@ -71,18 +71,23 @@ export const postDel = async (postId, token) => {
 };
 // 댓글
 export const postCommentApi = async (comment,token) => {
+
   try {
-    const res = await axios.post(`https://api.mandarin.weniv.co.kr/post/653fcb1fb2cb205663934f1e/comments`, {
-      comment: {content: comment}
-    }, {
+    const res = await axios.post(
+      `https://api.mandarin.weniv.co.kr/post/653fcb1fb2cb205663934f1e/comments`,
+      {
+        comment: { content: comment },
+      },
+      {
         headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-type": "application/json"
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
       }
-    });
-      console.log(res)
-      return res.data;
-    } catch (error) {
+    );
+    console.log(res);
+    return res.data;
+  } catch (error) {
     alert("댓글 업로드 에러");
   }
-}
+};
