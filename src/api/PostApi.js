@@ -43,7 +43,7 @@ export const imageApi = async (file) => {
 export const postUserApi = async (accountName, token, skip) => {
   try {
     const res = await axios.get(
-      url + `/${accountName}/userpost/?limit=6&skip=${skip}`,
+      url + `/${accountName}/userpost/?limit=20&skip=${skip}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
