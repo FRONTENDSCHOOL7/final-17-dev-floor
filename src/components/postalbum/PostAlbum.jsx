@@ -15,39 +15,28 @@ export default function PostAlbum() {
   const [ref, inView] = useInView();
   const token = useRecoilValue(tokenState);
 
-  useEffect(() => {
-    if (inView) {
-      console.log(inView, "무한 스크롤 요청 🎃");
-      postFetch();
-    }
-  }, [inView]);
-
   // 유저 게시글 목록 api 요청
   const postFetch = async () => {
     try {
+      console.log("토큰", token);
+      console.log("어카운트네임", accounName);
       const result = await postUserApi(accounName, token, skip);
+
       console.log("@@@");
       console.log(result.post);
       console.log(postData);
-      if (!postData.includes(result.post)) {
-        console.log("배열추가성공");
-        setPostData((postData) => {
-          return [...postData, ...result.post];
-        });
-        setSkip((skip) => skip + 10);
-      }
+
+      setPostData((postData) => {
+        return [...postData, ...result.post];
+      });
+      setSkip((skip) => skip + 12);
     } catch (error) {
       console.log("실패했습니다");
     }
   };
 
-  // 맨 처음 렌더링 되었을 때 데이터를 한번 불러옴!
-  useEffect(() => {
-    postFetch();
-  }, []);
-
-  // isView가 true 일 때만 데이터를 불러옴!
-  // 보였다 안보이면 true에서 false로 바뀌기 때문에 useEffect가 두번 실행됨!
+  // iinView && !isend가 true 일 때만 데이터를 불러옴!
+  // 페이지 시작 시 렌더링
   useEffect(() => {
     if (inView) {
       console.log(inView, "무한 스크롤 요청 🎃");
@@ -58,9 +47,9 @@ export default function PostAlbum() {
   console.log(postData);
   return (
     <AlbumImg>
-      {postData?.map((item) => {
+      {postData?.map((item, idx) => {
         return (
-          <div>
+          <div key={idx}>
             <img src={item.image} alt='' />
           </div>
         );
