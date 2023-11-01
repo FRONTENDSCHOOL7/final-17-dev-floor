@@ -15,7 +15,7 @@ export default function TabMenu() {
   const changeColor = (e) => {
     nav(`/${e}`);
     setImgColor(e);
-    if (`/${e}` === "/home") {
+    if (`/${e}` === "/homefeed") {
       setImgColor(`/${e}`);
     } else if (`/${e}` === "/chat") {
       setImgColor(`/${e}`);
@@ -27,12 +27,12 @@ export default function TabMenu() {
   };
   return (
     <Tab>
-      <button onClick={() => changeColor("home")}>
+      <button onClick={() => changeColor("homefeed")}>
         <Home
-          fill={imgColor === "/home" ? "#12184E" : "#fff"}
-          stroke={imgColor === "/home" ? "#12184E" : "#767676"}
+          fill={imgColor === "/homefeed" ? "#12184E" : "#fff"}
+          stroke={imgColor === "/homefeed" ? "#12184E" : "#767676"}
         />
-        <p style={{ color: imgColor === "/home" ? "#12184E" : "#767676" }}>
+        <p style={{ color: imgColor === "/homefeed" ? "#12184E" : "#767676" }}>
           홈
         </p>
       </button>

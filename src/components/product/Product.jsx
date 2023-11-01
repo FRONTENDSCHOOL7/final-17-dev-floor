@@ -3,7 +3,7 @@ import { Sect2, Sale } from "./ProductStyle";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { accountNameState } from "../../state/AuthAtom";
 import { productDelApi, productListApi } from "../../api/ProductApi";
-import { tokenState } from "../../state/AuthAtom";
+import { accountNameState, tokenState } from "../../state/AuthAtom";
 import ModalProduct from "../modal/ModalProduct";
 import { useInView } from "react-intersection-observer";
 
@@ -83,7 +83,7 @@ export default function Product() {
           <div key={idx} onClick={() => showModal(product.id)}>
             <img src={product.itemImage} alt='' />
             <p>{product.itemName}</p>
-            <span>{product.price}</span>
+            <span>{product.price && product.price + "원"}</span>
           </div>
         ))}
         <div ref={ref}>.</div>

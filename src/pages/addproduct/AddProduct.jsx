@@ -65,7 +65,11 @@ export default function AddProduct() {
   };
 
   const handlePrice = (e) => {
-    setProductPrice(e.target.value);
+    const value = e.target.value.replace('원', '');
+    // 입력된 값이 숫자인 경우에만 상태 업데이트
+    if (!isNaN(value)) {
+      setProductPrice(value);
+    }
   };
 
   const handleLink = (e) => {
@@ -94,10 +98,14 @@ export default function AddProduct() {
       return;
     }
 
+    const priceAsNumber = Number(productPrice.replace('원', ''));
+
     try {
+      // API 요청
       const res = await productApi(
         productName,
-        parseFloat(productPrice),
+        // parseFloat(productPrice),
+        priceAsNumber,
         productLink,
         apiImage,
         token
@@ -115,6 +123,10 @@ export default function AddProduct() {
       // API 요청 실패 시
       console.log("상품 등록 실패:", error);
     }
+    setProductImage("");
+    setProductName("");
+    setProductPrice("");
+    setProductLink("");
   };
 
   return (
@@ -162,7 +174,7 @@ export default function AddProduct() {
             <label>가격</label>
             <input
               type='text'
-              value={productPrice}
+              value={productPrice + (productPrice ? '원' : '')}
               onChange={handlePrice}
               placeholder='숫자만 입력 가능합니다.'
             />

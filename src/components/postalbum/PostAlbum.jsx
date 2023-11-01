@@ -35,8 +35,7 @@ export default function PostAlbum() {
       setPostData((postData) => {
         return [...postData, ...filterReultData];
       });
-      console.log("데이터 수 확인", postData);
-
+      
       setSkip((skip) => skip + 20);
     } catch (error) {
       console.log("실패했습니다");

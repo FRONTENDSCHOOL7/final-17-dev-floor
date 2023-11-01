@@ -141,6 +141,11 @@ export const Inner = styled.div`
             margin-top: 10px;
             height: 22px;
         }
+        p {
+            padding-top: 6px;
+            color: var(--errorFontColor);
+            font-size: 0.8rem;
+        }
         }
         .profileSubmit {
             padding-top: 30px;
