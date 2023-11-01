@@ -64,7 +64,7 @@ export default function Product() {
           <div key={product.id} onClick={() => showModal(product.id)}>
             <img src={product.itemImage} alt='' />
             <p>{product.itemName}</p>
-            <span>{product.price && product.price + '원'}</span>
+            <span>{product.price && product.price + "원"}</span>
           </div>
         ))}
       </Sale>
