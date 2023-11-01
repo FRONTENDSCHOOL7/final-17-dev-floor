@@ -7,15 +7,15 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { postUserApi } from "../../api/PostApi";
 import { useRecoilValue } from "recoil";
-import { postIdState } from "../../state/PostAtom";
 import { useInView } from "react-intersection-observer";
 import { Sect3 } from "./PostListStyle";
 import { tokenState } from "../../state/AuthAtom";
+import { accountNameState } from "../../state/AuthAtom";
 
 export default function PostList() {
-  const postId = useRecoilValue(postIdState);
+  const accountName = useRecoilValue(accountNameState);
   const [postData, setPostData] = useState([]);
-  const [page, setPage] = useState(0);
+  const [skip, setSkip] = useState(0);
   const [ref, inView] = useInView();
   const token = useRecoilValue(tokenState);
 
@@ -32,32 +32,47 @@ export default function PostList() {
       .padStart(2, "0")}`;
   };
 
+  // 유저 게시글 목록 api 요청
   const postFetch = async () => {
-    // 게시글 유저 게시물 api 요청
     try {
-      const result = await postUserApi(postId, token);
-      setPostData((prevState) => {
-        return [...prevState, ...result.posts];
-      });
-      setPage((page) => page + 1);
+      console.log("토큰", token);
+      console.log("어카운트네임", accountName);
+      const result = await postUserApi(accountName, token, skip);
+      console.log("@@@");
+      console.log(result.post);
+      console.log(postData);
+      setPostData(result.post);
+      // if (!postData.includes(result.post)) {
+      //   console.log("배열추가성공");
+      //   setPostData((postData) => {
+      //     return [...postData, ...result.post];
+      //   });
+      //   setSkip((skip) => skip + 10);
+      // }
     } catch (error) {
       console.log("실패했습니다");
     }
   };
+
+  // 맨 처음 렌더링 되었을 때 데이터를 한번 불러옴!
+  useEffect(() => {
+    postFetch();
+  }, []);
+
+  // isView가 true 일 때만 데이터를 불러옴!
+  // 보였다 안보이면 true에서 false로 바뀌기 때문에 useEffect가 두번 실행됨!
   useEffect(() => {
     if (inView) {
       console.log(inView, "무한 스크롤 요청 🎃");
-
       postFetch();
     }
   }, [inView]);
-  console.log(postData);
   return (
     <Sect3>
       <div>
-        {postData?.map((item) => {
+        {postData?.map((item, idx) => {
           return (
-            <div className='content-container'>
+            <div className='content-container' key={idx}>
               <div className='content-list'>
                 <img src={profileImg} alt='' className='profile-img' />
                 <div className='content'>
@@ -91,7 +106,7 @@ export default function PostList() {
           );
         })}
       </div>
-      <div ref={ref}>안녕</div>;
+      <div ref={ref}></div>
     </Sect3>
   );
 }

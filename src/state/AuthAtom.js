@@ -78,7 +78,8 @@ export const idRegexErrorState = atom({
 // })
 export const accountNameState = atom({
   key: "accountNameState",
-  default: "",
+  default: localStorage.getItem("account"),
+  effects_UNSTABLE: [persistAtom],
 });
 // export const introState = atom({
 //     key: 'introState',

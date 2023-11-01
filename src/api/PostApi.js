@@ -40,22 +40,25 @@ export const imageApi = async (file) => {
     alert("업로드 실패");
   }
 };
-export const postUserApi = async (accountName, token) => {
+export const postUserApi = async (accountName, token, skip) => {
   try {
-    const res = await axios.get(url + accountName, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-type": "application/json",
-      },
-    });
+    const res = await axios.get(
+      url + `/${accountName}/userpost/?limit=6&skip=${skip}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      }
+    );
     return res.data;
   } catch (error) {
     alert("불러오기 실패");
   }
 };
-export const postDel = async (postId,token) => {
+export const postDel = async (postId, token) => {
   try {
-    const res = await axios.delete(url + `/${postId}`, {
+    const res = await axios.delete(url, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
@@ -67,20 +70,23 @@ export const postDel = async (postId,token) => {
   }
 };
 // 댓글
-// const post_id = '653763b5b2cb20566385b859'
-export const postCommentApi = async (comment,token) => {
+export const postCommentApi = async (comment, token) => {
   try {
-    const res = await axios.post(`https://api.mandarin.weniv.co.kr/post/653fcb1fb2cb205663934f1e/comments`, {
-      comment: {content: comment}
-    }, {
+    const res = await axios.post(
+      `https://api.mandarin.weniv.co.kr/post/653fcb1fb2cb205663934f1e/comments`,
+      {
+        comment: { content: comment },
+      },
+      {
         headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-type": "application/json"
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
       }
-    });
-      console.log(res)
-      return res.data;
-    } catch (error) {
+    );
+    console.log(res);
+    return res.data;
+  } catch (error) {
     alert("댓글 업로드 에러");
   }
-}
+};
