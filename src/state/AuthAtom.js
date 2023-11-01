@@ -76,10 +76,10 @@ export const idRegexErrorState = atom({
 //     key: 'userNameState',
 //     default: ''
 // })
-// export const accountNameState = atom({
-//     key: 'accountNameState',
-//     default: ''
-// })
+export const accountNameState = atom({
+  key: "accountNameState",
+  default: "",
+});
 // export const introState = atom({
 //     key: 'introState',
 //     default: ''
