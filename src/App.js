@@ -20,6 +20,9 @@ import MyProfile from "./pages/profile/MyProfile";
 import EditProduct from "./pages/editproduct/EditProduct";
 
 function App() {
+  // const appStyle = {
+  //   backgroundColor: "skyblue",
+  // };
   return (
     <div className='App'>
       <GlobalStyle />

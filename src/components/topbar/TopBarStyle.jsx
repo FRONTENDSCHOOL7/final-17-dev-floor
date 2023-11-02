@@ -8,7 +8,6 @@ export const Top = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
-  padding: 0 20px;
 
   button {
     margin: 9px 16px;
@@ -23,7 +22,6 @@ export const Top = styled.div`
     background: #12184e;
     padding: 7px 32px;
     border-radius: 32px;
-    /* cursor: not-allowed; */
 
     &.disabled {
       color: #fff;

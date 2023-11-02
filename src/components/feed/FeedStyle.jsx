@@ -26,6 +26,7 @@ export const Sect1 = styled.div`
     .profile-img {
       width: 42px;
       height: 42px;
+      border-radius: 30px;
     }
     .content {
       display: flex;
@@ -54,10 +55,20 @@ export const Sect1 = styled.div`
       font-size: 14px;
       font-weight: 400;
       p {
+        width: 304px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+
         margin-bottom: 16px;
         line-height: 18px;
       }
       img {
+        width: 304px;
+        height: 228px;
         border-radius: 10px;
       }
     }

@@ -6,11 +6,14 @@ import { ReactComponent as Chat } from "../../assets/images/icon-message-circle.
 import { ReactComponent as Post } from "../../assets/images/icon-edit.svg";
 import { ReactComponent as Profile } from "../../assets/images/icon-user.svg";
 import { myProfileApi } from "../../api/ProfileApi";
+import { useRecoilState } from "recoil";
+import { accountNameState } from "../../state/AuthAtom";
 
 export default function TabMenu() {
   const nav = useNavigate();
   const uselocation = useLocation();
   const [imgColor, setImgColor] = useState(uselocation.pathname.toLowerCase());
+  const [accountName, setAccountName] = useRecoilState(accountNameState);
 
   const changeColor = (e) => {
     nav(`/${e}`);
@@ -23,8 +26,10 @@ export default function TabMenu() {
       setImgColor(`/${e}`);
     } else if (`/${e}` === "/myprofile") {
       setImgColor(`/${e}`);
+      setAccountName(localStorage.getItem("account"));
     }
   };
+
   return (
     <Tab>
       <button onClick={() => changeColor("homefeed")}>
