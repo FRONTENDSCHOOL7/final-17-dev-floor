@@ -13,7 +13,6 @@ import {
 } from './ChatStyle';
 import { Link } from "react-router-dom";
 
-
 export default function Chat() {
   return (
     <Body>
@@ -29,13 +28,13 @@ export default function Chat() {
         <Chat1>
           <img src={profileImg} alt='프로필 이미지' />
           <Link to='/chatroom'>
-          <div>
-            <h3>애월읍 위니브 감귤농장</h3>
-            <div className='text'>
-              <p className='contents'>이번에 정정 언제하맨마씸?</p>
-              <p className='date'>2020.10.25</p>
+            <div>
+              <h3>애월읍 위니브 감귤농장</h3>
+              <div className='text'>
+                <p className='contents'>이번에 정정 언제하맨마씸?</p>
+                <p className='date'>2020.10.25</p>
+              </div>
             </div>
-          </div>
           </Link>
         </Chat1>
         <Chat1>

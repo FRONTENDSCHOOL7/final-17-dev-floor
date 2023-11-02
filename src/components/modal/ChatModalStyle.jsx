@@ -33,5 +33,9 @@ export const Sect1 = styled.div`
   display: flex;
   justify-content: flex-start;
   padding-left: 5%; // 상대적 단위로 변경
+
+  button {
+    color: #000000;
+    }
   }
 `;
