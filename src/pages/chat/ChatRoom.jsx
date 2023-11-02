@@ -6,7 +6,7 @@ import profileImg from "../../assets/images/basic-profile.png";
 import photosendImg from "../../assets/images/img-button.png";
 import { useState } from "react";
 import Modal from "../../components/modal/ChatModal";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
   Body,
@@ -25,12 +25,9 @@ export default function ChatRoom() {
     setIsOpenModal(true);
   };
   const handleComment = (e) => {
-    setcomment(e.target.value);
+    setcomment(e.target.value ? e.target.value : null);
   };
   const fileRef = useRef(null);
-  const onClickImage = (e) => {
-    fileRef.current?.click(e.target.files?.[0]);
-  };
 
   return (
     <Body>
@@ -86,7 +83,7 @@ export default function ChatRoom() {
                 placeholder='메시지 입력하기...'
                 onChange={handleComment}
               />
-              <button className={selectedImage ? "btnActive" : "btnDisabled"}>
+              <button className={(selectedImage || comment) ? "btnActive" : "btnDisabled"}>
                 전송
               </button>
             </div>

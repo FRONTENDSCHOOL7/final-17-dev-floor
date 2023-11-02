@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-  max-width: 720px;
-  height: 100vh;
+  max-width: 100vw; // 화면의 너비를 초과하지 않도록 설정
+  height: 100vh; // 화면의 높이를 초과하지 않도록 설정
   width: 100%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: flex;
+  justify-content: center; // 가로축을 기준으로 중앙 정렬
+  align-items: center; // 세로축을 기준으로 중앙 정렬
   flex-direction: column;
+  font-family: "GongGothicMedium";
+  overflow: hidden; // 초과하는 내용이 생겼을 때 스크롤바가 생기지 않도록 설정
   /* gap: 10px; */
 `;
 
@@ -18,6 +22,7 @@ export const TopBarChat = styled.div`
   align-items: center;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  font-family: "GongGothicMedium";
 
   button {
     width: 22px;
@@ -143,6 +148,13 @@ export const MyChatWrap = styled.div`
 `;
 
 export const ChatBar = styled.div`
+  position: fixed;  // 위치 고정
+  bottom: 0;  // 화면 하단에 위치
+  width: 100%;  // 너비를 화면 너비와 같게 설정
+  max-width: 720px; // 최대 너비 설정
+  margin: 0 auto; // 중앙 정렬
+  background: #fff;
+
   .chat-container {
     display: flex;
     align-items: center;
