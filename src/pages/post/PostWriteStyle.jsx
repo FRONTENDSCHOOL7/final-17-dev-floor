@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
+  font-family: "GongGothicMedium";
+
   height: 100vh;
   max-width: 720px;
   width: 100%;
@@ -40,10 +42,13 @@ export const Sect2 = styled.div`
     .profile-img {
       width: 42px;
       height: 42px;
+      border-radius: 30px;
     }
     .writeBox {
     }
     input {
+      font-family: "GongGothicMedium";
+
       display: block;
       margin-top: 7px;
       max-width: 720px;

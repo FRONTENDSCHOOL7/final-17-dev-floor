@@ -47,18 +47,19 @@ export const Top = styled.div`
 `;
 
 export const TopFollowers = styled.div`
+  max-width: 720px;
+  width: 100%;
+  background: #fff;
   height: 48px;
   display: flex;
   align-items: center;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
+  padding: 0 20px;
   button {
-    padding: 13px 16px;
-    background: #fff;
-    border-style: none;
+    margin-right: 30px;
   }
-  h2 {
-    transform: translateY(-15%);
-    font-size: 20px;
-    margin-left: -5px;
+  p {
+    font-size: 18px;
+    transform: translateY(-10%);
   }
 `;
