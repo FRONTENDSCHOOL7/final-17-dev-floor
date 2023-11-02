@@ -88,7 +88,8 @@ export default function PostList() {
     setIsModalOpen(false)
   }
 
-  const modalOpen = (post_id) => {
+  const modalOpen = (e,post_id) => {
+    e.stopPropagation()
     setIsModalOpen(true)
     setIsPostId(post_id)
   }
@@ -107,7 +108,7 @@ export default function PostList() {
                       <p>{item.author.username}</p>
                     </div>
                     <div>
-                      <button onClick={()=>modalOpen(item.id)}>
+                      <button onClick={(e)=>modalOpen(e,item.id)}>
                         <img src={more} alt='' />
                       </button>
                     </div>
