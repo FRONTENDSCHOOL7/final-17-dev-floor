@@ -56,9 +56,10 @@ export const postUserApi = async (accountName, token, skip) => {
     alert("불러오기 실패");
   }
 };
-export const postDel = async (postId, token) => {
+// 게시글 삭제
+export const postDel = async (post_id,token) => {
   try {
-    const res = await axios.delete(url, {
+    const res = await axios.delete(url+`/${post_id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
@@ -70,10 +71,10 @@ export const postDel = async (postId, token) => {
   }
 };
 // 댓글
-export const postCommentApi = async (post_id, commentContent, token) => {
+export const postCommentApi = async (commentContent) => {
   try {
     const res = await axios.post(
-      url + `/${post_id}/comments`,
+      url + `/653fcb1fb2cb205663934f1e/comments`,
       {
         comment: {
           content: commentContent,
@@ -81,7 +82,7 @@ export const postCommentApi = async (post_id, commentContent, token) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwNDA3Njc5NSwiaWF0IjoxNjk4ODkyNzk1fQ.K4CxRmedH_rVhLeEzLX_0GyH3rwcSR6rJZPpVOPBbaQ`,
           "Content-type": "application/json",
         },
       }

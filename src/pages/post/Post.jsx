@@ -10,38 +10,43 @@ import Modal from "../../components/modal/Modal";
 import { postCommentApi } from "../../api/PostApi";
 import { useRecoilValue } from "recoil";
 import { tokenState } from "../../state/AuthAtom";
+import { useParams } from "react-router-dom";
 
 export default function Post() {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [comment, setComment] = useState(0);
 
-  const [commentContent, setCommentContent] = useState(""); //댓글내용상태
+  const [commentContent, setCommentContent] = useState(''); //댓글내용상태
   const [postcomment, setPostcomment] = useState([]); //댓글목록
   const token = useRecoilValue(tokenState);
-
+  const [ispostId, setIsPostId] = useState(null)
+  // const {postId} = useParams()
   const showModal = () => {
     setIsOpenModal(true);
   };
 
-  const handleComment = async () => {
+  const handleComment = async (e) => {
     if (commentContent.trim() === "") {
       return; //댓글 내용없으면 게시안함
     }
-    // setcomment(e.target.value);
-
     try {
-      const res = await postCommentApi(commentContent,token);
+      const res = await postCommentApi(commentContent);
       console.log(res)
 
       const newComment = res.comment;
-
       setPostcomment([...postcomment, newComment]);
+      console.log(newComment)
+
       console.log("댓글작성완료");
-      setCommentContent("");
     } catch (error) {
       console.error("댓글실패", error);
     }
+    setCommentContent("");
+    setIsPostId(null)
   };
+  // useEffect(() => {
+  //   setIsPostId(postId);
+  // }, [postId]);
 
   // useEffect(()=> {
   //     const commenWrite = async (postId) => {
@@ -94,8 +99,8 @@ export default function Post() {
       {/* Sect2 댓글 */}
       <Sect2>
         <div className='comment-container'>
-          {postcomment.map((comment, index) => (
-            <div className='comment-list' key={index}>
+          {postcomment && postcomment.map((comment, index) => ( comment && comment.author &&
+            (<div className='comment-list' key={index}>
               <img src={profileImg} alt='' className='profile-img' />
               <div className='comment'>
                 <div className='comment-title'>
@@ -113,7 +118,7 @@ export default function Post() {
                   <p>{comment.content}</p>
                 </div>
               </div>
-            </div>
+            </div>)
           ))}
           {/* <div className='comment-list'>
             <img src={profileImg} alt='' className='profile-img' />
