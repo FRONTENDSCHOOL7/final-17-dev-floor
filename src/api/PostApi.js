@@ -40,6 +40,21 @@ export const imageApi = async (file) => {
     alert("업로드 실패");
   }
 };
+
+export const postGet = async (token, skip) => {
+  try {
+    const res = await axios.get(url + `/?limit=10&skip=${skip}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    alert("업로드 실패");
+  }
+};
+
 export const postUserApi = async (accountName, token, skip) => {
   try {
     const res = await axios.get(
