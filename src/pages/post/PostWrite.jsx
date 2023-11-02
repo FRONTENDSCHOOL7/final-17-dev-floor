@@ -9,13 +9,15 @@ import { useState } from "react";
 import { contentState, imageState, postIdState } from "../../state/PostAtom";
 import { useNavigate } from "react-router-dom";
 import { postPostApi, imageApi } from "../../api/PostApi";
-import { tokenState } from "../../state/AuthAtom";
+import { profileImgState, tokenState } from "../../state/AuthAtom";
 
 export default function PostWrite() {
   const [content, setContent] = useRecoilState(contentState);
   const [image, setImage] = useRecoilState(imageState);
   const [postId, setPostId] = useRecoilState(postIdState);
   const [apiImage, setApiImage] = useState("");
+  const proImg = useRecoilValue(profileImgState);
+
   const fileRef = useRef(null);
   const navigate = useNavigate();
   const token = useRecoilValue(tokenState);
@@ -75,7 +77,7 @@ export default function PostWrite() {
       </Sect1>
       <Sect2>
         <div className='write-main'>
-          <img src={profileImg} alt='' className='profile-img' />
+          <img src={proImg} alt='' className='profile-img' />
           <div className='writeBox'>
             <input
               placeholder='게시글 입력하기...'

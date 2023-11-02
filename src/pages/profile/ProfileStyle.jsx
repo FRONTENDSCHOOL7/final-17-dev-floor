@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Body = styled.div`
   /* border: 3px dashed gray; */
+
   background: var(--Gray-6, #f2f2f2);
   position: relative;
   height: 100vh;

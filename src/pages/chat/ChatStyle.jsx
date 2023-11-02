@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Body = styled.div`
   max-width: 720px;
@@ -45,7 +45,7 @@ export const Chat1 = styled.div`
   max-width: 720px;
   width: 100%;
   padding: 0 20px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   display: flex;
   gap: 10px;
   font-family: "GongGothicMedium";
@@ -82,12 +82,12 @@ export const Chat1 = styled.div`
 
   .text {
     display: flex;
-    justify-content : space-between;
+    justify-content: space-between;
   }
 
   .date {
     display: flex;
-    justify-content : space-between;
+    justify-content: space-between;
     color: #a6a6a6;
     font-size: 10px;
     position: absolute;

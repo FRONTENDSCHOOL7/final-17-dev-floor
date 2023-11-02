@@ -1,31 +1,31 @@
 import React, { useEffect } from "react";
-import TopBarFollowers from "../../components/topbar/TopBarFollowing";
 import { Body, Follower } from "./FollowingStyle";
-import profileImg from "../../assets/images/Group 26.png";
+import profileImg from "../../assets/images/Group 27.png";
 import TabMenu from "../../components/tab/TabMenu";
 import { useRecoilState } from "recoil";
 import { followingState } from "../../state/FollowAtom";
+import TopBarFollowings from "../../components/topbar/TopBarFollowing";
 
 export default function Following() {
-  const [followList, setFollowList] = useRecoilState(followingState);
+  const [followingList, setFollowingList] = useRecoilState(followingState);
   const toggleFollow = (index) => {
-    const newFollowList = [...followList];
-    newFollowList[index] = !newFollowList[index];
-    setFollowList(newFollowList);
+    const newFollowingList = [...followingList];
+    newFollowingList[index] = !newFollowingList[index];
+    setFollowingList(newFollowingList);
     // Local Storage에 팔로우 상태 저장
-    localStorage.setItem("followList", JSON.stringify(newFollowList));
+    localStorage.setItem("followingList", JSON.stringify(newFollowingList));
   };
 
   // 페이지가 로드될 때 Local Storage에서 팔로우 상태를 가져와 Recoil 상태에 설정
   useEffect(() => {
-    const storedFollowList = localStorage.getItem("followList");
+    const storedFollowList = localStorage.getItem("followingList");
     if (storedFollowList) {
-      setFollowList(JSON.parse(storedFollowList));
+      setFollowingList(JSON.parse(storedFollowList));
     }
-  }, [setFollowList]);
+  }, [setFollowingList]);
   return (
     <Body>
-      <TopBarFollowers />
+      <TopBarFollowings />
       <Follower>
         <img src={profileImg} alt='' />
         <div className='container'>
@@ -35,9 +35,9 @@ export default function Following() {
           </div>
           <button
             onClick={() => toggleFollow(0)}
-            className={followList[0] ? "btn-follow" : "btn-cancle"}
+            className={followingList[0] ? "btn-follow" : "btn-cancle"}
           >
-            {followList[0] ? "팔로우" : "언팔로우"}
+            {followingList[0] ? "팔로우" : "언팔로우"}
           </button>
         </div>
       </Follower>
@@ -50,9 +50,9 @@ export default function Following() {
           </div>
           <button
             onClick={() => toggleFollow(1)}
-            className={followList[1] ? "btn-follow" : "btn-cancle"}
+            className={followingList[1] ? "btn-follow" : "btn-cancle"}
           >
-            {followList[1] ? "팔로우" : "언팔로우"}
+            {followingList[1] ? "팔로우" : "언팔로우"}
           </button>
         </div>
       </Follower>

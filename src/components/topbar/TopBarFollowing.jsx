@@ -1,14 +1,20 @@
 import React from "react";
 import back from "../../assets/images/icon-arrow-left.png";
 import { TopFollowers } from "./TopBarStyle";
+import { useNavigate } from "react-router";
 
-export default function TopBarFollowers() {
+export default function TopBarFollowings() {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate("/myprofile");
+  };
   return (
     <TopFollowers>
-      <button>
+      <button onClick={handleBack}>
         <img src={back} alt='' />
       </button>
-      <h2>Following</h2>
+      <p>Followings</p>
     </TopFollowers>
   );
 }
