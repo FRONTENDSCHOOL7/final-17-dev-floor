@@ -28,11 +28,15 @@ export const Sect1 = styled.div`
   }
 
   .letter {
-    width: 100%;
-    height: calc(100% - 30px);
-    font-size: 14px;
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 5%; // 상대적 단위로 변경
+  width: 100%;
+  height: calc(100% - 30px);
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 5%; // 상대적 단위로 변경
+
+  button {
+    color: #000000;
+    }
   }
 `;

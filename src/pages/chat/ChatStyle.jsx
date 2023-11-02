@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-  /* border: 3px dashed gray; */
-  font-family: "GongGothicMedium";
   max-width: 720px;
   height: 100vh;
   width: 100%;
@@ -12,10 +10,9 @@ export const Body = styled.div`
   margin: 0 auto;
   gap: 12px;
   font-family: "GongGothicMedium";
-  /* transform: translateX(-10%); */
+  overflow: auto; // 내용이 요소의 박스를 벗어날 때 스크롤바 추가
 `;
 
-// top bar
 export const TopBar = styled.div`
   max-width: 720px;
   width: 100%;
@@ -32,9 +29,7 @@ export const TopBar = styled.div`
     border-style: none;
   }
 `;
-// top bar
 
-// section 1
 export const Sect1 = styled.div`
   max-width: 720px;
   height: 100%;
@@ -43,6 +38,7 @@ export const Sect1 = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: "GongGothicMedium";
+  overflow: auto; // 내용이 요소의 박스를 벗어날 때 스크롤바 추가
 `;
 
 export const Chat1 = styled.div`
@@ -53,6 +49,7 @@ export const Chat1 = styled.div`
   display: flex;
   gap: 10px;
   font-family: "GongGothicMedium";
+  position: relative; // 부모 요소에 position: relative 추가
 
   img {
     margin-top: 5px;
@@ -67,7 +64,6 @@ export const Chat1 = styled.div`
     height: auto;
     line-height: 1.2;
     color: #000000;
-    /* justify-content: space-between; */
   }
 
   h3 {
@@ -94,5 +90,12 @@ export const Chat1 = styled.div`
     justify-content: space-between;
     color: #a6a6a6;
     font-size: 10px;
+    position: absolute;
+    right: 20px; // 기본 위치 설정
+    transition: right 0.1s ease-in-out; // 부드러운 이동 효과를 위한 transition 추가
+
+    @media (max-width: 720px) {
+      right: calc(50% - 220px); // 화면 크기가 720px 이하일 때 위치 조정
+    }
   }
 `;

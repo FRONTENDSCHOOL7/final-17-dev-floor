@@ -122,7 +122,7 @@ export const MyChatWrap = styled.div`
     position: relative;
     background-color: #7a8ccb;
     border-radius: 15px 0px 15px 15px;
-    border: 1px solid;
+    border: 1px solid #7a8ccb;
     color: #ffffff;
     padding: 7px 12px;
     margin-top: 10px;
@@ -174,37 +174,51 @@ export const ChatBar = styled.div`
       width: 36px;
       height: 36px;
     }
+
     .chat-title {
       width: 100%;
       max-width: 720px;
       padding-bottom: 3px;
+      padding-right: 10px; // '전송' 버튼과 화면 가장자리 사이에 간격 추가
       display: flex;
       align-items: center;
-      justify-content: space-between;
+
+      // input 요소에 가능한 많은 공간을 부여
+      // '전송' 버튼은 오른쪽에 고정된 공간을 유지
+      input {
+      flex-grow: 1;
+      display: block;
+      }
 
       .btnDisabled {
-        display: block;
-        width: 40px;
-        font-size: 14px;
-        color: #c4c4c4;
+      display: block;
+      width: 40px;
+      font-size: 14px;
+      color: #c4c4c4;
       }
+
       .btnActive {
-        display: block;
-        width: 40px;
-        font-size: 14px;
-        color: #f26e22;
+      display: block;
+      width: 40px;
+      font-size: 14px;
+      color: #F26E22;
+        }
       }
 
       input {
+        color: #C4C4C4; // 기본 상태에서의 폰트 색상
         display: block;
+
+        // 사용자가 입력을 시작하면 폰트 색상 변경
+        &:focus {
+        color: #000000;
+        }
       }
 
       input::placeholder {
         font-family: "GongGothicMedium";
         color: #dbdbdb;
         /* color: disableColor; */
-        font-size: 14px;
       }
     }
-  }
 `;
