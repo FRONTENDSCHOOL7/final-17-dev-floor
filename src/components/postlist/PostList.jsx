@@ -70,6 +70,11 @@ export default function PostList() {
     navigate('/post');
     //상세페이지 생기면 이걸로 navigate(`/post/${postId}`);
   }
+  //게시글 프로필클릭시 해당프로필로 이동
+  const handleProfileClick = (e) => {
+    e.stopPropagation()
+    navigate('/profile');
+  }
   //게시글 삭제
   const handlePostDel = async () => {
     try {
@@ -102,7 +107,7 @@ export default function PostList() {
               <div className='content-list'>
                 <img src={image} alt='' className='profile-img' />
                 <div className='content'>
-                  <div className='content-title'>
+                  <div className='content-title' onClick={(e)=>handleProfileClick(e)}>
                     <div className='content-id'>
                       <h3>{item.author.accountname}</h3>
                       <p>{item.author.username}</p>
