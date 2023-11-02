@@ -21,12 +21,17 @@ export default function ChatRoom() {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [comment, setcomment] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [fontColor, setFontColor] = useState('#c4c4c4'); // 폰트 색상 상태 추가
+
   const showModal = () => {
     setIsOpenModal(true);
   };
+
   const handleComment = (e) => {
     setcomment(e.target.value ? e.target.value : null);
+    setFontColor(e.target.value ? '#000000' : '#c4c4c4'); // 폰트 색상 상태 업데이트
   };
+
   const fileRef = useRef(null);
 
   return (
@@ -82,6 +87,7 @@ export default function ChatRoom() {
               <input
                 placeholder='메시지 입력하기...'
                 onChange={handleComment}
+                style={{ color: fontColor }} // 입력 폰트 색상 적용
               />
               <button
                 className={
