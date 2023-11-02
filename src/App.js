@@ -30,9 +30,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' exact element={<Splash />} />
-          <Route path='/home' exact element={<LoginHome />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/join' element={<Join />} />
+          <Route path='/home' exact element={token ? <Home/> : <LoginHome />} />
+          <Route path='/login' element={token ? <Home/> : <Login />} />
+          <Route path='/join' element={token ? <Home/> : <Join />} />
           <Route path='/homefeed' element={<Home />} />
           <Route path='/chat' element={token ? <Chat /> : <Navigate to='/login'/>} />
           <Route path='/chatroom' element={token ? <ChatRoom /> : <Navigate to='/login'/>} />
