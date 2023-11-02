@@ -32,9 +32,13 @@ export const tokenState = atom({
 export const idState = atom({
   key: "idState",
   default: "",
+});
+// 토큰없으면 로그인페이지
+export const isLoggedInState = atom({
+  key: "isLoggedInState",
+  default: false,
   effects_UNSTABLE: [persistAtom],
 });
-
 // join
 export const preDataState = atom({
   key: "preDataState",

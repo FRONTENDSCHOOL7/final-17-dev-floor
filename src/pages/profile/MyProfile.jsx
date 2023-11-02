@@ -69,14 +69,14 @@ export default function MyProfile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              <span className='followers'>128</span>
+              <span className='followers'>2</span>
               <p>followers</p>
             </Link>
           </button>
           <img src={image} alt='프로필 이미지' className='profileImg' />
           <button>
             <Link to='/following'>
-              <span>128</span>
+              <span>2</span>
               <p>followings</p>
             </Link>
           </button>

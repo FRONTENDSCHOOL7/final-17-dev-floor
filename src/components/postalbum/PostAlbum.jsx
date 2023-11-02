@@ -43,9 +43,9 @@ export default function PostAlbum() {
   };
 
   // 페이지 시작 시 렌더링
-  useEffect(() => {
-    postFetch();
-  }, []);
+  // useEffect(() => {
+  //   postFetch();
+  // }, []);
 
   // iinView && !isend가 true 일 때만 데이터를 불러옴!
   useEffect(() => {
