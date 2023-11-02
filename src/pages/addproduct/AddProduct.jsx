@@ -104,7 +104,6 @@ export default function AddProduct() {
       // API 요청
       const res = await productApi(
         productName,
-        // parseFloat(productPrice),
         priceAsNumber,
         productLink,
         apiImage,
@@ -112,7 +111,6 @@ export default function AddProduct() {
       );
 
       // API 요청 성공 시
-      // const productData = response.data.product;
       console.log("상품 등록 성공:", res);
       setProductImage(res.product.itemImage);
       setProductName(res.product.itemName);
@@ -163,7 +161,6 @@ export default function AddProduct() {
             <label>상품명</label>
             <input
               type='text'
-              // value={productName}
               onChange={handleName}
               placeholder='2~15자 이내여야 합니다.'
               minLength='2'
@@ -183,7 +180,6 @@ export default function AddProduct() {
             <label>판매 링크</label>
             <input
               type='text'
-              // value={productLink}
               onChange={handleLink}
               placeholder='URL을 입력해주세요.'
             />
