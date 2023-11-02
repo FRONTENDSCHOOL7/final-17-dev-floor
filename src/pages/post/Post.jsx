@@ -9,12 +9,12 @@ import { useState } from "react";
 import Modal from "../../components/modal/Modal";
 import { postCommentApi } from "../../api/PostApi";
 import { useRecoilValue } from "recoil";
-import { tokenState } from "../../state/AuthAtom";
+import { profileImgState, tokenState } from "../../state/AuthAtom";
 
 export default function Post({ post_id }) {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [comment, setComment] = useState(0);
-
+  const proImg = useRecoilValue(profileImgState);
   const [commentContent, setCommentContent] = useState(""); //댓글내용상태
   const [postcomment, setPostcomment] = useState([]); //댓글목록
   const token = useRecoilValue(tokenState);
@@ -57,7 +57,7 @@ export default function Post({ post_id }) {
       <Sect1>
         <div className='content-container'>
           <div className='content-list'>
-            <img src={profileImg} alt='' className='profile-img' />
+            <img src={proImg} alt='' className='profile-img' />
             <div className='content'>
               <div className='content-title'>
                 <div className='content-id'>

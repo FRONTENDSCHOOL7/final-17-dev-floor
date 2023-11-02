@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import TopBarFollowers from "../../components/topbar/TopBarFollowers";
 import { Body, Follower } from "./FollowersStyle";
-import profileImg from "../../assets/images/Group 26.png";
+import profileImg from "../../assets/images/Group 27.png";
 import TabMenu from "../../components/tab/TabMenu";
 import { followersState } from "../../state/FollowAtom";
 import { useRecoilState } from "recoil";

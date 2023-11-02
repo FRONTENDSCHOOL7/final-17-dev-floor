@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
+  font-family: "GongGothicMedium";
+
   height: 100vh;
   max-width: 720px;
   width: 100%;
@@ -26,6 +28,7 @@ export const Sect1 = styled.div`
     .profile-img {
       width: 42px;
       height: 42px;
+      border-radius: 30px;
     }
     .content {
       display: flex;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
+  font-family: "GongGothicMedium";
   max-width: 100vw; // 화면의 너비를 초과하지 않도록 설정
   height: 100vh; // 화면의 높이를 초과하지 않도록 설정
   width: 100%;
@@ -148,9 +149,9 @@ export const MyChatWrap = styled.div`
 `;
 
 export const ChatBar = styled.div`
-  position: fixed;  // 위치 고정
-  bottom: 0;  // 화면 하단에 위치
-  width: 100%;  // 너비를 화면 너비와 같게 설정
+  position: fixed; // 위치 고정
+  bottom: 0; // 화면 하단에 위치
+  width: 100%; // 너비를 화면 너비와 같게 설정
   max-width: 720px; // 최대 너비 설정
   margin: 0 auto; // 중앙 정렬
   background: #fff;
@@ -191,7 +192,7 @@ export const ChatBar = styled.div`
         display: block;
         width: 40px;
         font-size: 14px;
-        color: #F26E22;
+        color: #f26e22;
       }
 
       input {
@@ -199,6 +200,8 @@ export const ChatBar = styled.div`
       }
 
       input::placeholder {
+        font-family: "GongGothicMedium";
+        color: #dbdbdb;
         /* color: disableColor; */
         font-size: 14px;
       }
