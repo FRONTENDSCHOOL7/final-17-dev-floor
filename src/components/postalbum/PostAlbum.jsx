@@ -55,10 +55,6 @@ export default function PostAlbum() {
     }
   }, [inView]);
 
-  useEffect(() => {
-    postFetch();
-  }, []);
-
   return (
     <AlbumImg>
       {postData?.map((item, idx) => {
