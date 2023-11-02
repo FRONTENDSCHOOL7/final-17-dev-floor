@@ -17,11 +17,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { followState, hamburgerBtnState } from "../../state/FollowAtom";
 import { followApi, profileApi } from "../../api/ProfileApi";
+import { introState, userNameState } from "../../state/ModifyAtom";
 import {
-  introState,
-  userNameState,
-} from "../../state/ModifyAtom";
-import { accountNameState, tokenState } from "../../state/AuthAtom";
+  accountNameState,
+  profileImgState,
+  tokenState,
+} from "../../state/AuthAtom";
 
 export default function Profile() {
   const [follow, setFollow] = useRecoilState(followState);
@@ -29,7 +30,7 @@ export default function Profile() {
   const [userName, setUserName] = useRecoilState(userNameState);
   const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
-  const [yourImg, setYourImg] = useState("");
+  const [image, setImage] = useRecoilState(profileImgState);
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
   };
@@ -51,15 +52,19 @@ export default function Profile() {
   useEffect(() => {
     const storedIsFollowed = localStorage.getItem("isFollowed");
     setFollow(storedIsFollowed === "true");
+    try {
+    } catch (error) {
+      console.log("에러입니다.");
+    }
   }, []);
 
   // 상대 프로필
   // 상대 프로필 클릭시 넘어오는 화면 => profile,
   const handleProfile = async (e) => {
     try {
-      const res = await profileApi("rmsvyrmsvy", token);
+      const res = await profileApi(id, token);
       console.log(res);
-      setYourImg(res.profile.image);
+      setImage(res.profile.image);
       setUserName(res.profile.username);
       setId(res.profile.accountname);
       setIntro(res.profile.intro);
@@ -81,22 +86,26 @@ export default function Profile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              <span className='followers'>2950</span>
+              <span className='followers'>10</span>
               <p>followers</p>
             </Link>
           </button>
-          <img src={yourImg} alt='프로필 이미지' className='profileImg' />
+          <img
+            src={image ? image : profileImg}
+            alt='프로필 이미지'
+            className='profileImg'
+          />
           <button>
             <Link to='/following'>
-              <span>128</span>
+              <span>10</span>
               <p>followings</p>
             </Link>
           </button>
         </ProImg>
         <Intro>
-          <h2>애월읍 위니브 감귤농장</h2>
-          <p>@ weniv_Mandarin</p>
-          <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</p>
+          <h2> {userName} </h2>
+          <p>@ {id}</p>
+          <p>{intro}</p>
         </Intro>
         <Btns>
           <button>

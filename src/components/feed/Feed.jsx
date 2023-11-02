@@ -2,22 +2,32 @@ import React from "react";
 import more from "../../assets/images/s-icon-more-vertical.png";
 import like from "../../assets/images/icon-heart.png";
 import message from "../../assets/images/icon-message-circle.png";
+import basicImg from "../../assets/images/Group 26.png";
 import { Body, Sect1 } from "./FeedStyle";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
-import { profileImgState, tokenState } from "../../state/AuthAtom";
+import {
+  accountNameState,
+  profileImgState,
+  tokenState,
+} from "../../state/AuthAtom";
 import { postGet } from "../../api/PostApi";
+import { useNavigate } from "react-router";
+import { introState, userNameState } from "../../state/ModifyAtom";
 
 export default function Feed() {
   const [postData, setPostData] = useState([]);
   const [skip, setSkip] = useState(0);
   const [ref, inView] = useInView();
-  const image = useRecoilValue(profileImgState);
+  const [image, setImage] = useRecoilState(profileImgState);
+  const [userName, setUserName] = useRecoilState(userNameState);
+  const [id, setId] = useRecoilState(accountNameState);
+  const [intro, setIntro] = useRecoilState(introState);
   const token = useRecoilValue(tokenState);
 
-  console.log("안녕하세요");
+  const navigate = useNavigate();
 
   // 날짜 데이터 변환 함수
   const getDate = (date) => {
@@ -30,6 +40,20 @@ export default function Feed() {
     return `${yyyy}.${mm}.${dd}. ${hours.toString().padStart(2, "0")}:${minutes
       .toString()
       .padStart(2, "0")}`;
+  };
+
+  const handleProfileClick = (
+    itemAccountname,
+    itemUsername,
+    itemIntro,
+    itemImage
+  ) => {
+    navigate("/profile");
+    console.log("프로필 이동");
+    setId(itemAccountname);
+    setUserName(itemUsername);
+    setIntro(itemIntro);
+    setImage(itemImage);
   };
 
   // 모든 게시글 api 요청
@@ -68,7 +92,19 @@ export default function Feed() {
           return (
             <div className='content-container' key={idx}>
               <div className='content-list'>
-                <img src={image} alt='' className='profile-img' />
+                <img
+                  src={item.author.image ? item.author.image : basicImg}
+                  alt=''
+                  className='profile-img'
+                  onClick={() =>
+                    handleProfileClick(
+                      item.author.accountname,
+                      item.author.username,
+                      item.author.intro,
+                      item.author.image
+                    )
+                  }
+                />
                 <div className='content'>
                   <div className='content-title'>
                     <div className='content-id'>
