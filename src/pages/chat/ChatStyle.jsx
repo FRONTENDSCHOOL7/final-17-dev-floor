@@ -10,6 +10,7 @@ export const Body = styled.div`
   align-items: center;
   margin: 0 auto;
   gap: 12px;
+  font-family: "GongGothicMedium";
   /* transform: translateX(-10%); */
 `;
 
@@ -40,6 +41,7 @@ export const Sect1 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "GongGothicMedium";
 `;
 
 export const Chat1 = styled.div`
@@ -49,8 +51,10 @@ export const Chat1 = styled.div`
   box-sizing: border-box; 
   display: flex;
   gap: 10px;
+  font-family: "GongGothicMedium";
 
 	img {
+    margin-top: 5px;
     padding: 10px 10px 10px 10px ;
     width: 42px;
     height: 42px;
@@ -59,8 +63,8 @@ export const Chat1 = styled.div`
   div {
     margin-top: 15px;
     width: 600px;
-    height: 50px;
-    line-height: 10px;
+    height: auto;
+    line-height: 1.2;
     color: #000000;
     /* justify-content: space-between; */
   }
@@ -73,8 +77,8 @@ export const Chat1 = styled.div`
   .contents {
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
-    word-break:break-all;
+    white-space: normal;
+    word-break: break-word;
     margin-right: 10px;
     font-size: 12px;
     }
