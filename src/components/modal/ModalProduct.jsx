@@ -6,7 +6,8 @@ export default function ModalProduct({
   isOpenModal,
   setIsOpenModal,
   children,
-  handleDelete
+  handleDelete,
+  productLink
 }) {
   const wrapperRef = useRef();
   useEffect(() => {
@@ -27,6 +28,11 @@ export default function ModalProduct({
   const xClose = () => {
     setIsOpenModal(false);
   };
+
+  const viewOnWebsite = () => {
+    window.open(productLink); // 웹사이트에서 상품 보기 버튼을 클릭하면 productLink로 이동합니다.
+  };
+
   return (
     <div ref={wrapperRef} value={isOpenModal}>
       {children}
@@ -44,7 +50,7 @@ export default function ModalProduct({
             <button>수정</button>
           </div>
           <div className='letter'>
-            <button>웹사이트에서 상품 보기</button>
+            <button onClick={viewOnWebsite}>웹사이트에서 상품 보기</button>
           </div>
         </div>
       </Sect1>
