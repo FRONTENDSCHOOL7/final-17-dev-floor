@@ -4,7 +4,6 @@ export const Body = styled.div`
   height: 100vh;
   max-width: 720px;
   width: 100%;
-  padding: 0 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

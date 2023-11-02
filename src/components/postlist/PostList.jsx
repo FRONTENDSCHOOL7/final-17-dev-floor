@@ -73,7 +73,6 @@ export default function PostList() {
   const handleProfileClick = (e) => {
     e.stopPropagation();
     navigate("/myprofile");
-    console.log("프로필 이동");
   };
   //게시글 삭제
   const handlePostDel = async () => {
@@ -107,17 +106,17 @@ export default function PostList() {
               onClick={() => handlePostClick(item.id)}
             >
               <div className='content-list'>
-                <img
-                  src={image}
-                  alt=''
-                  className='profile-img'
-                  onClick={(e) => handleProfileClick(e)}
-                />
                 <div className='content'>
-                  <div className='content-title'>
+                  <div
+                    className='content-title'
+                    onClick={(e) => handleProfileClick(e)}
+                  >
                     <div className='content-id'>
-                      <h3>{item.author.accountname}</h3>
-                      <p>{item.author.username}</p>
+                    <img src={image} alt='' className='profile-img' />
+                      <div>
+                        <h3>{item.author.accountname}</h3>
+                        <p>{item.author.username}</p>
+                      </div>
                     </div>
                     <div>
                       <button onClick={(e) => modalOpen(e, item.id)}>
