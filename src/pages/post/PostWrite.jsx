@@ -1,19 +1,18 @@
 import React, { useEffect } from "react";
-import profileImg from "../../assets/images/Group 26.png";
 import back from "../../assets/images/icon-arrow-left.png";
 import upload from "../../assets/images/upload-file.png";
 import { Body, Sect1, Sect2 } from "./PostWriteStyle";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useRef } from "react";
 import { useState } from "react";
-import { contentState, imageState, postIdState } from "../../state/PostAtom";
+import { contentState, postIdState } from "../../state/PostAtom";
 import { useNavigate } from "react-router-dom";
 import { postPostApi, imageApi } from "../../api/PostApi";
 import { profileImgState, tokenState } from "../../state/AuthAtom";
 
 export default function PostWrite() {
   const [content, setContent] = useRecoilState(contentState);
-  const [image, setImage] = useRecoilState(imageState);
+  const [image, setImage] = useState("");
   const [postId, setPostId] = useRecoilState(postIdState);
   const [apiImage, setApiImage] = useState("");
   const proImg = useRecoilValue(profileImgState);
@@ -21,8 +20,6 @@ export default function PostWrite() {
   const fileRef = useRef(null);
   const navigate = useNavigate();
   const token = useRecoilValue(tokenState);
-
-  console.log(image);
 
   const onChangeContent = (e) => {
     setContent(e.target.value);

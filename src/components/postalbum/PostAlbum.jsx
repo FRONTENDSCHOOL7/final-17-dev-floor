@@ -42,8 +42,12 @@ export default function PostAlbum() {
     }
   };
 
-  // iinView && !isend가 true 일 때만 데이터를 불러옴!
   // 페이지 시작 시 렌더링
+  useEffect(() => {
+    postFetch();
+  }, []);
+
+  // iinView && !isend가 true 일 때만 데이터를 불러옴!
   useEffect(() => {
     if (inView) {
       console.log(inView, "무한 스크롤 요청 🎃");

@@ -48,14 +48,6 @@ export default function Post() {
   //   setIsPostId(postId);
   // }, [postId]);
 
-  // useEffect(()=> {
-  //     const commenWrite = async (postId) => {
-  //       const result = await postCommentApi(postId, comments)
-  //       setPostcomment(result)
-  //       console.log(postCommentApi)
-  //     }
-  //     commenWrite()
-  // },[])
   return (
     <Body>
       <TopBar />

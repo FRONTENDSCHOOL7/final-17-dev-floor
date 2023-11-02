@@ -3,11 +3,14 @@ import styled from "styled-components";
 export const Sect1 = styled.div`
   font-family: "GongGothicMedium";
   .container {
-    width: 720px;
+    width: 100%;
+    max-width: 720px;
     height: 110px;
     z-index: 999;
     position: fixed;
     bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
     background-color: white;
     border: 1px solid gray;
     border-radius: 10px 10px 0 0;

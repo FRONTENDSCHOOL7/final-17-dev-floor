@@ -5,6 +5,7 @@ import logoUser from "../../assets/images/Group 24.png";
 import TabMenu from "../../components/tab/TabMenu";
 import { useNavigate } from "react-router-dom";
 import SearchInput from "../../components/search/SearchInput";
+import Feed from "../../components/feed/Feed";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -30,7 +31,8 @@ export default function Home() {
                 </div>
               </Inner>
             </Header>
-            <HomeSearch>
+            <Feed />
+            {/* <HomeSearch>
               <div className='inner'>
                 <div className='logoSymbol'>
                   <img src={logoUser} alt='' />
@@ -40,7 +42,7 @@ export default function Home() {
                   <button type='button'>검색하기</button>
                 </div>
               </div>
-            </HomeSearch>
+            </HomeSearch> */}
             <TabMenu />
           </>
         )}
