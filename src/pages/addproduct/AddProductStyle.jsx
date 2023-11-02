@@ -8,6 +8,7 @@ export const Body = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  font-family: "GongGothicMedium";
 `;
 export const Main = styled.div`
   display: flex;
@@ -25,44 +26,44 @@ export const Main = styled.div`
     display: flex;
     flex-direction: column;
     p {
-      font-family: Spoqa Han Sans Neo;
+      font-family: "GongGothicMedium";
       font-size: 12px;
       font-weight: 400;
       color: var(--767676, #767676);
       margin-bottom: 18px;
     }
 
-  .img-background {
-    border-radius: 10px;
-    border: 0.5px solid var(--DBDBDB, #dbdbdb);
-    background: var(--Gray-6, #DBDBDB);
-    width: 322px;
-    height: 204px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: end;
-    button {
-      width: 36px;
-      height: 36px;
-      margin-right: 12px;
-      margin-bottom: 12px;
-    }
-    input {
-      display: none;
-    }
-    .previewimage {
-      /* position: relative; */
+    .img-background {
       border-radius: 10px;
+      border: 0.5px solid var(--DBDBDB, #dbdbdb);
+      background: var(--Gray-6, #dbdbdb);
       width: 322px;
       height: 204px;
       display: flex;
       align-items: flex-end;
       justify-content: end;
+      button {
+        width: 36px;
+        height: 36px;
+        margin-right: 12px;
+        margin-bottom: 12px;
+      }
+      input {
+        display: none;
+      }
+      .previewimage {
+        /* position: relative; */
+        border-radius: 10px;
+        width: 322px;
+        height: 204px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: end;
+      }
+      .buttonbox {
+        position: absolute;
+      }
     }
-    .buttonbox {
-      position: absolute;
-    }
-  }
   }
   .product-desc {
     display: flex;
@@ -71,7 +72,7 @@ export const Main = styled.div`
     margin-right: 34px;
     margin-bottom: 16px;
     label {
-      font-family: Spoqa Han Sans Neo;
+      font-family: "GongGothicMedium";
       font-size: 12px;
       font-weight: 500;
     }
@@ -79,6 +80,7 @@ export const Main = styled.div`
       font-size: 14px;
       font-weight: 400;
       color: var(--DBDBDB, #dbdbdb);
+      font-family: "GongGothicMedium";
     }
     input {
       border: none;
