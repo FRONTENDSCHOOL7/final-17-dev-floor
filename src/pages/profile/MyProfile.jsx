@@ -31,6 +31,8 @@ export default function MyProfile() {
   const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [image, setImage] = useRecoilState(profileImgState);
+  // const [id, setId] = useState("");
+  const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const token = useRecoilValue(tokenState);
 
   const navigate = useNavigate();
