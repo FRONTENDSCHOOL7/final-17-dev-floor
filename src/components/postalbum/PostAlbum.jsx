@@ -35,7 +35,7 @@ export default function PostAlbum() {
       setPostData((postData) => {
         return [...postData, ...filterReultData];
       });
-      
+
       setSkip((skip) => skip + 20);
     } catch (error) {
       console.log("실패했습니다");
@@ -50,6 +50,10 @@ export default function PostAlbum() {
       postFetch();
     }
   }, [inView]);
+
+  useEffect(() => {
+    postFetch();
+  }, []);
 
   return (
     <AlbumImg>
