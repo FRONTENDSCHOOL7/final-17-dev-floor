@@ -2,26 +2,22 @@ import React from "react";
 import more from "../../assets/images/s-icon-more-vertical.png";
 import like from "../../assets/images/icon-heart.png";
 import message from "../../assets/images/icon-message-circle.png";
-import { useState, useEffect } from "react";
-import { postUserApi, postDel } from "../../api/PostApi";
-import { Sect3 } from "./PostListStyle";
+import { Body, Sect1 } from "./FeedStyle";
+import { useState } from "react";
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
 import { profileImgState, tokenState } from "../../state/AuthAtom";
-import { accountNameState } from "../../state/AuthAtom";
-import ModalPostDel from "../modal/ModalPostDel";
-import { useNavigate } from "react-router-dom";
+import { postGet } from "../../api/PostApi";
 
-export default function PostList() {
-  const accountName = useRecoilValue(accountNameState);
+export default function Feed() {
   const [postData, setPostData] = useState([]);
   const [skip, setSkip] = useState(0);
   const [ref, inView] = useInView();
   const image = useRecoilValue(profileImgState);
   const token = useRecoilValue(tokenState);
-  const [isPostId, setIsPostId] = useState(null);
-  const [ismodalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
+
+  console.log("안녕하세요");
 
   // 날짜 데이터 변환 함수
   const getDate = (date) => {
@@ -36,27 +32,32 @@ export default function PostList() {
       .padStart(2, "0")}`;
   };
 
-  // 유저 게시글 목록 api 요청
+  // 모든 게시글 api 요청
   const postFetch = async () => {
     try {
       console.log("토큰", token);
-      console.log("어카운트네임", accountName);
-      const result = await postUserApi(accountName, token, skip);
+      const result = await postGet(token, skip);
 
       console.log("@@@");
-      console.log(result.post);
+      console.log(result.posts);
       console.log(postData);
 
       setPostData((postData) => {
-        return [...postData, ...result.post];
+        return [...postData, ...result.posts];
       });
-      setSkip((skip) => skip + 20);
+      setSkip((skip) => skip + 10);
     } catch (error) {
       console.log("실패했습니다");
     }
   };
 
   // iinView && !isend가 true 일 때만 데이터를 불러옴!
+  // 페이지 시작 시 렌더링
+
+  useEffect(() => {
+    postFetch();
+  }, []);
+
   useEffect(() => {
     if (inView) {
       console.log(inView, "무한 스크롤 요청 🎃");
@@ -64,60 +65,22 @@ export default function PostList() {
     }
   }, [inView]);
 
-  //게시글 상세페이지로 이동
-  const handlePostClick = () => {
-    navigate("/post");
-    //상세페이지 생기면 이걸로 navigate(`/post/${postId}`);
-  };
-  //게시글 프로필클릭시 해당프로필로 이동
-  const handleProfileClick = (e) => {
-    e.stopPropagation();
-    navigate("/profile");
-  };
-  //게시글 삭제
-  const handlePostDel = async () => {
-    try {
-      if (isPostId) {
-        await postDel(isPostId, token);
-        console.log(isPostId, token);
-        setPostData((prev) => prev.filter((item) => item.id !== isPostId));
-
-        setIsPostId(null);
-      }
-    } catch (error) {
-      console.error("게시글 삭제 실패");
-    }
-    setIsModalOpen(false);
-  };
-
-  const modalOpen = (e, post_id) => {
-    e.stopPropagation();
-    setIsModalOpen(true);
-    setIsPostId(post_id);
-  };
   return (
-    <Sect3>
-      <div>
+    <Body>
+      <Sect1>
         {postData?.map((item, idx) => {
           return (
-            <div
-              className='content-container'
-              key={idx}
-              onClick={() => handlePostClick(item.id)}
-            >
+            <div className='content-container' key={idx}>
               <div className='content-list'>
                 <img src={image} alt='' className='profile-img' />
                 <div className='content'>
-                  <div
-                    className='content-title'
-                    onClick={(e) => handleProfileClick(e)}
-                  >
+                  <div className='content-title'>
                     <div className='content-id'>
                       <h3>{item.author.accountname}</h3>
                       <p>{item.author.username}</p>
                     </div>
                     <div>
-                      <button onClick={(e) => modalOpen(e, item.id)}>
+                      <button>
                         <img src={more} alt='' />
                       </button>
                     </div>
@@ -140,14 +103,8 @@ export default function PostList() {
             </div>
           );
         })}
-      </div>
-      <div ref={ref}>.</div>
-      {ismodalOpen && (
-        <ModalPostDel
-          setIsModalOpen={setIsModalOpen}
-          handlePostDel={handlePostDel}
-        />
-      )}
-    </Sect3>
+        <div ref={ref}>.</div>
+      </Sect1>
+    </Body>
   );
 }
