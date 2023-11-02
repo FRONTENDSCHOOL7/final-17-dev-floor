@@ -42,12 +42,8 @@ export default function Login() {
       const response = await loginApi(email, password);
       console.log(response);
 
-      const regex = /^[a-zA-Z0-9._]+$/;
-
       if (!response.user) {
-        setPwError("*이메일  또는 비밀번호가 일치하지 않습니다.");
-      } else if(!regex.test(e.target.value)) {
-        setEmError('*이메일 형식이 올바르지 않습니다.');
+        setPwError("*이메일 또는 비밀번호가 일치하지 않습니다.");
       } else {
         setEmError('')
         setPwError('')

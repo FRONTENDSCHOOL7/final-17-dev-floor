@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { tokenState } from "../../state/AuthAtom";
 import { postIdState } from "../../state/PostAtom";
 
-export default function Modal({ isModal, setIsModal, children}) {
+export default function Modal({ modalOpen, setIsOpenModal, children}) {
 const wrapperRef = useRef();
 // const token = useRecoilValue(tokenState);
 // const token =
@@ -25,14 +25,14 @@ return () => {
 const handleClickOutside = (event) => {
     event.stopPropagation()
     if (wrapperRef.current && !wrapperRef.current.contains(event.currentTarget)) {
-        setIsModal(false);
+        setIsOpenModal(false);
     }else {
-        setIsModal(true);
+        setIsOpenModal(true);
     }
 };
 
 const xClose = () => {
-    setIsModal(false);
+    setIsOpenModal(false);
 };
 
 const postDelete = async (e) => {
@@ -52,7 +52,7 @@ const postDelete = async (e) => {
 // }
 
 return (
-//     <div ref={wrapperRef} value={isModal}>
+//     <div ref={wrapperRef} value={modalOpen}>
 //     {children}
 //     <Sect1>
 //     <div className='container'>
@@ -69,7 +69,7 @@ return (
 //     </div>
 //     </Sect1>
 // </div>
-<div ref={wrapperRef} value={isModal}>
+<div ref={wrapperRef} value={modalOpen}>
 {children}
     <Sect1>
     <div className='container'>
@@ -80,7 +80,7 @@ return (
         </div>
         <div className='letter'>
         <button>신고하기</button>
-        <button onClick={postDelete}>삭제</button>
+        {/* <button onClick={postDelete}>삭제</button> */}
         </div>
     </div>
     </Sect1>
