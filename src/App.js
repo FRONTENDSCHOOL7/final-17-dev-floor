@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import Login from "./pages/login/Login";
 import Chat from "./pages/chat/Chat";
@@ -17,9 +17,13 @@ import Join from "./pages/join/Join";
 import Splash from "./pages/splash/Splash";
 import { ProfileJoin } from "./pages/join/ProfileJoin";
 import MyProfile from "./pages/profile/MyProfile";
-import EditProduct from "./pages/editproduct/EditProduct";
+import EditProduct from './pages/editproduct/EditProduct';
+import { tokenState } from "./state/AuthAtom";
+import { useRecoilValue } from "recoil";
 
 function App() {
+  const token = useRecoilValue(tokenState);
+
   return (
     <div className='App'>
       <GlobalStyle />
@@ -30,19 +34,19 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/join' element={<Join />} />
           <Route path='/homefeed' element={<Home />} />
-          <Route path='/chat' element={<Chat />} />
-          <Route path='/chatroom' element={<ChatRoom />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/post' element={<Post />} />
-          <Route path='/postwrite' element={<PostWrite />} />
-          <Route path='/myprofile' element={<MyProfile />} />
+          <Route path='/chat' element={token ? <Chat /> : <Navigate to='/login'/>} />
+          <Route path='/chatroom' element={token ? <ChatRoom /> : <Navigate to='/login'/>} />
+          <Route path='/profile' element={token ? <Profile /> : <Navigate to='/login'/>} />
+          <Route path='/post' element={token ? <Post /> : <Navigate to='/login'/>} />
+          <Route path='/postwrite' element={token ? <PostWrite /> : <Navigate to='/login'/>} />
+          <Route path='/myprofile' element={token ? <MyProfile/> : <Navigate to='/login'/>} />
           <Route path='/404' element={<Error />} />
-          <Route path='/followers' element={<Followers />} />
-          <Route path='/following' element={<Following />} />
-          <Route path='/product' element={<AddProduct />} />
-          <Route path='/modify' element={<ProfileModification />} />
-          <Route path='/join-profile' element={<ProfileJoin />} />
-          <Route path='/editproduct' element={<EditProduct />} />
+          <Route path='/followers' element={token ? <Followers /> : <Navigate to='/login'/>} />
+          <Route path='/following' element={token ? <Following /> : <Navigate to='/login'/>} />
+          <Route path='/product' element={token ? <AddProduct /> : <Navigate to='/login'/>} />
+          <Route path='/modify' element={token ? <ProfileModification /> : <Navigate to='/login'/>} />
+          <Route path='/join-profile' element={token ? <ProfileJoin/> : <Navigate to='/login'/>} />
+          <Route path='/editproduct' element={token ? <EditProduct/> : <Navigate to='/login'/>} />
         </Routes>
       </BrowserRouter>
     </div>
