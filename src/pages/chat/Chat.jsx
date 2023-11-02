@@ -5,7 +5,7 @@ import back from "../../assets/images/icon-arrow-left.png";
 import profileImg from "../../assets/images/Group 26.png";
 import TabMenu from "../../components/tab/TabMenu";
 
-import { Body, TopBar, Chat1, Sect1 } from "./ChatStyle";
+import { Body, TopBar, Chat1, Chat2, Chat3, Sect1 } from "./ChatStyle";
 import { Link } from "react-router-dom";
 
 export default function Chat() {
@@ -32,7 +32,7 @@ export default function Chat() {
             </div>
           </Link>
         </Chat1>
-        <Chat1>
+        <Chat2>
           <img src={profileImg} alt='프로필 이미지' />
           <div>
             <h3>제주감귤마을</h3>
@@ -43,8 +43,8 @@ export default function Chat() {
               <p className='date'>2020.10.25</p>
             </div>
           </div>
-        </Chat1>
-        <Chat1>
+        </Chat2>
+        <Chat3>
           <img src={profileImg} alt='프로필 이미지' />
           <div>
             <h3>누구네 농장 친환경 한라봉</h3>
@@ -55,7 +55,7 @@ export default function Chat() {
               <p className='date'>2020.10.25</p>
             </div>
           </div>
-        </Chat1>
+        </Chat3>
       </Sect1>
       <TabMenu />
     </Body>
