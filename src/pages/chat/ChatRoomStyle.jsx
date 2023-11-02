@@ -5,14 +5,12 @@ export const Body = styled.div`
   max-width: 100vw; // 화면의 너비를 초과하지 않도록 설정
   height: 100vh; // 화면의 높이를 초과하지 않도록 설정
   width: 100%;
-  /* margin: 0 auto; */
   display: flex;
   justify-content: center; // 가로축을 기준으로 중앙 정렬
   align-items: center; // 세로축을 기준으로 중앙 정렬
   flex-direction: column;
   font-family: "GongGothicMedium";
   overflow: hidden; // 초과하는 내용이 생겼을 때 스크롤바가 생기지 않도록 설정
-  /* gap: 10px; */
 `;
 
 export const TopBarChat = styled.div`
@@ -40,28 +38,7 @@ export const TopBarChat = styled.div`
     text-align: left;
   }
 `;
-// export const TopBarChat = styled.div`
-//   max-width: 720px;
-//   width: 100%;
-//   height: 48px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
 
-//   button {
-//   margin: 13px 16px;
-//   background: #fff;
-//   border-style: none;
-//   }
-
-//   h2 {
-//   width: 600px;
-//   font-size: 15px;
-//   font-weight: bold;
-//   align-items: left;
-//   }
-// `;
 export const Sect1 = styled.div`
   max-width: 720px;
   width: 100%;
@@ -108,7 +85,6 @@ export const ChatWrap = styled.div`
 
 export const MyChatWrap = styled.div`
   display: flex;
-  /* flex-direction: column; */
   align-items: end;
   max-width: 720px;
   width: 100%;
@@ -140,11 +116,8 @@ export const MyChatWrap = styled.div`
   }
 
   .time {
-    /* display: flex; */
-    /* justify-content : space-between; */
     color: #a6a6a6;
     font-size: 10px;
-    /* flex-direction: column; */
   }
 `;
 
@@ -218,7 +191,6 @@ export const ChatBar = styled.div`
       input::placeholder {
         font-family: "GongGothicMedium";
         color: #dbdbdb;
-        /* color: disableColor; */
       }
     }
 `;
