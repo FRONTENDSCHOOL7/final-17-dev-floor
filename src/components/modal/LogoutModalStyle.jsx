@@ -9,13 +9,14 @@ export const Sect1 = styled.div`
         z-index: 999;
         position: fixed;
         bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
         background-color: white;
         border: 1px solid gray;
         border-radius: 10px 10px 0 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        left: 65px;
     }
     .barr {
         width: 720px;
