@@ -75,6 +75,7 @@ export default function Feed() {
     }
   };
 
+
   // iinView && !isend가 true 일 때만 데이터를 불러옴!
   // 페이지 시작 시 렌더링
 
