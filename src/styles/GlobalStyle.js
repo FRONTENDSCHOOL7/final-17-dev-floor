@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
         --disableColor: #7A8CCB;
         --errorFontColor: #EB5757;
         --focusColor: #F26E22;
+        --ourFont: 'GongGothicMedium';
     }
     ${reset}
 `;

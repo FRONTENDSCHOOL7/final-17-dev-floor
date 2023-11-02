@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
+  font-family: "GongGothicMedium";
   max-width: 720px;
   width: 100%;
   height: 100vh;

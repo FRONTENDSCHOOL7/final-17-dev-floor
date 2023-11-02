@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Sect1 = styled.div`
+  font-family: "GongGothicMedium";
   .container {
     width: 720px;
     height: 110px;

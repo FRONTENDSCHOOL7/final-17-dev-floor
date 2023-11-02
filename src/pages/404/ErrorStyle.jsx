@@ -8,6 +8,7 @@ export const Body = styled.div`
   width: 390px;
   height: 100vh;
   margin: 0 auto;
+  font-family: "GongGothicMedium";
   img {
     width: 160px;
     height: 120px;

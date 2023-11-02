@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import more from "../../assets/images/s-icon-more-vertical.png";
 import back from "../../assets/images/icon-arrow-left.png";
-import profileImg from "../../assets/images/basic-profile.png";
+import profileImg from "../../assets/images/Group 26.png";
 import photosendImg from "../../assets/images/img-button.png";
 import { useState } from "react";
 import Modal from "../../components/modal/ChatModal";
+import { Link } from "react-router-dom";
 
 import {
   Body,
@@ -19,18 +20,23 @@ import {
 export default function ChatRoom() {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [comment, setcomment] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
   const showModal = () => {
     setIsOpenModal(true);
   };
   const handleComment = (e) => {
-    setcomment(e.target.value);
+    setcomment(e.target.value ? e.target.value : null);
   };
+  const fileRef = useRef(null);
+
   return (
     <Body>
       <TopBarChat>
-        <button>
-          <img src={back} alt='' />
-        </button>
+        <Link to='/chat'>
+          <button>
+            <img src={back} alt='' />
+          </button>
+        </Link>
         <h2>애월읍 위니브 감귤농장</h2>
         <button onClick={showModal}>
           <img src={more} alt='' />
@@ -63,13 +69,25 @@ export default function ChatRoom() {
       <ChatBar>
         <div className='chat-container'>
           <div className='chat-list'>
-            <img src={photosendImg} alt='' className='photo-img' />
+            <input
+              type='file'
+              style={{ display: "none" }}
+              ref={fileRef}
+              onChange={(e) => setSelectedImage(e.target.files?.[0])}
+            />
+            <button className='send' onClick={() => fileRef.current.click()}>
+              <img src={photosendImg} alt='' className='photo-img' />
+            </button>
             <div className='chat-title'>
               <input
                 placeholder='메시지 입력하기...'
                 onChange={handleComment}
               />
-              <button className={"btn" + (comment ? "Active" : "Disabled")}>
+              <button
+                className={
+                  selectedImage || comment ? "btnActive" : "btnDisabled"
+                }
+              >
                 전송
               </button>
             </div>
