@@ -75,7 +75,27 @@ export const myProfileApi = async (token) => {
 
 export const followApi = async (accountname, token) => {
   try {
-    const res = await axios.post(url + `/profile/${accountname}/follow`, {
+    const res = await axios.post(
+      url + `/profile/${accountname}/follow`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// 3.4 언팔로우
+
+export const unfollowApi = async (accountname, token) => {
+  try {
+    const res = await axios.delete(url + `/profile/${accountname}/unfollow`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",

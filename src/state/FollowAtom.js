@@ -8,7 +8,7 @@ const { persistAtom } = recoilPersist({
 
 export const followState = atom({
   key: "followState",
-  default: "",
+  default: false,
   effects_UNSTABLE: [persistAtom],
 });
 export const followersState = atom({
