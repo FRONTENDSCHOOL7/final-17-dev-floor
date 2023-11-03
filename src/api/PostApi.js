@@ -108,3 +108,33 @@ export const postCommentApi = async (commentContent,token) => {
     return [];
   }
 };
+// 댓글 리스트
+export const commentListApi = async (token,skip) => {
+  try {
+    const res = await axios.get(url+`/6543be0db2cb205663bf3ce1/comments/?limit=10&skip=${skip}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+      }
+    })
+    return res.data
+  } catch (error) {
+    console.error("댓글 불러오기 실패")
+  }
+}
+// 댓글 삭제
+export const commentDelApi = async(commentId,token) => {
+  try {
+    const res = await axios.delete(url+`/6543be0db2cb205663bf3ce1/comments/${commentId}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+      }
+    })
+    console.log(res.data)
+
+    return res.data
+  } catch (error) {
+    console.error("댓글 삭제 실패")
+  }
+}
