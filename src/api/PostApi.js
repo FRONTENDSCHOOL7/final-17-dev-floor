@@ -85,11 +85,11 @@ export const postDel = async (post_id,token) => {
     alert("삭제 실패");
   }
 };
-// 댓글
-export const postCommentApi = async (commentContent) => {
+// 댓글 작성
+export const postCommentApi = async (commentContent,token) => {
   try {
     const res = await axios.post(
-      url + `/653fcb1fb2cb205663934f1e/comments`,
+      url + `/6543be0db2cb205663bf3ce1/comments`,
       {
         comment: {
           content: commentContent,
@@ -97,7 +97,7 @@ export const postCommentApi = async (commentContent) => {
       },
       {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzc2M2I1YjJjYjIwNTY2Mzg1Yjg1OSIsImV4cCI6MTcwNDA3Njc5NSwiaWF0IjoxNjk4ODkyNzk1fQ.K4CxRmedH_rVhLeEzLX_0GyH3rwcSR6rJZPpVOPBbaQ`,
+          Authorization: `Bearer ${token}`,
           "Content-type": "application/json",
         },
       }

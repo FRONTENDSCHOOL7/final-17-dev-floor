@@ -24,6 +24,10 @@ export const Sect3 = styled.div`
       display: flex;
       gap: 12px;
       margin-top: 12px;
+      .content-id {
+        display: flex;
+        gap: 12px;
+      }
     }
     .profile-img {
       width: 42px;
