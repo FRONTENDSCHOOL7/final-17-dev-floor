@@ -7,24 +7,34 @@ import { Body, Sect1, Sect2, Sect3 } from "./PostStyle";
 import TopBar from "../../components/topbar/TopBarBasic";
 import { useState } from "react";
 import Modal from "../../components/modal/Modal";
-import { postCommentApi } from "../../api/PostApi";
+import { commentDelApi, commentListApi, postCommentApi } from "../../api/PostApi";
 import { useRecoilValue } from "recoil";
 import { tokenState } from "../../state/AuthAtom";
 import { useParams } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
+import ModalComDel from "../../components/modal/ModalComDel";
 
 export default function Post() {
-  const [modalOpen, setIsOpenModal] = useState(false);
-  const [comment, setComment] = useState(0);
+  const [modalOpen, setIsOpenModal] = useState(false); //게시글 모달
+  const [comModalOpen, setComModalOpen] = useState(false); //댓글 모달
 
   const [commentContent, setCommentContent] = useState(''); //댓글내용상태
   const [postcomment, setPostcomment] = useState([]); //댓글목록
+  const [commentId, setCommentId] = useState(null) //댓글id
+
   const token = useRecoilValue(tokenState);
   const [isPostId, setIsPostId] = useState(null)
+  const [comCount, setComCount] = useState(0) //댓글수
+  const [skip, setSkip] = useState(0)
+  const [ref, inView] = useInView()
   // const {postId} = useParams()
   const showModal = () => {
     setIsOpenModal(true);
   };
-  
+  const showComModal = (commentId) => {
+    setComModalOpen(true)
+    setCommentId(commentId)
+  }
   //댓글 작성
   const handleComment = async () => {
     if (commentContent.trim() === "") {
@@ -35,6 +45,7 @@ export default function Post() {
 
       const newComment = res.comment;
       setPostcomment([...postcomment, newComment]);
+      setComCount(comCount+1)
       console.log(newComment)
 
       console.log("댓글작성완료");
@@ -44,7 +55,44 @@ export default function Post() {
     setCommentContent("");
     setIsPostId(null)
   };
-  
+  // 댓글 리스트
+  const commentFetch = async () => {
+    try {
+      const res = await commentListApi(token,skip)
+      console.log(res); 
+      const newComment = res.comments
+
+      setPostcomment((prevComment)=>  {
+        return [...prevComment, ...newComment]
+      })
+      setComCount((prevCount) => prevCount + newComment.length)
+      setSkip((skip) => skip + 10)
+    } catch (error) {
+      console.error('댓글 조회 x')
+    }
+  }
+  useEffect(()=> {
+    if(inView){
+      commentFetch()
+    }
+  },[inView])
+
+  //댓글 삭제
+  const commentDel = async () => {
+    try {
+        if(commentId){
+          await commentDelApi(commentId,token)
+          console.log(commentId,token)
+          setPostcomment(prev=> prev.filter(item=>item.id !== commentId))
+          setComCount((prevCount) => prevCount - 1)
+          
+          setCommentId(null)
+        }
+    } catch (error) {
+      console.error("댓글 삭제 놉")
+    }
+    setComModalOpen(false)
+  }
   return (
     <Body>
       <TopBar />
@@ -77,7 +125,7 @@ export default function Post() {
                   <img src={like} alt='' /> <span>58</span>
                 </button>
                 <button>
-                  <img src={message} alt='' /> <span>12</span>
+                  <img src={message} alt='' /> <span>{comCount}</span>
                 </button>
               </div>
               <span className='date'>2020년 10월 21일</span>
@@ -98,7 +146,7 @@ export default function Post() {
                     <p></p>
                   </div>
                   <div>
-                    <button>
+                    <button onClick={()=> showComModal(comment.id)}>
                       <img src={more} alt='' />
                     </button>
                   </div>
@@ -156,7 +204,9 @@ export default function Post() {
           </div>
         </div>
       </Sect3>
+      <div ref={ref}>.</div>
       {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
+      {comModalOpen && <ModalComDel setComModalOpen={setComModalOpen} commentDel={commentDel}/>}
     </Body>
   );
 }

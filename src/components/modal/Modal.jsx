@@ -35,15 +35,6 @@ const xClose = () => {
     setIsOpenModal(false);
 };
 
-const postDelete = async (e) => {
-    e.stopPropagation()
-    try {
-        await postDel(postId2)
-        console.log(postId2)
-    } catch(error) {
-        console.log(error)
-    }
-}
 // useEffect(()=>{
 //     fetchData()
 // },[refresh])
