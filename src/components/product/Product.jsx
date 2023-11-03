@@ -91,6 +91,7 @@ export default function Product() {
         <ModalProduct
           setIsOpenModal={setIsOpenModal}
           handleDelete={handleDelete}
+          productLink={products.find((product) => product.id === selectedProductId)?.link}
         />
       )}
     </Sect2>
