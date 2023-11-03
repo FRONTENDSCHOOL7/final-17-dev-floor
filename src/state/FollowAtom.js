@@ -13,7 +13,7 @@ export const followState = atom({
 });
 export const followersState = atom({
   key: "followersState",
-  default: [false, false],
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });
 export const followingState = atom({
