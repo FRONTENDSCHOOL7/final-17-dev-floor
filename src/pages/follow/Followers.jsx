@@ -49,7 +49,7 @@ export default function Followers() {
       // setFollow(isFollowedArray);
       console.log(followerList);
     } catch (error) {
-      console.log("팔로잉 리스트 에러입니다.");
+      console.log("팔로워 리스트 에러입니다.");
     }
   };
 
