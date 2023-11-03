@@ -106,3 +106,41 @@ export const unfollowApi = async (accountname, token) => {
     throw error;
   }
 };
+
+// 3.5 팔로잉리스트
+
+export const followingListApi = async (accountname, token) => {
+  try {
+    const res = await axios.get(
+      url + `/profile/${accountname}/following?limit=Number&skip=Number`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// 3.6 팔로워 리스트
+
+export const followerListApi = async (accountname, token) => {
+  try {
+    const res = await axios.get(
+      url + `/profile/${accountname}/follower/?limit=Number&skip=Number`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};

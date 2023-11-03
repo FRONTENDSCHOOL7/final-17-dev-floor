@@ -18,7 +18,7 @@ export const followersState = atom({
 });
 export const followingState = atom({
   key: "followingState",
-  default: [true, true],
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });
 export const hamburgerBtnState = atom({
