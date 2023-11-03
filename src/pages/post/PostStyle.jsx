@@ -143,11 +143,17 @@ export const Sect2 = styled.div`
   }
 `;
 export const Sect3 = styled.div`
+    position: fixed;
+    background: var(--whiteColor);
+    bottom: 0;
+    width: 720px;
+    height: 61px;
   .comment-container {
-    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
-    padding: 0 0 12px 15px;
+    border-top: 0.5px solid var(--DBDBDB, #dbdbdb);
+    padding: 12px 16px;
     display: flex;
     align-items: center;
+    max-width: 720px;
     .comment-list {
       width: 100%;
       display: flex;
