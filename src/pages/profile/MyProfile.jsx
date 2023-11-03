@@ -46,6 +46,7 @@ export default function MyProfile() {
     try {
       const res = await myProfileApi(token);
       setImage(res.user.image);
+      localStorage.setItem("myProfileImg", res.user.image);
       setUserName(res.user.username);
       setIntro(res.user.intro);
       setId(res.user.accountname);

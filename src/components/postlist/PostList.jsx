@@ -5,7 +5,7 @@ import message from "../../assets/images/icon-message-circle.png";
 import { useState, useEffect } from "react";
 import { postUserApi, postDel } from "../../api/PostApi";
 import { Sect3 } from "./PostListStyle";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
 import { profileImgState, tokenState } from "../../state/AuthAtom";
 import { accountNameState } from "../../state/AuthAtom";
@@ -13,7 +13,7 @@ import ModalPostDel from "../modal/ModalPostDel";
 import { useNavigate } from "react-router-dom";
 
 export default function PostList() {
-  const accountName = useRecoilValue(accountNameState);
+  const [accountName, setAccountName] = useRecoilState(accountNameState);
   const [postData, setPostData] = useState([]);
   const [skip, setSkip] = useState(0);
   const [ref, inView] = useInView();
@@ -112,7 +112,7 @@ export default function PostList() {
                     onClick={(e) => handleProfileClick(e)}
                   >
                     <div className='content-id'>
-                    <img src={image} alt='' className='profile-img' />
+                      <img src={image} alt='' className='profile-img' />
                       <div>
                         <h3>{item.author.accountname}</h3>
                         <p>{item.author.username}</p>

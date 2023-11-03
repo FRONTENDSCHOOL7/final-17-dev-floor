@@ -8,14 +8,19 @@ import { useState } from "react";
 import { contentState, postIdState } from "../../state/PostAtom";
 import { useNavigate } from "react-router-dom";
 import { postPostApi, imageApi } from "../../api/PostApi";
-import { profileImgState, tokenState } from "../../state/AuthAtom";
+import {
+  accountNameState,
+  profileImgState,
+  tokenState,
+} from "../../state/AuthAtom";
 
 export default function PostWrite() {
   const [content, setContent] = useRecoilState(contentState);
   const [image, setImage] = useState("");
   const [postId, setPostId] = useRecoilState(postIdState);
   const [apiImage, setApiImage] = useState("");
-  const proImg = useRecoilValue(profileImgState);
+  const [accountName, setAccountName] = useRecoilState(accountNameState);
+  const proImg = localStorage.getItem("myProfileImg");
 
   const fileRef = useRef(null);
   const navigate = useNavigate();
@@ -58,9 +63,9 @@ export default function PostWrite() {
     }
   };
 
-  // useEffect(() => {
-  //   console.log("post.id: " + postId);
-  // }, [postId]);
+  useEffect(() => {
+    setAccountName(localStorage.getItem("account"));
+  }, []);
 
   return (
     <Body>
