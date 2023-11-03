@@ -19,19 +19,19 @@ export default function Post() {
   const [commentContent, setCommentContent] = useState(''); //댓글내용상태
   const [postcomment, setPostcomment] = useState([]); //댓글목록
   const token = useRecoilValue(tokenState);
-  const [ispostId, setIsPostId] = useState(null)
+  const [isPostId, setIsPostId] = useState(null)
   // const {postId} = useParams()
   const showModal = () => {
     setIsOpenModal(true);
   };
-
-  const handleComment = async (e) => {
+  
+  //댓글 작성
+  const handleComment = async () => {
     if (commentContent.trim() === "") {
       return; //댓글 내용없으면 게시안함
     }
     try {
-      const res = await postCommentApi(commentContent);
-      console.log(res)
+      const res = await postCommentApi(commentContent, token);
 
       const newComment = res.comment;
       setPostcomment([...postcomment, newComment]);
@@ -44,10 +44,7 @@ export default function Post() {
     setCommentContent("");
     setIsPostId(null)
   };
-  // useEffect(() => {
-  //   setIsPostId(postId);
-  // }, [postId]);
-
+  
   return (
     <Body>
       <TopBar />
