@@ -49,21 +49,3 @@ export const logoutModalState = atom({
   default: false,
   effects_UNSTABLE: [persistAtom],
 });
-
-// export const yourNameState = atom({
-//   key: "yourNameState",
-//   default: "",
-//   effects_UNSTABLE: [persistAtom],
-// });
-
-// export const yourAccountNameState = atom({
-//   key: "yourAccountNameState",
-//   default: "",
-//   effects_UNSTABLE: [persistAtom],
-// });
-
-// export const yourIntroState = atom({
-//   key: "yourNameState",
-//   default: "",
-//   effects_UNSTABLE: [persistAtom],
-// });

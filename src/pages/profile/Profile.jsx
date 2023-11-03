@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import { followState, hamburgerBtnState } from "../../state/FollowAtom";
-import { followApi, profileApi } from "../../api/ProfileApi";
+import { followApi, profileApi, unfollowApi } from "../../api/ProfileApi";
 import { introState, userNameState } from "../../state/ModifyAtom";
 import {
   accountNameState,
@@ -41,18 +41,29 @@ export default function Profile() {
   const checkFollow = async (e) => {
     e.preventDefault();
     try {
-      setFollow(!follow);
-      localStorage.setItem("isFollowed", !follow);
-      const res = await followApi(id, token);
-      console.log(res);
+      if (follow) {
+        setFollow(!follow);
+        localStorage.setItem("isFollowed", !follow);
+        const res = await unfollowApi(id, token);
+        console.log(res);
+      } else {
+        setFollow(!follow);
+        localStorage.setItem("isFollowed", !follow);
+        const res = await followApi(id, token);
+        console.log(res);
+      }
     } catch (error) {
       console.log("에러가 발생했습니다.");
     }
   };
   useEffect(() => {
+    if (token === null) {
+      navigate("/404");
+    }
     const storedIsFollowed = localStorage.getItem("isFollowed");
     setFollow(storedIsFollowed === "true");
     try {
+      handleProfile();
     } catch (error) {
       console.log("에러입니다.");
     }
@@ -73,12 +84,6 @@ export default function Profile() {
     }
   };
 
-  useEffect(() => {
-    if (token === null) {
-      navigate("/404");
-    }
-    handleProfile();
-  }, []);
   return (
     <Body>
       <TopBar />
