@@ -78,7 +78,11 @@ export const accountNameState = atom({
   default: localStorage.getItem("account"),
   effects_UNSTABLE: [persistAtom],
 });
-
+export const userNameState = atom({
+  key: "userNameState",
+  default: localStorage.getItem("username"),
+  effects_UNSTABLE: [persistAtom],
+});
 export const routeState = atom({
   key: "routeState",
   default: "signup",

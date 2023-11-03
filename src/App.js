@@ -33,7 +33,7 @@ function App() {
           <Route path='/home' exact element={token ? <Home/> : <LoginHome />} />
           <Route path='/login' element={token ? <Home/> : <Login />} />
           <Route path='/join' element={token ? <Home/> : <Join />} />
-          <Route path='/homefeed' element={<Home />} />
+          <Route path='/homefeed' element={token ? <Home /> : <Navigate to='/login'/>} />
           <Route path='/chat' element={token ? <Chat /> : <Navigate to='/login'/>} />
           <Route path='/chatroom' element={token ? <ChatRoom /> : <Navigate to='/login'/>} />
           <Route path='/profile' element={token ? <Profile /> : <Navigate to='/login'/>} />
