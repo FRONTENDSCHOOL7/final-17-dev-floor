@@ -43,12 +43,12 @@ export default function Profile() {
     try {
       if (follow) {
         setFollow(!follow);
-        localStorage.setItem("isFollowed", !follow);
+        // localStorage.setItem("isFollowed", !follow);
         const res = await unfollowApi(id, token);
         console.log(res);
       } else {
         setFollow(!follow);
-        localStorage.setItem("isFollowed", !follow);
+        // localStorage.setItem("isFollowed", !follow);
         const res = await followApi(id, token);
         console.log(res);
       }
@@ -60,8 +60,8 @@ export default function Profile() {
     if (token === null) {
       navigate("/404");
     }
-    const storedIsFollowed = localStorage.getItem("isFollowed");
-    setFollow(storedIsFollowed === "true");
+    // const storedIsFollowed = localStorage.getItem("isFollowed");
+    // setFollow(storedIsFollowed === "true");
     try {
       handleProfile();
     } catch (error) {
@@ -79,6 +79,7 @@ export default function Profile() {
       setUserName(res.profile.username);
       setId(res.profile.accountname);
       setIntro(res.profile.intro);
+      setFollow(res.profile.isfollow);
     } catch (error) {
       console.log("해당 계정이 존재하지 않습니다.");
     }

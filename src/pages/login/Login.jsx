@@ -11,14 +11,16 @@ import {
 } from "./LoginStyle";
 import { Link, useNavigate } from "react-router-dom";
 import { loginApi } from "../../api/AuthApi";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import {
   accountNameState,
   emailState,
   errorState,
   passwordState,
+  profileImgState,
   tokenState,
 } from "../../state/AuthAtom";
+import { myProfileApi } from "../../api/ProfileApi";
 
 export default function Login() {
   const [email, setEmail] = useRecoilState(emailState);
@@ -56,6 +58,8 @@ export default function Login() {
       localStorage.setItem("token", userToken);
       setToken(localStorage.getItem("token"));
       console.log(userToken);
+
+      localStorage.setItem("myProfileImg", response.user.image);
 
       // localStorage.setItem('token',userToken)
       navigate("/homefeed");

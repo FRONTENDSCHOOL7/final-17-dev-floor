@@ -75,7 +75,6 @@ export default function Feed() {
     }
   };
 
-
   // iinView && !isend가 true 일 때만 데이터를 불러옴!
   // 페이지 시작 시 렌더링
 
@@ -109,8 +108,8 @@ export default function Feed() {
                 <div className='content'>
                   <div className='content-title'>
                     <div className='content-id'>
-                      <h3>{item.author.accountname}</h3>
-                      <p>{item.author.username}</p>
+                      <h3>{item.author.username}</h3>
+                      <p>{item.author.accountname}</p>
                     </div>
                     <div>
                       <button>

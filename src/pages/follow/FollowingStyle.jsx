@@ -12,8 +12,11 @@ export const Body = styled.div`
 export const Follower = styled.div`
   display: flex;
   margin: 20px 16px;
+  .profileImg {
+    border-radius: 50px;
+  }
   img {
-    width: 50px;
+    width: 60px;
     height: 60px;
   }
   .id {
