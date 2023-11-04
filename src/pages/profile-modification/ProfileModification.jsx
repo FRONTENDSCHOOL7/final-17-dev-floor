@@ -137,7 +137,6 @@ export default function ProfileModification() {
             <input
               type='text'
               placeholder='2~10자 이내여야 합니다.'
-              value={userName}
               onChange={handleNameChange}
               onBlur={handleNameBlur}
               className={

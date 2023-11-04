@@ -1,9 +1,9 @@
 import React from "react";
 import more from "../../assets/images/s-icon-more-vertical.png";
-import like from "../../assets/images/icon-heart.png";
+import like from "../../assets/images/icon-heart.svg";
 import message from "../../assets/images/icon-message-circle.png";
 import { useState, useEffect } from "react";
-import { postUserApi, postDel } from "../../api/PostApi";
+import { postUserApi, postDel, likeApi } from "../../api/PostApi";
 import { Sect3 } from "./PostListStyle";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
@@ -37,6 +37,14 @@ export default function PostList() {
       .toString()
       .padStart(2, "0")}`;
   };
+
+  // const handleLike = async () => {
+  //   try {
+  //     const res = await likeApi();
+  //   } catch (error) {
+  //     console.log("좋아요 에러");
+  //   }
+  // };
 
   // 유저 게시글 목록 api 요청
   const postFetch = async () => {
@@ -103,7 +111,7 @@ export default function PostList() {
               className='content-container'
               key={idx}
               id={item.id}
-              onClick={() => handlePostClick(item.id)}
+              // onClick={() => handlePostClick(item.id)}
             >
               <div className='content-list'>
                 <div className='content'>

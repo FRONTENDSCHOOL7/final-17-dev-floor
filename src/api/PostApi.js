@@ -160,3 +160,21 @@ export const commentDelApi = async (postId, commentId, token) => {
     console.error("댓글 삭제 실패");
   }
 };
+
+// 6.1 좋아요
+
+export const likeApi = async (postId, token) => {
+  try {
+    const res = await axios.delete(url + `/${postId}/heart`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    });
+    console.log(res.data);
+
+    return res.data;
+  } catch (error) {
+    console.error("좋아요 실패");
+  }
+};
