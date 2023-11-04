@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { tokenState } from "../../state/AuthAtom";
 import {
   SearchBox,
@@ -31,6 +31,7 @@ export default function SearchInput() {
     setKeyword(value);
     console.log('키워드', value);
   };
+
   useEffect(()=>{
       if(timer) { 
         clearTimeout(timer) 
@@ -49,8 +50,9 @@ export default function SearchInput() {
   const userResult = async () => {
       if(keyword){
         const res = await userSearchApi(keyword,token);
-        const readResult = res.filter(item=>item.username === keyword || item.accountname === keyword)
+        const readResult = res.filter(item=>item.username.includes(keyword) || item.accountname.includes(keyword)).slice(0,10)
         setResult(readResult); 
+        console.log('확인',result)
         console.log('api응답',res)
       }
   }
@@ -79,7 +81,7 @@ export default function SearchInput() {
             </SearchInputInner>
           </SearchInputBox>
           <SearchUserList>
-            {result && result.map((item, index) => (
+            {result.map((item, index) => (
               <div key={index} className='userBox'>
                 <div className='userImg'>
                   {item.image !== '' ? (

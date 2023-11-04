@@ -20,6 +20,7 @@ import {
   profileImgState,
   tokenState,
   myProfileImage,
+  postMyAhtuorIdState,
 } from "../../state/AuthAtom";
 import { myProfileApi } from "../../api/ProfileApi";
 
@@ -31,6 +32,7 @@ export default function Login() {
   const [token, setToken] = useRecoilState(tokenState);
   const [account, setAccount] = useRecoilState(accountNameState);
   const [image, setImage] = useRecoilState(myProfileImage);
+  const [myAuthorId, setMyAuthorId] = useRecoilState(postMyAhtuorIdState)
 
   const navigate = useNavigate();
 
@@ -64,6 +66,12 @@ export default function Login() {
       const userImage = response.user.image;
       localStorage.setItem("image", userImage);
       setImage(localStorage.getItem("image"));
+
+      const userAuthorId = response.user._id
+      localStorage.setItem('myAhthorId', userAuthorId)
+      setMyAuthorId(localStorage.getItem('myAhthorId'))
+
+      console.log('마이아이디',userAuthorId)
 
       navigate("/homefeed");
     } catch (error) {

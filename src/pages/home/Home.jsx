@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { HomeFeed, Header, HomeWrap, HomeSearch, Inner } from "./HomeStyle";
+import { HomeFeed, Header, HomeWrap, Inner } from "./HomeStyle";
 import searchImg from "../../assets/images/icon-search.png";
-import logoUser from "../../assets/images/Group 24.png";
 import TabMenu from "../../components/tab/TabMenu";
 import { useNavigate } from "react-router-dom";
 import SearchInput from "../../components/search/SearchInput";
@@ -32,17 +31,6 @@ export default function Home() {
               </Inner>
             </Header>
             <Feed />
-            {/* <HomeSearch>
-              <div className='inner'>
-                <div className='logoSymbol'>
-                  <img src={logoUser} alt='' />
-                </div>
-                <p>유저를 검색해 팔로우 해보세요!</p>
-                <div className='searchBtn' onClick={handleSearch}>
-                  <button type='button'>검색하기</button>
-                </div>
-              </div>
-            </HomeSearch> */}
             <TabMenu />
           </>
         )}
