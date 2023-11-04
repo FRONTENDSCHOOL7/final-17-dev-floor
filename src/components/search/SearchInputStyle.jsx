@@ -44,6 +44,11 @@ export const SearchUserList = styled.div`
     padding: 10px 0;
     display: flex;
     gap: 7px;
+    .userImg {
+      width: 50px;
+      height: 50px;
+      img {width: 100%;}
+    }
     .userPost {
       padding-bottom: 3px;
       p {

@@ -107,3 +107,18 @@ export const profileImgApi = async (file) => {
         alert("업로드 실패");
         }
     };
+// 유저(계정,이름) 검색
+export const userSearchApi = async (keyword,token) => {
+    try {
+        const res = await axios.get(baseUrl+`/user/searchuser/?keyword=${keyword}`,{
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-type": "application/json",
+            }
+        })
+        console.log(res.data)
+        return res.data
+    } catch (error) {
+        console.error("유저 검색 실패",error)
+    }
+}
