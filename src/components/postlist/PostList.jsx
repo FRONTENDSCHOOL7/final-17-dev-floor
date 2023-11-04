@@ -5,15 +5,17 @@ import message from "../../assets/images/icon-message-circle.png";
 import { useState, useEffect } from "react";
 import { postUserApi, postDel } from "../../api/PostApi";
 import { Sect3 } from "./PostListStyle";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
 import { profileImgState, tokenState } from "../../state/AuthAtom";
 import { accountNameState } from "../../state/AuthAtom";
 import ModalPostDel from "../modal/ModalPostDel";
 import { useNavigate } from "react-router-dom";
+import { postIdState } from "../../state/PostAtom";
 
 export default function PostList() {
   const accountName = useRecoilValue(accountNameState);
+  const [postId, setPostId] = useRecoilState(postIdState);
   const [postData, setPostData] = useState([]);
   const [skip, setSkip] = useState(0);
   const [ref, inView] = useInView();
@@ -56,7 +58,7 @@ export default function PostList() {
     }
   };
 
-  // iinView && !isend가 true 일 때만 데이터를 불러옴!
+  // inView가 true일때 발동
   useEffect(() => {
     if (inView) {
       console.log(inView, "무한 스크롤 요청 🎃");
@@ -65,14 +67,11 @@ export default function PostList() {
   }, [inView]);
 
   //게시글 상세페이지로 이동
-  const handlePostClick = () => {
+  const handlePostClick = (postId) => {
+    localStorage.setItem("postId", postId);
+    setPostId(localStorage.getItem("postId"));
+    console.log("게시글id", postId);
     navigate("/post");
-    //상세페이지 생기면 이걸로 navigate(`/post/${postId}`);
-  };
-  //게시글 프로필클릭시 해당프로필로 이동
-  const handleProfileClick = (e) => {
-    e.stopPropagation();
-    navigate("/myprofile");
   };
   //게시글 삭제
   const handlePostDel = async () => {
@@ -103,16 +102,14 @@ export default function PostList() {
             <div
               className='content-container'
               key={idx}
+              id={item.id}
               onClick={() => handlePostClick(item.id)}
             >
               <div className='content-list'>
                 <div className='content'>
-                  <div
-                    className='content-title'
-                    onClick={(e) => handleProfileClick(e)}
-                  >
+                  <div className='content-title'>
                     <div className='content-id'>
-                    <img src={image} alt='' className='profile-img' />
+                      <img src={image} alt='' className='profile-img' />
                       <div>
                         <h3>{item.author.accountname}</h3>
                         <p>{item.author.username}</p>

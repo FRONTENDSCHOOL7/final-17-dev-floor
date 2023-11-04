@@ -81,6 +81,7 @@ export default function ProfileModification() {
       console.log("apiImg", apiImage);
       const res = await editApi(userName, account, intro, apiImage, token);
       console.log(res);
+      localStorage.setItem("myProfileImg", res.user.image);
       navigate("/myprofile");
     } catch (error) {
       console.log("에러입니다.");

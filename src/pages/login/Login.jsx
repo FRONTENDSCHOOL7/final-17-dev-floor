@@ -11,14 +11,17 @@ import {
 } from "./LoginStyle";
 import { Link, useNavigate } from "react-router-dom";
 import { loginApi } from "../../api/AuthApi";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import {
   accountNameState,
   emailState,
   errorState,
   passwordState,
+  profileImgState,
   tokenState,
+  myProfileImage,
 } from "../../state/AuthAtom";
+import { myProfileApi } from "../../api/ProfileApi";
 
 export default function Login() {
   const [email, setEmail] = useRecoilState(emailState);
@@ -27,6 +30,7 @@ export default function Login() {
   const [emError, setEmError] = useRecoilState(errorState);
   const [token, setToken] = useRecoilState(tokenState);
   const [account, setAccount] = useRecoilState(accountNameState);
+  const [image, setImage] = useRecoilState(myProfileImage);
 
   const navigate = useNavigate();
 
@@ -57,7 +61,10 @@ export default function Login() {
       setToken(localStorage.getItem("token"));
       console.log(userToken);
 
-      // localStorage.setItem('token',userToken)
+      const userImage = response.user.image;
+      localStorage.setItem("image", userImage);
+      setImage(localStorage.getItem("image"));
+
       navigate("/homefeed");
     } catch (error) {
       console.log("에러입니다.");

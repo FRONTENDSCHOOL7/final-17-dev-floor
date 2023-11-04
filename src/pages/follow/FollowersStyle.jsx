@@ -44,7 +44,7 @@ export const Follower = styled.div`
     color: #767676;
     border-radius: 26px;
     border: 1px solid var(--DBDBDB, #dbdbdb);
-    width: 70px;
+    width: 75px;
     height: 35px;
     padding: 7px 9px;
     margin-top: 15px;

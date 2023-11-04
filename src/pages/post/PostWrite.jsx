@@ -5,17 +5,21 @@ import { Body, Sect1, Sect2 } from "./PostWriteStyle";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useRef } from "react";
 import { useState } from "react";
-import { contentState, postIdState } from "../../state/PostAtom";
+import { contentState } from "../../state/PostAtom";
 import { useNavigate } from "react-router-dom";
 import { postPostApi, imageApi } from "../../api/PostApi";
-import { profileImgState, tokenState } from "../../state/AuthAtom";
+import {
+  accountNameState,
+  profileImgState,
+  tokenState,
+} from "../../state/AuthAtom";
 
 export default function PostWrite() {
   const [content, setContent] = useRecoilState(contentState);
   const [image, setImage] = useState("");
-  const [postId, setPostId] = useRecoilState(postIdState);
   const [apiImage, setApiImage] = useState("");
-  const proImg = useRecoilValue(profileImgState);
+  const [accountName, setAccountName] = useRecoilState(accountNameState);
+  const proImg = localStorage.getItem("myProfileImg");
 
   const fileRef = useRef(null);
   const navigate = useNavigate();
@@ -51,16 +55,15 @@ export default function PostWrite() {
     // 게시글 등록 api 요청
     try {
       const result = await postPostApi(content, apiImage, token);
-      setPostId(result.post.author.accountname);
       navigate("/myprofile");
     } catch (error) {
       console.log(error);
     }
   };
 
-  // useEffect(() => {
-  //   console.log("post.id: " + postId);
-  // }, [postId]);
+  useEffect(() => {
+    setAccountName(localStorage.getItem("account"));
+  }, []);
 
   return (
     <Body>

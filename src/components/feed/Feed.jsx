@@ -75,10 +75,8 @@ export default function Feed() {
     }
   };
 
-
   // iinView && !isend가 true 일 때만 데이터를 불러옴!
   // 페이지 시작 시 렌더링
-
   useEffect(() => {
     if (inView) {
       console.log(inView, "무한 스크롤 요청 🎃");
@@ -109,8 +107,8 @@ export default function Feed() {
                 <div className='content'>
                   <div className='content-title'>
                     <div className='content-id'>
-                      <h3>{item.author.accountname}</h3>
-                      <p>{item.author.username}</p>
+                      <h3>{item.author.username}</h3>
+                      <p>{item.author.accountname}</p>
                     </div>
                     <div>
                       <button>
@@ -120,7 +118,7 @@ export default function Feed() {
                   </div>
                   <div className='content-inner'>
                     <p>{item.content}</p>
-                    {item.image && <img src={item.image} alt='' />}
+                    {item?.image && <img src={item.image} alt='' />}
                   </div>
                   <div className='like-comment'>
                     <button>

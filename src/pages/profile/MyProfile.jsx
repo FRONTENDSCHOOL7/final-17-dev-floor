@@ -33,6 +33,8 @@ export default function MyProfile() {
   const [image, setImage] = useRecoilState(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const token = useRecoilValue(tokenState);
+  const [follower, setFollower] = useState(0);
+  const [following, setFollowing] = useState(0);
 
   const navigate = useNavigate();
 
@@ -46,9 +48,12 @@ export default function MyProfile() {
     try {
       const res = await myProfileApi(token);
       setImage(res.user.image);
+      localStorage.setItem("myProfileImg", res.user.image);
       setUserName(res.user.username);
       setIntro(res.user.intro);
       setId(res.user.accountname);
+      setFollower(res.user.followerCount);
+      setFollowing(res.user.followingCount);
       console.log(res);
     } catch (error) {
       console.log("에러입니다.");
@@ -69,14 +74,14 @@ export default function MyProfile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              <span className='followers'>2</span>
+              <span className='followers'>{follower}</span>
               <p>followers</p>
             </Link>
           </button>
           <img src={image} alt='프로필 이미지' className='profileImg' />
           <button>
             <Link to='/following'>
-              <span>2</span>
+              <span>{following}</span>
               <p>followings</p>
             </Link>
           </button>

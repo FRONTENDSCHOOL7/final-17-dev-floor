@@ -13,12 +13,12 @@ export const followState = atom({
 });
 export const followersState = atom({
   key: "followersState",
-  default: [false, false],
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });
 export const followingState = atom({
   key: "followingState",
-  default: [true, true],
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });
 export const hamburgerBtnState = atom({
