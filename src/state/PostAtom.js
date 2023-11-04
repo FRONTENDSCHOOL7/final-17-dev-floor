@@ -19,6 +19,6 @@ export const imageState = atom({
 });
 export const postIdState = atom({
   key: "postIdState",
-  default: "",
+  default: localStorage.getItem("postId"),
   effects_UNSTABLE: [persistAtom],
 });
