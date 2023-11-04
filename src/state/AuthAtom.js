@@ -103,3 +103,8 @@ export const profileImgState = atom({
   default: profileImg,
   effects_UNSTABLE: [persistAtom],
 });
+export const postMyAhtuorIdState = atom({
+  key: "postMyAhtuorIdState",
+  default: localStorage.getItem('myAhthorId'),
+  effects_UNSTABLE: [persistAtom],
+});

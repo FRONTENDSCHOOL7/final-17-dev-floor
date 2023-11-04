@@ -11,13 +11,14 @@ import {
   commentListApi,
   postCommentApi,
 } from "../../api/PostApi";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
 import ModalComDel from "../../components/modal/ModalComDel";
 import {
   tokenState,
   profileImgState,
   myProfileImage,
+  postMyAhtuorIdState,
 } from "../../state/AuthAtom";
 import { postDetail } from "../../api/PostApi";
 import { postIdState } from "../../state/PostAtom";
@@ -27,13 +28,13 @@ export default function Post() {
   const profileImage = useRecoilValue(profileImgState);
   const postId = useRecoilValue(postIdState);
   const [detail, setDetail] = useState([]);
-  const [comment, setComment] = useState(0);
   const [commentContent, setCommentContent] = useState(""); //댓글내용상태
   const [postcomment, setPostcomment] = useState([]); //댓글목록
+  const [ahtuorId, setAhtuorId] = useState(null); //댓글작성자id
   const [commentId, setCommentId] = useState(null); //댓글id
   const [comModalOpen, setComModalOpen] = useState(false); //댓글 모달
   const loginUserImage = useRecoilValue(myProfileImage); // 로그인한 유저 프로필이미지
-
+  const myAuthorId = useRecoilValue(postMyAhtuorIdState)
   const token = useRecoilValue(tokenState);
   const [isPostId, setIsPostId] = useState(null);
   const [comCount, setComCount] = useState(0); //댓글수
@@ -42,9 +43,12 @@ export default function Post() {
   const showModal = () => {
     setIsOpenModal(true);
   };
-  const showComModal = (commentId) => {
+  const showComModal = (comment_id,author_id) => {
     setComModalOpen(true);
-    setCommentId(commentId);
+    setAhtuorId(author_id);
+    setCommentId(comment_id);
+    console.log('작성자아이디',ahtuorId)
+    console.log('내아이디',myAuthorId)
   };
 
   // 날짜 데이터 변환 함수
@@ -126,7 +130,8 @@ export default function Post() {
     try {
       const result = await postDetail(postId, token);
       setDetail(result.post);
-      console.log("게시글 상세  연결 성공", result.post);
+
+      
     } catch (error) {
       console.error("게시글 불러오기 실패", error);
     }
@@ -193,7 +198,7 @@ export default function Post() {
                           <p></p>
                         </div>
                         <div>
-                          <button onClick={() => showComModal(comment.id)}>
+                          <button onClick={() => showComModal(comment.id, comment.author._id)}>
                             <img src={more} alt='' />
                           </button>
                         </div>
@@ -231,10 +236,11 @@ export default function Post() {
       <div ref={ref}>.</div>
       {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
       {comModalOpen && (
+        myAuthorId === ahtuorId ?
         <ModalComDel
           setComModalOpen={setComModalOpen}
           commentDel={commentDel}
-        />
+        /> : <Modal setIsOpenModal={setIsOpenModal} setComModalOpen={setComModalOpen}/>
       )}
     </Body>
   );
