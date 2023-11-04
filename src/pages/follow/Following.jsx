@@ -42,9 +42,13 @@ export default function Following() {
       const res = await followingListApi(accountName, token);
       setFollowingList(res);
 
+      res.forEach((item) => {
+        follow.push(item.isfollow);
+      });
+
       // 팔로우 상태를 초기화
-      const isFollowedArray = new Array(res.length).fill(true);
-      setFollow(isFollowedArray);
+      // const isFollowedArray = new Array(res.length).fill(true);
+      // setFollow(isFollowedArray);
     } catch (error) {
       console.log("팔로잉 리스트 에러입니다.");
     }

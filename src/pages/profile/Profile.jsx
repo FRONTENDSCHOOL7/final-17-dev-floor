@@ -31,6 +31,8 @@ export default function Profile() {
   const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [image, setImage] = useRecoilState(profileImgState);
+  const [follower, setFollower] = useState(0);
+  const [following, setFollowing] = useState(0);
   const showPost = () => {
     setHamburgerBtn(!hamburgerBtn);
   };
@@ -80,6 +82,8 @@ export default function Profile() {
       setId(res.profile.accountname);
       setIntro(res.profile.intro);
       setFollow(res.profile.isfollow);
+      setFollower(res.profile.followerCount);
+      setFollowing(res.profile.followingCount);
     } catch (error) {
       console.log("해당 계정이 존재하지 않습니다.");
     }
@@ -92,7 +96,7 @@ export default function Profile() {
         <ProImg>
           <button>
             <Link to='/followers'>
-              <span className='followers'>10</span>
+              <span className='followers'>{follower}</span>
               <p>followers</p>
             </Link>
           </button>
@@ -103,7 +107,7 @@ export default function Profile() {
           />
           <button>
             <Link to='/following'>
-              <span>10</span>
+              <span>{following}</span>
               <p>followings</p>
             </Link>
           </button>

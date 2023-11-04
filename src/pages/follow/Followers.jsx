@@ -3,7 +3,6 @@ import TopBarFollowers from "../../components/topbar/TopBarFollowers";
 import { Body, Follower } from "./FollowersStyle";
 import profileImg from "../../assets/images/Group 27.png";
 import TabMenu from "../../components/tab/TabMenu";
-import { followersState } from "../../state/FollowAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { accountNameState, tokenState } from "../../state/AuthAtom";
 import { followApi, followerListApi, unfollowApi } from "../../api/ProfileApi";
@@ -42,11 +41,15 @@ export default function Followers() {
       const res = await followerListApi(accountName, token);
       setFollowerList(res);
 
+      res.forEach((item) => {
+        follow.push(item.isfollow);
+      });
       // 팔로우 상태를 초기화
-      const isFollowedArray = new Array(res.length).fill(true);
-      setFollow(isFollowedArray);
+      // const isFollowedArray = new Array(res.length).fill(true);
+      // setFollow(isFollowedArray);
+      console.log(followerList);
     } catch (error) {
-      console.log("팔로잉 리스트 에러입니다.");
+      console.log("팔로워 리스트 에러입니다.");
     }
   };
 
