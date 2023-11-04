@@ -79,6 +79,12 @@ export const accountNameState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+export const myProfileImage = atom({
+  key: "myProfileImage",
+  default: localStorage.getItem("image"),
+  effects_UNSTABLE: [persistAtom],
+});
+
 export const routeState = atom({
   key: "routeState",
   default: "signup",
