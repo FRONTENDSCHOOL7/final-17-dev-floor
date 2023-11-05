@@ -4,10 +4,10 @@ import bar from "../../assets/images/bar.png";
 
 export default function ModalPostDel({
   isOpenModal,
-  setIsModalOpen,
   children,
   handlePostDel,
   goToPostCorrection,
+  setIsOpenModal
 }) {
   const wrapperRef = useRef();
   useEffect(() => {
@@ -19,14 +19,14 @@ export default function ModalPostDel({
   });
   const handleClickOutside = (event) => {
     if (wrapperRef && !wrapperRef.current.contains(event.target)) {
-      setIsModalOpen(false);
+      setIsOpenModal(false)
     } else {
-      setIsModalOpen(true);
+      setIsOpenModal(true)
     }
   };
 
   const xClose = () => {
-    setIsModalOpen(false);
+    setIsOpenModal(false)
   };
   return (
     <div ref={wrapperRef} value={isOpenModal}>

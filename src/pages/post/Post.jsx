@@ -86,6 +86,33 @@ export default function Post() {
   };
 
   // 댓글 리스트
+  const getTimeDiff = (date) => {
+    const now = Date.now();
+    const commentDate = new Date(date).getTime();
+    const diffInMs = now - commentDate;
+  
+    const seconds = diffInMs / 1000;
+    if (seconds < 60) return `${Math.floor(seconds)}초 전`;
+  
+    const minutes = seconds / 60;
+    if (minutes < 60) return `${Math.floor(minutes)}분 전`;
+  
+    const hours = minutes / 60;
+    if (hours < 24) return `${Math.floor(hours)}시간 전`;
+  
+    const days = hours / 24;
+    if (days < 7) return `${Math.floor(days)}일 전`;
+  
+    const weeks = days / 7;
+    if (weeks < 5) return `${Math.floor(weeks)}주 전`;
+  
+    const months = days / 30;
+    if (months < 12) return `${Math.floor(months)}개월 전`;
+  
+    const years = days / 365;
+    return `${Math.floor(years)}년 전`;
+  };
+
   const commentFetch = async () => {
     try {
       const res = await commentListApi(postId, token, skip);
@@ -194,7 +221,7 @@ export default function Post() {
                       <div className='comment-title'>
                         <div className='comment-id'>
                           <h3>{comment.author.username}</h3>
-                          <p></p>
+                          <div className="date">{getTimeDiff(comment.createdAt)}</div>
                         </div>
                         <div>
                           <button
