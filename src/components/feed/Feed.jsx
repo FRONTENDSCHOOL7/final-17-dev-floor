@@ -13,9 +13,10 @@ import {
   profileImgState,
   tokenState,
 } from "../../state/AuthAtom";
-import { postGet } from "../../api/PostApi";
+import { likeApi, postGet } from "../../api/PostApi";
 import { useNavigate } from "react-router";
 import { introState, userNameState } from "../../state/ModifyAtom";
+import { ReactComponent as Like } from "../../assets/images/icon-heart.svg";
 
 export default function Feed() {
   const [postData, setPostData] = useState([]);
@@ -25,9 +26,36 @@ export default function Feed() {
   const [userName, setUserName] = useRecoilState(userNameState);
   const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
+  const [heart, setHeart] = useState(0);
   const token = useRecoilValue(tokenState);
 
   const navigate = useNavigate();
+
+  // 좋아요 함수
+
+  const handleLike = async (postId) => {
+    try {
+      const res = await likeApi(postId, token);
+
+      // 게시물을 찾아서 상태를 업데이트합니다.
+      const updatedPostData = postData.map((item) => {
+        if (item._id === postId) {
+          return {
+            ...item,
+            hearted: !item.hearted, // 하트 토글
+            heartCount: item.hearted
+              ? item.heartCount - 1
+              : item.heartCount + 1, // 하트 갯수 업데이트
+          };
+        } else {
+          return item;
+        }
+      });
+      setPostData(updatedPostData);
+    } catch (error) {
+      console.log("좋아요 에러");
+    }
+  };
 
   // 날짜 데이터 변환 함수
   const getDate = (date) => {
@@ -121,8 +149,9 @@ export default function Feed() {
                     {item?.image && <img src={item.image} alt='' />}
                   </div>
                   <div className='like-comment'>
-                    <button>
-                      <img src={like} alt='' /> <span>58</span>
+                    <button onClick={() => handleLike(item._id)}>
+                      <Like fill={item.hearted ? "red" : "black"}></Like>
+                      <span>{heart}</span>
                     </button>
                     <button>
                       <img src={message} alt='' /> <span>12</span>

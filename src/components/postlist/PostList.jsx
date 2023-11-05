@@ -38,14 +38,6 @@ export default function PostList() {
       .padStart(2, "0")}`;
   };
 
-  // const handleLike = async () => {
-  //   try {
-  //     const res = await likeApi();
-  //   } catch (error) {
-  //     console.log("좋아요 에러");
-  //   }
-  // };
-
   // 유저 게시글 목록 api 요청
   const postFetch = async () => {
     try {
@@ -111,7 +103,7 @@ export default function PostList() {
               className='content-container'
               key={idx}
               id={item.id}
-              // onClick={() => handlePostClick(item.id)}
+              onClick={() => handlePostClick(item.id)}
             >
               <div className='content-list'>
                 <div className='content'>
