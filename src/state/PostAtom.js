@@ -6,12 +6,6 @@ const { persistAtom } = recoilPersist({
   storage: localStorage,
 });
 
-export const contentState = atom({
-  key: "contentState",
-  default: "",
-  effects_UNSTABLE: [persistAtom],
-});
-
 export const imageState = atom({
   key: "imageState",
   default: "",
