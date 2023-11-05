@@ -2,23 +2,25 @@ import React, { useEffect } from "react";
 import back from "../../assets/images/icon-arrow-left.png";
 import upload from "../../assets/images/upload-file.png";
 import { Body, Sect1, Sect2 } from "./PostWriteStyle";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { useRef } from "react";
 import { useState } from "react";
-import { contentState } from "../../state/PostAtom";
 import { useNavigate } from "react-router-dom";
-import { postPostApi, imageApi } from "../../api/PostApi";
 import {
-  accountNameState,
-  profileImgState,
-  tokenState,
-} from "../../state/AuthAtom";
+  postPostApi,
+  imageApi,
+  postDetail,
+  postCorrection,
+} from "../../api/PostApi";
+import { tokenState } from "../../state/AuthAtom";
+import { postIdState } from "../../state/PostAtom";
 
 export default function PostWrite() {
-  const [content, setContent] = useRecoilState(contentState);
+  const [content, setContent] = useState("");
   const [image, setImage] = useState("");
   const [apiImage, setApiImage] = useState("");
-  const [accountName, setAccountName] = useRecoilState(accountNameState);
+  const [detail, setDetail] = useState([]);
+  const postId = useRecoilValue(postIdState);
   const proImg = localStorage.getItem("myProfileImg");
 
   const fileRef = useRef(null);
@@ -31,6 +33,18 @@ export default function PostWrite() {
 
   const onClickImage = (e) => {
     fileRef.current?.click(e.target.files?.[0]);
+  };
+
+  // 해당 유저 게시글
+  const postFetch = async () => {
+    try {
+      const result = await postDetail(postId, token);
+      setDetail(result.post);
+      setContent(result.post.content);
+      setApiImage(result.post.image);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onChangeFile = async (e) => {
@@ -50,9 +64,9 @@ export default function PostWrite() {
     }
   };
 
+  // 게시글 등록 api 요청
   const onClickUpLoad = async (e) => {
     e.preventDefault();
-    // 게시글 등록 api 요청
     try {
       const result = await postPostApi(content, apiImage, token);
       navigate("/myprofile");
@@ -61,18 +75,34 @@ export default function PostWrite() {
     }
   };
 
+  // 게시글 수정 api 요청
+  const onClickCorrection = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await postCorrection(postId, content, apiImage, token);
+      console.log(result.post);
+      navigate("/myprofile");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    setAccountName(localStorage.getItem("account"));
+    postFetch();
   }, []);
 
+  console.log(detail?.content);
   return (
     <Body>
       <Sect1>
         <button>
           <img src={back} alt='' />
         </button>
-        <button className='upload' onClick={onClickUpLoad}>
-          업로드
+        <button
+          className='upload'
+          onClick={detail ? onClickCorrection : onClickUpLoad}
+        >
+          {detail ? "수정하기" : "작성하기"}
         </button>
       </Sect1>
       <Sect2>
@@ -82,6 +112,7 @@ export default function PostWrite() {
             <input
               placeholder='게시글 입력하기...'
               onChange={onChangeContent}
+              defaultValue={detail?.content} //  input tag에서 처음 보여줄 값, 수정가능(value에 넣으면 수정 불가)
             />
             <input
               style={{ display: "none" }}
@@ -89,7 +120,7 @@ export default function PostWrite() {
               onChange={onChangeFile}
               ref={fileRef}
             />
-            <div>{image && <img src={apiImage}></img>}</div>
+            <div>{apiImage && <img src={apiImage}></img>}</div>
           </div>
         </div>
         <div className='write-bottom'>

@@ -7,7 +7,11 @@ import { postUserApi, postDel } from "../../api/PostApi";
 import { Sect3 } from "./PostListStyle";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
-import { profileImgState, tokenState } from "../../state/AuthAtom";
+import {
+  profileImgState,
+  tokenState,
+  postMyAhtuorIdState,
+} from "../../state/AuthAtom";
 import { accountNameState } from "../../state/AuthAtom";
 import ModalPostDel from "../modal/ModalPostDel";
 import { useNavigate } from "react-router-dom";
@@ -15,13 +19,14 @@ import { postIdState } from "../../state/PostAtom";
 
 export default function PostList() {
   const accountName = useRecoilValue(accountNameState);
+  const myAuthorId = useRecoilValue(postMyAhtuorIdState);
+  const [ahtuorId, setAhtuorId] = useState(null);
   const [postId, setPostId] = useRecoilState(postIdState);
   const [postData, setPostData] = useState([]);
   const [skip, setSkip] = useState(0);
   const [ref, inView] = useInView();
   const image = useRecoilValue(profileImgState);
   const token = useRecoilValue(tokenState);
-  const [isPostId, setIsPostId] = useState(null);
   const [ismodalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -45,10 +50,6 @@ export default function PostList() {
       console.log("어카운트네임", accountName);
       const result = await postUserApi(accountName, token, skip);
 
-      console.log("@@@");
-      console.log(result.post);
-      console.log(postData);
-
       setPostData((postData) => {
         return [...postData, ...result.post];
       });
@@ -66,6 +67,21 @@ export default function PostList() {
     }
   }, [inView]);
 
+  //게시글 삭제
+  const handlePostDel = async () => {
+    console.log("하이");
+    try {
+      await postDel(postId, token);
+      console.log(postId, token);
+      setPostData((prev) => prev.filter((item) => item.id !== postId));
+
+      setPostId(null);
+    } catch (error) {
+      console.error("게시글 삭제 실패");
+    }
+    setIsModalOpen(false);
+  };
+
   //게시글 상세페이지로 이동
   const handlePostClick = (postId) => {
     localStorage.setItem("postId", postId);
@@ -73,26 +89,21 @@ export default function PostList() {
     console.log("게시글id", postId);
     navigate("/post");
   };
-  //게시글 삭제
-  const handlePostDel = async () => {
-    try {
-      if (isPostId) {
-        await postDel(isPostId, token);
-        console.log(isPostId, token);
-        setPostData((prev) => prev.filter((item) => item.id !== isPostId));
 
-        setIsPostId(null);
-      }
-    } catch (error) {
-      console.error("게시글 삭제 실패");
-    }
-    setIsModalOpen(false);
+  // 게시글 수정 페이지 이동
+  const goToPostCorrection = () => {
+    localStorage.setItem("postId", postId);
+    setPostId(localStorage.getItem("postId"));
+    console.log("게시글id", postId);
+    navigate("/postWrite");
   };
 
-  const modalOpen = (e, post_id) => {
+  const modalOpen = (e, post_id, author_id) => {
     e.stopPropagation();
+    setAhtuorId(author_id);
     setIsModalOpen(true);
-    setIsPostId(post_id);
+    localStorage.setItem("postId", post_id);
+    setPostId(localStorage.getItem("postId"));
   };
   return (
     <Sect3>
@@ -116,7 +127,9 @@ export default function PostList() {
                       </div>
                     </div>
                     <div>
-                      <button onClick={(e) => modalOpen(e, item.id)}>
+                      <button
+                        onClick={(e) => modalOpen(e, item.id, item.author._id)}
+                      >
                         <img src={more} alt='' />
                       </button>
                     </div>
@@ -141,10 +154,11 @@ export default function PostList() {
         })}
       </div>
       <div ref={ref}>.</div>
-      {ismodalOpen && (
+      {ismodalOpen && myAuthorId === ahtuorId && (
         <ModalPostDel
           setIsModalOpen={setIsModalOpen}
           handlePostDel={handlePostDel}
+          goToPostCorrection={goToPostCorrection}
         />
       )}
     </Sect3>
