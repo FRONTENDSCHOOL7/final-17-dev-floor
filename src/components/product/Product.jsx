@@ -32,8 +32,6 @@ export default function Product() {
         setProducts((prevProducts) =>
           prevProducts.filter((product) => product.id !== selectedProductId)
         );
-        // setProducts 함수를 사용하여 현재 products 상태에서 삭제된 상품을 제외한 새로운 배열을 설정합니다.
-        // filter 함수를 사용하여 삭제된 상품의 ID와 일치하지 않는 상품만 필터링하여 새로운 배열을 생성합니다.
 
         setSelectedProductId(null); // 선택한 상품 ID 초기화
       } else {

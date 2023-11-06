@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const HomeWrap = styled.div`
   font-family: "GongGothicMedium";
-  background: var(--whiteColor);
+  /* background: var(--whiteColor); */
+  background-color: #e1f5fc;
+  /* background-color: #b2b8ec; */
+
   width: 100%;
   height: 100vh;
   display: flex;
@@ -10,6 +13,7 @@ export const HomeWrap = styled.div`
   align-items: center;
 `;
 export const HomeFeed = styled.div`
+  background-color: #fff;
   max-width: 720px;
   height: 100%;
   width: 100%;

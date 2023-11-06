@@ -21,7 +21,6 @@ export const editApi = async (username, accountname, intro, image, token) => {
     });
     return res.data;
   } catch (error) {
-    alert("계정 유효성 검사에 오류가 발생했습니다.");
     throw error;
   }
 };

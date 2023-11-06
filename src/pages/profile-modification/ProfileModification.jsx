@@ -79,8 +79,8 @@ export default function ProfileModification() {
     }
     try {
       console.log("apiImg", apiImage);
-      const res = await editApi(userName, account, intro, apiImage, token);
-      console.log(res);
+      const res = await editApi(userName, id, intro, apiImage, token);
+      localStorage.setItem("account", res.user.accountname);
       localStorage.setItem("myProfileImg", res.user.image);
       navigate("/myprofile");
     } catch (error) {
@@ -137,8 +137,8 @@ export default function ProfileModification() {
             <input
               type='text'
               placeholder='2~10자 이내여야 합니다.'
-              value={userName}
               onChange={handleNameChange}
+              value={userName}
               onBlur={handleNameBlur}
               className={
                 nameValid === null
@@ -162,6 +162,7 @@ export default function ProfileModification() {
               type='text'
               placeholder='영문, 숫자, 특수문자 (.) ,(_) 만 사용 가능합니다.'
               onChange={handleIdChange}
+              value={id}
               onBlur={handleIdBlur}
               className={
                 idValid === null ? "inp-id" : idValid ? "inp-id" : "error"
@@ -181,6 +182,7 @@ export default function ProfileModification() {
               type='text'
               placeholder='자신과 판매할 상품에 대해 소개해 주세요 !'
               onChange={handleIntroChange}
+              value={intro}
               pattern='.{2,10}'
               required
               title='2글자 이상 열글자미만'
