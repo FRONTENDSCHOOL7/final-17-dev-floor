@@ -3,7 +3,7 @@ import more from "../../assets/images/s-icon-more-vertical.png";
 import like from "../../assets/images/icon-heart.svg";
 import message from "../../assets/images/icon-message-circle.png";
 import { useState, useEffect } from "react";
-import { postUserApi, postDel, likeApi } from "../../api/PostApi";
+import { postUserApi, postDel, likeApi, unlikeApi } from "../../api/PostApi";
 import { Sect3 } from "./PostListStyle";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
@@ -16,6 +16,7 @@ import { accountNameState } from "../../state/AuthAtom";
 import ModalPostDel from "../modal/ModalPostDel";
 import { useNavigate } from "react-router-dom";
 import { postIdState } from "../../state/PostAtom";
+import { ReactComponent as Like } from "../../assets/images/icon-heart.svg";
 
 export default function PostList() {
   const accountName = useRecoilValue(accountNameState);
@@ -29,6 +30,39 @@ export default function PostList() {
   const token = useRecoilValue(tokenState);
   const [ismodalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const [fillHeart, setFillHeart] = useState({});
+
+  const handleLike = async (itemId, e) => {
+    e.stopPropagation();
+    try {
+      const res = fillHeart[itemId]
+        ? await unlikeApi(itemId, token)
+        : await likeApi(itemId, token);
+
+      console.log(res); // API 응답 출력
+
+      setFillHeart((prev) => {
+        const newFillHeart = { ...prev };
+        newFillHeart[itemId] = res.post.hearted;
+        localStorage.setItem("fillHeart", JSON.stringify(newFillHeart));
+        return newFillHeart;
+      });
+
+      setPostData((prev) =>
+        prev.map((post) =>
+          post.id === itemId
+            ? {
+                ...post,
+                heartCount: res.post.heartCount,
+                hearted: res.post.hearted,
+              }
+            : post
+        )
+      );
+    } catch (error) {
+      console.log("좋아요/좋아요 취소 에러");
+    }
+  };
 
   // 날짜 데이터 변환 함수
   const getDate = (date) => {
@@ -49,6 +83,8 @@ export default function PostList() {
       console.log("토큰", token);
       console.log("어카운트네임", accountName);
       const result = await postUserApi(accountName, token, skip);
+
+      console.log(result);
 
       setPostData((postData) => {
         return [...postData, ...result.post];
@@ -105,6 +141,13 @@ export default function PostList() {
     localStorage.setItem("postId", post_id);
     setPostId(localStorage.getItem("postId"));
   };
+
+  useEffect(() => {
+    const savedFillHeart = localStorage.getItem("fillHeart");
+    if (savedFillHeart) {
+      setFillHeart(JSON.parse(savedFillHeart));
+    }
+  }, []);
   return (
     <Sect3>
       <div>
@@ -139,8 +182,11 @@ export default function PostList() {
                     {item.image && <img src={item.image} alt='' />}
                   </div>
                   <div className='like-comment'>
-                    <button>
-                      <img src={like} alt='' /> <span>58</span>
+                    <button onClick={(e) => handleLike(item.id, e)}>
+                      <Like
+                        fill={fillHeart[item.id] ? "#7A8CCB" : "#fff"}
+                      ></Like>
+                      <span>{item.heartCount}</span>
                     </button>
                     <button>
                       <img src={message} alt='' /> <span>12</span>
