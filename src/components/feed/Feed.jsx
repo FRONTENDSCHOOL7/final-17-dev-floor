@@ -134,7 +134,7 @@ export default function Feed() {
             </div>
           );
         })}
-        <div ref={ref}>.</div>
+        <div ref={ref}></div>
       </Sect1>
     </Body>
   );
