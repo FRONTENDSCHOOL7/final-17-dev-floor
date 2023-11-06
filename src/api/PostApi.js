@@ -204,3 +204,25 @@ export const likeApi = async (postId, token) => {
     console.error("좋아요 실패");
   }
 };
+
+// 6.2 좋아요
+
+export const unlikeApi = async (postId, token) => {
+  try {
+    const res = await axios.delete(
+      url + `/${postId}/unheart`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      }
+    );
+    console.log(res.data);
+
+    return res.data;
+  } catch (error) {
+    console.error("좋아요 취소 실패");
+  }
+};

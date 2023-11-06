@@ -60,7 +60,7 @@ export default function PostAlbum() {
           </div>
         );
       })}
-      <div ref={ref}>.</div>
+      <div ref={ref}></div>
     </AlbumImg>
   );
 }

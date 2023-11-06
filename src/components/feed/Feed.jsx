@@ -26,32 +26,21 @@ export default function Feed() {
   const [userName, setUserName] = useRecoilState(userNameState);
   const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
-  const [heart, setHeart] = useState(0);
+  const [heart, setHeart] = useState([]);
+  // 하트 갯수
+  const [heartArray, setHeartArray] = useState([]);
+  // 내가 좋아요 눌렀는지
   const token = useRecoilValue(tokenState);
 
   const navigate = useNavigate();
 
   // 좋아요 함수
 
-  const handleLike = async (postId) => {
+  const handleLike = async (itemId, idx) => {
     try {
-      const res = await likeApi(postId, token);
-
-      // 게시물을 찾아서 상태를 업데이트합니다.
-      const updatedPostData = postData.map((item) => {
-        if (item._id === postId) {
-          return {
-            ...item,
-            hearted: !item.hearted, // 하트 토글
-            heartCount: item.hearted
-              ? item.heartCount - 1
-              : item.heartCount + 1, // 하트 갯수 업데이트
-          };
-        } else {
-          return item;
-        }
-      });
-      setPostData(updatedPostData);
+      const res = await likeApi(itemId, token);
+      console.log(itemId);
+      console.log("좋아요 res", res);
     } catch (error) {
       console.log("좋아요 에러");
     }
@@ -93,6 +82,12 @@ export default function Feed() {
       console.log("@@@");
       console.log(result.posts);
       console.log(postData);
+
+      result.posts.forEach((item) => {
+        heart.push(item.heartCount);
+      });
+
+      console.log("하트", heart);
 
       setPostData((postData) => {
         return [...postData, ...result.posts];
@@ -149,9 +144,9 @@ export default function Feed() {
                     {item?.image && <img src={item.image} alt='' />}
                   </div>
                   <div className='like-comment'>
-                    <button onClick={() => handleLike(item._id)}>
-                      <Like fill={item.hearted ? "red" : "black"}></Like>
-                      <span>{heart}</span>
+                    <button onClick={() => handleLike(item._id, item.hearted)}>
+                      <Like></Like>
+                      <span>{item.heartCount}</span>
                     </button>
                     <button>
                       <img src={message} alt='' /> <span>12</span>
@@ -163,7 +158,7 @@ export default function Feed() {
             </div>
           );
         })}
-        <div ref={ref}>.</div>
+        <div ref={ref}></div>
       </Sect1>
     </Body>
   );
