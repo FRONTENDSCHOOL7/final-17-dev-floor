@@ -7,7 +7,7 @@ export default function TopBarFollowings() {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate("/myprofile");
+    navigate(-1);
   };
   return (
     <TopFollowers>

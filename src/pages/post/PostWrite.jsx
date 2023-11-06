@@ -34,7 +34,9 @@ export default function PostWrite() {
   const onClickImage = (e) => {
     fileRef.current?.click(e.target.files?.[0]);
   };
-
+  const handleBack = () => {
+    navigate(-1)
+  }
   // 해당 유저 게시글
   const postFetch = async () => {
     try {
@@ -95,7 +97,7 @@ export default function PostWrite() {
   return (
     <Body>
       <Sect1>
-        <button>
+        <button onClick={handleBack}>
           <img src={back} alt='' />
         </button>
         <button

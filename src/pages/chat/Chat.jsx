@@ -6,13 +6,18 @@ import profileImg from "../../assets/images/Group 26.png";
 import TabMenu from "../../components/tab/TabMenu";
 
 import { Body, TopBar, Chat1, Chat2, Chat3, Sect1 } from "./ChatStyle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Chat() {
+  const navigate = useNavigate()
+
+  const handleBack = () => {
+    navigate(-1)
+  }
   return (
     <Body>
       <TopBar>
-        <button>
+        <button onClick={handleBack}>
           <img src={back} alt='' />
         </button>
         <button>

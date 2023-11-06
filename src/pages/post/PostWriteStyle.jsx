@@ -45,6 +45,7 @@ export const Sect2 = styled.div`
       border-radius: 30px;
     }
     .writeBox {
+      width: 100%;
     }
     input {
       font-family: "GongGothicMedium";
