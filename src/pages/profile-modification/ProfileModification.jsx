@@ -79,8 +79,8 @@ export default function ProfileModification() {
     }
     try {
       console.log("apiImg", apiImage);
-      const res = await editApi(userName, account, intro, apiImage, token);
-      console.log(res);
+      const res = await editApi(userName, id, intro, apiImage, token);
+      localStorage.setItem("account", res.user.accountname);
       localStorage.setItem("myProfileImg", res.user.image);
       navigate("/myprofile");
     } catch (error) {

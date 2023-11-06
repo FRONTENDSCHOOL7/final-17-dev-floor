@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
+  background: var(--whiteColor);
   max-width: 720px;
   height: 100vh;
   width: 100%;
@@ -14,6 +15,7 @@ export const Body = styled.div`
 `;
 
 export const TopBar = styled.div`
+  background: var(--bgColor);
   max-width: 720px;
   width: 100%;
   padding: 0 20px;
@@ -25,8 +27,8 @@ export const TopBar = styled.div`
 
   button {
     margin: 13px 16px;
-    background: #fff;
     border-style: none;
+    img {vertical-align: top;}
   }
 `;
 

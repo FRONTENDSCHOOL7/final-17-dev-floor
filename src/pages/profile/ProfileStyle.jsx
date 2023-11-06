@@ -21,7 +21,6 @@ export const Body = styled.div`
     border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
   }
   button {
-    background: #fff;
     border: none;
   }
   /* transform: translateX(-10%); */

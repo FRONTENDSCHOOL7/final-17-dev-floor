@@ -24,16 +24,16 @@ export default function Modal({ modalOpen, setIsOpenModal, children, setComModal
         !wrapperRef.current.contains(event.currentTarget)
         ) {
         setIsOpenModal(false);
-        setComModalOpen(false)
+        // setComModalOpen(false)
         } else {
         setIsOpenModal(true);
-        setComModalOpen(true)
+        // setComModalOpen(true)
         }
     };
 
     const xClose = () => {
         setIsOpenModal(false);
-        setComModalOpen(false)
+        // setComModalOpen(false)
     };
 
     return (

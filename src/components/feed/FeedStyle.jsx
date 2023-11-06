@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
+  background: var(--whiteColor);
   height: 100vh;
   max-width: 720px;
   width: 100%;
@@ -11,6 +12,7 @@ export const Body = styled.div`
 `;
 
 export const Sect1 = styled.div`
+  background: var(--whiteColor);
   .content-container {
     margin-bottom: 60px;
     padding: 0 15px;
@@ -54,7 +56,8 @@ export const Sect1 = styled.div`
       font-size: 14px;
       font-weight: 400;
       p {
-        width: 304px;
+        /* width: 304px; */
+        width: 100%;
         text-overflow: ellipsis;
         overflow: hidden;
         word-wrap: break-word;

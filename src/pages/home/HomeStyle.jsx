@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HomeWrap = styled.div`
   font-family: "GongGothicMedium";
-  background: var(--whiteColor);
+  background: #eff0fd;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -11,6 +11,7 @@ export const HomeWrap = styled.div`
 `;
 export const HomeFeed = styled.div`
   max-width: 720px;
+  background: var(--whiteColor);
   height: 100%;
   width: 100%;
   margin: 0 auto;
@@ -22,6 +23,7 @@ export const HomeFeed = styled.div`
 `;
 export const Header = styled.div`
   width: 100%;
+  background: var(--bgColor);
   border-bottom: 1px solid var(--borderColor);
 `;
 export const Inner = styled.div`
@@ -30,7 +32,7 @@ export const Inner = styled.div`
   padding: 12px 10px;
   h2 {
     margin: auto 0;
-    color: var(--bgColor);
+    color: var(--whiteColor);
     font-weight: 500;
     font-size: 1.2rem;
   }
