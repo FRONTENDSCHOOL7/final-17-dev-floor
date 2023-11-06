@@ -34,7 +34,7 @@ export default function Post() {
   const [commentId, setCommentId] = useState(null); //댓글id
   const [comModalOpen, setComModalOpen] = useState(false); //댓글 모달
   const loginUserImage = useRecoilValue(myProfileImage); // 로그인한 유저 프로필이미지
-  const myAuthorId = useRecoilValue(postMyAhtuorIdState)
+  const myAuthorId = useRecoilValue(postMyAhtuorIdState);
   const token = useRecoilValue(tokenState);
   const [isPostId, setIsPostId] = useState(null);
   const [comCount, setComCount] = useState(0); //댓글수
@@ -43,12 +43,12 @@ export default function Post() {
   const showModal = () => {
     setIsOpenModal(true);
   };
-  const showComModal = (comment_id,author_id) => {
+  const showComModal = (comment_id, author_id) => {
     setComModalOpen(true);
     setAhtuorId(author_id);
     setCommentId(comment_id);
-    console.log('작성자아이디',ahtuorId)
-    console.log('내아이디',myAuthorId)
+    console.log("작성자아이디", ahtuorId);
+    console.log("내아이디", myAuthorId);
   };
 
   // 날짜 데이터 변환 함수
@@ -84,6 +84,7 @@ export default function Post() {
     setCommentContent("");
     setIsPostId(null);
   };
+
   // 댓글 리스트
   const commentFetch = async () => {
     try {
@@ -130,8 +131,6 @@ export default function Post() {
     try {
       const result = await postDetail(postId, token);
       setDetail(result.post);
-
-      
     } catch (error) {
       console.error("게시글 불러오기 실패", error);
     }
@@ -198,7 +197,11 @@ export default function Post() {
                           <p></p>
                         </div>
                         <div>
-                          <button onClick={() => showComModal(comment.id, comment.author._id)}>
+                          <button
+                            onClick={() =>
+                              showComModal(comment.id, comment.author._id)
+                            }
+                          >
                             <img src={more} alt='' />
                           </button>
                         </div>
@@ -235,13 +238,18 @@ export default function Post() {
       </Sect3>
       <div ref={ref}>.</div>
       {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
-      {comModalOpen && (
-        myAuthorId === ahtuorId ?
-        <ModalComDel
-          setComModalOpen={setComModalOpen}
-          commentDel={commentDel}
-        /> : <Modal setIsOpenModal={setIsOpenModal} setComModalOpen={setComModalOpen}/>
-      )}
+      {comModalOpen &&
+        (myAuthorId === ahtuorId ? (
+          <ModalComDel
+            setComModalOpen={setComModalOpen}
+            commentDel={commentDel}
+          />
+        ) : (
+          <Modal
+            setIsOpenModal={setIsOpenModal}
+            setComModalOpen={setComModalOpen}
+          />
+        ))}
     </Body>
   );
 }

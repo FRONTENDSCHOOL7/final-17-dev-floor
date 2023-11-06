@@ -7,14 +7,14 @@ const url2 = "https://api.mandarin.weniv.co.kr/image/uploadfile";
 
 // 게시글 등록
 export const postPostApi = async (content, image, token) => {
-  const Post = {
+  const getPost = {
     post: {
       content: content,
       image: image,
     },
   };
   try {
-    const res = await axios.post(url, Post, {
+    const res = await axios.post(url, getPost, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
@@ -22,6 +22,28 @@ export const postPostApi = async (content, image, token) => {
     });
     return res.data;
   } catch (error) {
+    alert("업로드 실패");
+  }
+};
+
+// 게시글 수정
+export const postCorrection = async (postId, content, image, token) => {
+  const putPost = {
+    post: {
+      content: content,
+      image: image,
+    },
+  };
+  try {
+    const res = await axios.put(url + `/${postId}`, putPost, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.log("실패", error);
     alert("업로드 실패");
   }
 };
