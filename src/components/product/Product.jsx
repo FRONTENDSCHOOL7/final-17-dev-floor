@@ -85,13 +85,15 @@ export default function Product() {
             <span>{product.price && product.price + "원"}</span>
           </div>
         ))}
-        <div ref={ref}>.</div>
+        <div ref={ref}></div>
       </Sale>
       {modalOpen && (
         <ModalProduct
           setIsOpenModal={setIsOpenModal}
           handleDelete={handleDelete}
-          productLink={products.find((product) => product.id === selectedProductId)?.link}
+          productLink={
+            products.find((product) => product.id === selectedProductId)?.link
+          }
         />
       )}
     </Sect2>

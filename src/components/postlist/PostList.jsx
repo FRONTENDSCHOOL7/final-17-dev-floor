@@ -153,7 +153,7 @@ export default function PostList() {
           );
         })}
       </div>
-      <div ref={ref}>.</div>
+      <div ref={ref}></div>
       {ismodalOpen && myAuthorId === ahtuorId && (
         <ModalPostDel
           setIsModalOpen={setIsModalOpen}
