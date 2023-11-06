@@ -123,6 +123,10 @@ export const Sect2 = styled.div`
       align-items: center;
       margin: 7px 0 16px 0;
       gap: 10px;
+      .date {
+        color: var(--fontColor);
+        font-size: 0.8rem;
+      }
       h3 {
         font-size: 14px;
         font-weight: 600;

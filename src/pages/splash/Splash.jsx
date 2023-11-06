@@ -22,14 +22,14 @@ export default function Splash() {
     
     useEffect(() => {
         setTimeout(() => {
-        const isLogged = loginStatus();
-        if (isLogged) {
-            navigate('/homefeed');
-        } else {
-            navigate('/home');
-        }
-        }, 1500);  
-    }, [navigate]);
+            const isLogged = loginStatus();
+            if (isLogged) {
+                navigate('/homefeed');
+            } else {
+                navigate('/home');
+            }
+            }, 1000);  
+    }, []);
 
     return (
         <Main>

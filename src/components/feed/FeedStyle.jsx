@@ -97,5 +97,6 @@ export const Sect1 = styled.div`
       font-size: 10px;
       font-weight: 400;
     }
+    .inview {opacity: 0;}
   }
 `;
