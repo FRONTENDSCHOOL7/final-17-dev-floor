@@ -29,12 +29,10 @@ export const Top = styled.div`
   }
   .btn-save2 {
     border: 1px solid #fff;
-
     color: #fff;
     border: 1px solid var(--whiteColor);
     width: 90px;
     height: 32px;
-    background: #6f76b6;
     border-radius: 32px;
     cursor: not-allowed;
   }

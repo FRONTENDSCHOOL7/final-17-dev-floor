@@ -3,7 +3,7 @@ import upload from "../../assets/images/upload-file.png";
 
 export const JoinWrap = styled.div`
   font-family: "GongGothicMedium";
-  background: var(--whiteColor);
+  background: #eff0fd;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -11,24 +11,24 @@ export const JoinWrap = styled.div`
   align-items: center;
 `;
 export const JoinInner = styled.div`
+  background: var(--whiteColor);
+  height: 100%;
   max-width: 720px;
   width: 100%;
-  margin: 30px auto 0;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 30px 20px;
   box-sizing: border-box;
-  display: flex;
-  gap: 30px;
-  flex-direction: column;
-  align-items: center;
 `;
 export const JoinTit = styled.div`
   margin: auto;
+  text-align: center;
   h2 {
     color: var(--bgColor);
   }
 `;
 export const JoinForm = styled.form`
   width: 100%;
+  padding: 30px 0;
   p {
     padding-top: 6px;
     color: var(--errorFontColor);

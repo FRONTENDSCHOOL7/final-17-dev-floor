@@ -34,3 +34,8 @@ export const productState = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
+export const productIdState = atom({
+  key: "productIdState",
+  default: localStorage.getItem("productId"),
+  effects_UNSTABLE: [persistAtom],
+});

@@ -3,7 +3,7 @@ import back from "../../assets/images/icon-arrow-left.png";
 import { Top } from "./TopBarSaveStyle";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function TopBarSave({ onSave, disabled }) {
+export default function TopBarSave({ onSave, disabled, isEdit}) {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -21,7 +21,7 @@ export default function TopBarSave({ onSave, disabled }) {
         onClick={onSave}
         disabled={disabled}
       >
-        저장
+        {JSON.stringify(isEdit) !== "[]" ? "수정": "저장"}
       </button>
     </Top>
   );
