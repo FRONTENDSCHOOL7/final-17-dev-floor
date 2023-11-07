@@ -27,6 +27,7 @@ export default function PostWrite() {
   const navigate = useNavigate();
   const token = useRecoilValue(tokenState);
 
+  console.log("postId", postId);
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
@@ -37,10 +38,12 @@ export default function PostWrite() {
   const handleBack = () => {
     navigate(-1);
   };
-  // 해당 유저 게시글
+
+  // 게시글 상세
   const postFetch = async () => {
     try {
       const result = await postDetail(postId, token);
+      console.log("게시글상세", result);
       setDetail(result.post);
       setContent(result.post.content);
     } catch (error) {
@@ -48,7 +51,8 @@ export default function PostWrite() {
     }
   };
 
-  const onChangeFile = async (e) => {
+  console.log(selectedImages);
+  const onChangeFile = async () => {
     const files = fileRef.current.files;
     let file;
     let imagesArray = [...selectedImages];
@@ -78,7 +82,6 @@ export default function PostWrite() {
       console.log(error);
     }
   };
-  console.log("이미지데이터정제", apiImage);
 
   // 게시글 등록 api 요청
   const onClickUpLoad = async (e) => {
@@ -104,7 +107,9 @@ export default function PostWrite() {
   };
 
   useEffect(() => {
-    postFetch();
+    if (postId) {
+      postFetch();
+    }
   }, []);
   return (
     <Body>
@@ -114,9 +119,11 @@ export default function PostWrite() {
         </button>
         <button
           className='upload'
-          onClick={detail ? onClickCorrection : onClickUpLoad}
+          onClick={
+            JSON.stringify(detail) !== "[]" ? onClickCorrection : onClickUpLoad
+          }
         >
-          {detail ? "수정하기" : "작성하기"}
+          {JSON.stringify(detail) !== "[]" ? "수정하기" : "작성하기"}
         </button>
       </Sect1>
       <Sect2>

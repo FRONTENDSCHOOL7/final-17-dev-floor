@@ -16,9 +16,9 @@ export default function Product() {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null); // 상품 ID를 저장
   const token = useRecoilValue(tokenState);
-  const [productId, setProductId] = useRecoilState(productIdState)
-  const navigate = useNavigate()
-  
+  const [productId, setProductId] = useRecoilState(productIdState);
+  const navigate = useNavigate();
+
   const showModal = (productId) => {
     setIsOpenModal(true);
     setSelectedProductId(productId); // 모달에서 사용할 상품 ID 저장
@@ -48,9 +48,9 @@ export default function Product() {
   };
   // 상품 수정
   const handleEdit = () => {
-    setProductId(selectedProductId)
-    navigate('/product')
-  }
+    setProductId(selectedProductId);
+    navigate("/product");
+  };
   // 유저 상품 목록 api 요청
   const productList = async () => {
     try {

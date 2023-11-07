@@ -66,9 +66,21 @@ export const Sect1 = styled.div`
         margin-bottom: 16px;
         line-height: 18px;
       }
-      img {
+    }
+
+    .content-inner2 {
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      font-size: 14px;
+      font-weight: 400;
+      p {
+        margin-bottom: 16px;
+        line-height: 18px;
       }
     }
+
     .like-comment {
       display: flex;
       margin-top: 10px;

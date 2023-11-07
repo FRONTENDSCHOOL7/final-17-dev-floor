@@ -18,20 +18,19 @@ export default function PostAlbum() {
   // 유저 게시글 목록 api 요청
   const postFetch = async () => {
     try {
-      console.log("토큰", token);
-      console.log("어카운트네임", accounName);
       const result = await postUserApi(accounName, token, skip);
-
-      console.log("@@@");
-      console.log(result.post);
-      console.log(postData);
 
       const filterReultData = result.post.filter(
         (el) => el.image && el.image.includes("https")
       );
 
+      let imageArray = [];
+      for (let el of filterReultData) {
+        imageArray.push(el.image);
+      }
+
       setPostData((postData) => {
-        return [...postData, ...filterReultData];
+        return [...postData, ...imageArray];
       });
 
       setSkip((skip) => skip + 20);
@@ -39,6 +38,7 @@ export default function PostAlbum() {
       console.log("실패했습니다");
     }
   };
+  console.log("데이터확인", postData);
 
   // iinView && !isend가 true 일 때만 데이터를 불러옴!
   // 페이지 시작 시 렌더링
@@ -51,10 +51,20 @@ export default function PostAlbum() {
 
   return (
     <AlbumImg>
-      {postData?.map((item, idx) => {
+      {postData?.map((img, idx) => {
         return (
           <div key={idx}>
-            <img src={item.image} alt='' />
+            {img.split(",").length > 1 ? (
+              img.split(",").map((el, idx) => {
+                return (
+                  <div key={idx}>
+                    <img src={el} alt='' />
+                  </div>
+                );
+              })
+            ) : (
+              <img src={img} alt='' />
+            )}
           </div>
         );
       })}
