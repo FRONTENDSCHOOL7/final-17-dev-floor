@@ -21,6 +21,7 @@ import p_img from "../../assets/images/Group 26.png";
 export default function ProfileModification() {
   const [id, setId] = useRecoilState(accountNameState);
   const [userName, setUserName] = useRecoilState(userNameState);
+  const [account, setAcoount] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
@@ -136,7 +137,6 @@ export default function ProfileModification() {
               type='text'
               placeholder='2~10자 이내여야 합니다.'
               onChange={handleNameChange}
-              value={userName}
               onBlur={handleNameBlur}
               className={
                 nameValid === null
@@ -160,7 +160,6 @@ export default function ProfileModification() {
               type='text'
               placeholder='영문, 숫자, 특수문자 (.) ,(_) 만 사용 가능합니다.'
               onChange={handleIdChange}
-              value={id}
               onBlur={handleIdBlur}
               className={
                 idValid === null ? "inp-id" : idValid ? "inp-id" : "error"
@@ -180,7 +179,6 @@ export default function ProfileModification() {
               type='text'
               placeholder='자신과 판매할 상품에 대해 소개해 주세요 !'
               onChange={handleIntroChange}
-              value={intro}
               pattern='.{2,10}'
               required
               title='2글자 이상 열글자미만'
