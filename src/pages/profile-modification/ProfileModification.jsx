@@ -24,8 +24,11 @@ export default function ProfileModification() {
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
-  const [image, setImage] = useRecoilState(profileImgState);
+  const [image, setImage] = useState();
+  const setProfileImg = useRecoilState(profileImgState);
+  const profileImage = useRecoilValue(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
+
   const fileRef = useRef(null);
   const token = useRecoilValue(tokenState);
 
@@ -58,14 +61,10 @@ export default function ProfileModification() {
       setIdValid(false);
     }
   };
-  // 사용자 id 함수
-
   // 사용자 소개 함수
   const handleIntroChange = (e) => {
     setIntro(e.target.value);
   };
-
-  // 사용자 소개 함수
 
   // 프로필 수정
 
@@ -81,6 +80,7 @@ export default function ProfileModification() {
       const res = await editApi(userName, id, intro, apiImage, token);
       localStorage.setItem("account", res.user.accountname);
       localStorage.setItem("myProfileImg", res.user.image);
+      setProfileImg(localStorage.getItem("myProfileImg"));
       navigate("/myprofile");
     } catch (error) {
       console.log("에러입니다.");
@@ -91,22 +91,18 @@ export default function ProfileModification() {
 
   const onChangeFile = async (e) => {
     const file = fileRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
-    // 이미지 api 필요 값 입력
+    setImage(file);
+
+    // 이미지 api
     try {
       const result = await imageApi(file);
-      console.log(result);
-      setApiImage("https://api.mandarin.weniv.co.kr/" + result.filename);
-      console.log("성공했습니다");
-      console.log(apiImage);
+      setApiImage("https://api.mandarin.weniv.co.kr/" + result[0].filename);
     } catch (error) {
       console.log(error);
     }
   };
+  console.log("이미지api확인", apiImage);
+
   const onClickImage = (e) => {
     fileRef.current?.click(e.target.files?.[0]);
   };
@@ -127,8 +123,11 @@ export default function ProfileModification() {
         />
 
         <button className='upload-img' onClick={onClickImage}>
-          {/* <img src={profileImg} alt='' /> */}
-          {image ? <img src={image}></img> : <img src={profileImg}></img>}
+          {image ? (
+            <img src={URL.createObjectURL(image)}></img>
+          ) : (
+            <img src={profileImage}></img>
+          )}
         </button>
         <form>
           <div>

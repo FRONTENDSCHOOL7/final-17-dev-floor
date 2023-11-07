@@ -188,11 +188,11 @@ export default function Post() {
               </div>
               <div className='content-inner'>
                 <p>{detail?.content}</p>
-                {detail?.image &&
+                {detail.image &&
                   (detail.image.split(",").length > 1 ? (
                     detail.image.split(",").map((el, idx) => {
                       return (
-                        <div>
+                        <div key={idx}>
                           <img src={el} alt='' />
                         </div>
                       );
@@ -276,7 +276,7 @@ export default function Post() {
           </div>
         </div>
       </Sect3>
-      <div ref={ref}></div>
+      <div ref={ref}>.</div>
       {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
       {comModalOpen &&
         (myAuthorId === ahtuorId ? (
