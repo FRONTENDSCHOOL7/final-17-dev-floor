@@ -38,7 +38,8 @@ export const Top = styled.div`
   .active {
     color: #fff;
     background: #12184e;
-    padding: 7px 32px;
+    width: 90px;
+    height: 32px;
     border-radius: 32px;
   }
 `;
