@@ -25,7 +25,9 @@ export default function ProfileModification() {
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
-  const [image, setImage] = useRecoilState(profileImgState);
+  const [image, setImage] = useState();
+  const setProfileImg = useRecoilState(profileImgState);
+  const profileImage = useRecoilValue(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const fileRef = useRef(null);
   const token = useRecoilValue(tokenState);
@@ -92,18 +94,12 @@ export default function ProfileModification() {
 
   const onChangeFile = async (e) => {
     const file = fileRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
-    // 이미지 api 필요 값 입력
+    setImage(file);
+
+    // 이미지 api
     try {
       const result = await imageApi(file);
-      console.log("이거 res임", result);
-      setApiImage("https://api.mandarin.weniv.co.kr/" + result.filename);
-      console.log("성공했습니다");
-      console.log(apiImage);
+      setApiImage("https://api.mandarin.weniv.co.kr/" + result[0].filename);
     } catch (error) {
       console.log(error);
     }
@@ -128,8 +124,11 @@ export default function ProfileModification() {
         />
 
         <button className='upload-img' onClick={onClickImage}>
-          {/* <img src={profileImg} alt='' /> */}
-          {image ? <img src={image}/> : <img src={profileImg}/>}
+          {image ? (
+            <img src={URL.createObjectURL(image)}></img>
+          ) : (
+            <img src={profileImage}></img>
+          )}
         </button>
         <form>
           <div>
@@ -138,7 +137,6 @@ export default function ProfileModification() {
               type='text'
               placeholder='2~10자 이내여야 합니다.'
               onChange={handleNameChange}
-              value={userName}
               onBlur={handleNameBlur}
               className={
                 nameValid === null
@@ -162,7 +160,6 @@ export default function ProfileModification() {
               type='text'
               placeholder='영문, 숫자, 특수문자 (.) ,(_) 만 사용 가능합니다.'
               onChange={handleIdChange}
-              value={id}
               onBlur={handleIdBlur}
               className={
                 idValid === null ? "inp-id" : idValid ? "inp-id" : "error"
@@ -182,7 +179,6 @@ export default function ProfileModification() {
               type='text'
               placeholder='자신과 판매할 상품에 대해 소개해 주세요 !'
               onChange={handleIntroChange}
-              value={intro}
               pattern='.{2,10}'
               required
               title='2글자 이상 열글자미만'

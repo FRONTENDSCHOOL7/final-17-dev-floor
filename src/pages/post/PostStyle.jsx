@@ -112,6 +112,7 @@ export const Sect2 = styled.div`
     .profile-img {
       width: 36px;
       height: 36px;
+      border-radius: 30px;
     }
     .comment {
       width: 100%;

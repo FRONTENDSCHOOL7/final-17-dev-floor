@@ -90,7 +90,7 @@ export const Sect1 = styled.div`
           color: #c4c4c4;
         }
         img {
-          width: 15px;
+          width: 20px;
         }
       }
     }
@@ -100,6 +100,8 @@ export const Sect1 = styled.div`
       font-size: 10px;
       font-weight: 400;
     }
-    .inview {opacity: 0;}
+    .inview {
+      opacity: 0;
+    }
   }
 `;
