@@ -90,25 +90,25 @@ export default function Post() {
     const now = Date.now();
     const commentDate = new Date(date).getTime();
     const diffInMs = now - commentDate;
-  
+
     const seconds = diffInMs / 1000;
     if (seconds < 60) return `${Math.floor(seconds)}초 전`;
-  
+
     const minutes = seconds / 60;
     if (minutes < 60) return `${Math.floor(minutes)}분 전`;
-  
+
     const hours = minutes / 60;
     if (hours < 24) return `${Math.floor(hours)}시간 전`;
-  
+
     const days = hours / 24;
     if (days < 7) return `${Math.floor(days)}일 전`;
-  
+
     const weeks = days / 7;
     if (weeks < 5) return `${Math.floor(weeks)}주 전`;
-  
+
     const months = days / 30;
     if (months < 12) return `${Math.floor(months)}개월 전`;
-  
+
     const years = days / 365;
     return `${Math.floor(years)}년 전`;
   };
@@ -188,7 +188,18 @@ export default function Post() {
               </div>
               <div className='content-inner'>
                 <p>{detail?.content}</p>
-                {detail?.image && <img src={detail?.image} alt='' />}
+                {detail?.image &&
+                  (detail.image.split(",").length > 1 ? (
+                    detail.image.split(",").map((el, idx) => {
+                      return (
+                        <div>
+                          <img src={el} alt='' />
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <img src={detail.image} alt='' />
+                  ))}
               </div>
               <div className='like-comment'>
                 <button>
@@ -221,7 +232,9 @@ export default function Post() {
                       <div className='comment-title'>
                         <div className='comment-id'>
                           <h3>{comment.author.username}</h3>
-                          <div className="date">{getTimeDiff(comment.createdAt)}</div>
+                          <div className='date'>
+                            {getTimeDiff(comment.createdAt)}
+                          </div>
                         </div>
                         <div>
                           <button
@@ -263,7 +276,7 @@ export default function Post() {
           </div>
         </div>
       </Sect3>
-      <div ref={ref}>.</div>
+      <div ref={ref}></div>
       {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
       {comModalOpen &&
         (myAuthorId === ahtuorId ? (

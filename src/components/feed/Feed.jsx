@@ -137,7 +137,18 @@ export default function Feed() {
                 </div>
                 <div className='content-inner'>
                   <p>{item.content}</p>
-                  {item?.image && <img src={item.image} alt='' />}
+                  {item.image &&
+                      (item.image.split(",").length > 1 ? (
+                        item.image.split(",").map((el, idx) => {
+                          return (
+                            <div key={idx}>
+                              <img src={el} alt='' />
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <img src={item.image} alt='' />
+                      ))}
                 </div>
                 <div className='like-comment'>
                   <button onClick={() => handleLike(item._id)}>
