@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import upload from "../../assets/images/upload-file.png";
 
 export const JoinWrap = styled.div`
   font-family: "GongGothicMedium";

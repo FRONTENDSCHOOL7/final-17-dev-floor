@@ -14,7 +14,7 @@ const [isJoinPage, setIsJoinPage] = useState(true);
 const [error, setError] = useRecoilState(errorState)
 const [idValidError, setIdValidError] = useRecoilState(idValidErrorState)
 
-// 이메일 다음 버튼
+// 이메일
 const handleJoin = async (e) => {
     e.preventDefault();
     const isEmailValid = await validateEmail(preData.email);
@@ -31,7 +31,7 @@ const handleJoin = async (e) => {
         setIsJoinPage(false);
     }
 };
-// 프로필 설정 시작하기
+// 프로필 설정
 const submitJoin = async (e,image,accountname) => {
     e.preventDefault()
     const isAccountValid = await validateAccount(accountname)

@@ -5,7 +5,7 @@ export const Body = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 390px;
+  max-width: 720px;
   height: 100vh;
   margin: 0 auto;
   font-family: "GongGothicMedium";

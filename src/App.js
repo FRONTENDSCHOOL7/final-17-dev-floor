@@ -64,7 +64,7 @@ function App() {
             path='/myprofile'
             element={token ? <MyProfile /> : <Navigate to='/login' />}
           />
-          <Route path='/404' element={<Error />} />
+          <Route path='*' element={<Error />} />
           <Route
             path='/followers'
             element={token ? <Followers /> : <Navigate to='/login' />}

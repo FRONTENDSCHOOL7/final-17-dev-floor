@@ -17,11 +17,6 @@ export const LoginInner = styled.div`
   margin: 0 auto;
   padding: 30px 20px;
   box-sizing: border-box;
-  /* display: flex;
-  gap: 30px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; */
 `;
 export const LoginTit = styled.div`
   margin: auto;

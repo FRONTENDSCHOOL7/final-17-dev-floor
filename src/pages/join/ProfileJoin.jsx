@@ -1,29 +1,20 @@
 import { useRecoilState } from "recoil";
-import { joinApi, profileImgApi, validateEmail, validateAccount } from "../../api/AuthApi";
-import { btnDisableState, contentState, errorPwState, errorRegexState, errorState, idRegexErrorState, idRegexState, idState, idValidErrorState, imageState, joinBtnDisableState, preDataState, profileImgState } from "../../state/AuthAtom";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
-import { Email, JoinForm, JoinInner, JoinTit, JoinWrap, Password, Submit,Body, Inner, Main, Profile } from './JoinStyle'
+import { profileImgApi, validateAccount } from "../../api/AuthApi";
+import { idValidErrorState, joinBtnDisableState, profileImgState } from "../../state/AuthAtom";
+import { useRef } from "react";
+import { Body, Inner, Main, Profile } from './JoinStyle'
 import { nameValidState } from "../../state/ModifyAtom";
-import { imageApi, postApi } from "../../api/PostApi";
 import upload from "../../assets/images/upload-file.png";
-// import { validateAccount } from "../../api/ProfileApi";
-import profileDefault from "../../assets/images/Group 26.png";
 
-export function ProfileJoin({ preData, setPreData, submitJoin,joinProfileData }) {
+export function ProfileJoin({ preData, setPreData, submitJoin }) {
     const [nameValid, setNameValid] = useRecoilState(nameValidState)
     const [idValidError, setIdValidError] = useRecoilState(idValidErrorState)
-    const [idRegexError, setIdRegexError] = useRecoilState(idRegexErrorState)
     const [joinBtnDisable, setjoinBtnDisable] = useRecoilState(joinBtnDisableState)
     const imgRef = useRef(null);
     const [image, setImage] = useRecoilState(profileImgState)
-    const [apiImage, setApiImage] = useState('')
-    const [id, setId] = useRecoilState(idState);
-
 
     const newUsername = (e) => {
         setPreData({ ...preData, username: e.target.value });
-
     }
     const newUsernameBlur = (e) => {
         const name = e.target.value
@@ -63,22 +54,20 @@ export function ProfileJoin({ preData, setPreData, submitJoin,joinProfileData })
     const newIntro = (e) => {
         setPreData({...preData, intro: e.target.value})
     } 
-const onChangeFile = async (e) => {
-    const file = imgRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-        setImage(reader.result);
-    };
-    // 이미지 api 필요 값 입력
-    try {
-        const result = await profileImgApi(file);
-        console.log(result);
-        // setApiImage("https://api.mandarin.weniv.co.kr/"+result.filename);
-        setPreData({...preData, image: "https://api.mandarin.weniv.co.kr/"+result.filename})
-        console.log("이미지다!!!!");
+    const onChangeFile = async (e) => {
+        const file = imgRef.current.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setImage(reader.result);
+        };
+        try {
+            const result = await profileImgApi(file);
+            console.log(result);
+            setPreData({...preData, image: "https://api.mandarin.weniv.co.kr/"+result.filename})
+            console.log("이미지다!!!!");
         } catch (error) {
-        console.log(error);
+            console.log(error);
         }
     };
     const onClickImage = (e) => {
@@ -139,14 +128,6 @@ return (
                 placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
             />
             {idValidError && <p className="error">{idValidError}</p>}
-            {/* {idRegexError === null ? (
-                ""
-                ) : idRegexError ? (
-                ""
-                ) : (
-                <p className="error">*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>
-            )} */}
-            {/* {idRegexError && <div>{idRegexError}</div>} */}
             </div>
             <div>
             <label>소개</label>
@@ -169,5 +150,5 @@ return (
         </Main>
     </Inner>
     </Body>
-)
+    )
 }

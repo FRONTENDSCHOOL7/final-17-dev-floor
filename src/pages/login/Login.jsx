@@ -11,18 +11,16 @@ import {
 } from "./LoginStyle";
 import { Link, useNavigate } from "react-router-dom";
 import { loginApi } from "../../api/AuthApi";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import {
   accountNameState,
   emailState,
   errorState,
   passwordState,
-  profileImgState,
   tokenState,
   myProfileImage,
   postMyAhtuorIdState,
 } from "../../state/AuthAtom";
-import { myProfileApi } from "../../api/ProfileApi";
 
 export default function Login() {
   const [email, setEmail] = useRecoilState(emailState);
@@ -43,42 +41,43 @@ export default function Login() {
     setPassword(e.target.value);
   };
   const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await loginApi(email, password);
-      console.log(response);
+      e.preventDefault();
+      try {
+        const response = await loginApi(email, password);
+        console.log(response);
 
-      if (!response.user) {
-        setPwError("*이메일 또는 비밀번호가 일치하지 않습니다.");
-      } else {
-        setEmError("");
-        setPwError("");
+        if (!response.user) {
+          setPwError("*이메일 또는 비밀번호가 일치하지 않습니다.");
+        } else {
+          setEmError("");
+          setPwError("");
+        }
+        const userAcount = response.user.accountname;
+        localStorage.setItem("account", userAcount);
+        setAccount(localStorage.getItem("account"));
+
+        const userToken = response.user.token;
+        localStorage.setItem("token", userToken);
+        setToken(localStorage.getItem("token"));
+        console.log(userToken);
+
+        const userImage = response.user.image;
+        localStorage.setItem("image", userImage);
+        setImage(localStorage.getItem("image"));
+
+        const userAuthorId = response.user._id
+        localStorage.setItem('myAhthorId', userAuthorId)
+        setMyAuthorId(localStorage.getItem('myAhthorId'))
+
+        console.log('마이아이디',userAuthorId)
+
+        navigate("/homefeed");
+      } catch (error) {
+        console.log("에러입니다.");
       }
-      const userAcount = response.user.accountname;
-      localStorage.setItem("account", userAcount);
-      setAccount(localStorage.getItem("account"));
-
-      const userToken = response.user.token;
-      localStorage.setItem("token", userToken);
-      setToken(localStorage.getItem("token"));
-      console.log(userToken);
-
-      const userImage = response.user.image;
-      localStorage.setItem("image", userImage);
-      setImage(localStorage.getItem("image"));
-
-      const userAuthorId = response.user._id
-      localStorage.setItem('myAhthorId', userAuthorId)
-      setMyAuthorId(localStorage.getItem('myAhthorId'))
-
-      console.log('마이아이디',userAuthorId)
-
-      navigate("/homefeed");
-    } catch (error) {
-      console.log("에러입니다.");
-    }
   };
   const loginDisabled = !email || !password;
+
   return (
     <LoginWrap>
       <LoginInner>
@@ -96,11 +95,6 @@ export default function Login() {
               onChange={handleEmail}
             />
           </Email>
-          {/* {emError && (
-            <div>
-              <p>{emError}</p>
-            </div>
-          )} */}
           <Password>
             <span>비밀번호</span>
             <label htmlFor='password'></label>
