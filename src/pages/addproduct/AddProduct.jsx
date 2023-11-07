@@ -27,7 +27,6 @@ export default function AddProduct() {
   const [productLink, setProductLink] = useRecoilState(productLinkState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
   const productId = useRecoilValue(productIdState);
-  const [isSaveEnabled, setIsSaveEnabled] = useState(false);
   const [isEdit, setIsEdit] = useState([]);
   const fileRef = useRef(null);
   const token = useRecoilValue(tokenState);
@@ -35,16 +34,10 @@ export default function AddProduct() {
   console.log(productId);
 
   useEffect(() => {
-    // 입력 값이 모두 채워져 있는지 확인
-    if (productImage && productName && productPrice && productLink) {
-      setIsSaveEnabled(true);
-    } else {
-      setIsSaveEnabled(false);
-    }
     if (productId) {
       productFetch();
     }
-  }, [productImage, productName, productPrice, productLink]);
+  }, []);
 
   const onClickImage = (e) => {
     fileRef.current?.click(e.target.files?.[0]);
@@ -114,12 +107,6 @@ export default function AddProduct() {
         token
       );
 
-      // API 요청 성공 시
-      console.log("상품 등록 성공:", res);
-      setProductImage(res.product.itemImage);
-      setProductName(res.product.itemName);
-      setProductPrice(res.product.price);
-      setProductLink(res.product.link);
       navigate("/myprofile");
     } catch (error) {
       // API 요청 실패 시
@@ -147,6 +134,10 @@ export default function AddProduct() {
   const productFetch = async () => {
     const res = await productDetailApi(productId, token);
     setIsEdit(res.product);
+    setApiImage(res.product.itemImage);
+    setProductName(res.product.itemName);
+    setProductPrice(res.product.price);
+    setProductLink(res.product.link);
   };
 
   return (
@@ -154,7 +145,6 @@ export default function AddProduct() {
       <TopBarSave
         isEdit={isEdit}
         onSave={JSON.stringify(isEdit) !== "[]" ? handleEdit : handleSave}
-        disabled={!isSaveEnabled}
       />
       <Main>
         <div className='img-container'>

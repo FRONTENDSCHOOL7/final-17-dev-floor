@@ -3,7 +3,7 @@ import back from "../../assets/images/icon-arrow-left.png";
 import { Top } from "./TopBarSaveStyle";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function TopBarSave({ isEdit, onSave, disabled }) {
+export default function TopBarSave(props) {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -14,12 +14,8 @@ export default function TopBarSave({ isEdit, onSave, disabled }) {
       <button onClick={handleBack}>
         <img src={back} alt='' />
       </button>
-      <button
-        className={`btn-save ${disabled ? "disabled" : ""}`}
-        onClick={onSave}
-        disabled={disabled}
-      >
-        {JSON.stringify(isEdit) !== "[]" ? "수정" : "저장"}
+      <button className='btn-save' onClick={props.onSave}>
+        {JSON.stringify(props.isEdit) !== "[]" ? "수정" : "저장"}
       </button>
     </Top>
   );
