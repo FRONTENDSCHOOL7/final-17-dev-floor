@@ -19,18 +19,18 @@ export const Top = styled.div`
   .btn-save {
     color: #fff;
     background: #12184e;
-    padding: 7px 32px;
+    padding: 6px 32px;
     border-radius: 32px;
 
     &.disabled {
       color: #fff;
-      background: #6f76b6;
     }
   }
   .btn-save2 {
     color: #fff;
-    background: #6f76b6;
-    padding: 7px 32px;
+    border: 1px solid var(--whiteColor);
+    width: 90px;
+    height: 32px;
     border-radius: 32px;
     cursor: not-allowed;
   }

@@ -73,7 +73,7 @@ export const productDelApi = async (product_id, token) => {
 
 export const productEditApi = async (product_id, token) => {
   try {
-    const res = await axios.edit(url + `${product_id}`, {
+    const res = await axios.put(url + `${product_id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import upload from "../../assets/images/upload-file.png";
 
 export const Body = styled.div`
+  background: var(--whiteColor);
   max-width: 720px;
   width: 100%;
   height: 100vh;

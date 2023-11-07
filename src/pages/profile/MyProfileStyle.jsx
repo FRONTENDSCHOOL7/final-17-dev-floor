@@ -12,7 +12,8 @@ export const Body = styled.div`
   font-family: "GongGothicMedium";
   .album-btns {
     background: #fff;
-
+    gap: 16px;
+    padding: 5px 16px;
     display: flex;
     justify-content: right;
     border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
@@ -26,7 +27,7 @@ export const Sect1 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 `;
 
 export const ProImg = styled.div`
@@ -104,9 +105,7 @@ export const Btns = styled.div`
 // section2
 export const Sect2 = styled.div`
   h2 {
-    margin-top: 20px;
-    margin-left: 18px;
-    margin-bottom: 16px;
+    padding: 16px;
     font-size: 16px;
     font-weight: 700;
   }

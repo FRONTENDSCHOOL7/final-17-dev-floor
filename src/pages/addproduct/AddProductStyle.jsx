@@ -14,7 +14,9 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  background: var(--whiteColor);
+  height: 100%;
+  padding-top: 30px;
 
   form {
     display: flex;

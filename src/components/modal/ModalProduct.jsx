@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Sect1 } from "./ModalStlye";
 import bar from "../../assets/images/bar.png";
+import { Link } from "react-router-dom";
 
 export default function ModalProduct({
   isOpenModal,
@@ -47,7 +48,7 @@ export default function ModalProduct({
             <button>삭제</button>
           </div>
           <div className='letter'>
-            <button>수정</button>
+            <Link to='/editproduct'>수정</Link>
           </div>
           <div className='letter'>
             <button onClick={viewOnWebsite}>웹사이트에서 상품 보기</button>
