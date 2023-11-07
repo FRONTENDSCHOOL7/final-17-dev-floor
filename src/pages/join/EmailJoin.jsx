@@ -1,17 +1,16 @@
 import { useRecoilState } from "recoil";
-import { joinApi, profileImgApi, validateAccount, validateEmail } from "../../api/AuthApi";
-import { btnDisableState, contentState, errorPwState, errorRegexState, errorState, idRegexErrorState, idRegexState, idValidErrorState, imageState, joinBtnDisableState, preDataState, profileImgState } from "../../state/AuthAtom";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { validateEmail } from "../../api/AuthApi";
+import { btnDisableState, errorPwState, errorState } from "../../state/AuthAtom";
 import { Email, JoinForm, JoinInner, JoinTit, JoinWrap, Password, Submit } from './JoinStyle'
 
-export function EmailJoin({ preData, setPreData, handleJoin}) {
+export function EmailJoin({ preData, setPreData, handleJoin }) {
     const [btnDisable, setBtnDisable] = useRecoilState(btnDisableState)
     const [error, setError] = useRecoilState(errorState)
     const [passLengthError, setPassLengthError] = useRecoilState(errorPwState)
     
     const newEmail = async (e) => {
         setPreData({...preData, email: e.target.value});
+
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
         if(e.target.value === ''){
             setError('*이메일을 입력해주세요.')
@@ -34,14 +33,6 @@ export function EmailJoin({ preData, setPreData, handleJoin}) {
             setBtnDisable(false)
         }
     }
-    // const emailFormatCheck = (e) => {
-    //     const regex = /^[a-zA-Z0-9._]+$/;
-    //     if(!regex.test(e.target.value)) {
-    //         setError('*이메일 형식이 올바르지 않습니다.');
-    //     } else {
-    //         setError(null);
-    //     }
-    // };
     const passwordBlur = (e) => {
         const pw = e.target.value
         if(pw.length < 7) {
@@ -81,5 +72,5 @@ return (
         </JoinForm>
     </JoinInner>
     </JoinWrap>
-)
+    )
 }

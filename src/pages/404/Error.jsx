@@ -8,7 +8,7 @@ export default function Error() {
 
   const handleBefore = (e) => {
     e.preventDefault();
-    navigate("/home");
+    navigate(-1);
   };
   return (
     <Body>
