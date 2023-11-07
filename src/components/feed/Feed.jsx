@@ -15,6 +15,7 @@ import { likeApi, postGet, unlikeApi } from "../../api/PostApi";
 import { useNavigate } from "react-router";
 import { introState, userNameState } from "../../state/ModifyAtom";
 import { ReactComponent as Like } from "../../assets/images/icon-heart.svg";
+import { postIdState } from "../../state/PostAtom";
 
 export default function Feed() {
   const [postData, setPostData] = useState([]);
@@ -25,11 +26,20 @@ export default function Feed() {
   const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [fillHeart, setFillHeart] = useState({});
+  const [postId, setPostId] = useRecoilState(postIdState);
   const token = useRecoilValue(tokenState);
 
   const navigate = useNavigate();
 
-  const handleLike = async (itemId) => {
+  const handlePostClick = (postId) => {
+    localStorage.setItem("postId", postId);
+    setPostId(localStorage.getItem("postId"));
+    console.log("게시글id", postId);
+    navigate("/post");
+  };
+
+  const handleLike = async (itemId, e) => {
+    e.stopPropagation();
     try {
       const res = fillHeart[itemId]
         ? await unlikeApi(itemId, token)
@@ -108,7 +118,11 @@ export default function Feed() {
     <Body>
       <Sect1>
         {postData?.map((item) => (
-          <div className='content-container' key={item._id}>
+          <div
+            className='content-container'
+            key={item._id}
+            onClick={() => handlePostClick(item.id)}
+          >
             <div className='content-list'>
               <img
                 src={item.author.image ? item.author.image : basicImg}
@@ -151,12 +165,13 @@ export default function Feed() {
                     ))}
                 </div>
                 <div className='like-comment'>
-                  <button onClick={() => handleLike(item.id)}>
+                  <button onClick={(e) => handleLike(item.id, e)}>
                     <Like fill={fillHeart[item.id] ? "#7A8CCB" : "#fff"}></Like>
                     <span>{item.heartCount}</span>
                   </button>
                   <button>
-                    <img src={message} alt='' /> <span>12</span>
+                    <img src={message} alt='' className='comment' />{" "}
+                    <span>12</span>
                   </button>
                 </div>
                 <span className='date'>{getDate(item.updatedAt)}</span>

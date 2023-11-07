@@ -25,7 +25,7 @@ import { postIdState } from "../../state/PostAtom";
 
 export default function Post() {
   const [modalOpen, setIsOpenModal] = useState(false);
-  const profileImage = useRecoilValue(profileImgState);
+  const [profileImage, setProfileImage] = useState("");
   const postId = useRecoilValue(postIdState);
   const [detail, setDetail] = useState([]);
   const [commentContent, setCommentContent] = useState(""); //댓글내용상태
@@ -157,6 +157,7 @@ export default function Post() {
     console.log(postId);
     try {
       const result = await postDetail(postId, token);
+      setProfileImage(result.post.author.image);
       setDetail(result.post);
     } catch (error) {
       console.error("게시글 불러오기 실패", error);
@@ -276,7 +277,7 @@ export default function Post() {
           </div>
         </div>
       </Sect3>
-      <div ref={ref}>.</div>
+      <div ref={ref}></div>
       {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
       {comModalOpen &&
         (myAuthorId === ahtuorId ? (
