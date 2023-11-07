@@ -30,7 +30,7 @@ export default function TabMenu() {
       setPostId("");
     } else if (`/${e}` === "/myprofile") {
       setImgColor(`/${e}`);
-      setAccountName(localStorage.getItem("account"));
+      // setAccountName(localStorage.getItem("account"));
     }
   };
 
