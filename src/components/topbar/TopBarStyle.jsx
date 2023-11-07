@@ -25,15 +25,16 @@ export const Top = styled.div`
 
     &.disabled {
       color: #fff;
-      background: #6f76b6;
     }
   }
   .btn-save2 {
     border: 1px solid #fff;
 
     color: #fff;
+    border: 1px solid var(--whiteColor);
+    width: 90px;
+    height: 32px;
     background: #6f76b6;
-    padding: 5px 30px;
     border-radius: 32px;
     cursor: not-allowed;
   }
@@ -43,8 +44,9 @@ export const Top = styled.div`
 
     color: #fff;
     background: #12184e;
-    padding: 5px 30px;
-    border-radius: 33px;
+    width: 90px;
+    height: 32px;
+    border-radius: 32px;
   }
 `;
 

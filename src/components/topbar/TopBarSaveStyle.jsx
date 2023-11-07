@@ -31,7 +31,6 @@ export const Top = styled.div`
 
     &.disabled {
       color: #fff;
-      background: #6f76b6;
     }
   }
   .btn-save2 {

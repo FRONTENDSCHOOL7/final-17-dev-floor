@@ -4,7 +4,7 @@ export const Sect2 = styled.div`
   background-color: white;
   width: 720px;
   height: 208px;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   h2 {
     margin-top: 20px;
     margin-left: 18px;
@@ -15,6 +15,7 @@ export const Sect2 = styled.div`
 `;
 
 export const Sale = styled.div`
+  padding-bottom: 20px;
   display: flex;
   margin-left: 18px;
   gap: 10px;
