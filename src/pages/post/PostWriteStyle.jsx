@@ -72,4 +72,11 @@ export const Sect2 = styled.div`
       height: 50px;
     }
   }
+  .imageBox {
+    display: flex;
+    img {
+      width: 210px;
+      height: 150px;
+    }
+  }
 `;

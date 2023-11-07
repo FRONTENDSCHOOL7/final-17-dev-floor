@@ -1,7 +1,10 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import profileImg from "../assets/images/Group 26.png";
-const { persistAtom } = recoilPersist();
+const { persistAtom } = recoilPersist({
+  key: "localStorage", // 고유한 key 값
+  storage: localStorage,
+});
 
 // login
 export const emailState = atom({

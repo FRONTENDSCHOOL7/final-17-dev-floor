@@ -17,11 +17,11 @@ import { postIdState } from "../../state/PostAtom";
 
 export default function PostWrite() {
   const [content, setContent] = useState("");
-  const [image, setImage] = useState("");
   const [apiImage, setApiImage] = useState("");
   const [detail, setDetail] = useState([]);
   const postId = useRecoilValue(postIdState);
   const proImg = localStorage.getItem("myProfileImg");
+  const [selectedImages, setSelectedImages] = useState([]);
 
   const fileRef = useRef(null);
   const navigate = useNavigate();
@@ -32,39 +32,53 @@ export default function PostWrite() {
   };
 
   const onClickImage = (e) => {
-    fileRef.current?.click(e.target.files?.[0]);
+    fileRef.current?.click(e.target.files);
   };
   const handleBack = () => {
-    navigate(-1)
-  }
+    navigate(-1);
+  };
   // 해당 유저 게시글
   const postFetch = async () => {
     try {
       const result = await postDetail(postId, token);
       setDetail(result.post);
       setContent(result.post.content);
-      setApiImage(result.post.image);
     } catch (error) {
       console.log(error);
     }
   };
 
   const onChangeFile = async (e) => {
-    // 이미지 미리보기
-    const file = fileRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
+    const files = fileRef.current.files;
+    let file;
+    let imagesArray = [...selectedImages];
+    if (selectedImages.length <= 3) {
+      for (let i = 0; i < files.length; i++) {
+        file = files[i];
+        imagesArray.push(file);
+      }
+      setSelectedImages(imagesArray);
+      console.log("이미지배열확인", imagesArray);
+    }
     // 이미지 api 요청
     try {
-      const result = await imageApi(file);
-      setApiImage("https://api.mandarin.weniv.co.kr/" + result.filename);
+      const result = await imageApi(imagesArray);
+      console.log("이미지통신확인", result);
+      if (result.length > 1) {
+        const data = result
+          .map((image) => `https://api.mandarin.weniv.co.kr/${image.filename}`)
+          .join(",");
+        console.log("data", data);
+        setApiImage(data);
+      } else {
+        const data2 = `https://api.mandarin.weniv.co.kr/${result[0].filename}`;
+        setApiImage(data2);
+      }
     } catch (error) {
       console.log(error);
     }
   };
+  console.log("이미지데이터정제", apiImage);
 
   // 게시글 등록 api 요청
   const onClickUpLoad = async (e) => {
@@ -82,7 +96,7 @@ export default function PostWrite() {
     e.preventDefault();
     try {
       const result = await postCorrection(postId, content, apiImage, token);
-      console.log(result.post);
+      console.log("게시글수정결과값", result);
       navigate("/myprofile");
     } catch (error) {
       console.log(error);
@@ -92,8 +106,6 @@ export default function PostWrite() {
   useEffect(() => {
     postFetch();
   }, []);
-
-  console.log(detail?.content);
   return (
     <Body>
       <Sect1>
@@ -118,11 +130,34 @@ export default function PostWrite() {
             />
             <input
               style={{ display: "none" }}
+              multiple
               type='file'
               onChange={onChangeFile}
               ref={fileRef}
             />
-            <div>{apiImage && <img src={apiImage}></img>}</div>
+            <div className='imageBox'>
+              {detail?.image && selectedImages.length === 0 ? (
+                detail.image.split(",").length > 1 ? (
+                  detail.image.split(",").map((el, idx) => {
+                    return (
+                      <div key={idx}>
+                        <img src={el} alt='' />
+                      </div>
+                    );
+                  })
+                ) : (
+                  <img src={detail.image} alt='' />
+                )
+              ) : (
+                selectedImages?.map((item, idx) => {
+                  return (
+                    <div key={idx}>
+                      <img src={URL.createObjectURL(item)} alt='' />
+                    </div>
+                  );
+                })
+              )}
+            </div>
           </div>
         </div>
         <div className='write-bottom'>

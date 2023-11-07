@@ -30,8 +30,6 @@ export default function PostAlbum() {
         (el) => el.image && el.image.includes("https")
       );
 
-      console.log("필터성공확인", filterReultData);
-
       setPostData((postData) => {
         return [...postData, ...filterReultData];
       });
