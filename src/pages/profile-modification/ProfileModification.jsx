@@ -21,6 +21,7 @@ import p_img from "../../assets/images/Group 26.png";
 export default function ProfileModification() {
   const [id, setId] = useRecoilState(accountNameState);
   const [userName, setUserName] = useRecoilState(userNameState);
+  const [account, setAcoount] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
@@ -99,7 +100,7 @@ export default function ProfileModification() {
     // 이미지 api 필요 값 입력
     try {
       const result = await imageApi(file);
-      console.log(result);
+      console.log("이거 res임", result);
       setApiImage("https://api.mandarin.weniv.co.kr/" + result.filename);
       console.log("성공했습니다");
       console.log(apiImage);
@@ -128,7 +129,7 @@ export default function ProfileModification() {
 
         <button className='upload-img' onClick={onClickImage}>
           {/* <img src={profileImg} alt='' /> */}
-          {image ? <img src={image}></img> : <img src={profileImg}></img>}
+          {image ? <img src={image}/> : <img src={profileImg}/>}
         </button>
         <form>
           <div>

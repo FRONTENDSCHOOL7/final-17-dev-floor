@@ -35,6 +35,8 @@ export default function Feed() {
         ? await unlikeApi(itemId, token)
         : await likeApi(itemId, token);
 
+      console.log(res);
+
       setFillHeart((prev) => {
         const newFillHeart = { ...prev };
         newFillHeart[itemId] = res.post.hearted;
@@ -43,9 +45,7 @@ export default function Feed() {
       });
 
       const updatedPostData = postData.map((post) =>
-        post._id === itemId
-          ? { ...post, heartCount: res.post.heartCount }
-          : post
+        post.id === itemId ? { ...post, heartCount: res.post.heartCount } : post
       );
       setPostData(updatedPostData);
     } catch (error) {
@@ -138,23 +138,21 @@ export default function Feed() {
                 <div className='content-inner'>
                   <p>{item.content}</p>
                   {item.image &&
-                      (item.image.split(",").length > 1 ? (
-                        item.image.split(",").map((el, idx) => {
-                          return (
-                            <div key={idx}>
-                              <img src={el} alt='' />
-                            </div>
-                          );
-                        })
-                      ) : (
-                        <img src={item.image} alt='' />
-                      ))}
+                    (item.image.split(",").length > 1 ? (
+                      item.image.split(",").map((el, idx) => {
+                        return (
+                          <div key={idx}>
+                            <img src={el} alt='' />
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <img src={item.image} alt='' />
+                    ))}
                 </div>
                 <div className='like-comment'>
-                  <button onClick={() => handleLike(item._id)}>
-                    <Like
-                      fill={fillHeart[item._id] ? "#7A8CCB" : "#fff"}
-                    ></Like>
+                  <button onClick={() => handleLike(item.id)}>
+                    <Like fill={fillHeart[item.id] ? "#7A8CCB" : "#fff"}></Like>
                     <span>{item.heartCount}</span>
                   </button>
                   <button>

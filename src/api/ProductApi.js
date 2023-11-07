@@ -70,16 +70,41 @@ export const productDelApi = async (product_id, token) => {
     throw error;
   }
 };
-
-export const productEditApi = async (product_id, token) => {
+export const productEditApi = async (productId, productName,
+  productLink,
+  apiImage,
+  productPrice,
+  token) => {
+  const productData = {
+    product: {
+      itemName: productName,
+      price: productPrice, //1원 이상
+      link: productLink,
+      itemImage: apiImage,
+    },
+  };
   try {
-    const res = await axios.put(url + `${product_id}`, {
+    const res = await axios.put(url+`/${productId}`, productData,{
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
       },
     });
-    console.log(res);
+    return res.data;
+  } catch (error) {
+    alert("업로드 실패");
+  }
+};
+// 상품 상세
+export const productDetailApi = async (product_id, token) => {
+  try {
+    const res = await axios.get(url + `/detail/${product_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    });
+    console.log('res',res);
     return res.data;
   } catch (error) {
     throw error;

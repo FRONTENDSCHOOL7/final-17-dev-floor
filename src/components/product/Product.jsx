@@ -5,6 +5,8 @@ import { productDelApi, productListApi } from "../../api/ProductApi";
 import { accountNameState, tokenState } from "../../state/AuthAtom";
 import ModalProduct from "../modal/ModalProduct";
 import { useInView } from "react-intersection-observer";
+import { productIdState } from "../../state/ProductAtom";
+import { useNavigate } from "react-router-dom";
 
 export default function Product() {
   const accountName = useRecoilValue(accountNameState);
@@ -14,7 +16,9 @@ export default function Product() {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null); // 상품 ID를 저장
   const token = useRecoilValue(tokenState);
-
+  const [productId, setProductId] = useRecoilState(productIdState)
+  const navigate = useNavigate()
+  
   const showModal = (productId) => {
     setIsOpenModal(true);
     setSelectedProductId(productId); // 모달에서 사용할 상품 ID 저장
@@ -42,7 +46,11 @@ export default function Product() {
     }
     setIsOpenModal(false); // 모달 닫기
   };
-
+  // 상품 수정
+  const handleEdit = () => {
+    setProductId(selectedProductId)
+    navigate('/product')
+  }
   // 유저 상품 목록 api 요청
   const productList = async () => {
     try {
@@ -87,6 +95,7 @@ export default function Product() {
       </Sale>
       {modalOpen && (
         <ModalProduct
+          handleEdit={handleEdit}
           setIsOpenModal={setIsOpenModal}
           handleDelete={handleDelete}
           productLink={
