@@ -54,6 +54,12 @@ export const Sect1 = styled.div`
       }
     }
     .content-inner {
+      width: 350px;
+      height: 400px;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       font-size: 14px;
       font-weight: 400;
       p {
@@ -61,7 +67,6 @@ export const Sect1 = styled.div`
         line-height: 18px;
       }
       img {
-        border-radius: 10px;
       }
     }
     .like-comment {

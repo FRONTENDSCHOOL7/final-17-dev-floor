@@ -76,7 +76,7 @@ export default function Product() {
     <Sect2>
       <h2>판매중인 상품</h2>
       <Sale>
-        {products.map((product, idx) => (
+        {products?.map((product, idx) => (
           <div key={idx} onClick={() => showModal(product.id)}>
             <img src={product.itemImage} alt='' />
             <p>{product.itemName}</p>
@@ -90,7 +90,7 @@ export default function Product() {
           setIsOpenModal={setIsOpenModal}
           handleDelete={handleDelete}
           productLink={
-            products.find((product) => product.id === selectedProductId)?.link
+            products?.find((product) => product.id === selectedProductId)?.link
           }
         />
       )}

@@ -3,7 +3,7 @@ import { tokenState } from "../state/AuthAtom";
 import { useRecoilValue } from "recoil";
 
 const url = "https://api.mandarin.weniv.co.kr/post";
-const url2 = "https://api.mandarin.weniv.co.kr/image/uploadfile";
+const url2 = "https://api.mandarin.weniv.co.kr/image/uploadfiles";
 
 // 게시글 등록
 export const postPostApi = async (content, image, token) => {
@@ -49,16 +49,22 @@ export const postCorrection = async (postId, content, image, token) => {
 };
 
 // 이미지
-export const imageApi = async (file) => {
+export const imageApi = async (files) => {
   const formData = new FormData();
-  formData.append("image", file);
+  if (files.length >= 1) {
+    for (let i = 0; i < files.length; i++) {
+      console.log("콘솔창확인", files[i]);
+      formData.append("image", files[i]);
+    }
+  } else {
+    formData.append("image", files);
+  }
   try {
     const res = await axios.post(url2, formData, {
       headers: {
         "Content-type": "multipart/form-data",
       },
     });
-    console.log(res);
     return res.data;
   } catch (error) {
     alert("업로드 실패");

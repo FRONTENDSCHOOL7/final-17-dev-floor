@@ -21,7 +21,6 @@ import p_img from "../../assets/images/Group 26.png";
 export default function ProfileModification() {
   const [id, setId] = useRecoilState(accountNameState);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [account, setAcoount] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);

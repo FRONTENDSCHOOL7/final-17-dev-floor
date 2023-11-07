@@ -7,7 +7,7 @@ export default function ModalPostDel({
   children,
   handlePostDel,
   goToPostCorrection,
-  setIsOpenModal
+  setIsOpenModal,
 }) {
   const wrapperRef = useRef();
   useEffect(() => {
@@ -19,14 +19,14 @@ export default function ModalPostDel({
   });
   const handleClickOutside = (event) => {
     if (wrapperRef && !wrapperRef.current.contains(event.target)) {
-      setIsOpenModal(false)
+      setIsOpenModal(false);
     } else {
-      setIsOpenModal(true)
+      setIsOpenModal(true);
     }
   };
 
   const xClose = () => {
-    setIsOpenModal(false)
+    setIsOpenModal(false);
   };
   return (
     <div ref={wrapperRef} value={isOpenModal}>

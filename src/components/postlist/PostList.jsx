@@ -28,7 +28,7 @@ export default function PostList() {
   const [ref, inView] = useInView();
   const image = useRecoilValue(profileImgState);
   const token = useRecoilValue(tokenState);
-  const [ismodalOpen, setIsModalOpen] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const navigate = useNavigate();
   const [fillHeart, setFillHeart] = useState({});
 
@@ -106,7 +106,7 @@ export default function PostList() {
     } catch (error) {
       console.error("게시글 삭제 실패");
     }
-    setIsModalOpen(false);
+    setIsOpenModal(false);
   };
 
   //게시글 상세페이지로 이동
@@ -128,7 +128,7 @@ export default function PostList() {
   const modalOpen = (e, post_id, author_id) => {
     e.stopPropagation();
     setAhtuorId(author_id);
-    setIsModalOpen(true);
+    setIsOpenModal(true);
     localStorage.setItem("postId", post_id);
     setPostId(localStorage.getItem("postId"));
   };
@@ -170,7 +170,18 @@ export default function PostList() {
                   </div>
                   <div className='content-inner'>
                     <p>{item.content}</p>
-                    {item.image && <img src={item.image} alt='' />}
+                    {item.image &&
+                      (item.image.split(",").length > 1 ? (
+                        item.image.split(",").map((el, idx) => {
+                          return (
+                            <div key={idx}>
+                              <img src={el} alt='' />
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <img src={item.image} alt='' />
+                      ))}
                   </div>
                   <div className='like-comment'>
                     <button onClick={(e) => handleLike(item.id, e)}>
@@ -191,9 +202,9 @@ export default function PostList() {
         })}
       </div>
       <div ref={ref}></div>
-      {ismodalOpen && myAuthorId === ahtuorId && (
+      {isOpenModal && myAuthorId === ahtuorId && (
         <ModalPostDel
-          setIsModalOpen={setIsModalOpen}
+          setIsOpenModal={setIsOpenModal}
           handlePostDel={handlePostDel}
           goToPostCorrection={goToPostCorrection}
         />

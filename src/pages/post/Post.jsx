@@ -188,7 +188,18 @@ export default function Post() {
               </div>
               <div className='content-inner'>
                 <p>{detail?.content}</p>
-                {detail?.image && <img src={detail?.image} alt='' />}
+                {detail?.image &&
+                  (detail.image.split(",").length > 1 ? (
+                    detail.image.split(",").map((el, idx) => {
+                      return (
+                        <div>
+                          <img src={el} alt='' />
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <img src={detail.image} alt='' />
+                  ))}
               </div>
               <div className='like-comment'>
                 <button>
