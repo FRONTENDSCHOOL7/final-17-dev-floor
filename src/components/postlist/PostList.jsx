@@ -191,7 +191,8 @@ export default function PostList() {
                       <span>{item.heartCount}</span>
                     </button>
                     <button>
-                      <img src={message} alt='' /> <span>12</span>
+                      <img src={message} alt='' />{" "}
+                      <span>{item.commentCount}</span>
                     </button>
                   </div>
                   <span className='date'>{getDate(item.updatedAt)}</span>
