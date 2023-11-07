@@ -29,7 +29,6 @@ export default function ProfileModification() {
   const setProfileImg = useRecoilState(profileImgState);
   const profileImage = useRecoilValue(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
-
   const fileRef = useRef(null);
   const token = useRecoilValue(tokenState);
 
@@ -62,10 +61,14 @@ export default function ProfileModification() {
       setIdValid(false);
     }
   };
+  // 사용자 id 함수
+
   // 사용자 소개 함수
   const handleIntroChange = (e) => {
     setIntro(e.target.value);
   };
+
+  // 사용자 소개 함수
 
   // 프로필 수정
 
@@ -81,7 +84,6 @@ export default function ProfileModification() {
       const res = await editApi(userName, id, intro, apiImage, token);
       localStorage.setItem("account", res.user.accountname);
       localStorage.setItem("myProfileImg", res.user.image);
-      setProfileImg(localStorage.getItem("myProfileImg"));
       navigate("/myprofile");
     } catch (error) {
       console.log("에러입니다.");
@@ -102,8 +104,6 @@ export default function ProfileModification() {
       console.log(error);
     }
   };
-  console.log("이미지api확인", apiImage);
-
   const onClickImage = (e) => {
     fileRef.current?.click(e.target.files?.[0]);
   };

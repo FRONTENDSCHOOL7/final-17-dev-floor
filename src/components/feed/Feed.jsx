@@ -35,6 +35,8 @@ export default function Feed() {
         ? await unlikeApi(itemId, token)
         : await likeApi(itemId, token);
 
+      console.log(res);
+
       setFillHeart((prev) => {
         const newFillHeart = { ...prev };
         newFillHeart[itemId] = res.post.hearted;
@@ -43,9 +45,7 @@ export default function Feed() {
       });
 
       const updatedPostData = postData.map((post) =>
-        post._id === itemId
-          ? { ...post, heartCount: res.post.heartCount }
-          : post
+        post.id === itemId ? { ...post, heartCount: res.post.heartCount } : post
       );
       setPostData(updatedPostData);
     } catch (error) {
@@ -151,10 +151,8 @@ export default function Feed() {
                     ))}
                 </div>
                 <div className='like-comment'>
-                  <button onClick={() => handleLike(item._id)}>
-                    <Like
-                      fill={fillHeart[item._id] ? "#7A8CCB" : "#fff"}
-                    ></Like>
+                  <button onClick={() => handleLike(item.id)}>
+                    <Like fill={fillHeart[item.id] ? "#7A8CCB" : "#fff"}></Like>
                     <span>{item.heartCount}</span>
                   </button>
                   <button>
