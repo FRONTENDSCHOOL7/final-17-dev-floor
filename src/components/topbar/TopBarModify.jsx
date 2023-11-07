@@ -7,7 +7,7 @@ export default function TopBarModify({ nameValid, idValid, onEdit }) {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate("/myprofile");
+    navigate(-1);
   };
   return (
     <Top>

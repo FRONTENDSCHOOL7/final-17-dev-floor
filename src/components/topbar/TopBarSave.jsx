@@ -7,13 +7,13 @@ export default function TopBarSave({ onSave, disabled }) {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate("/myprofile");
+    navigate(-1);
   };
   return (
     <Top>
       <Link to='/myprofile'>
-        <button>
-          <img src={back} alt='' onClick={handleBack} />
+        <button onClick={handleBack}>
+          <img src={back} alt='' />
         </button>
       </Link>
       <button

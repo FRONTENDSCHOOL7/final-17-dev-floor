@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Body = styled.div`
   font-family: "GongGothicMedium";
-
   height: 100vh;
   max-width: 720px;
   width: 100%;
@@ -10,10 +9,10 @@ export const Body = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
 `;
 
 export const Sect1 = styled.div`
+  background: var(--bgColor);
   height: 48px;
   display: flex;
   align-items: center;
@@ -21,7 +20,6 @@ export const Sect1 = styled.div`
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
   button {
     margin: 13px 12px;
-    background: #fff;
     border-style: none;
   }
   .upload {
@@ -29,13 +27,16 @@ export const Sect1 = styled.div`
     width: 90px;
     height: 32px;
     font-size: 14px;
-    background: #12184e;
+    border: 1px solid var(--whiteColor);
     border-radius: 32px;
   }
 `;
 
 export const Sect2 = styled.div`
+  height: 100%;
+  background: var(--whiteColor);
   .write-main {
+    height: 80%;
     padding: 12px;
     display: flex;
     gap: 10px;
@@ -45,6 +46,7 @@ export const Sect2 = styled.div`
       border-radius: 30px;
     }
     .writeBox {
+      width: 100%;
     }
     input {
       font-family: "GongGothicMedium";
@@ -62,7 +64,7 @@ export const Sect2 = styled.div`
     }
   }
   .write-bottom {
-    padding-right: 10px;
+    padding-right: 16px;
     display: flex;
     justify-content: flex-end;
     button {

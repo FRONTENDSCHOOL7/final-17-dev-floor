@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Top = styled.div`
   max-width: 720px;
   width: 100%;
-  background: #fff;
+  background: var(--bgColor);
   height: 48px;
   display: flex;
   justify-content: space-between;
@@ -11,7 +11,6 @@ export const Top = styled.div`
 
   button {
     margin: 9px 16px;
-    background: #fff;
     border-style: none;
   }
   .modalBtn {

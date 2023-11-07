@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Body = styled.div`
   font-family: "GongGothicMedium";
-
   height: 100vh;
+  background: var(--whiteColor);
   max-width: 720px;
   width: 100%;
-  padding: 0 20px;
+  /* padding: 0 20px; */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,6 @@ export const Body = styled.div`
 
 export const Sect1 = styled.div`
   .content-container {
-    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
     padding: 0 15px;
     padding-bottom: 24px;
     display: flex;
@@ -31,6 +30,7 @@ export const Sect1 = styled.div`
       border-radius: 30px;
     }
     .content {
+      width: 100%;
       display: flex;
       flex-direction: column;
     }
@@ -94,7 +94,6 @@ export const Sect1 = styled.div`
 `;
 export const Sect2 = styled.div`
   .comment-container {
-    border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
     padding: 0 15px;
     padding-bottom: 70px;
     display: flex;
@@ -153,7 +152,6 @@ export const Sect3 = styled.div`
   width: 720px;
   height: 61px;
   .comment-container {
-    border-top: 0.5px solid var(--DBDBDB, #dbdbdb);
     padding: 12px 16px;
     display: flex;
     align-items: center;

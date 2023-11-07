@@ -29,7 +29,7 @@
       <td align="center"><a href="https://github.com/geunpyochoi"><img src="https://avatars.githubusercontent.com/u/28581469?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀장 : 최근표</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/kyokyoYa"><img src="https://avatars.githubusercontent.com/u/138539300?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀원 : 최현우</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/leeheezin"><img src="https://avatars.githubusercontent.com/u/102892982?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀원 : 이희진</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀원 : 이예람</b><ㄴㄴ/sub></a><br /></td>
+      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀원 : 이예람</b></sub></a><br /></td>
     </tr>
   </tbody>
 </table>
@@ -72,6 +72,7 @@
     <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white"/>&nbsp
 </tr>
 </table>
+<br>
 
 - **Recoil**을 택한 이유
 1. 편리한 비동기 처리
@@ -90,7 +91,7 @@
 - 유저정보의 지속성을 위해 사용한 recoil-Persist
 - recoil은 기본적으로 새로고침 또는 컴포넌트 언마운트 시 상태가 초기화되지만, recoil-persist를 사용하면서 세션 스토리지에 저장하여 지속성을 유지하였습니다.
 
-    <br><br>
+    <br>
 - axios 라이브러리 활용
   - 비동기로 HTTP 통신을 할 수 있어 return을 promise 객체로 해주기 때문에 response 데이터를 쉽게 다루기 위해 사용하였습니다.
   - Promise 기반의 API를 제공하여 비동기적인 방식으로 HTTP 요청을 처리하였습니다.
@@ -99,17 +100,18 @@
 
 - **Styled-components**을 택한 이유
     - 컴포넌트를 기반으로 스타일링 할 수 있어 재사용 할 수 있고, 코드 가독성과 유지보수성을 위해 사용했습니다.
-
+<br>
+<br>
 ## 4. 구현 기능 및 역할
 ### [구현 기능]
-- **🙂 Account**
+- **🔑Account**
 
   - 로그인/로그아웃
   - 로그인/ 회원가입/프로필 유효성 검사
   - 회원가입 진행
   - 프로필 정보 설정
 
-- **✍️ Post**
+- **📄 Post**
   - 게시글 등록/수정/삭제
   - 모달창
   - 이미지 1장 업로드
@@ -118,11 +120,11 @@
   - 게시글 상세페이지
   <!-- - 팔로잉 게시글 목록 -->
 
-- **✍️ Product**
+- **🛒 Product**
     - 상품 등록
     - 상품 삭제
 
-- **📢 Commemt**
+- **⌨️ Commemt**
 
   - 댓글 등록/수정/삭제
 
@@ -130,14 +132,14 @@
 
   - 유저 검색
 
-- **🌹 Profile**
+- **👨‍💼 Profile**
 
   - 개인 프로필/프로필 유효성 검사
   - 프로필 수정
   - 팔로우/언팔로우
   - 팔로우/팔로잉 리스트
 
-- **♥️ Like**
+- **❤️ Like**
 
   - 게시물 좋아요 및 취소
 
