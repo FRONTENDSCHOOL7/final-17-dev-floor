@@ -55,13 +55,7 @@ export default function PostAlbum() {
         return (
           <div key={idx}>
             {img.split(",").length > 1 ? (
-              img.split(",").map((el, idx) => {
-                return (
-                  <div key={idx}>
-                    <img src={el} alt='' />
-                  </div>
-                );
-              })
+              <img src={img.split(",")[0]} alt='' />
             ) : (
               <img src={img} alt='' />
             )}
