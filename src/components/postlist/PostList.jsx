@@ -156,8 +156,8 @@ export default function PostList() {
                     <div className='content-id'>
                       <img src={image} alt='' className='profile-img' />
                       <div>
-                        <h3>{item.author.accountname}</h3>
-                        <p>{item.author.username}</p>
+                        <h3>{item.author.username}</h3>
+                        <p>{item.author.accountname}</p>
                       </div>
                     </div>
                     <div>

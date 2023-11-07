@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import more from "../../assets/images/s-icon-more-vertical.png";
-import like from "../../assets/images/icon-heart.png";
 import message from "../../assets/images/icon-message-circle.png";
 import basicImg from "../../assets/images/Group 26.png";
 import { Body, Sect1 } from "./FeedStyle";
@@ -15,6 +14,7 @@ import { likeApi, postGet, unlikeApi } from "../../api/PostApi";
 import { useNavigate } from "react-router";
 import { introState, userNameState } from "../../state/ModifyAtom";
 import { ReactComponent as Like } from "../../assets/images/icon-heart.svg";
+import { postIdState } from "../../state/PostAtom";
 
 export default function Feed() {
   const [postData, setPostData] = useState([]);
@@ -25,15 +25,26 @@ export default function Feed() {
   const [id, setId] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [fillHeart, setFillHeart] = useState({});
+  const [postId, setPostId] = useRecoilState(postIdState);
   const token = useRecoilValue(tokenState);
 
   const navigate = useNavigate();
 
-  const handleLike = async (itemId) => {
+  const handlePostClick = (postId) => {
+    localStorage.setItem("postId", postId);
+    setPostId(localStorage.getItem("postId"));
+    console.log("게시글id", postId);
+    navigate("/post");
+  };
+
+  const handleLike = async (itemId, e) => {
+    e.stopPropagation();
     try {
       const res = fillHeart[itemId]
         ? await unlikeApi(itemId, token)
         : await likeApi(itemId, token);
+
+      console.log(res);
 
       setFillHeart((prev) => {
         const newFillHeart = { ...prev };
@@ -43,9 +54,7 @@ export default function Feed() {
       });
 
       const updatedPostData = postData.map((post) =>
-        post._id === itemId
-          ? { ...post, heartCount: res.post.heartCount }
-          : post
+        post.id === itemId ? { ...post, heartCount: res.post.heartCount } : post
       );
       setPostData(updatedPostData);
     } catch (error) {
@@ -108,7 +117,11 @@ export default function Feed() {
     <Body>
       <Sect1>
         {postData?.map((item) => (
-          <div className='content-container' key={item._id}>
+          <div
+            className='content-container'
+            key={item._id}
+            onClick={() => handlePostClick(item.id)}
+          >
             <div className='content-list'>
               <img
                 src={item.author.image ? item.author.image : basicImg}
@@ -126,8 +139,8 @@ export default function Feed() {
               <div className='content'>
                 <div className='content-title'>
                   <div className='content-id'>
-                    <h3>{item.author.username}</h3>
-                    <p>{item.author.accountname}</p>
+                    <h3>{item.author.accountname}</h3>
+                    <p>{item.author.username}</p>
                   </div>
                   <div>
                     <button>
@@ -151,14 +164,13 @@ export default function Feed() {
                     ))}
                 </div>
                 <div className='like-comment'>
-                  <button onClick={() => handleLike(item._id)}>
-                    <Like
-                      fill={fillHeart[item._id] ? "#7A8CCB" : "#fff"}
-                    ></Like>
+                  <button onClick={(e) => handleLike(item.id, e)}>
+                    <Like fill={fillHeart[item.id] ? "#7A8CCB" : "#fff"}></Like>
                     <span>{item.heartCount}</span>
                   </button>
                   <button>
-                    <img src={message} alt='' /> <span>12</span>
+                    <img src={message} alt='' className='comment' />{" "}
+                    <span>{item.commentCount}</span>
                   </button>
                 </div>
                 <span className='date'>{getDate(item.updatedAt)}</span>
