@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import more from "../../assets/images/s-icon-more-vertical.png";
-import like from "../../assets/images/icon-heart.png";
 import message from "../../assets/images/icon-message-circle.png";
 import basicImg from "../../assets/images/Group 26.png";
 import { Body, Sect1 } from "./FeedStyle";
@@ -140,8 +139,8 @@ export default function Feed() {
               <div className='content'>
                 <div className='content-title'>
                   <div className='content-id'>
-                    <h3>{item.author.username}</h3>
-                    <p>{item.author.accountname}</p>
+                    <h3>{item.author.accountname}</h3>
+                    <p>{item.author.username}</p>
                   </div>
                   <div>
                     <button>
@@ -171,7 +170,7 @@ export default function Feed() {
                   </button>
                   <button>
                     <img src={message} alt='' className='comment' />{" "}
-                    <span>12</span>
+                    <span>{item.commentCount}</span>
                   </button>
                 </div>
                 <span className='date'>{getDate(item.updatedAt)}</span>

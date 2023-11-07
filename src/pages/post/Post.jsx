@@ -10,18 +10,19 @@ import {
   commentDelApi,
   commentListApi,
   postCommentApi,
+  unlikeApi,
 } from "../../api/PostApi";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { useInView } from "react-intersection-observer";
 import ModalComDel from "../../components/modal/ModalComDel";
 import {
   tokenState,
-  profileImgState,
   myProfileImage,
   postMyAhtuorIdState,
 } from "../../state/AuthAtom";
 import { postDetail } from "../../api/PostApi";
 import { postIdState } from "../../state/PostAtom";
+import { ReactComponent as Like } from "../../assets/images/icon-heart.svg";
 
 export default function Post() {
   const [modalOpen, setIsOpenModal] = useState(false);
@@ -43,6 +44,7 @@ export default function Post() {
   const showModal = () => {
     setIsOpenModal(true);
   };
+
   const showComModal = (comment_id, author_id) => {
     setComModalOpen(true);
     setAhtuorId(author_id);
@@ -157,6 +159,7 @@ export default function Post() {
     console.log(postId);
     try {
       const result = await postDetail(postId, token);
+      console.log(result);
       setProfileImage(result.post.author.image);
       setDetail(result.post);
     } catch (error) {
@@ -178,8 +181,8 @@ export default function Post() {
             <div className='content'>
               <div className='content-title'>
                 <div className='content-id'>
-                  <h3>{detail.author?.accountname}</h3>
-                  <p>{detail.author?.username}</p>
+                  <h3>{detail.author?.username}</h3>
+                  <p>{detail.author?.accountname}</p>
                 </div>
                 <div>
                   <button className='modalDel' onClick={showModal}>
@@ -204,7 +207,7 @@ export default function Post() {
               </div>
               <div className='like-comment'>
                 <button>
-                  <img src={like} alt='' /> <span>58</span>
+                  <Like></Like> <span>{detail.heartCount}</span>
                 </button>
                 <button>
                   <img src={message} alt='' /> <span>{comCount}</span>
