@@ -9,6 +9,7 @@ import Modal from "../../components/modal/Modal";
 import {
   commentDelApi,
   commentListApi,
+  likeApi,
   postCommentApi,
   unlikeApi,
 } from "../../api/PostApi";
@@ -27,6 +28,7 @@ import { ReactComponent as Like } from "../../assets/images/icon-heart.svg";
 export default function Post() {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [profileImage, setProfileImage] = useState("");
+  const myprofileImg = localStorage.getItem("myProfileImg");
   const postId = useRecoilValue(postIdState);
   const [detail, setDetail] = useState([]);
   const [commentContent, setCommentContent] = useState(""); //댓글내용상태
@@ -40,8 +42,32 @@ export default function Post() {
   const [comCount, setComCount] = useState(0); //댓글수
   const [skip, setSkip] = useState(0);
   const [ref, inView] = useInView();
+  const [heart, setHeart] = useState(false);
+  const [hCount, setHcount] = useState(0);
   const showModal = () => {
     setIsOpenModal(true);
+  };
+
+  // 좋아요
+  const handleLike = async () => {
+    try {
+      const res = heart
+        ? await unlikeApi(detail.id, token)
+        : await likeApi(detail.id, token);
+
+      setHeart(!heart);
+      setHcount(heart ? hCount - 1 : hCount + 1);
+
+      if (localStorage.getItem("fillHeart")) {
+        const fillHeart = JSON.parse(localStorage.getItem("fillHeart"));
+        fillHeart[detail.id] = !heart;
+        localStorage.setItem("fillHeart", JSON.stringify(fillHeart));
+      }
+
+      console.log(res);
+    } catch (error) {
+      console.log("좋아요/좋아요 취소 에러");
+    }
   };
 
   const showComModal = (comment_id, author_id) => {
@@ -161,6 +187,8 @@ export default function Post() {
       console.log(result);
       setProfileImage(result.post.author.image);
       setDetail(result.post);
+      setHeart(result.post.hearted);
+      setHcount(result.post.heartCount);
     } catch (error) {
       console.error("게시글 불러오기 실패", error);
     }
@@ -207,8 +235,11 @@ export default function Post() {
                   ))}
               </div>
               <div className='like-comment'>
-                <button>
-                  <Like></Like> <span>{detail.heartCount}</span>
+                <button
+                  onClick={() => handleLike(detail.id, detail.heartCount)}
+                >
+                  <Like fill={heart ? "#7A8CCB" : "#fff"}></Like>
+                  <span>{hCount}</span>
                 </button>
                 <button>
                   <img src={message} alt='' /> <span>{comCount}</span>
@@ -263,7 +294,7 @@ export default function Post() {
       <Sect3>
         <div className='comment-container'>
           <div className='comment-list'>
-            <img src={profileImage} alt='' className='profile-img' />
+            <img src={myprofileImg} alt='' className='profile-img' />
             <div className='comment-title'>
               <input
                 value={commentContent}

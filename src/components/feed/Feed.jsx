@@ -139,8 +139,8 @@ export default function Feed() {
               <div className='content'>
                 <div className='content-title'>
                   <div className='content-id'>
-                    <h3>{item.author.accountname}</h3>
-                    <p>{item.author.username}</p>
+                    <h3>{item.author.username}</h3>
+                    <p>{item.author.accountname}</p>
                   </div>
                   <div>
                     <button>
