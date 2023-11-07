@@ -14,6 +14,7 @@ export const Body = styled.div`
 `;
 
 export const TopBarChat = styled.div`
+  background: #12184e;
   max-width: 720px;
   width: 100%;
   height: 48px;
@@ -27,12 +28,12 @@ export const TopBarChat = styled.div`
     width: 22px;
     height: 22px;
     margin: 13px 16px;
-    background: #fff;
     border-style: none;
   }
 
   h2 {
     transform: translateY(-15%);
+    color: #fff;
     font-size: 15px;
     font-weight: bold;
     text-align: left;
@@ -159,38 +160,38 @@ export const ChatBar = styled.div`
       // input 요소에 가능한 많은 공간을 부여
       // '전송' 버튼은 오른쪽에 고정된 공간을 유지
       input {
-      flex-grow: 1;
-      display: block;
+        flex-grow: 1;
+        display: block;
       }
 
       .btnDisabled {
-      display: block;
-      width: 40px;
-      font-size: 14px;
-      color: #c4c4c4;
+        display: block;
+        width: 40px;
+        font-size: 14px;
+        color: #c4c4c4;
       }
 
       .btnActive {
-      display: block;
-      width: 40px;
-      font-size: 14px;
-      color: #F26E22;
-        }
-      }
-
-      input {
-        color: #C4C4C4; // 기본 상태에서의 폰트 색상
         display: block;
-
-        // 사용자가 입력을 시작하면 폰트 색상 변경
-        &:focus {
-        color: #000000;
-        }
-      }
-
-      input::placeholder {
-        font-family: "GongGothicMedium";
-        color: #dbdbdb;
+        width: 40px;
+        font-size: 14px;
+        color: #f26e22;
       }
     }
+
+    input {
+      color: #c4c4c4; // 기본 상태에서의 폰트 색상
+      display: block;
+
+      // 사용자가 입력을 시작하면 폰트 색상 변경
+      &:focus {
+        color: #000000;
+      }
+    }
+
+    input::placeholder {
+      font-family: "GongGothicMedium";
+      color: #dbdbdb;
+    }
+  }
 `;

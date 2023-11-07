@@ -83,6 +83,7 @@ export default function Feed() {
     try {
       const result = await postGet(token, skip);
       setPostData((prevPostData) => [...prevPostData, ...result.posts]);
+      console.log(result);
       setSkip((prevSkip) => prevSkip + 10);
     } catch (error) {
       console.log("실패했습니다");

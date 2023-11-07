@@ -51,7 +51,7 @@ export default function MyProfile() {
       localStorage.setItem("myProfileImg", res.user.image);
       setUserName(res.user.username);
       setIntro(res.user.intro);
-      setId(res.user.accountname);
+      // setId(res.user.accountname);
       setFollower(res.user.followerCount);
       setFollowing(res.user.followingCount);
       console.log(res);
