@@ -29,6 +29,7 @@ export default function ProfileModification() {
   const setProfileImg = useRecoilState(profileImgState);
   const profileImage = useRecoilValue(profileImgState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
+
   const fileRef = useRef(null);
   const token = useRecoilValue(tokenState);
 
@@ -61,14 +62,10 @@ export default function ProfileModification() {
       setIdValid(false);
     }
   };
-  // 사용자 id 함수
-
   // 사용자 소개 함수
   const handleIntroChange = (e) => {
     setIntro(e.target.value);
   };
-
-  // 사용자 소개 함수
 
   // 프로필 수정
 
@@ -84,31 +81,12 @@ export default function ProfileModification() {
       const res = await editApi(userName, id, intro, apiImage, token);
       localStorage.setItem("account", res.user.accountname);
       localStorage.setItem("myProfileImg", res.user.image);
-      console.log(image);
+      setProfileImg(localStorage.getItem("myProfileImg"));
       navigate("/myprofile");
     } catch (error) {
       console.log("에러입니다.");
     }
   };
-
-  // const handleEdit = async (e) => {
-  //   e.preventDefault();
-  //   const isAccountValid = await validateAccount(id);
-  //   if (!isAccountValid) {
-  //     alert("계정 유효성 검사에 오류가 발생했습니다.");
-  //     return;
-  //   }
-  //   try {
-  //     console.log("apiImg", apiImage);
-  //     const res = await editApi(userName, id, intro, apiImage, token);
-  //     localStorage.setItem("account", res.user.accountname);
-  //     localStorage.setItem("myProfileImg", res.user.image);
-  //     setProfileImg(localStorage.getItem("myProfileImg"));
-  //     navigate("/myprofile");
-  //   } catch (error) {
-  //     console.log("에러입니다.");
-  //   }
-  // };
 
   // 이미지 업로드
 
@@ -124,6 +102,8 @@ export default function ProfileModification() {
       console.log(error);
     }
   };
+  console.log("이미지api확인", apiImage);
+
   const onClickImage = (e) => {
     fileRef.current?.click(e.target.files?.[0]);
   };
@@ -144,7 +124,6 @@ export default function ProfileModification() {
         />
 
         <button className='upload-img' onClick={onClickImage}>
-          {/* <img src={profileImg} alt='' /> */}
           {image ? (
             <img src={URL.createObjectURL(image)}></img>
           ) : (

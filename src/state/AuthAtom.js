@@ -95,9 +95,10 @@ export const routeState = atom({
 });
 export const profileImgState = atom({
   key: "profileImgState",
-  default: profileImg,
+  default: localStorage.getItem("myProfileImg"),
   effects_UNSTABLE: [persistAtom],
 });
+
 export const postMyAhtuorIdState = atom({
   key: "postMyAhtuorIdState",
   default: localStorage.getItem("myAhthorId"),
