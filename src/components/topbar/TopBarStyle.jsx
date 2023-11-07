@@ -11,15 +11,16 @@ export const Top = styled.div`
 
   button {
     margin: 9px 16px;
-    border-style: none;
   }
   .modalBtn {
     margin-left: auto;
   }
   .btn-save {
+    border: 1px solid #fff;
+
     color: #fff;
     background: #12184e;
-    padding: 7px 32px;
+    padding: 5px 30px;
     border-radius: 32px;
 
     &.disabled {
@@ -28,35 +29,40 @@ export const Top = styled.div`
     }
   }
   .btn-save2 {
+    border: 1px solid #fff;
+
     color: #fff;
     background: #6f76b6;
-    padding: 7px 32px;
+    padding: 5px 30px;
     border-radius: 32px;
     cursor: not-allowed;
   }
 
   .active {
+    border: 1px solid #fff;
+
     color: #fff;
     background: #12184e;
-    padding: 7px 32px;
-    border-radius: 32px;
+    padding: 5px 30px;
+    border-radius: 33px;
   }
 `;
 
 export const TopFollowers = styled.div`
   max-width: 720px;
   width: 100%;
-  background: #fff;
+  background: #12184e;
   height: 48px;
   display: flex;
   align-items: center;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);
-  padding: 0 20px;
   button {
-    margin-right: 30px;
+    margin-left: 16px;
+    margin-right: 15px;
   }
   p {
+    color: #fff;
     font-size: 18px;
-    transform: translateY(-10%);
+    transform: translateY(-5%);
   }
 `;

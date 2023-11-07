@@ -39,8 +39,6 @@ export default function PostList() {
         ? await unlikeApi(itemId, token)
         : await likeApi(itemId, token);
 
-      console.log(res); // API 응답 출력
-
       setFillHeart((prev) => {
         const newFillHeart = { ...prev };
         newFillHeart[itemId] = res.post.hearted;
@@ -48,17 +46,10 @@ export default function PostList() {
         return newFillHeart;
       });
 
-      setPostData((prev) =>
-        prev.map((post) =>
-          post.id === itemId
-            ? {
-                ...post,
-                heartCount: res.post.heartCount,
-                hearted: res.post.hearted,
-              }
-            : post
-        )
+      const updatedPostData = postData.map((post) =>
+        post.id === itemId ? { ...post, heartCount: res.post.heartCount } : post
       );
+      setPostData(updatedPostData);
     } catch (error) {
       console.log("좋아요/좋아요 취소 에러");
     }

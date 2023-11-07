@@ -59,10 +59,8 @@ export const ProImg = styled.div`
   }
   .profileImg {
     border-radius: 100px;
-    max-width: 110px;
-    max-height: 110px;
-    width: 100%;
-    height: 100%;
+    width: 110px;
+    height: 110px;
   }
 `;
 export const Intro = styled.div`

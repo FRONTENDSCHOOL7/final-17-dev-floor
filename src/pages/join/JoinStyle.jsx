@@ -82,13 +82,14 @@ export const Body = styled.div`
 export const Inner = styled.div`
   max-width: 720px;
   width: 100%;
-  margin: 30px auto 0;
   padding: 0 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 `;
 export const Main = styled.div`
+  height: 100vh;
+  background-color: #fff;
   div p.error {
     padding-top: 6px;
     color: var(--errorFontColor);
@@ -172,6 +173,7 @@ export const Main = styled.div`
 export const Profile = styled.div`
   text-align: center;
   h2 {
+    margin-top: 30px;
     font-size: 1.5rem;
     font-weight: bold;
   }
