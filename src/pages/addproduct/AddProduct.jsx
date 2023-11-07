@@ -11,7 +11,12 @@ import {
   productIdState,
 } from "../../state/ProductAtom";
 import { apiImageState } from "../../state/ModifyAtom";
-import { imageApi, productApi, productDetailApi, productEditApi } from "../../api/ProductApi";
+import {
+  imageApi,
+  productApi,
+  productDetailApi,
+  productEditApi,
+} from "../../api/ProductApi";
 import { useNavigate } from "react-router-dom";
 import { tokenState } from "../../state/AuthAtom";
 
@@ -21,14 +26,13 @@ export default function AddProduct() {
   const [productPrice, setProductPrice] = useRecoilState(productPriceState);
   const [productLink, setProductLink] = useRecoilState(productLinkState);
   const [apiImage, setApiImage] = useRecoilState(apiImageState);
-  const [previewImage, setPreviewImage] = useState(null);
-  const productId = useRecoilValue(productIdState)
+  const productId = useRecoilValue(productIdState);
   const [isSaveEnabled, setIsSaveEnabled] = useState(false);
-  const [isEdit, setIsEdit] = useState([])
+  const [isEdit, setIsEdit] = useState([]);
   const fileRef = useRef(null);
   const token = useRecoilValue(tokenState);
   const navigate = useNavigate();
-  console.log(productId)
+  console.log(productId);
 
   useEffect(() => {
     // 입력 값이 모두 채워져 있는지 확인
@@ -37,8 +41,8 @@ export default function AddProduct() {
     } else {
       setIsSaveEnabled(false);
     }
-    if(productId) {
-      productFetch()
+    if (productId) {
+      productFetch();
     }
   }, [productImage, productName, productPrice, productLink]);
 
@@ -58,14 +62,14 @@ export default function AddProduct() {
       console.log(error);
     }
   };
-  console.log('productImg',productImage)
+  console.log("productImg", productImage);
 
   const handleName = (e) => {
     setProductName(e.target.value);
   };
 
   const handlePrice = (e) => {
-    const value = e.target.value.replace('원', '');
+    const value = e.target.value.replace("원", "");
     // 입력된 값이 숫자인 경우에만 상태 업데이트
     if (!isNaN(value)) {
       setProductPrice(value);
@@ -98,7 +102,7 @@ export default function AddProduct() {
       return;
     }
 
-    const priceAsNumber = Number(productPrice.replace('원', ''));
+    const priceAsNumber = Number(productPrice.replace("원", ""));
 
     try {
       // API 요청
@@ -121,34 +125,37 @@ export default function AddProduct() {
       // API 요청 실패 시
       console.log("상품 등록 실패:", error);
     }
-    setProductImage("");
-    setProductName("");
-    setProductPrice("");
-    setProductLink("");
   };
 
   // 상품 수정
   const handleEdit = async () => {
     try {
-      const res = await productEditApi(productId, productName,
+      const res = await productEditApi(
+        productId,
+        productName,
         productLink,
         apiImage,
         productPrice,
-        token)      
-      navigate(-1)
+        token
+      );
     } catch (error) {
-      console.error('상품수정실패',error)
+      console.error("상품수정실패", error);
     }
-  }
+    navigate("/myprofile");
+  };
   // 상품 상세
   const productFetch = async () => {
-    const res = await productDetailApi(productId,token)
-    setIsEdit(res.product)
-  }
+    const res = await productDetailApi(productId, token);
+    setIsEdit(res.product);
+  };
 
   return (
     <Body>
-      <TopBarSave isEdit={isEdit} onSave={JSON.stringify(isEdit) !== "[]" ? handleEdit : handleSave} disabled={!isSaveEnabled} />
+      <TopBarSave
+        isEdit={isEdit}
+        onSave={JSON.stringify(isEdit) !== "[]" ? handleEdit : handleSave}
+        disabled={!isSaveEnabled}
+      />
       <Main>
         <div className='img-container'>
           <p>이미지로 등록</p>
@@ -160,8 +167,17 @@ export default function AddProduct() {
               ref={fileRef}
             />
             <div>
-              { productImage.length === 0 && isEdit?.itemImage ? (<img className='previewimage' src={isEdit.itemImage}/>) : (productImage instanceof File && <img className='previewimage' src={URL.createObjectURL(productImage)} alt='preview' />)
-              }
+              {productImage.length === 0 && isEdit?.itemImage ? (
+                <img className='previewimage' src={isEdit.itemImage} />
+              ) : (
+                productImage instanceof File && (
+                  <img
+                    className='previewimage'
+                    src={URL.createObjectURL(productImage)}
+                    alt='preview'
+                  />
+                )
+              )}
             </div>
             <div className='buttonbox'>
               <button className='send' onClick={onClickImage}>
@@ -186,7 +202,6 @@ export default function AddProduct() {
             <label>가격</label>
             <input
               type='text'
-              value={productPrice + (productPrice ? '원' : '')}
               defaultValue={isEdit.price}
               onChange={handlePrice}
               placeholder='숫자만 입력 가능합니다.'

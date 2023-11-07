@@ -34,7 +34,6 @@ export default function Post() {
   const [ahtuorId, setAhtuorId] = useState(null); //댓글작성자id
   const [commentId, setCommentId] = useState(null); //댓글id
   const [comModalOpen, setComModalOpen] = useState(false); //댓글 모달
-  const loginUserImage = useRecoilValue(myProfileImage); // 로그인한 유저 프로필이미지
   const myAuthorId = useRecoilValue(postMyAhtuorIdState);
   const token = useRecoilValue(tokenState);
   const [isPostId, setIsPostId] = useState(null);
@@ -190,7 +189,9 @@ export default function Post() {
                   </button>
                 </div>
               </div>
-              <div className='content-inner'>
+              <div
+                className={detail.image ? "content-inner" : "content-inner2"}
+              >
                 <p>{detail?.content}</p>
                 {detail.image &&
                   (detail.image.split(",").length > 1 ? (
@@ -262,7 +263,7 @@ export default function Post() {
       <Sect3>
         <div className='comment-container'>
           <div className='comment-list'>
-            <img src={loginUserImage} alt='' className='profile-img' />
+            <img src={profileImage} alt='' className='profile-img' />
             <div className='comment-title'>
               <input
                 value={commentContent}

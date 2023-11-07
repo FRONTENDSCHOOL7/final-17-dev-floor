@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Sect1 } from "./ModalStlye";
 import bar from "../../assets/images/bar.png";
-import { Link } from "react-router-dom";
 
 export default function ModalProduct({
   isOpenModal,
@@ -9,7 +8,7 @@ export default function ModalProduct({
   children,
   handleDelete,
   productLink,
-  handleEdit
+  handleEdit,
 }) {
   const wrapperRef = useRef();
   useEffect(() => {
@@ -32,9 +31,8 @@ export default function ModalProduct({
   };
 
   const viewOnWebsite = () => {
-    window.open(productLink); // 웹사이트에서 상품 보기 버튼을 클릭하면 productLink로 이동합니다.
+    window.open(`https://${productLink}`); // 웹사이트에서 상품 보기 버튼을 클릭하면 productLink로 이동합니다.
   };
-  
 
   return (
     <div ref={wrapperRef} value={isOpenModal}>
