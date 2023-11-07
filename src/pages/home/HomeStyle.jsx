@@ -10,6 +10,7 @@ export const HomeWrap = styled.div`
   align-items: center;
 `;
 export const HomeFeed = styled.div`
+  background-color: #fff;
   max-width: 720px;
   background: var(--whiteColor);
   height: 100%;

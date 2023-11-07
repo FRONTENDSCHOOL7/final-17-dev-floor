@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-  /* border: 3px dashed gray; */
   background: var(--Gray-6, #f2f2f2);
   height: 100vh;
   max-width: 720px;
@@ -54,10 +53,8 @@ export const ProImg = styled.div`
   }
   .profileImg {
     border-radius: 100px;
-    max-width: 110px;
-    max-height: 110px;
-    width: 100%;
-    height: 100%;
+    width: 110px;
+    height: 110px;
   }
 `;
 export const Intro = styled.div`

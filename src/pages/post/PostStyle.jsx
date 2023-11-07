@@ -146,11 +146,11 @@ export const Sect2 = styled.div`
   }
 `;
 export const Sect3 = styled.div`
-    position: fixed;
-    background: var(--whiteColor);
-    bottom: 0;
-    width: 720px;
-    height: 61px;
+  position: fixed;
+  background: var(--whiteColor);
+  bottom: 0;
+  width: 720px;
+  height: 61px;
   .comment-container {
     padding: 12px 16px;
     display: flex;
@@ -164,6 +164,7 @@ export const Sect3 = styled.div`
     .profile-img {
       width: 36px;
       height: 36px;
+      border-radius: 30px;
     }
     .comment-title {
       width: 100%;

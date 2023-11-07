@@ -17,6 +17,7 @@ export default function TopBarModify({ nameValid, idValid, onEdit }) {
       <button
         className={nameValid && idValid ? "active" : "btn-save2"}
         onClick={onEdit}
+        disabled={nameValid && idValid ? false : true}
       >
         저장
       </button>

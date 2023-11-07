@@ -16,7 +16,9 @@ export const Top = styled.div`
     border-style: none;
   }
 
-  .modalBtn {margin-left: auto;}
+  .modalBtn {
+    margin-left: auto;
+  }
 
   .btn-save {
     border: 1px solid var(--whiteColor);
@@ -33,6 +35,7 @@ export const Top = styled.div`
   }
   .btn-save2 {
     color: #fff;
+    background: #6f76b6;
     width: 90px;
     height: 32px;
     border-radius: 32px;
