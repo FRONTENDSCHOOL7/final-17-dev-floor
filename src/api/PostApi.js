@@ -71,10 +71,10 @@ export const imageApi = async (files) => {
   }
 };
 
-// 모든 게시글 목록
+// 팔로잉 게시글 목록
 export const postGet = async (token, skip) => {
   try {
-    const res = await axios.get(url + `/?limit=10&skip=${skip}`, {
+    const res = await axios.get(url + `/feed/?limit=10&skip=${skip}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "application/json",
