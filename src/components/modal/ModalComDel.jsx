@@ -37,8 +37,8 @@ export default function ModalComDel({
                 <img src={bar} alt='' />
                 </button>
             </div>
-            <div className='letter' onClick={commentDel}>
-                <button>삭제</button>
+            <div className='letter'>
+                <button onClick={commentDel}>삭제</button>
             </div>
             </div>
         </Sect1>
