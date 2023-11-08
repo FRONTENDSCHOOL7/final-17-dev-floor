@@ -39,10 +39,10 @@ PW: 123123123
 <table style="margin:0 auto;">
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/geunpyochoi"><img src="src/assets/images/geunpyo.jpeg" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀장 : 최근표</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/kyokyoYa"><img src="src/assets/images/hyunwoo.jpeg" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀원 : 최현우</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/leeheezin"><img src="src/assets/images/heejin.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀원 : 이희진</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀원 : 이예람</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/geunpyochoi"><img src="src/assets/images/geunpyo.jpeg" width="150px;" height="150px;" alt=""/><br /><sub><b>FE 팀장 : 최근표</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/kyokyoYa"><img src="src/assets/images/hyunwoo.jpeg"  width="150px;" height="150px;" alt=""/><br /><sub><b>FE 팀원 : 최현우</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/leeheezin"><img src="src/assets/images/heejin.jpg"  width="150px;" height="150px;" alt=""/><br /><sub><b>FE 팀원 : 이희진</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="150px;" height="150px;" alt=""/><br /><sub><b>FE 팀원 : 이예람</b></sub></a><br /></td>
     </tr>
   </tbody>
 </table>
