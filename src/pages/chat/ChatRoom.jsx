@@ -21,7 +21,7 @@ export default function ChatRoom() {
   const [modalOpen, setIsOpenModal] = useState(false);
   const [comment, setcomment] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [fontColor, setFontColor] = useState('#c4c4c4'); // 폰트 색상 상태 추가
+  const [fontColor, setFontColor] = useState("#c4c4c4"); // 폰트 색상 상태 추가
 
   const showModal = () => {
     setIsOpenModal(true);
@@ -29,7 +29,7 @@ export default function ChatRoom() {
 
   const handleComment = (e) => {
     setcomment(e.target.value ? e.target.value : null);
-    setFontColor(e.target.value ? '#000000' : '#c4c4c4'); // 폰트 색상 상태 업데이트
+    setFontColor(e.target.value ? "#000000" : "#c4c4c4"); // 폰트 색상 상태 업데이트
   };
 
   const fileRef = useRef(null);
@@ -42,7 +42,7 @@ export default function ChatRoom() {
             <img src={back} alt='' />
           </button>
         </Link>
-        <h2>애월읍 위니브 감귤농장</h2>
+        <h2>백엔드 개발자</h2>
         <button onClick={showModal}>
           <img src={more} alt='' />
         </button>
@@ -51,25 +51,26 @@ export default function ChatRoom() {
         <ChatWrap>
           <img src={profileImg} alt='' />
           <div className='chatbox'>
-            웃을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다.
-            이상의 청춘의 뼈 따뜻한 그들의 그오 약동하다. 대고, 못할 넣는
-            풍부하게 뛰노는 인생의 힘있다.
+            사이드 프로젝트 백엔드 개발자 구하셨나요?? 아직 못 구하셨다면 백엔드
+            개발자로 참여 희망합니다
           </div>
           <p className='time'>12:39</p>
         </ChatWrap>
         <ChatWrap>
           <img src={profileImg} alt='' />
-          <div className='chatbox'>안녕하세요. 감귤 사고싶어요요요요요</div>
+          <div className='chatbox'>
+            자바,스프링 사용으로 개발하는데, 도움이 될 것 같습니다!
+          </div>
           <p className='time'>12:41</p>
         </ChatWrap>
         <MyChatWrap>
           <p className='time'>12:50</p>
-          <div className='chatboxMe'>네 말씀하세요.</div>
+          <div className='chatboxMe'>좋아요! 같이 해요!</div>
         </MyChatWrap>
-        <MyChatWrap>
+        {/* <MyChatWrap>
           <p className='time'>12:51</p>
           <img src='https://via.placeholder.com/240x240' alt='' />
-        </MyChatWrap>
+        </MyChatWrap> */}
       </Sect1>
       <ChatBar>
         <div className='chat-container'>

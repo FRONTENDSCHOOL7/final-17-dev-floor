@@ -9,11 +9,11 @@ import { Body, TopBar, Chat1, Chat2, Chat3, Sect1 } from "./ChatStyle";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Chat() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(-1)
-  }
+    navigate(-1);
+  };
   return (
     <Body>
       <TopBar>
@@ -29,10 +29,12 @@ export default function Chat() {
           <img src={profileImg} alt='프로필 이미지' />
           <Link to='/chatroom'>
             <div>
-              <h3>애월읍 위니브 감귤농장</h3>
+              <h3>백엔드 개발자</h3>
               <div className='text'>
-                <p className='contents'>이번에 정정 언제하맨마씸?</p>
-                <p className='date'>2020.10.25</p>
+                <p className='contents'>
+                  사이드 프로젝트 백엔드 개발자 구하셨나요??
+                </p>
+                <p className='date'>2023.10.25</p>
               </div>
             </div>
           </Link>
@@ -40,24 +42,20 @@ export default function Chat() {
         <Chat2>
           <img src={profileImg} alt='프로필 이미지' />
           <div>
-            <h3>제주감귤마을</h3>
+            <h3>대기업 가고싶다</h3>
             <div className='text'>
-              <p className='contents'>
-                깊은 어둠의 존재감, 롤스로이스 뉴 블랙 배지...
-              </p>
-              <p className='date'>2020.10.25</p>
+              <p className='contents'>면접 스터디 함께 해요!</p>
+              <p className='date'>2023.10.25</p>
             </div>
           </div>
         </Chat2>
         <Chat3>
           <img src={profileImg} alt='프로필 이미지' />
           <div>
-            <h3>누구네 농장 친환경 한라봉</h3>
+            <h3>개발바닥</h3>
             <div className='text'>
-              <p className='contents'>
-                내 차는 내가 평가한다. 오픈 이벤트에 참여 하...
-              </p>
-              <p className='date'>2020.10.25</p>
+              <p className='contents'>공지 ...</p>
+              <p className='date'>2023.10.25</p>
             </div>
           </div>
         </Chat3>

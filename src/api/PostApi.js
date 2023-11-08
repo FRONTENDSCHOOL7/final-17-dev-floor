@@ -51,7 +51,7 @@ export const postCorrection = async (postId, content, image, token) => {
 // 이미지
 export const imageApi = async (files) => {
   const formData = new FormData();
-  if (files.length >= 1) {
+  if (files.length > 1) {
     for (let i = 0; i < files.length; i++) {
       console.log("콘솔창확인", files[i]);
       formData.append("image", files[i]);
