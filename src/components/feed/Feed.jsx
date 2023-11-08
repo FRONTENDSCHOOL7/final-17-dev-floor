@@ -78,8 +78,10 @@ export default function Feed() {
     itemAccountname,
     itemUsername,
     itemIntro,
-    itemImage
+    itemImage,
+    e
   ) => {
+    e.stopPropagation();
     navigate("/profile");
     console.log("프로필 이동");
     setId(itemAccountname);
@@ -127,12 +129,13 @@ export default function Feed() {
                 src={item.author.image ? item.author.image : basicImg}
                 alt=''
                 className='profile-img'
-                onClick={() =>
+                onClick={(e) =>
                   handleProfileClick(
                     item.author.accountname,
                     item.author.username,
                     item.author.intro,
-                    item.author.image
+                    item.author.image,
+                    e
                   )
                 }
               />

@@ -125,6 +125,11 @@ export default function AddProduct() {
         productPrice,
         token
       );
+      setProductImage(res.product.itemImage);
+      setProductName(res.product.itemName);
+      setProductPrice(res.product.price);
+      setProductLink(res.product.link);
+      console.log(res.data);
     } catch (error) {
       console.error("상품수정실패", error);
     }
