@@ -281,114 +281,114 @@ PW: 123123123
 ```
 
 ## 5. 기능 UI
-<div style="width: 100%; display: flex; gap: 10px;">
-  <div  style="width: 33%;">
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+  <div>
     <h4 style="text-align: center;">시작 화면</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/0b18da92-ce48-431a-b4d8-ca77936933b4">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/0b18da92-ce48-431a-b4d8-ca77936933b4" style="height: 100%;">
   </div>
 
-  <div style="width: 33%;">
+  <div>
     <h4 style="text-align: center;">회원 가입</h4>
-  <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/b5246db6-eeb6-4a70-8c0a-47fb97f40511">
+  <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/b5246db6-eeb6-4a70-8c0a-47fb97f40511" style="height: 100%;">
   </div>
 
-  <div style="width: 33%;">
+  <div>
     <h4 style="text-align: center;">프로필 설정</h4>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/28581469/281288881-0ef06d27-85e2-4ef2-96d1-e308e7e9d4c9.gif">
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/28581469/281288881-0ef06d27-85e2-4ef2-96d1-e308e7e9d4c9.gif" style="height: 100%;">
   </div>
 </div>
 
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div style="width: 33%;">
+<div  style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+  <div>
     <h4 style="text-align: center;">로그인</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2a6d297b-4767-4050-b6fe-7458a12b20f6">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2a6d297b-4767-4050-b6fe-7458a12b20f6" style="height: 100%;">
   </div>
-<div style="width: 33%;">
+<div>
   <h4 style="text-align: center;">검색하기</h4>
-  <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/407ceda8-f6fc-49c3-a18f-ed8944db5ce7">
+  <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/407ceda8-f6fc-49c3-a18f-ed8944db5ce7" style="height: 100%;">
 </div>
-<div style="width: 33%;">
+<div>
    <h4 style="text-align: center;">마이 프로필</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/41da3723-c6c4-444e-984c-3d050355de7e">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/41da3723-c6c4-444e-984c-3d050355de7e" style="height: 100%;">
 </div>
   </div>
 
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div style="width: 33%;">
+<div  style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+  <div>
       <h4 style="text-align: center;">팔로우 & 언팔로우</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2b2b8f17-724e-4038-8100-9653ccd49ec5">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2b2b8f17-724e-4038-8100-9653ccd49ec5" style="height: 100%;">
   </div>
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;">채팅리스트 & 채팅방</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20ac2702-7e10-4c24-bb53-25c387292c1a">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20ac2702-7e10-4c24-bb53-25c387292c1a" style="height: 100%;">
   </div>  
 
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;">홈 피드</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/7ce30f2f-c13e-457f-bd5c-c659e1449c12">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/7ce30f2f-c13e-457f-bd5c-c659e1449c12" style="height: 100%;">
   </div>  
 </div>
 
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div style="width: 33%;">
+<div  style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+  <div>
       <h4 style="text-align: center;">좋아요</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/c89369b4-5936-4ecd-a056-053730a348e1">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/c89369b4-5936-4ecd-a056-053730a348e1" style="height: 100%;">
   </div>
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;">게시글 상세</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2740f709-0416-460c-b2da-8a6e12db629c">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2740f709-0416-460c-b2da-8a6e12db629c" style="height: 100%;">
   </div>  
 
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;">댓글 작성</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/5e26f3cf-0fe1-4c64-b965-a40cfee12ebe">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/5e26f3cf-0fe1-4c64-b965-a40cfee12ebe" style="height: 100%;">
   </div>  
 </div>
 
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div style="width: 33%;">
+<div  style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+  <div>
       <h4 style="text-align: center;">댓글 삭제</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/d4acc08c-6acb-4ad5-bb3d-896010c5801d">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/d4acc08c-6acb-4ad5-bb3d-896010c5801d" style="height: 100%;">
   </div>
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;">프로필 수정</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/f29af844-0e89-40a7-8bac-8bed82b6a050">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/f29af844-0e89-40a7-8bac-8bed82b6a050" style="height: 100%;">
   </div>  
 
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;">게시글 등록/삭제/수정/상세</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/9a84b639-43ba-4359-8f01-d3a3bf374ee7">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/9a84b639-43ba-4359-8f01-d3a3bf374ee7" style="height: 100%;">
   </div>  
 </div>
 
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div style="width: 33%;">
+<div  style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+  <div>
       <h4 style="text-align: center;">게시글 리스트/ 앨범형</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4edac850-fc0b-4928-9da4-65011c98776e">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4edac850-fc0b-4928-9da4-65011c98776e" style="height: 100%;">
   </div>
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;">상품 등록/수정/링크이동/삭제</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20dd632c-0e60-4fc0-ba62-fc83c7ac1d99">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20dd632c-0e60-4fc0-ba62-fc83c7ac1d99" style="height: 100%;">
   </div>  
 
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;">로그아웃</h4>
     <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4baa3216-b42d-4e9e-9993-50132782e2cd
-">
+" style="height: 100%;">
   </div>  
 </div>
 
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div style="width: 33%;">
+<div  style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+  <div>
       <h4 style="text-align: center;">404</h4>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/36c5ba5c-c3ef-4677-a0c0-78f63414067f">
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/36c5ba5c-c3ef-4677-a0c0-78f63414067f" style="height: 100%;">
   </div>
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;"></h4>
     <img src=" ">
   </div>  
 
-  <div style="width: 33%;">
+  <div>
       <h4 style="text-align: center;"></h4>
     <img src="
 ">
