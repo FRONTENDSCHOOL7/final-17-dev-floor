@@ -186,6 +186,7 @@ export default function PostList() {
                   <div className='like-comment'>
                     <button onClick={(e) => handleLike(item.id, e)}>
                       <Like
+                        className='like-transition'
                         fill={fillHeart[item.id] ? "#7A8CCB" : "#fff"}
                       ></Like>
                       <span>{item.heartCount}</span>

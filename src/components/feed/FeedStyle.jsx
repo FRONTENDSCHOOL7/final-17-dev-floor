@@ -77,6 +77,9 @@ export const Sect1 = styled.div`
     .like-comment {
       display: flex;
       margin-top: 10px;
+      .like-transition {
+        transition: fill 0.3s ease;
+      }
       button {
         display: flex;
         margin-right: 10px;
