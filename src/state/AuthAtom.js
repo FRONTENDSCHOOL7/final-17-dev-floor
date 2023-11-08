@@ -98,7 +98,11 @@ export const profileImgState = atom({
   default: localStorage.getItem("myProfileImg"),
   effects_UNSTABLE: [persistAtom],
 });
-
+export const profileJoinImgState = atom({
+  key: "profileJoinImgState",
+  default: profileImg,
+  effects_UNSTABLE: [persistAtom],
+});
 export const postMyAhtuorIdState = atom({
   key: "postMyAhtuorIdState",
   default: localStorage.getItem("myAhthorId"),

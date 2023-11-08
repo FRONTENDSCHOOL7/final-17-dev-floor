@@ -1,10 +1,11 @@
 import { useRecoilState } from "recoil";
 import { profileImgApi, validateAccount } from "../../api/AuthApi";
-import { idValidErrorState, joinBtnDisableState, profileImgState } from "../../state/AuthAtom";
-import { useRef } from "react";
+import { idValidErrorState, joinBtnDisableState, profileImgState, profileJoinImgState } from "../../state/AuthAtom";
+import { useRef, useState } from "react";
 import { Body, Inner, Main, Profile } from './JoinStyle'
 import { nameValidState } from "../../state/ModifyAtom";
 import upload from "../../assets/images/upload-file.png";
+import profileImg from "../../assets/images/Group 26.png";
 
 export function ProfileJoin({ preData, setPreData, submitJoin }) {
     const [nameValid, setNameValid] = useRecoilState(nameValidState)
@@ -12,7 +13,8 @@ export function ProfileJoin({ preData, setPreData, submitJoin }) {
     const [joinBtnDisable, setjoinBtnDisable] = useRecoilState(joinBtnDisableState)
     const imgRef = useRef(null);
     const [image, setImage] = useRecoilState(profileImgState)
-
+    const [joinImage, setJoinImage] = useRecoilState(profileJoinImgState)
+    
     const newUsername = (e) => {
         setPreData({ ...preData, username: e.target.value });
     }
@@ -59,7 +61,7 @@ export function ProfileJoin({ preData, setPreData, submitJoin }) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
-            setImage(reader.result);
+            setJoinImage(reader.result);
         };
         try {
             const result = await profileImgApi(file);
@@ -93,7 +95,7 @@ return (
                 accept="image/*"
                 />
                 <div className="profileImg">
-                    {image ? <img src={image}/> : <img src={setImage}/>}
+                    {joinImage ? <img src={joinImage}/> : <img src={setJoinImage}/>}
                 </div>
             </form>
             <div className='write-bottom'>
