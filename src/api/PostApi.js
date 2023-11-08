@@ -50,14 +50,19 @@ export const postCorrection = async (postId, content, image, token) => {
 
 // 이미지
 export const imageApi = async (files) => {
+  console.log("files", files);
   const formData = new FormData();
-  if (files.length >= 1) {
+  if (files.length > 1) {
     for (let i = 0; i < files.length; i++) {
-      console.log("콘솔창확인", files[i]);
       formData.append("image", files[i]);
     }
   } else {
     formData.append("image", files);
+  }
+
+  let values = formData.values();
+  for (const pair of values) {
+    console.log("폼데이터", pair);
   }
   try {
     const res = await axios.post(url2, formData, {
@@ -65,6 +70,7 @@ export const imageApi = async (files) => {
         "Content-type": "multipart/form-data",
       },
     });
+    console.log("결과값", res.data);
     return res.data;
   } catch (error) {
     alert("업로드 실패");

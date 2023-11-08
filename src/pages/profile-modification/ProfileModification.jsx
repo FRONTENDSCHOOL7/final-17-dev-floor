@@ -16,7 +16,7 @@ import { tokenState } from "../../state/AuthAtom";
 import { accountNameState, profileImgState } from "../../state/AuthAtom";
 
 export default function ProfileModification() {
-  const [id, setId] = useRecoilState(accountNameState);
+  const [id, setId] = useState();
   const [userName, setUserName] = useRecoilState(userNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
@@ -47,6 +47,7 @@ export default function ProfileModification() {
   // 사용자 id 함수
   const handleIdChange = (e) => {
     setId(e.target.value);
+    localStorage.setItem("account", e.target.value);
   };
   const handleIdBlur = (e) => {
     const userId = e.target.value;
@@ -80,6 +81,7 @@ export default function ProfileModification() {
       const res = await editApi(userName, id, intro, apiImage, token);
       localStorage.setItem("account", res.user.accountname);
       localStorage.setItem("myProfileImg", res.user.image);
+      console.log(res);
       navigate("/myprofile");
     } catch (error) {
       console.log("에러입니다.");
@@ -96,6 +98,7 @@ export default function ProfileModification() {
     try {
       const result = await imageApi(file);
       setApiImage("https://api.mandarin.weniv.co.kr/" + result[0].filename);
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
