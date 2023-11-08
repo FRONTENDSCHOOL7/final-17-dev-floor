@@ -36,7 +36,7 @@ export default function MyProfile() {
   const token = useRecoilValue(tokenState);
   const [follower, setFollower] = useState(0);
   const [following, setFollowing] = useState(0);
-  const [productId, setProductId] = useRecoilState(productIdState)
+  const [productId, setProductId] = useRecoilState(productIdState);
   const navigate = useNavigate();
 
   const showPost = () => {
@@ -53,7 +53,7 @@ export default function MyProfile() {
       localStorage.setItem("myProfileImg", res.user.image);
       setUserName(res.user.username);
       setIntro(res.user.intro);
-      // setId(res.user.accountname);
+      setId(res.user.accountname);
       setFollower(res.user.followerCount);
       setFollowing(res.user.followingCount);
       console.log(res);
@@ -70,10 +70,10 @@ export default function MyProfile() {
   }, []);
 
   const isProduct = () => {
-    setProductId('')
-    navigate('/product')
-  }
-  
+    setProductId("");
+    navigate("/product");
+  };
+
   return (
     <Body>
       <TopBar />
@@ -102,7 +102,9 @@ export default function MyProfile() {
           <Link to='/modify'>
             <button className='modify-btn'>프로필 수정</button>
           </Link>
-            <button onClick={isProduct}className='register-btn' >상품 등록</button>
+          <button onClick={isProduct} className='register-btn'>
+            상품 등록
+          </button>
         </Btns>
       </Sect1>
       <Product />
