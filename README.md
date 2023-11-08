@@ -342,10 +342,10 @@ PW: 123123123
       <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/0b18da92-ce48-431a-b4d8-ca77936933b4" height="100%;" alt=""/><br /></td>
       <td align="center">
       <p>회원 가입</p>
-      <a href="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/b5246db6-eeb6-4a70-8c0a-47fb97f40511" height="100%;" alt=""/><img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/b5246db6-eeb6-4a70-8c0a-47fb97f40511" height="100%;" alt=""/></a><br /></td>
+      <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/b5246db6-eeb6-4a70-8c0a-47fb97f40511" height="100%;" alt=""/><br /></td>
       <td align="center">
       <p>프로필 설정</p>
-      <a href="https://github.com/geunpyochoi"><img src="https://github-production-user-asset-6210df.s3.amazonaws.com/28581469/281288881-0ef06d27-85e2-4ef2-96d1-e308e7e9d4c9.gif" height="100%;" alt=""/></a><br /></td>
+      <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/28581469/281288881-0ef06d27-85e2-4ef2-96d1-e308e7e9d4c9.gif" height="100%;" alt=""/><br /></td>
     </tr>
   </tbody>
 </table>
@@ -377,11 +377,11 @@ PW: 123123123
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2b2b8f17-724e-4038-8100-9653ccd49ec5" style="height: 100%;">
       </td>
       <td align="center">
-          <p>채팅리스트 & 채팅방</p>
+        <p>채팅리스트 & 채팅방</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20ac2702-7e10-4c24-bb53-25c387292c1a" style="height: 100%;">
       </td>  
       <td align="center">
-          <p>홈 피드</p>
+        <p>홈 피드</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/7ce30f2f-c13e-457f-bd5c-c659e1449c12" style="height: 100%;">
       </td> 
   </tr> 
@@ -392,15 +392,15 @@ PW: 123123123
 <tbody>
   <tr>
       <td align="center">
-          <p>좋아요</p>
+        <p>좋아요</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/c89369b4-5936-4ecd-a056-053730a348e1" style="height: 100%;">
       </td>
       <td align="center">
-          <p>게시글 상세</p>
+        <p>게시글 상세</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2740f709-0416-460c-b2da-8a6e12db629c" style="height: 100%;">
       </td>  
       <td align="center">
-          <p>댓글 작성</p>
+        <p>댓글 작성</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/5e26f3cf-0fe1-4c64-b965-a40cfee12ebe" style="height: 100%;">
       </td>  
   </tr>
@@ -411,15 +411,15 @@ PW: 123123123
 <tbody>
   <tr>
       <td align="center">
-          <p>댓글 삭제</p>
+        <p>댓글 삭제</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/d4acc08c-6acb-4ad5-bb3d-896010c5801d" style="height: 100%;">
       </td>
       <td align="center">
-          <p>프로필 수정</p>
+        <p>프로필 수정</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/f29af844-0e89-40a7-8bac-8bed82b6a050" style="height: 100%;">
       </td>  
       <td align="center">
-          <p>게시글 등록/삭제/수정</p>
+        <p>게시글 등록/삭제/수정</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/9a84b639-43ba-4359-8f01-d3a3bf374ee7" style="height: 100%;">
       </td>  
   </tr>
@@ -430,15 +430,15 @@ PW: 123123123
 <tbody>
     <tr>
         <td align="center">
-            <p>게시글 리스트/ 앨범형</p>
+          <p>게시글 리스트/ 앨범형</p>
           <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4edac850-fc0b-4928-9da4-65011c98776e" style="height: 100%;">
         </td>
         <td align="center">
-            <p>상품 등록/수정/이동/삭제</p>
+          <p>상품 등록/수정/이동/삭제</p>
           <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20dd632c-0e60-4fc0-ba62-fc83c7ac1d99" style="height: 100%;">
         </td>  
         <td align="center">
-            <p>로그아웃</p>
+          <p>로그아웃</p>
           <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4baa3216-b42d-4e9e-9993-50132782e2cd" style="height: 100%;">
         </td>  
     </tr>
