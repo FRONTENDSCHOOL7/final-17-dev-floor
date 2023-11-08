@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TopBarFollowers from "../../components/topbar/TopBarFollowers";
 import { Body, Follower } from "./FollowersStyle";
-import profileImg from "../../assets/images/Group 27.png";
 import TabMenu from "../../components/tab/TabMenu";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { accountNameState, tokenState } from "../../state/AuthAtom";
 import { followApi, followerListApi, unfollowApi } from "../../api/ProfileApi";
 import { useNavigate } from "react-router-dom";
@@ -25,11 +24,9 @@ export default function Followers() {
         console.log(res);
       }
 
-      // follow 배열을 복사하고, 해당 인덱스의 값을 토글
       const updatedFollow = [...follow];
       updatedFollow[index] = !isFollowed;
 
-      // 변경된 배열을 상태로 설정
       setFollow(updatedFollow);
     } catch (error) {
       console.log("에러가 발생했습니다.");
@@ -44,9 +41,6 @@ export default function Followers() {
       res.forEach((item) => {
         follow.push(item.isfollow);
       });
-      // 팔로우 상태를 초기화
-      // const isFollowedArray = new Array(res.length).fill(true);
-      // setFollow(isFollowedArray);
       console.log(followerList);
     } catch (error) {
       console.log("팔로워 리스트 에러입니다.");
