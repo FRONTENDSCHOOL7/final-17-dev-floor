@@ -122,7 +122,7 @@ export default function PostList() {
     localStorage.setItem("postId", postId);
     setPostId(localStorage.getItem("postId"));
     console.log("게시글id", postId);
-    navigate("/postWrite");
+    navigate("/postwrite");
   };
 
   const modalOpen = (e, post_id, author_id) => {

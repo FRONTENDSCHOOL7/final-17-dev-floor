@@ -4,7 +4,7 @@ export const Top = styled.div`
   max-width: 720px;
   width: 100%;
   background: var(--bgColor);
-  height: 48px;
+  min-height: 48px;
   display: flex;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--DBDBDB, #dbdbdb);

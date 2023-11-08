@@ -19,6 +19,7 @@ import { ProfileJoin } from "./pages/join/ProfileJoin";
 import MyProfile from "./pages/profile/MyProfile";
 import { tokenState } from "./state/AuthAtom";
 import { useRecoilValue } from "recoil";
+import { useEffect } from "react";
 
 function App() {
   const token = useRecoilValue(tokenState);
