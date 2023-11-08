@@ -6,8 +6,8 @@
 테스트 계정
 
 ```
-ID: dev_floor@test.com
-PW: 123123123
+ID: devfloor123@gmail.com
+PW: 10041004
 ```
 ## 0. 목차
 
