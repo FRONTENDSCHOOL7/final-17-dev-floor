@@ -15,7 +15,8 @@ export const Follower = styled.div`
   margin: 20px 16px;
   img {
     width: 50px;
-    height: 60px;
+    height: 50px;
+    border-radius: 100px;
   }
   .id {
     display: flex;

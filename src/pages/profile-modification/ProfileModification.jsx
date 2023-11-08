@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Body, Main } from "./ProfileModificationStyle";
-import profileImg from "../../assets/images/Group 26.png";
-import TopBarSave from "../../components/topbar/TopBarSave";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   introState,
@@ -16,12 +14,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { imageApi } from "../../api/PostApi";
 import { tokenState } from "../../state/AuthAtom";
 import { accountNameState, profileImgState } from "../../state/AuthAtom";
-import p_img from "../../assets/images/Group 26.png";
 
 export default function ProfileModification() {
   const [id, setId] = useRecoilState(accountNameState);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [account, setAcoount] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
@@ -84,6 +80,7 @@ export default function ProfileModification() {
       const res = await editApi(userName, id, intro, apiImage, token);
       localStorage.setItem("account", res.user.accountname);
       localStorage.setItem("myProfileImg", res.user.image);
+      console.log(res);
       navigate("/myprofile");
     } catch (error) {
       console.log("에러입니다.");
@@ -100,6 +97,7 @@ export default function ProfileModification() {
     try {
       const result = await imageApi(file);
       setApiImage("https://api.mandarin.weniv.co.kr/" + result[0].filename);
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
