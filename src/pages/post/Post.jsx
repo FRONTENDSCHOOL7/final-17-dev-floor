@@ -238,7 +238,10 @@ export default function Post() {
                 <button
                   onClick={() => handleLike(detail.id, detail.heartCount)}
                 >
-                  <Like fill={heart ? "#7A8CCB" : "#fff"}></Like>
+                  <Like
+                    className='like-transition'
+                    fill={heart ? "#7A8CCB" : "#fff"}
+                  ></Like>
                   <span>{hCount}</span>
                 </button>
                 <button>

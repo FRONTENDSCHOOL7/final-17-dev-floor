@@ -76,6 +76,9 @@ export const Sect3 = styled.div`
     }
     .like-comment {
       display: flex;
+      .like-transition {
+        transition: fill 0.4s ease;
+      }
       button {
         display: flex;
         align-items: center;
