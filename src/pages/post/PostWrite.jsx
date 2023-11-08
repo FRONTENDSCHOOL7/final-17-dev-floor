@@ -27,7 +27,6 @@ export default function PostWrite() {
   const navigate = useNavigate();
   const token = useRecoilValue(tokenState);
 
-  console.log("postId", postId);
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
@@ -52,7 +51,6 @@ export default function PostWrite() {
     }
   };
 
-  console.log(selectedImages);
   const onChangeFile = async () => {
     const files = fileRef.current.files;
     let file;
@@ -63,12 +61,10 @@ export default function PostWrite() {
         imagesArray.push(file);
       }
       setSelectedImages(imagesArray);
-      console.log("이미지배열확인", imagesArray);
     }
     // 이미지 api 요청
     try {
       const result = await imageApi(imagesArray);
-      console.log("이미지통신확인", result);
       if (result.length > 1) {
         const data = result
           .map((image) => `https://api.mandarin.weniv.co.kr/${image.filename}`)
@@ -95,7 +91,6 @@ export default function PostWrite() {
     }
   };
 
-  console.log(postId, content, apiImage, token);
   // 게시글 수정 api 요청
   const onClickCorrection = async (e) => {
     e.preventDefault();
