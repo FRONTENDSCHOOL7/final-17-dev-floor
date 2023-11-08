@@ -45,6 +45,7 @@ export default function PostWrite() {
       const result = await postDetail(postId, token);
       console.log("게시글상세", result);
       setDetail(result.post);
+      setApiImage(result.post.image);
       setContent(result.post.content);
     } catch (error) {
       console.log(error);
@@ -94,12 +95,13 @@ export default function PostWrite() {
     }
   };
 
+  console.log(postId, content, apiImage, token);
   // 게시글 수정 api 요청
   const onClickCorrection = async (e) => {
     e.preventDefault();
     try {
       const result = await postCorrection(postId, content, apiImage, token);
-      console.log("게시글수정결과값", result);
+
       navigate("/myprofile");
     } catch (error) {
       console.log(error);

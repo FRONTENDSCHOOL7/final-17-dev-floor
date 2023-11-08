@@ -31,7 +31,7 @@ export default function ModalProduct({
   };
 
   const viewOnWebsite = () => {
-    window.open(`https://${productLink}`); // 웹사이트에서 상품 보기 버튼을 클릭하면 productLink로 이동합니다.
+    window.open(productLink); // 웹사이트에서 상품 보기 버튼을 클릭하면 productLink로 이동합니다.
   };
 
   return (
