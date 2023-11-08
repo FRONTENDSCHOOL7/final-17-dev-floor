@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import Login from "./pages/login/Login";
 import Chat from "./pages/chat/Chat";
@@ -27,7 +27,7 @@ function App() {
   return (
     <div className='App'>
       <GlobalStyle />
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path='/' exact element={<Splash />} />
           <Route
@@ -87,7 +87,7 @@ function App() {
             element={token ? <ProfileJoin /> : <Navigate to='/login' />}
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
