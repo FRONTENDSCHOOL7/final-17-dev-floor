@@ -16,7 +16,7 @@ import { tokenState } from "../../state/AuthAtom";
 import { accountNameState, profileImgState } from "../../state/AuthAtom";
 
 export default function ProfileModification() {
-  const [id, setId] = useState();
+  const [id, setId] = useRecoilState(accountNameState);
   const [userName, setUserName] = useRecoilState(userNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
