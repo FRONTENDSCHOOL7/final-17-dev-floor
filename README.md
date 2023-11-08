@@ -393,21 +393,6 @@ PW: 123123123
 </tbody>
 </table>
 
-<table>
-  <tbody>
-    <tr>
-      <td align="center" width="33%;">
-          <p>404</p>
-        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/36c5ba5c-c3ef-4677-a0c0-78f63414067f" style="height: 100%;">
-      </td>
-      <td>
-      </td>  
-      <td>
-      </td>  
-    </tr>
-  </tbody>
-</table>
-
 <br>
 
 ## 6. 커밋 컨벤션
