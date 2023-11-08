@@ -11,6 +11,7 @@ import {
   commentListApi,
   likeApi,
   postCommentApi,
+  postDel,
   unlikeApi,
 } from "../../api/PostApi";
 import { useRecoilValue } from "recoil";
@@ -24,6 +25,8 @@ import {
 import { postDetail } from "../../api/PostApi";
 import { postIdState } from "../../state/PostAtom";
 import { ReactComponent as Like } from "../../assets/images/icon-heart.svg";
+import ModalPostDel from "../../components/modal/ModalPostDel";
+import { useNavigate } from "react-router-dom";
 
 export default function Post() {
   const [modalOpen, setIsOpenModal] = useState(false);
@@ -44,8 +47,12 @@ export default function Post() {
   const [ref, inView] = useInView();
   const [heart, setHeart] = useState(false);
   const [hCount, setHcount] = useState(0);
-  const showModal = () => {
+  const navigate = useNavigate()
+
+  const showModal = (author_id) => {
     setIsOpenModal(true);
+    setIsPostId(myAuthorId)
+    setAhtuorId(author_id)
   };
 
   // 좋아요
@@ -193,7 +200,26 @@ export default function Post() {
       console.error("게시글 불러오기 실패", error);
     }
   };
-
+    // 게시글 수정 페이지 이동
+    const goToPostCorrection = () => {
+      localStorage.setItem("postId", postId);
+      setIsPostId(localStorage.getItem("postId"));
+      console.log("게시글id", postId);
+      navigate("/postwrite");
+    };
+    //게시글 삭제
+    const handlePostDel = async () => {
+    console.log("하이");
+    try {
+      await postDel(postId, token);
+      console.log(postId, token);
+      setIsPostId(null);
+      navigate('/myprofile')
+    } catch (error) {
+      console.error("게시글 삭제 실패");
+    }
+    setIsOpenModal(false);
+  };
   useEffect(() => {
     postfetch();
   }, []);
@@ -212,7 +238,7 @@ export default function Post() {
                   <p>{detail.author?.accountname}</p>
                 </div>
                 <div>
-                  <button className='modalDel' onClick={showModal}>
+                  <button className='modalDel' onClick={()=> showModal(detail.author._id, detail.id)}>
                     <img src={more} alt='' />
                   </button>
                 </div>
@@ -313,7 +339,11 @@ export default function Post() {
         </div>
       </Sect3>
       <div ref={ref}></div>
-      {modalOpen && <Modal setIsOpenModal={setIsOpenModal} />}
+      {/* 게시글 */}
+      {modalOpen && (myAuthorId === ahtuorId ? (<ModalPostDel setIsOpenModal={setIsOpenModal} handlePostDel={handlePostDel}
+          goToPostCorrection={goToPostCorrection}/>) : (<Modal setIsOpenModal={setIsOpenModal} />))}
+
+      {/* 댓글 */}
       {comModalOpen &&
         (myAuthorId === ahtuorId ? (
           <ModalComDel

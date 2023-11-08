@@ -1,6 +1,6 @@
 # dev-floor
 <div>
-    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/65bb10e5-79aa-4185-803c-7efc7c36dd87"/>
+    <img src="src/assets/images/readme.png"/>
 </div>
 
 ## 0. 목차
