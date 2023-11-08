@@ -52,7 +52,7 @@ export const postCorrection = async (postId, content, image, token) => {
 export const imageApi = async (files) => {
   console.log("files", files);
   const formData = new FormData();
-  if (files.length > 1) {
+  if (files.length >= 1) {
     for (let i = 0; i < files.length; i++) {
       formData.append("image", files[i]);
     }

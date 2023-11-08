@@ -71,11 +71,9 @@ export default function PostList() {
   // 유저 게시글 목록 api 요청
   const postFetch = async () => {
     try {
-      console.log("토큰", token);
-      console.log("어카운트네임", accountName);
       const result = await postUserApi(accountName, token, skip);
 
-      console.log(result);
+      console.log("게시글 결과값 확인", result);
 
       setPostData((postData) => {
         return [...postData, ...result.post];
