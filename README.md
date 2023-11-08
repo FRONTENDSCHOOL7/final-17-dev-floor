@@ -2,33 +2,47 @@
 <div>
     <img src="src/assets/images/readme.png"/>
 </div>
+<br>
+테스트 계정
 
+```
+ID: devfloor123@gmail.com
+PW: 10041004
+```
 ## 0. 목차
 
 1.  [프로젝트 소개](#1-프로젝트-소개)
 2.  [팀원 소개](#2-팀원-소개)
 3.  [기술 스택](#3-기술-스택)
 4.  [구현 기능 및 역할](#4-구현-기능-및-역할)
-5.  [기능 UI](#6-기능-UI)
-6.  [주요 코드](#6-주요-코드)
-7.  [커밋 컨벤션](#7-커밋-컨벤션)
-8.  [협업 방식](#8-협업-방식)
+5.  [기능 UI](#5-기능-UI)
+6.  [커밋 컨벤션](#6-커밋-컨벤션)
+7.  [협업 방식](#7-협업-방식)
+8.  [아쉬운점 & 개선할점](#8-아쉬운점-&-개선할점)
 
 ## 1. 프로젝트 소개
+
+### [프로젝트 소개]
 
 개발바닥은 다양한 개발자들이 모여, 개발 정보 및 구직정보를 공유하며 소통하는 개발 커뮤니티 입니다.
 개발 관련 물품을 추천하고, 자신의 구직 후기와 개발 정보를 기록하고, 공유 하는 등
 직접적으로 개발 관련된 정보를 얻을 수 있으며, 댓글과 좋아요 기능으로
 서로 소통할 수 있는 개발자 SNS입니다.
 
+
+### [프로젝트 개발기간]
+<img src="src/assets/images/calendar.png"/>
+
+<br>
+
 ## 2. 팀원 소개
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/geunpyochoi"><img src="https://avatars.githubusercontent.com/u/28581469?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀장 : 최근표</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/kyokyoYa"><img src="https://avatars.githubusercontent.com/u/138539300?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀원 : 최현우</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/leeheezin"><img src="https://avatars.githubusercontent.com/u/102892982?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀원 : 이희진</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀원 : 이예람</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/geunpyochoi"><img src="src/assets/images/geunpyo.jpeg" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀장 : 최근표</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/kyokyoYa"><img src="src/assets/images/hyunwoo.jpeg" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀원 : 최현우</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/leeheezin"><img src="src/assets/images/heejin.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀원 : 이희진</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀원 : 이예람</b></sub></a><br /></td>
     </tr>
   </tbody>
 </table>
@@ -102,6 +116,7 @@
 <br>
 <br>
 ## 4. 구현 기능 및 역할
+
 ### [구현 기능]
 - **🔑Account**
 
@@ -113,7 +128,7 @@
 - **📄 Post**
   - 게시글 등록/수정/삭제
   - 모달창
-  - 이미지 1장 업로드
+  - 이미지 3장 업로드
   - 모든 유저 게시글 목록
   - 해당 유저 게시글 목록
   - 게시글 상세페이지
@@ -121,6 +136,7 @@
 
 - **🛒 Product**
     - 상품 등록
+    - 상품 수정
     - 상품 삭제
 
 - **⌨️ Commemt**
@@ -261,7 +277,11 @@
  ┣ 📜reportWebVitals.js
  ┗ 📜webpack.config.js
 ```
-## 7. 커밋 컨벤션
+
+## 5. 기능 UI
+
+
+## 6. 커밋 컨벤션
 <detail>
   <table>
     <tr>
@@ -319,7 +339,7 @@
   </table>
 </detail>
 
-## 8. 협업 방식
+## 7. 협업 방식
 - **스크럼**
 
   스크럼을 매일 오전 10시에 각 구성원의 기능 계획을 공유하고, 오후 5시30분에 진행 상황과 겪은 문제, 해결 방안을 공유하였습니다.
@@ -332,3 +352,12 @@
 
     main - 최종 머지하는 배포 branch<br>
     feature - 각자 기능 개발 완료후 합쳐지는 branch로 1명 조원의 승인후 merge합니다.
+
+<br>
+
+## 8. 아쉬운점 & 개선할점
+1. 커스텀 훅을 활용하지 않고 중복 코드를 작성한 부분이 많아 코드 가독성과 유지보수가 어려워진 점이 아쉬웠습니다. 리팩토링때는 커스텀훅을 만들어 효율적으로 적용해볼 예정입니다.
+
+2. GitHub 이슈를 활용하지 않았습니다. 이슈를 통해 프로젝트의 진행 상황을 효과적으로 추적하고 문제를 관리할 수 있었을 텐데, 이 기회를 놓친 것이 아쉬워서 추후 리팩토링때는 활용할 예정 입니다.
+
+3. 리코일로 상태관리를 하면서 처음 적용하다보니 마구잡이로 구현하게 되어 중복도 많아져 오류가 생기기도 했습니다. 더 쳬게적이고 일관성있게 리팩토링 할 예정입니다.
