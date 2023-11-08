@@ -39,10 +39,10 @@ PW: 123123123
 <table style="margin:0 auto;">
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/geunpyochoi"><img src="src/assets/images/geunpyo.jpeg" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀장 : 최근표</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/kyokyoYa"><img src="src/assets/images/hyunwoo.jpeg" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀원 : 최현우</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/leeheezin"><img src="src/assets/images/heejin.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀원 : 이희진</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="100px;" height="100px;" alt=""/><br /><sub><b>FE 팀원 : 이예람</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/geunpyochoi"><img src="src/assets/images/geunpyo.jpeg" width="100px;" height="100px;" alt=""/><br /><b>FE 팀장 : 최근표</b></a><br /></td>
+      <td align="center"><a href="https://github.com/kyokyoYa"><img src="src/assets/images/hyunwoo.jpeg" width="100px;" height="100px;" alt=""/><br /><b>FE 팀원 : 최현우</b></a><br /></td>
+      <td align="center"><a href="https://github.com/leeheezin"><img src="src/assets/images/heejin.jpg" width="100px;" height="100px;" alt=""/><br /><b>FE 팀원 : 이희진</b></a><br /></td>
+      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="100px;" height="100px;" alt=""/><br /><b>FE 팀원 : 이예람</b></a><br /></td>
     </tr>
   </tbody>
 </table>
@@ -286,13 +286,13 @@ PW: 123123123
   <tbody>
     <tr>
       <td align="center">
-      <sub><p>시작 화면</p></sub>
+      <p>시작 화면</p>
       <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/0b18da92-ce48-431a-b4d8-ca77936933b4" height="100%;" alt=""/><br /></td>
       <td align="center">
-      <sub><p>회원 가입</p></sub>
+      <p>회원 가입</p>
       <a href="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/b5246db6-eeb6-4a70-8c0a-47fb97f40511" height="100%;" alt=""/><img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/b5246db6-eeb6-4a70-8c0a-47fb97f40511" height="100%;" alt=""/></a><br /></td>
       <td align="center">
-      <sub><p>프로필 설정</p></sub>
+      <p>프로필 설정</p>
       <a href="https://github.com/geunpyochoi"><img src="https://github-production-user-asset-6210df.s3.amazonaws.com/28581469/281288881-0ef06d27-85e2-4ef2-96d1-e308e7e9d4c9.gif" height="100%;" alt=""/></a><br /></td>
     </tr>
   </tbody>
@@ -302,15 +302,15 @@ PW: 123123123
   <tbody>
       <tr>
         <td align="center">
-          <sub><p>로그인</p></sub>
+          <p>로그인</p>
           <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2a6d297b-4767-4050-b6fe-7458a12b20f6" style="height: 100%;">
         </td>
       <td align="center">
-        <sub><p>검색하기</p></sub>
+        <p>검색하기</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/407ceda8-f6fc-49c3-a18f-ed8944db5ce7" style="height: 100%;">
       </td>
       <td align="center">
-        <sub><p>마이 프로필</p></sub>
+        <p>마이 프로필</p>
           <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/41da3723-c6c4-444e-984c-3d050355de7e" style="height: 100%;">
       </td>
       </tr>
@@ -321,15 +321,15 @@ PW: 123123123
 <tbody>
   <tr>
       <td align="center">
-          <sub><p>팔로우 & 언팔로우</p></sub>
+        <p>팔로우 & 언팔로우</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2b2b8f17-724e-4038-8100-9653ccd49ec5" style="height: 100%;">
       </td>
       <td align="center">
-          <sub><p>채팅리스트 & 채팅방</p></sub>
+          <p>채팅리스트 & 채팅방</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20ac2702-7e10-4c24-bb53-25c387292c1a" style="height: 100%;">
       </td>  
       <td align="center">
-          <sub><p>홈 피드</p></sub>
+          <p>홈 피드</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/7ce30f2f-c13e-457f-bd5c-c659e1449c12" style="height: 100%;">
       </td> 
   </tr> 
@@ -340,15 +340,15 @@ PW: 123123123
 <tbody>
   <tr>
       <td align="center">
-          <sub><p>좋아요</p></sub>
+          <p>좋아요</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/c89369b4-5936-4ecd-a056-053730a348e1" style="height: 100%;">
       </td>
       <td align="center">
-          <sub><p>게시글 상세</p></sub>
+          <p>게시글 상세</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2740f709-0416-460c-b2da-8a6e12db629c" style="height: 100%;">
       </td>  
       <td align="center">
-          <sub><p>댓글 작성</p></sub>
+          <p>댓글 작성</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/5e26f3cf-0fe1-4c64-b965-a40cfee12ebe" style="height: 100%;">
       </td>  
   </tr>
@@ -359,15 +359,15 @@ PW: 123123123
 <tbody>
   <tr>
       <td align="center">
-          <sub><p>댓글 삭제</p></sub>
+          <p>댓글 삭제</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/d4acc08c-6acb-4ad5-bb3d-896010c5801d" style="height: 100%;">
       </td>
       <td align="center">
-          <sub><p>프로필 수정</p></sub>
+          <p>프로필 수정</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/f29af844-0e89-40a7-8bac-8bed82b6a050" style="height: 100%;">
       </td>  
       <td align="center">
-          <sub><p>게시글 등록/삭제/수정/상세</p></sub>
+          <p>게시글 등록/삭제/수정</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/9a84b639-43ba-4359-8f01-d3a3bf374ee7" style="height: 100%;">
       </td>  
   </tr>
@@ -378,17 +378,16 @@ PW: 123123123
 <tbody>
     <tr>
         <td align="center">
-            <sub><p>게시글 리스트/ 앨범형</p></sub>
+            <p>게시글 리스트/ 앨범형</p>
           <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4edac850-fc0b-4928-9da4-65011c98776e" style="height: 100%;">
         </td>
         <td align="center">
-            <sub><p>상품 등록/수정/링크이동/삭제</p></sub>
+            <p>상품 등록/수정/이동/삭제</p>
           <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20dd632c-0e60-4fc0-ba62-fc83c7ac1d99" style="height: 100%;">
         </td>  
         <td align="center">
-            <sub><p>로그아웃</p></sub>
-          <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4baa3216-b42d-4e9e-9993-50132782e2cd
-      " style="height: 100%;">
+            <p>로그아웃</p>
+          <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4baa3216-b42d-4e9e-9993-50132782e2cd" style="height: 100%;">
         </td>  
     </tr>
 </tbody>
@@ -398,17 +397,12 @@ PW: 123123123
   <tbody>
     <tr>
       <td align="center" width="33%;">
-          <sub><p>404</p></sub>
+          <p>404</p>
         <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/36c5ba5c-c3ef-4677-a0c0-78f63414067f" style="height: 100%;">
       </td>
       <td>
-          <sub></sub>
-        <img src=" ">
       </td>  
       <td>
-          <sub></sub>
-        <img src="
-    ">
       </td>  
     </tr>
   </tbody>
