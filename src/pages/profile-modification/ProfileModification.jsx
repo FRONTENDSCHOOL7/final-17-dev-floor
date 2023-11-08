@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Body, Main } from "./ProfileModificationStyle";
-import profileImg from "../../assets/images/Group 26.png";
-import TopBarSave from "../../components/topbar/TopBarSave";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   introState,
@@ -16,12 +14,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { imageApi } from "../../api/PostApi";
 import { tokenState } from "../../state/AuthAtom";
 import { accountNameState, profileImgState } from "../../state/AuthAtom";
-import p_img from "../../assets/images/Group 26.png";
 
 export default function ProfileModification() {
   const [id, setId] = useRecoilState(accountNameState);
   const [userName, setUserName] = useRecoilState(userNameState);
-  const [account, setAcoount] = useRecoilState(accountNameState);
   const [intro, setIntro] = useRecoilState(introState);
   const [nameValid, setNameValid] = useRecoilState(nameValidState);
   const [idValid, setIdValid] = useRecoilState(idValidState);
