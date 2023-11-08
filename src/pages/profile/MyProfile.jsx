@@ -48,8 +48,8 @@ export default function MyProfile() {
   const handleMyProfile = async (e) => {
     try {
       const res = await myProfileApi(token);
-      // setImage(res.user.image);
-      setImage(localStorage.getItem("myProfileImg"));
+      setImage(res.user.image);
+      // setImage(localStorage.getItem("myProfileImg"));
       localStorage.setItem("myProfileImg", res.user.image);
       setUserName(res.user.username);
       setIntro(res.user.intro);
