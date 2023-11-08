@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { Sect1 } from "../../components/modal/ChatModalStyle";
 import bar from "../../assets/images/bar.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Modal({ isOpenModal, setIsOpenModal, children }) {
   const wrapperRef = useRef();
+  const navigate = useNavigate()
+
   useEffect(() => {
   document.addEventListener("mousedown", handleClickOutside);
 
@@ -18,7 +21,9 @@ export default function Modal({ isOpenModal, setIsOpenModal, children }) {
       setIsOpenModal(true);
     }
   };
-
+  const chatPref = () => {
+    navigate(-1)
+  }
   const xClose = () => {
     setIsOpenModal(false);
   };
@@ -33,7 +38,7 @@ export default function Modal({ isOpenModal, setIsOpenModal, children }) {
             </button>
           </div>
           <div className='letter'>
-            <button>채팅방 나가기</button>
+            <button onClick={chatPref}>채팅방 나가기</button>
           </div>
         </div>
       </Sect1>

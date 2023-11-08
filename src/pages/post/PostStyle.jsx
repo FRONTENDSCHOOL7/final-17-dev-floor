@@ -14,15 +14,16 @@ export const Body = styled.div`
 `;
 
 export const Sect1 = styled.div`
-  .content-container {
+    .content-container {
     padding: 0 15px;
-    padding-bottom: 24px;
     display: flex;
     flex-direction: column;
     .content-list {
       display: flex;
       gap: 12px;
       margin-top: 12px;
+      border-bottom: 0.5px solid var(--borderColor);
+      padding-bottom: 12px;
     }
     .profile-img {
       width: 42px;

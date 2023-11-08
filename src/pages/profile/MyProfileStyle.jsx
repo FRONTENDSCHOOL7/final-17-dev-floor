@@ -73,7 +73,6 @@ export const Intro = styled.div`
     margin-bottom: 16px;
   }
 `;
-
 export const Btns = styled.div`
   display: flex;
   margin-top: 24px;

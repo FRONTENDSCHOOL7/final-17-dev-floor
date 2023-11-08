@@ -24,6 +24,8 @@ export const Sect3 = styled.div`
       display: flex;
       gap: 12px;
       margin-top: 12px;
+      border-bottom: 0.5px solid var(--borderColor);
+
       .content-id {
         display: flex;
         gap: 12px;
