@@ -34,18 +34,56 @@ PW: 10041004
 
 
 ### [프로젝트 개발기간]
-<img src="src/assets/images/calendar.png"/>
+<table>
+  <thead>
+    <tr>
+      <th>기간</th>
+      <th>작업 내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10/12</td>
+      <td>첫 회의</td>
+    </tr>
+    <tr>
+      <td>10/13 - 10/16</td>
+      <td>협업 계획 디자인 및 프로젝트 세팅</td>
+    </tr>
+    <tr>
+      <td>10/17 - 10/22</td>
+      <td>전체 마크업</td>
+    </tr>
+    <tr>
+      <td>10/23 - 10/29</td>
+      <td>1차 필수 기능 구현</td>
+    </tr>
+    <tr>
+      <td>10/30 - 10/31</td>
+      <td>2차 선택 기능 구현</td>
+    </tr>
+    <tr>
+      <td>11/1 - 11/6</td>
+      <td>버그 해결 및 보완</td>
+    </tr>
+    <tr>
+      <td>11/7 - 11/8</td>
+      <td>프로젝트 배포 및 자료 문서화</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <br>
 
 ## 2. 팀원 소개
-<table style="margin:0 auto;">
+<table style="margin-left:auto; margin-right:auto;">
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/geunpyochoi"><img src="src/assets/images/geunpyo.jpeg" width="200px;" height="200px;" alt=""/><br /><sub><b>FE 팀장 : 최근표</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/kyokyoYa"><img src="src/assets/images/hyunwoo.jpeg"  width="200px;" height="200px;" alt=""/><br /><sub><b>FE 팀원 : 최현우</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/leeheezin"><img src="src/assets/images/heejin.jpg"  width="200px;" height="200px;" alt=""/><br /><sub><b>FE 팀원 : 이희진</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="200px;" height="200px;" alt=""/><br /><sub><b>FE 팀원 : 이예람</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/geunpyochoi"><img src="src/assets/images/geunpyo.jpeg" width="200px;" height="200px;" alt=""/><br /><b>FE 팀장 : 최근표</b></a><br /></td>
+      <td align="center"><a href="https://github.com/kyokyoYa"><img src="src/assets/images/hyunwoo.jpeg" width="200px;" height="200px;" alt=""/><br /><b>FE 팀원 : 최현우</b></a><br /></td>
+      <td align="center"><a href="https://github.com/leeheezin"><img src="src/assets/images/heejin.jpg" width="200px;" height="200px;" alt=""/><br /><b>FE 팀원 : 이희진</b></a><br /></td>
+      <td align="center"><a href="https://github.com/dpfka97"><img src="https://avatars.githubusercontent.com/u/138556222?v=4" width="200px;" height="200px;" alt=""/><br /><b>FE 팀원 : 이예람</b></a><br /></td>
     </tr>
   </tbody>
 </table>
@@ -55,7 +93,7 @@ PW: 10041004
 ## 3. 기술 스택
 <table>
 <tr>
- <td align="center" width="100px">사용 기술</td>
+ <td align="center" width="200px">사용 기술</td>
  <td width="800px">
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=ffffff"/>&nbsp  
   <img src="https://img.shields.io/badge/Recoil-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/>&nbsp 
@@ -96,15 +134,26 @@ PW: 10041004
 1. 편리한 비동기 처리
 - useRecoilState나 useRecoilValue등의 API를 사용하여 비동기 데이터를 상태로 관리하면서도 간단하게 데이터 흐름을 제어할 수 있습니다.
 - 비동기 처리시 async/await 문법을 사용할 수 있습니다.
+
+<br/>
+
 2. 유연한 상태관리
 - React의 UseState훅과 비슷하게 동작하고 직관적이면서 간단한 구조를 가져 코드의 양을 줄일 수 있었습니다.
 - 프로젝트 규모가 크지 않아 Recoil이 Redux에 비해 적합하다 생각하였습니다.
 - Recoil을 사용하면 컴포넌트 간에 상태와 로직을 공유하거나 분리할 수 있으며, 코드 구조를 더 유연하고, 설계할 수 있습니다.
+
+<br/>
+
 3. 성능 최적화
 - 특정 상태의 변경이 발생할 때 해당 상태를 사용하는 컴포넌트들만 다시 렌더링되도록 최적화가 되어있습니다.
 
+<br/>
+
 4. TypeScript 호환 
 - Recoil은 TypeScript와의 호환성이 좋아 추후 리팩토링을 타입스크립트로 진행할 예정으로 선택하였습니다. 
+
+<br/>
+
 5. recoil-Persist
 - 유저정보의 지속성을 위해 사용한 recoil-Persist
 - recoil은 기본적으로 새로고침 또는 컴포넌트 언마운트 시 상태가 초기화되지만, recoil-persist를 사용하면서 세션 스토리지에 저장하여 지속성을 유지하였습니다.
@@ -120,6 +169,7 @@ PW: 10041004
     - 컴포넌트를 기반으로 스타일링 할 수 있어 재사용 할 수 있고, 코드 가독성과 유지보수성을 위해 사용했습니다.
 <br>
 <br>
+
 ## 4. 구현 기능 및 역할
 
 ### [구현 기능]
@@ -137,7 +187,7 @@ PW: 10041004
   - 모든 유저 게시글 목록
   - 해당 유저 게시글 목록
   - 게시글 상세페이지
-  <!-- - 팔로잉 게시글 목록 -->
+  - 팔로잉 게시글 목록
 
 - **🛒 Product**
     - 상품 등록
@@ -146,7 +196,7 @@ PW: 10041004
 
 - **⌨️ Commemt**
 
-  - 댓글 등록/수정/삭제
+  - 댓글 작성/리스트/삭제
 
 - **🔎 Search**
 
@@ -161,13 +211,13 @@ PW: 10041004
 
 - **❤️ Like**
 
-  - 게시물 좋아요 및 취소
+  - 게시글 좋아요 및 취소
 
 <br/>
 
 ### [역할]
 <div>
-    <img src="src/assets/images/part.png"/>
+    <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/102892982/8c4bd99f-2371-4dbf-8594-3d284c380fc0"/>
 </div>
 
 ### [폴더 구조]
@@ -284,119 +334,117 @@ PW: 10041004
 ```
 
 ## 5. 기능 UI
-<div style="width: 100%; display: flex; gap: 10px;">
-  <div>
-    <h4 style="text-align: center;">시작 화면</h4>
-    <img  style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/0b18da92-ce48-431a-b4d8-ca77936933b4">
-  </div>
 
-  <div>
-    <h4 style="text-align: center;">회원 가입</h4>
-  <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/b5246db6-eeb6-4a70-8c0a-47fb97f40511">
-  </div>
+<table style="margin:0 auto;">
+  <tbody>
+    <tr>
+      <td align="center">
+      <p>시작 화면</p>
+      <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/0b18da92-ce48-431a-b4d8-ca77936933b4" height="100%;" alt=""/><br /></td>
+      <td align="center">
+      <p>회원 가입</p>
+      <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/b5246db6-eeb6-4a70-8c0a-47fb97f40511" height="100%;" alt=""/><br /></td>
+      <td align="center">
+      <p>프로필 설정</p>
+      <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/28581469/281288881-0ef06d27-85e2-4ef2-96d1-e308e7e9d4c9.gif" height="100%;" alt=""/><br /></td>
+    </tr>
+  </tbody>
+</table>
 
-  <div>
-    <h4 style="text-align: center;">프로필 설정</h4>
-  <img style="max-width: 100%; display: inline-block;" src="https://github-production-user-asset-6210df.s3.amazonaws.com/28581469/281288881-0ef06d27-85e2-4ef2-96d1-e308e7e9d4c9.gif">
-  </div>
-</div>
+<table>
+  <tbody>
+      <tr>
+        <td align="center">
+          <p>로그인</p>
+          <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2a6d297b-4767-4050-b6fe-7458a12b20f6" style="height: 100%;">
+        </td>
+      <td align="center">
+        <p>검색하기</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/407ceda8-f6fc-49c3-a18f-ed8944db5ce7" style="height: 100%;">
+      </td>
+      <td align="center">
+        <p>마이 프로필</p>
+          <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/41da3723-c6c4-444e-984c-3d050355de7e" style="height: 100%;">
+      </td>
+      </tr>
+  </tbody>
+</table>
 
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div>
-    <h4 style="text-align: center;">로그인</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2a6d297b-4767-4050-b6fe-7458a12b20f6">
-  </div>
-<div>
-  <h4 style="text-align: center;">검색하기</h4>
-  <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/407ceda8-f6fc-49c3-a18f-ed8944db5ce7">
-</div>
-<div>
-   <h4 style="text-align: center;">마이 프로필</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/41da3723-c6c4-444e-984c-3d050355de7e">
-</div>
-  </div>
+<table>
+<tbody>
+  <tr>
+      <td align="center">
+        <p>팔로우 & 언팔로우</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2b2b8f17-724e-4038-8100-9653ccd49ec5" style="height: 100%;">
+      </td>
+      <td align="center">
+        <p>채팅리스트 & 채팅방</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20ac2702-7e10-4c24-bb53-25c387292c1a" style="height: 100%;">
+      </td>  
+      <td align="center">
+        <p>홈 피드</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/7ce30f2f-c13e-457f-bd5c-c659e1449c12" style="height: 100%;">
+      </td> 
+  </tr> 
+</tbody>
+</table>
 
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div>
-      <h4 style="text-align: center;">팔로우 & 언팔로우</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2b2b8f17-724e-4038-8100-9653ccd49ec5">
-  </div>
-  <div>
-      <h4 style="text-align: center;">채팅리스트 & 채팅방</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20ac2702-7e10-4c24-bb53-25c387292c1a">
-  </div>  
+<table>
+<tbody>
+  <tr>
+      <td align="center">
+        <p>좋아요</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/c89369b4-5936-4ecd-a056-053730a348e1" style="height: 100%;">
+      </td>
+      <td align="center">
+        <p>게시글 상세</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2740f709-0416-460c-b2da-8a6e12db629c" style="height: 100%;">
+      </td>  
+      <td align="center">
+        <p>댓글 작성</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/5e26f3cf-0fe1-4c64-b965-a40cfee12ebe" style="height: 100%;">
+      </td>  
+  </tr>
+</tbody>
+</table>
 
-  <div>
-      <h4 style="text-align: center;">홈 피드</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/7ce30f2f-c13e-457f-bd5c-c659e1449c12">
-  </div>  
-</div>
+<table>
+<tbody>
+  <tr>
+      <td align="center">
+        <p>댓글 삭제</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/d4acc08c-6acb-4ad5-bb3d-896010c5801d" style="height: 100%;">
+      </td>
+      <td align="center">
+        <p>프로필 수정</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/f29af844-0e89-40a7-8bac-8bed82b6a050" style="height: 100%;">
+      </td>  
+      <td align="center">
+        <p>게시글 등록/삭제/수정</p>
+        <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/9a84b639-43ba-4359-8f01-d3a3bf374ee7" style="height: 100%;">
+      </td>  
+  </tr>
+</tbody>
+</table>
 
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div>
-      <h4 style="text-align: center;">좋아요</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/c89369b4-5936-4ecd-a056-053730a348e1">
-  </div>
-  <div>
-      <h4 style="text-align: center;">게시글 상세</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/2740f709-0416-460c-b2da-8a6e12db629c">
-  </div>  
-
-  <div>
-      <h4 style="text-align: center;">댓글 작성</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/5e26f3cf-0fe1-4c64-b965-a40cfee12ebe">
-  </div>  
-</div>
-
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div>
-      <h4 style="text-align: center;">댓글 삭제</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/d4acc08c-6acb-4ad5-bb3d-896010c5801d">
-  </div>
-  <div>
-      <h4 style="text-align: center;">프로필 수정</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/f29af844-0e89-40a7-8bac-8bed82b6a050">
-  </div>  
-
-  <div>
-      <h4 style="text-align: center;">게시글 등록/삭제/수정/상세</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/9a84b639-43ba-4359-8f01-d3a3bf374ee7">
-  </div>  
-</div>
-
-<div  style="width: 100%; display: flex; gap: 10px;">
-  <div>
-      <h4 style="text-align: center;">게시글 리스트/ 앨범형</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4edac850-fc0b-4928-9da4-65011c98776e">
-  </div>
-  <div>
-      <h4 style="text-align: center;">상품 등록/수정/링크이동/삭제</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20dd632c-0e60-4fc0-ba62-fc83c7ac1d99">
-  </div>  
-
-  <div>
-      <h4 style="text-align: center;">로그아웃</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4baa3216-b42d-4e9e-9993-50132782e2cd
-">
-  </div>  
-</div>
-
-<div  style="width: 36%; display: flex; gap: 10px;">
-  <div>
-      <h4 style="text-align: center;">404</h4>
-    <img style="max-width: 100%; display: inline-block;" src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/36c5ba5c-c3ef-4677-a0c0-78f63414067f">
-  </div>
-  <div>
-      <h4 style="text-align: center;"></h4>
-    <img style="max-width: 100%; display: inline-block;" src=" ">
-  </div>  
-
-  <div>
-      <h4 style="text-align: center;"></h4>
-    <img style="max-width: 100%; display: inline-block;" src="
-">
-  </div>  
-</div>
+<table>
+<tbody>
+    <tr>
+        <td align="center">
+          <p>게시글 리스트/ 앨범형</p>
+          <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4edac850-fc0b-4928-9da4-65011c98776e" style="height: 100%;">
+        </td>
+        <td align="center">
+          <p>상품 등록/수정/이동/삭제</p>
+          <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/20dd632c-0e60-4fc0-ba62-fc83c7ac1d99" style="height: 100%;">
+        </td>  
+        <td align="center">
+          <p>로그아웃</p>
+          <img src="https://github.com/FRONTENDSCHOOL7/final-17-dev-floor/assets/28581469/4baa3216-b42d-4e9e-9993-50132782e2cd" style="height: 100%;">
+        </td>  
+    </tr>
+</tbody>
+</table>
 
 <br>
 
@@ -466,7 +514,7 @@ PW: 10041004
 
 - **라이브 쉐어**
 
-  라이브 쉐어 프로그램을 사용하여 오류나 어려움이 있는 부분을 함께 해결하고, 기술적 중요도가 높은 파트에서는 함께 작업함으로써 전체 코드에 대한 각 구성원들의 이해도를 높였습니다.
+  라이브 쉐어 프로그램을 사용하여 오류나 어려움이 있는 부분을 함께 해결하고, 기술적으로 어려운 파트는 함께 공동 작업함으로써 코드에 대한 팀원들의 이해도를 높였습니다.
 
 - **깃플로우**
 
@@ -480,4 +528,4 @@ PW: 10041004
 
 2. GitHub 이슈를 활용하지 않았습니다. 이슈를 통해 프로젝트의 진행 상황을 효과적으로 추적하고 문제를 관리할 수 있었을 텐데, 이 기회를 놓친 것이 아쉬워서 추후 리팩토링때는 활용할 예정 입니다.
 
-3. 리코일로 상태관리를 하면서 처음 적용하다보니 마구잡이로 구현하게 되어 중복도 많아져 오류가 생기기도 했습니다. 더 쳬게적이고 일관성있게 리팩토링 할 예정입니다.
+3. 리코일로 상태관리를 하면서 처음 적용하다보니 마구잡이로 구현하게 되어 중복도 많아져 오류가 생기기도 했습니다. 더 체계적이고 일관성있게 리팩토링 할 예정입니다.

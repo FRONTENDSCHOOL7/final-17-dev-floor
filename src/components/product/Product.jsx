@@ -82,7 +82,7 @@ export default function Product() {
 
   return (
     <Sect2>
-      <h2>판매중인 상품</h2>
+      <h2>개발템 이런건 어때요?</h2>
       <Sale>
         {products?.map((product, idx) => (
           <div key={idx} onClick={() => showModal(product.id)}>
