@@ -13,15 +13,15 @@ export const Main = styled.div`
     height: 100vh;
     background-color: var(--disableColor);
 `
-export default function Splash() {
+const Splash: React.FC = () => {
     const navigate = useNavigate()
-    function loginStatus() {
+    function loginStatus(): boolean {
         const token = localStorage.getItem('token');
         return token !== null;
     }
     
     useEffect(() => {
-        setTimeout(() => {
+        const timeOut = setTimeout(() => {
             const isLogged = loginStatus();
             if (isLogged) {
                 navigate('/homefeed');
@@ -29,7 +29,8 @@ export default function Splash() {
                 navigate('/home');
             }
             }, 1000);  
-    }, []);
+            return () => clearTimeout(timeOut);
+    }, [navigate]);
 
     return (
         <Main>
@@ -42,3 +43,4 @@ export default function Splash() {
         </Main>
     );
 }
+export default Splash
